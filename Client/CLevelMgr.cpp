@@ -5,6 +5,9 @@
 #include "CEditorLevel.h"
 #include "CPlayLevel.h"
 
+#include "CTitleLevel.h"
+#include "CMainMenuLevel.h"
+
 CLevelMgr::CLevelMgr()
 	: m_pCurLevel(nullptr)
 	, m_arrLevels{}
@@ -43,6 +46,9 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::START_LEVEL] = new CStartLevel;
 	m_arrLevels[(UINT)LEVEL_TYPE::PLAY_LEVEL] = new CPlayLevel;
 	m_arrLevels[(UINT)LEVEL_TYPE::EDITOR_LEVEL] = new CEditorLevel;
+	m_arrLevels[(UINT)LEVEL_TYPE::TITLE_LEVEL] = new CTitleLevel;
+	m_arrLevels[(UINT)LEVEL_TYPE::MAINMENU_LEVEL] = new CMainMenuLevel;
+
 
 	// 레벨 초기화
 	for (UINT i = 0; i < (UINT)LEVEL_TYPE::END; ++i)
@@ -51,7 +57,7 @@ void CLevelMgr::init()
 	}
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::PLAY_LEVEL);
+	ChangeLevel(LEVEL_TYPE::TITLE_LEVEL);
 
 }
 

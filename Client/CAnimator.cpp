@@ -90,6 +90,7 @@ void CAnimator::CreateAnimation(const wstring& _strName, CTexture* _pAtlas, Vec2
 	m_mapAnim.insert(make_pair(_strName, pAnim));
 }
 
+
 CAnim* CAnimator::FindAnimation(const wstring& _strName)
 {
 	map<wstring, CAnim*>::iterator iter = m_mapAnim.find(_strName);

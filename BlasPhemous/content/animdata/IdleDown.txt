@@ -3,7 +3,7 @@ IdleDown
 
 [ATLAS_TEXTURE]
 PlayerAtlas
-texture\link.bmp
+texture\link_alpha.bmp
 
 [FRAME_COUNT]
 3

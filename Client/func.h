@@ -1,5 +1,8 @@
 #pragma once
 
+class CTexture;
+
+
 Vec2 Rotate(Vec2 _vDir, float _angle);
 bool GetRotateClock(Vec2 _vDir1, Vec2 _vDir2);
 
@@ -24,3 +27,5 @@ void ChangeLevel(LEVEL_TYPE _eType);
 
 void SaveWString(const wstring& _str, FILE* _File);
 void LoadWString(wstring& _str, FILE* _File);
+
+void AlphaBlendRender(HDC _dc, CTexture* _pTex, Vec2 _vRenderPos, Vec2 _vScale);

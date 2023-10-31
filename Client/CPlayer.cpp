@@ -19,7 +19,7 @@ CPlayer::CPlayer()
 {
 	SetName(L"Player");
 
-	CTexture* pAtlas = CAssetMgr::GetInst()->LoadTexture(L"PlayerAtlas", L"texture\\link_alpha.bmp");
+	//CTexture* pAtlas = CAssetMgr::GetInst()->LoadTexture(L"PlayerAtlas", L"texture\\link_alpha.bmp");
 	// animator
 	m_pAnimator = AddComponent<CAnimator>(L"Animator");
 

@@ -2,6 +2,7 @@
 #include "func.h"
 
 #include "CTaskMgr.h"
+#include "CTexture.h"
 
 Vec2 Rotate(Vec2 _vDir, float _angle)
 {
@@ -52,4 +53,22 @@ void LoadWString(wstring& _str, FILE* _File)
 	fread(szBuff, sizeof(wchar_t), iLen, _File);
 
 	_str = szBuff;
+}
+
+void AlphaBlendRender(HDC _dc, CTexture* _pTex,Vec2 _vRenderPos, Vec2 _vScale)
+{
+	BLENDFUNCTION blend = {};
+	blend.BlendOp = AC_SRC_OVER;
+	blend.BlendFlags = 0;
+
+	blend.SourceConstantAlpha = 255; // 0 ~ 255
+	blend.AlphaFormat = AC_SRC_ALPHA; // 0
+
+	AlphaBlend(_dc, int(_vRenderPos.x - _vScale.x / 2.f)
+		, int(_vRenderPos.y - _vScale.y / 2.f)
+		, int(_vScale.x), int(_vScale.y)
+		, _pTex->GetDC()
+		, 0, 0
+		, (int)_pTex->GetWidth(), (int)_pTex->GetHeight()
+		, blend);
 }

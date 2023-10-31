@@ -134,6 +134,15 @@
     <Filter Include="Game\08. State\NormalMonster\Trace">
       <UniqueIdentifier>{06aad7fe-4c3f-45ea-9649-5f70f7ea197f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\05. Level\TitleLevel">
+      <UniqueIdentifier>{fd43a83a-9ba1-44e2-a3c3-31af60fc056b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Image">
+      <UniqueIdentifier>{12c5e614-1409-4bc0-94ea-42c9d445fb9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05. Level\Mainmenu">
+      <UniqueIdentifier>{4508e490-65b4-4bd2-a5c5-31a058a08105}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -293,6 +302,15 @@
     <ClInclude Include="CNormalMonTrace.h">
       <Filter>Game\08. State\NormalMonster\Trace</Filter>
     </ClInclude>
+    <ClInclude Include="CTitleLevel.h">
+      <Filter>Game\05. Level\TitleLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="CImage.h">
+      <Filter>Game\04. Object\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="CMainMenuLevel.h">
+      <Filter>Game\05. Level\Mainmenu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -446,6 +464,15 @@
     </ClCompile>
     <ClCompile Include="CNormalMonTrace.cpp">
       <Filter>Game\08. State\NormalMonster\Trace</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleLevel.cpp">
+      <Filter>Game\05. Level\TitleLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="CImage.cpp">
+      <Filter>Game\04. Object\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="CMainMenuLevel.cpp">
+      <Filter>Game\05. Level\Mainmenu</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

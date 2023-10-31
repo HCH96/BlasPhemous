@@ -11,6 +11,7 @@ struct FFrame
     float   fDuration;
 };
 
+
 class CAnimator;
 
 class CAnim :
