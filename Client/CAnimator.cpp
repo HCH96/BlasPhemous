@@ -12,6 +12,25 @@ CAnimator::CAnimator(CObj* _Owner)
 {
 }
 
+CAnimator::CAnimator(const CAnimator& _Origin)
+	: CComponent(_Origin)
+	, m_pCurAnim(nullptr)
+	, m_bRepeat(_Origin.m_bRepeat)
+{
+	for (const auto& pair : _Origin.m_mapAnim)
+	{
+		CAnim* pAnim = pair.second->Clone();
+		pAnim->m_pAnimator = this;
+		m_mapAnim.insert(make_pair(pair.first, pAnim));
+	}
+
+	if (nullptr != _Origin.m_pCurAnim)
+	{
+		m_pCurAnim = FindAnimation(_Origin.m_pCurAnim->GetName());
+	}
+
+}
+
 CAnimator::~CAnimator()
 {
 	for (const auto& pair : m_mapAnim)
@@ -46,6 +65,8 @@ void CAnimator::Play(const wstring& _strName, bool _bRepeat)
 {
 	m_bRepeat = _bRepeat;
 	m_pCurAnim = FindAnimation(_strName);
+
+	m_pCurAnim->Reset();
 
 	assert(m_pCurAnim);
 }

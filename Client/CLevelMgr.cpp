@@ -51,7 +51,7 @@ void CLevelMgr::init()
 	}
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::EDITOR_LEVEL);
+	ChangeLevel(LEVEL_TYPE::PLAY_LEVEL);
 
 }
 

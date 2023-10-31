@@ -64,6 +64,23 @@ void CLevel::render(HDC _dc)
 
 }
 
+CObj* CLevel::FindObjectByName(const wstring& _Name)
+{
+	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
+	{
+		const vector<CObj*>& vecObjects = m_arrLayer[i]->GetObjects();
+		for (size_t j = 0; j < vecObjects.size(); ++j)
+		{
+			if (vecObjects[j]->GetName() == _Name)
+			{
+				return vecObjects[j];
+			}
+		}
+	}
+
+	return nullptr;
+}
+
 void CLevel::AddObject(LAYER _eLayer, CObj* _Object)
 {
 	m_arrLayer[(UINT)_eLayer]->AddObject(_Object);

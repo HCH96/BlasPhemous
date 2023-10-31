@@ -36,8 +36,9 @@
 
 
 // Object
-#define GENERATED_OBJECT(type) typedef type Super;\
-							   virtual void Abstract() override {}
+#define GENERATED_OBJECT(type) typedef type Super;
+#define CLONE(type) virtual type* Clone() {return new type(*this);}
+#define CLONE_DISABLE(type) virtual type* Clone() {return nullptr;}
 
 // Tile
 #define TILE_SIZE 64

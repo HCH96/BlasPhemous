@@ -9,9 +9,13 @@
 #include "CKeyMgr.h"
 #include "CLevelMgr.h"
 
+#include "CPanelUI.h"
 #include "CBtnUI.h"
 
 #include "CTile.h"
+
+void TestFunc();
+INT_PTR CALLBACK CreateTileProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
 void CEditorLevel::init()
 {
@@ -35,10 +39,24 @@ void CEditorLevel::enter()
 	CreateTile(10, 10);
 
 	// UI 생성
+	CPanelUI* pPanelUI = new CPanelUI;
+	pPanelUI->SetScale(Vec2(500.f, 400.f));
+	pPanelUI->SetPos(Vec2(800.f, 200.f));
+
 	CBtnUI* pBtnUI = new CBtnUI;
 	pBtnUI->SetScale(Vec2(200.f, 80.f));
-	pBtnUI->SetPos(Vec2(1390.f, 10.f));
-	AddObject(LAYER::UI, pBtnUI);
+	pBtnUI->SetPos(Vec2(10.f, 10.f));
+	//pBtnUI->SetCallBack(TestFunc);
+	pBtnUI->SetDelegate(this, (DelegateFunc)&CEditorLevel::OpenTileCreateWindow);
+
+	pPanelUI->AddChildUI(pBtnUI);
+	AddObject(LAYER::UI, pPanelUI);
+
+	pPanelUI = pPanelUI->Clone();
+	pPanelUI->SetPos(Vec2(500.f, 200.f));
+	AddObject(LAYER::UI, pPanelUI);
+
+
 }
 
 void CEditorLevel::exit()
@@ -87,6 +105,11 @@ void CEditorLevel::tick()
 	}
 }
 
+void CEditorLevel::OpenTileCreateWindow()
+{
+	DialogBox(nullptr, MAKEINTRESOURCE(IDD_CREATE_TILE), CEngine::GetInst()->GetMainWind(), CreateTileProc);
+}
+
 
 // ==============================
 // CreateTile Dialog 프로시저 함수
@@ -125,4 +148,9 @@ INT_PTR CALLBACK CreateTileProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM l
 		break;
 	}
 	return (INT_PTR)FALSE;
+}
+
+void TestFunc()
+{
+	DialogBox(nullptr, MAKEINTRESOURCE(IDD_CREATE_TILE), CEngine::GetInst()->GetMainWind(), CreateTileProc);
 }

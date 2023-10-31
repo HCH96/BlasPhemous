@@ -29,7 +29,9 @@ public:
 
 
 public:
+    CLONE(CCollider);
     CCollider(CObj* _pOwner);
+    CCollider(const CCollider& _Origin);
     ~CCollider();
 };
 

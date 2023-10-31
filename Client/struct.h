@@ -228,6 +228,7 @@ struct FSelectGDI
 	HBRUSH	hPrevBrush;
 
 	FSelectGDI(HDC _dc, PEN_TYPE _ePenType, BRUSH_TYPE _eBrushType = BRUSH_TYPE::END);
+	FSelectGDI(HDC _dc, BRUSH_TYPE _eBrushType);
 	FSelectGDI(const FSelectGDI& _Other) = delete;
 	~FSelectGDI();
 };

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CEngine.h"
 
+
+// Manager
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 #include "CLevelMgr.h"
@@ -9,14 +11,18 @@
 #include "CCamera.h"
 #include "CCollisionMgr.h"
 #include "CGCMgr.h"
+#include "CUIMgr.h"
+#include "CAssetMgr.h"
+#include "CSoundMgr.h"
 
+
+#include "CTexture.h"
 
 CEngine::CEngine()
 	: m_hWnd(nullptr)
 	, m_ptResolution{}
 	, m_hDC(nullptr)
-	, m_hSubBitMap(nullptr)
-	, m_hSubDC(nullptr)
+	, m_pSubTex(nullptr)
 	, m_bDebugRender(true)
 {
 	// pen, brush 생성
@@ -27,10 +33,6 @@ CEngine::~CEngine()
 {
 	// DC 해제
 	ReleaseDC(m_hWnd, m_hDC);
-
-	// SubDC, Bitmap 삭제
-	DeleteObject(m_hSubBitMap);
-	DeleteDC(m_hSubDC);
 	
 	// Pen,Brush 삭제
 	for (int i = 0; i < (UINT)PEN_TYPE::END; i++)
@@ -60,16 +62,13 @@ void CEngine::init(HWND _hWnd, POINT _ptResolution)
 	ShowWindow(m_hWnd, true);
 
 	// 추가 비트맵 버퍼
-	m_hSubBitMap = CreateCompatibleBitmap(m_hDC, m_ptResolution.x, m_ptResolution.y);
-	m_hSubDC = CreateCompatibleDC(m_hDC);
-	
-	// m_SubDC가 디폴트로 들고있던 비트맵을 삭제
-	DeleteObject((HBITMAP)SelectObject(m_hSubDC, m_hSubBitMap));
+	m_pSubTex = CAssetMgr::GetInst()->CreateTexture(L"SubTex", m_ptResolution.x, m_ptResolution.y);
 
 	// Manager 초기화
 	CTimeMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
 	CPathMgr::init();
+	CSoundMgr::GetInst()->init();
 	CLevelMgr::GetInst()->init();
 	
 
@@ -92,6 +91,7 @@ void CEngine::tick()
 	// ------------ tick ------------
 	CLevelMgr::GetInst()->tick();
 	CCollisionMgr::GetInst()->tick();
+	CUIMgr::GetInst()->tick();
 
 
 	// ------------ clear -------------
@@ -99,8 +99,9 @@ void CEngine::tick()
 
 
 	// ------------ render ------------
-	CLevelMgr::GetInst()->render(m_hSubDC);
-	CLogMgr::GetInst()->render(m_hSubDC);
+	CLevelMgr::GetInst()->render(m_pSubTex->GetDC());
+	CLogMgr::GetInst()->render(m_pSubTex->GetDC());
+	CCamera::GetInst()->render(m_pSubTex->GetDC());
 
 
 	// -------- Task Execute --------
@@ -132,13 +133,15 @@ void CEngine::CreateDefaultGDI()
 
 void CEngine::Clear()
 {
-	Rectangle(m_hSubDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y);
+	SELECT_BRUSH(m_pSubTex->GetDC(), BRUSH_TYPE::BLACK);
+
+	Rectangle(m_pSubTex->GetDC(), -1, -1, m_ptResolution.x + 1, m_ptResolution.y);
 }
 
 void CEngine::CopyBackBuffer()
 {
 	// m_SubDC -> m_DC 로 복사
-	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_hSubDC, 0, 0, SRCCOPY);
+	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_pSubTex->GetDC(), 0, 0, SRCCOPY);
 }
 
 void CEngine::ChangeWindowSize(POINT _ptResolution, bool _bMenu)

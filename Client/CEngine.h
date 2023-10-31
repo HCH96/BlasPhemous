@@ -1,5 +1,6 @@
 #pragma once
 
+class CTexture;
 
 class CEngine
 {
@@ -9,10 +10,10 @@ private:
 	HWND		m_hWnd;				// 메인 윈도우 핸들
 	POINT		m_ptResolution;		// 윈도우 해상도 정보
 	HDC			m_hDC;				// 메인 DC
-	bool		m_bDebugRender;		// Debug render
 
-	HDC			m_hSubDC;			// BackBuffer DC
-	HBITMAP		m_hSubBitMap;		// BackBuffer BitMap
+	CTexture*	m_pSubTex;			// SubBuffer Texture;
+
+	bool		m_bDebugRender;		// Debug render
 
 	// 자주 사용할 pen, brush
 	HPEN	m_arrPen[(UINT)PEN_TYPE::END];

@@ -44,6 +44,7 @@ public:
     void render(HDC _dc);
 
 public:
+    CLONE(CAnim);
     CAnim();
     ~CAnim();
 

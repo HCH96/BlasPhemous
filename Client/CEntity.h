@@ -13,15 +13,14 @@ private:
 public:
 	UINT_PTR GetID() { return m_ID; }
 	const wstring& GetName() { return m_strName; }
-
 	void SetName(const wstring& _strName) { m_strName = _strName; }
 
 public:
-	virtual CEntity* Clone() { return nullptr; }
 	bool IsDead() { return m_bDead; }
 
 
 public:
+	virtual CEntity* Clone() = 0;
 	CEntity();
 	CEntity(const CEntity& _Other);
 	virtual ~CEntity();

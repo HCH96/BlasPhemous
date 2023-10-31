@@ -13,9 +13,13 @@
 
 
 CPlayer::CPlayer()
-	: m_fSpeed(200.f)
+	: m_pCollider(nullptr)
+	, m_pAnimator(nullptr)
+	, m_pMovement(nullptr)
 {
-	CTexture* pAtlas = CAssetMgr::GetInst()->LoadTexture(L"PlayerAtlas", L"texture\\link.bmp");
+	SetName(L"Player");
+
+	CTexture* pAtlas = CAssetMgr::GetInst()->LoadTexture(L"PlayerAtlas", L"texture\\link_alpha.bmp");
 	// animator
 	m_pAnimator = AddComponent<CAnimator>(L"Animator");
 
@@ -57,6 +61,18 @@ CPlayer::CPlayer()
 	m_pMovement->SetFrictionScale(1000.f);
 	m_pMovement->UseGravity(true);
 	m_pMovement->SetGravity(Vec2(0.f, 980.f));
+
+}
+
+CPlayer::CPlayer(const CPlayer& _Origin)
+	: CObj(_Origin)
+	, m_pCollider(nullptr)
+	, m_pAnimator(nullptr)
+	, m_pMovement(nullptr)
+{
+	m_pCollider = GetComponent<CCollider>();
+	m_pAnimator = GetComponent<CAnimator>();
+	m_pMovement = GetComponent<CMovement>();
 
 }
 

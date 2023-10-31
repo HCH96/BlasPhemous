@@ -20,7 +20,6 @@ CAnim::~CAnim()
 }
 
 
-
 void CAnim::Create(const wstring& _strName, CTexture* _pAtlas, Vec2 _vLeftTop, Vec2 _vCutSize, Vec2 _vOffset, float _fDuration, int _iMaxFrm)
 {
 	SetName(_strName);
@@ -218,13 +217,29 @@ void CAnim::render(HDC _dc)
 	CObj* pOwnerObject = m_pAnimator->GetOwner();
 	Vec2 vRenderPos = pOwnerObject->GetRenderPos();
 
-	TransparentBlt(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
-					  , int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
-					  , int(frm.vCutSize.x), int(frm.vCutSize.y)
-					  , m_pAtlas->GetDC()
-					  , int(frm.vLeftTop.x), int(frm.vLeftTop.y)
-					  , int(frm.vCutSize.x), int(frm.vCutSize.y)
-					  , RGB(255, 0, 255));
+
+	//TransparentBlt(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
+	//				  , int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
+	//				  , int(frm.vCutSize.x), int(frm.vCutSize.y)
+	//				  , m_pAtlas->GetDC()
+	//				  , int(frm.vLeftTop.x), int(frm.vLeftTop.y)
+	//				  , int(frm.vCutSize.x), int(frm.vCutSize.y)
+	//				  , RGB(255, 0, 255));
+
+	BLENDFUNCTION blend = {};
+	blend.BlendOp = AC_SRC_OVER;
+	blend.BlendFlags = 0;
+
+	blend.SourceConstantAlpha = 255; // 0 ~ 255
+	blend.AlphaFormat = AC_SRC_ALPHA; // 0
+
+	AlphaBlend(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
+		, int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
+		, int(frm.vCutSize.x), int(frm.vCutSize.y)
+		, m_pAtlas->GetDC()
+		, int(frm.vLeftTop.x), int(frm.vLeftTop.y)
+		, int(frm.vCutSize.x), int(frm.vCutSize.y)
+		, blend);
 
 }
 

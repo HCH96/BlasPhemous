@@ -9,5 +9,8 @@ public:
     virtual void exit() override;
 
     virtual void tick() override;
+
+public:
+    void OpenTileCreateWindow();
 };
 

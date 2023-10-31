@@ -16,7 +16,9 @@ private:
     virtual bool Load(const wstring& _strFilePath) = 0;
 
 public:
+    CLONE_DISABLE(CAsset);
     CAsset();
+    CAsset(const CAsset& _Origin) = delete;
     ~CAsset();
 
     friend class CAssetMgr;

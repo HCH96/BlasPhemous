@@ -65,9 +65,6 @@
     <Filter Include="Game\06. Component\Movement">
       <UniqueIdentifier>{9b20c6fc-5f72-4ccf-af94-00967dbb7f45}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\06. Component\AI">
-      <UniqueIdentifier>{d064a8cb-2cf6-4160-84e4-d32dfa65f322}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\03. Manager\CollisionManager">
       <UniqueIdentifier>{a8fdf6c8-6e2c-41ca-8fff-82fdc1b152b5}</UniqueIdentifier>
     </Filter>
@@ -115,6 +112,27 @@
     </Filter>
     <Filter Include="Game\04. Object\UI\PanelUI">
       <UniqueIdentifier>{8411ebdc-2930-4360-b92c-dd3c1fc41000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\03. Manager\UIManager">
+      <UniqueIdentifier>{2531fac4-0c6c-4432-92e4-1389903123d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\03. Manager\SoundManager">
+      <UniqueIdentifier>{8bfaf346-d3d6-4b2e-bb86-92d27bce2a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\06. Component\StateMachine">
+      <UniqueIdentifier>{d064a8cb-2cf6-4160-84e4-d32dfa65f322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State">
+      <UniqueIdentifier>{6325992b-7ee1-4767-b41b-49fd9d9fe308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\NormalMonster">
+      <UniqueIdentifier>{4dae5295-3434-49aa-ac92-7097c9342d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\NormalMonster\Idle">
+      <UniqueIdentifier>{6e55b5b4-5408-4173-845a-56b9a74a7557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\NormalMonster\Trace">
+      <UniqueIdentifier>{06aad7fe-4c3f-45ea-9649-5f70f7ea197f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +275,24 @@
     <ClInclude Include="CPanelUI.h">
       <Filter>Game\04. Object\UI\PanelUI</Filter>
     </ClInclude>
+    <ClInclude Include="CUIMgr.h">
+      <Filter>Game\03. Manager\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundMgr.h">
+      <Filter>Game\03. Manager\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateMachine.h">
+      <Filter>Game\06. Component\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="CState.h">
+      <Filter>Game\08. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CNormalMonIdle.h">
+      <Filter>Game\08. State\NormalMonster\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CNormalMonTrace.h">
+      <Filter>Game\08. State\NormalMonster\Trace</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -392,6 +428,24 @@
     </ClCompile>
     <ClCompile Include="CPanelUI.cpp">
       <Filter>Game\04. Object\UI\PanelUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIMgr.cpp">
+      <Filter>Game\03. Manager\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundMgr.cpp">
+      <Filter>Game\03. Manager\SoundManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateMachine.cpp">
+      <Filter>Game\06. Component\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="CState.cpp">
+      <Filter>Game\08. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CNormalMonIdle.cpp">
+      <Filter>Game\08. State\NormalMonster\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CNormalMonTrace.cpp">
+      <Filter>Game\08. State\NormalMonster\Trace</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,9 +2,7 @@
 #include "CEntity.h"
 
 #include "CCamera.h"
-
-class CComponent;
-class CCollider;
+#include "components.h"
 
 class CObj :
 	public CEntity
@@ -38,6 +36,33 @@ protected:
 	}
 
 public:
+	template<typename T>
+	T* GetComponent()
+	{
+		for (size_t i = 0; i < m_vecComponent.size(); ++i)
+		{
+			if (dynamic_cast<T*>(m_vecComponent[i]))
+			{
+				return (T*)m_vecComponent[i];
+			}
+		}
+
+		return nullptr;
+	}
+
+	template<typename T>
+	void GetComponents(vector<T*>& _out)
+	{
+		for (size_t i = 0; i < m_vecComponent.size(); ++i)
+		{
+			if (dynamic_cast<T>(m_vecComponent[i]))
+			{
+				_out.push_back((T*)m_vecComponent[i]);
+			}
+		}
+	}
+
+public:
 	virtual void BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) {}
 	virtual void Overlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) {}
 	virtual void EndOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) {}
@@ -52,11 +77,10 @@ public:
 private:
 	void SetDead();
 
-private:
-	virtual void Abstract() = 0;
-
 public:
+	virtual CObj* Clone() = 0;
 	CObj();
+	CObj(const CObj& _Origin);
 	virtual ~CObj();
 
 	friend class CLevel;

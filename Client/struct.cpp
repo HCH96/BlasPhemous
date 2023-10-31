@@ -23,6 +23,14 @@ FSelectGDI::FSelectGDI(HDC _dc, PEN_TYPE _ePenType, BRUSH_TYPE _eBrushType)
 	
 }
 
+FSelectGDI::FSelectGDI(HDC _dc, BRUSH_TYPE _eBrushType)
+	: hCurDC(_dc)
+	, hPrevPen(nullptr)
+	, hPrevBrush(nullptr)
+{
+	hPrevBrush = (HBRUSH)SelectObject(_dc, CEngine::GetInst()->GetBRUSH(_eBrushType));
+}
+
 FSelectGDI::~FSelectGDI()
 {
 	SelectObject(hCurDC, hPrevPen);

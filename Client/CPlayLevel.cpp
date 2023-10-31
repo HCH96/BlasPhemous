@@ -5,9 +5,13 @@
 
 #include "CCollisionMgr.h"
 #include "CKeyMgr.h"
+#include "CAssetMgr.h"
+#include "CSoundMgr.h"
+#include "CSound.h"
 
 #include "CPlatform.h"
 #include "CPlayer.h"
+#include "CMonster.h"
 
 void CPlayLevel::init()
 {
@@ -30,22 +34,34 @@ void CPlayLevel::init()
 	pPlayer->SetScale(Vec2(50.f, 50.f));
 	AddObject(LAYER::PLAYER, pPlayer);
 
+	//pPlayer = pPlayer->Clone();
+	//pPlayer->SetPos(Vec2(200.f, 200.f));
+	//pPlayer->SetScale(Vec2(50.f, 50.f));
+	//AddObject(LAYER::PLAYER, pPlayer);
+
 	//Monster 积己
-   //CMonster* pMonster = new CMonster;
-   //pMonster->SetPos(Vec2(1000.f, 500.f));
-   //pMonster->SetScale(Vec2(100.f, 100.f));
-   //m_pCurLevel->AddObject(LAYER::MONSTER, pMonster);
+	CMonster* pMonster = new CMonster;
+	pMonster->SetPos(Vec2(1000.f, 500.f));
+	pMonster->SetScale(Vec2(100.f, 100.f));
+	AddObject(LAYER::MONSTER, pMonster);
 
    // 敲阀汽 积己
 	CPlatform* pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(800.f, 700.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+
+
 }
 
 void CPlayLevel::enter()
 {
-	init();
+	//CCamera::GetInst()->FadeIn(2.5f);
+	//CCamera::GetInst()->FadeOut(2.5f);
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"BGM_01", L"sound\\DM.wav");
+	pSound->SetVolume(100);
+	pSound->PlayToBGM();
 }
 
 void CPlayLevel::exit()
@@ -61,4 +77,12 @@ void CPlayLevel::tick()
 	{
 		ChangeLevel(LEVEL_TYPE::EDITOR_LEVEL);
 	}
+
+	if (KEY_TAP(KEY::M))
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"BGM_02", L"sound\\BGM_Stage1.wav");
+		pSound->SetVolume(100);
+		pSound->PlayToBGM();
+	}
+
 }

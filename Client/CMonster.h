@@ -2,14 +2,19 @@
 #include "CObj.h"
 
 class CCollider;
+class CTexture;
+class CStateMachine;
 
 class CMonster :
     public CObj
 {
     GENERATED_OBJECT(CObj);
 private:
-    FMonInfo    m_Info;
-    CCollider*  m_pCollider;
+    FMonInfo        m_Info;
+    CCollider*      m_pCollider;
+    CStateMachine*  m_pAI;
+
+    CTexture*       m_pTexture;
 
 
 public:
@@ -24,6 +29,8 @@ public:
     virtual void BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) override;
 
 public:
+    CLONE(CMonster);
     CMonster();
+    CMonster(const CMonster& _Origin);
     ~CMonster();
 };

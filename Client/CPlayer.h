@@ -12,8 +12,6 @@ class CPlayer :
     GENERATED_OBJECT(CObj);
 
 private:
-    float                           m_fSpeed;
-
     CCollider*                      m_pCollider;
     CAnimator*                      m_pAnimator;
     CMovement*                      m_pMovement;
@@ -27,7 +25,9 @@ public:
 
 
 public:
+    CLONE(CPlayer);
     CPlayer();
+    CPlayer(const CPlayer& _Origin);
     ~CPlayer();
 
 };

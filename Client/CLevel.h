@@ -30,6 +30,8 @@ public:
 	UINT GetTileRow() { return m_iTileRow; }
 	UINT GetTileCol() { return m_iTileCol; }
 
+	CObj* FindObjectByName(const wstring& _Name);
+
 protected:
 	void AddObject(LAYER _eLayer, CObj* _Object);
 	void DeleteAllObjects();
@@ -48,7 +50,9 @@ public:
 	virtual void render(HDC _dc);
 
 public:
+	CLONE_DISABLE(CLevel);
 	CLevel();
+	CLevel(const CLevel& _Origin) = delete;
 	~CLevel();
 
 	friend class CLevelMgr;

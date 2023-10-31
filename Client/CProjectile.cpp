@@ -13,6 +13,15 @@ CProjectile::CProjectile()
 	m_pCollider = AddComponent<CCollider>(L"Collider");
 }
 
+CProjectile::CProjectile(const CProjectile& _Origin)
+	: m_pCollider(nullptr)
+	, m_fSpeed(_Origin.m_fSpeed)
+	, m_fTheta(_Origin.m_fTheta)
+{
+	m_pCollider = GetComponent<CCollider>();
+
+}
+
 CProjectile::~CProjectile()
 {
 }

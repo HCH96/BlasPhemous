@@ -15,6 +15,7 @@ public:
     UINT GetHeight() { return m_Info.bmHeight; }
 
 private:
+    void Create(UINT _iWidth, UINT _iHeight);
     virtual bool Load(const wstring& _strFilePath) override;
 
 

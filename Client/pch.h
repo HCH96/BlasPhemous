@@ -10,10 +10,29 @@
 #include <memory.h>
 #include <tchar.h>
 
+
+// render
 #pragma comment(lib, "Msimg32.lib")
 
+// png
+#include <objidl.h>
+#include <gdiplus.h>
+#pragma comment(lib, "Gdiplus.lib")
+
+using namespace::Gdiplus;
+
+// 오류
 #include <assert.h>
 
+// 사운드
+#include <mmsystem.h>
+#include <dsound.h>
+#include <dinput.h>
+
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "dsound.lib")
+
+// std
 #include <vector>
 #include <list>
 #include <string>

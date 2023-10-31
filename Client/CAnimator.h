@@ -28,7 +28,9 @@ public:
 
 
 public:
+    CLONE(CAnimator);
     CAnimator(CObj* _Owner);
+    CAnimator(const CAnimator& _Origin);
     ~CAnimator();
 };
 

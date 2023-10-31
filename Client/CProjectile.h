@@ -31,7 +31,9 @@ public:
 
 
 public:
+    CLONE(CProjectile);
     CProjectile();
+    CProjectile(const CProjectile& _Origin);
     ~CProjectile();
 
 };
