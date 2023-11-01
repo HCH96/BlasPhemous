@@ -216,26 +216,24 @@ void CAnim::render(HDC _dc)
 
 	CObj* pOwnerObject = m_pAnimator->GetOwner();
 	Vec2 vRenderPos = pOwnerObject->GetRenderPos();
+	Vec2 vScale = pOwnerObject->GetScale();
 
 
-	//TransparentBlt(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
-	//				  , int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
-	//				  , int(frm.vCutSize.x), int(frm.vCutSize.y)
-	//				  , m_pAtlas->GetDC()
-	//				  , int(frm.vLeftTop.x), int(frm.vLeftTop.y)
-	//				  , int(frm.vCutSize.x), int(frm.vCutSize.y)
-	//				  , RGB(255, 0, 255));
+	Vec2 vSize = frm.vCutSize * vScale;
+	Vec2 vOffset = frm.vOffset * vScale;
+	int iAlpha = m_pAnimator->GetAlpha();
+
 
 	BLENDFUNCTION blend = {};
 	blend.BlendOp = AC_SRC_OVER;
 	blend.BlendFlags = 0;
 
-	blend.SourceConstantAlpha = 255; // 0 ~ 255
+	blend.SourceConstantAlpha = iAlpha; // 0 ~ 255
 	blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
-	AlphaBlend(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
-		, int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
-		, int(frm.vCutSize.x), int(frm.vCutSize.y)
+	AlphaBlend(_dc, int(vRenderPos.x - (vSize.x / 2.f) + vOffset.x)
+		, int(vRenderPos.y - (vSize.y / 2.f) + vOffset.y)
+		, int(vSize.x), int(vSize.y)
 		, m_pAtlas->GetDC()
 		, int(frm.vLeftTop.x), int(frm.vLeftTop.y)
 		, int(frm.vCutSize.x), int(frm.vCutSize.y)

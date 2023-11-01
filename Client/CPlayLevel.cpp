@@ -31,7 +31,7 @@ void CPlayLevel::init()
 	// Plyaer »ý¼º
 	CPlayer* pPlayer = new CPlayer;
 	pPlayer->SetPos(Vec2(500.f, 200.f));
-	pPlayer->SetScale(Vec2(50.f, 50.f));
+	//pPlayer->SetScale(Vec2(50.f, 50.f));
 	AddObject(LAYER::PLAYER, pPlayer);
 
 	//pPlayer = pPlayer->Clone();

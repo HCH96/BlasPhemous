@@ -91,7 +91,7 @@ void CEngine::tick()
 	// ------------ tick ------------
 	CLevelMgr::GetInst()->tick();
 	CCollisionMgr::GetInst()->tick();
-	CUIMgr::GetInst()->tick();
+	//CUIMgr::GetInst()->tick();
 
 
 	// ------------ clear -------------

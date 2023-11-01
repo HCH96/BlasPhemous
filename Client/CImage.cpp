@@ -8,6 +8,7 @@ CImage::CImage()
 	: m_pTex(nullptr)
 	, m_pAnimator(nullptr)
 {
+	m_pAnimator = AddComponent<CAnimator>(L"");
 }
 
 CImage::~CImage()

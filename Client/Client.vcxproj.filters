@@ -143,6 +143,12 @@
     <Filter Include="Game\05. Level\Mainmenu">
       <UniqueIdentifier>{4508e490-65b4-4bd2-a5c5-31a058a08105}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\UI\SelecBtn">
+      <UniqueIdentifier>{54c55484-e7a5-4998-bc40-f677fab771f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Penitent">
+      <UniqueIdentifier>{65e53f93-3ff1-4f90-b518-5867b84612ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -311,6 +317,10 @@
     <ClInclude Include="CMainMenuLevel.h">
       <Filter>Game\05. Level\Mainmenu</Filter>
     </ClInclude>
+    <ClInclude Include="CSelectBtn.h">
+      <Filter>Game\04. Object\UI\SelecBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -474,5 +484,9 @@
     <ClCompile Include="CMainMenuLevel.cpp">
       <Filter>Game\05. Level\Mainmenu</Filter>
     </ClCompile>
+    <ClCompile Include="CSelectBtn.cpp">
+      <Filter>Game\04. Object\UI\SelecBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitent.cpp" />
   </ItemGroup>
 </Project>

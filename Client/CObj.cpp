@@ -8,6 +8,7 @@
 
 CObj::CObj()
 	: m_iLayerIdx(-1)
+	, m_vScale(Vec2(1.f,1.f))
 {
 }
 

@@ -9,6 +9,8 @@ CAnimator::CAnimator(CObj* _Owner)
 	: CComponent(_Owner)
 	, m_pCurAnim(nullptr)
 	, m_bRepeat(false)
+	, m_iAlpha(255)
+	, m_fAcc(0.f)
 {
 }
 
@@ -16,6 +18,9 @@ CAnimator::CAnimator(const CAnimator& _Origin)
 	: CComponent(_Origin)
 	, m_pCurAnim(nullptr)
 	, m_bRepeat(_Origin.m_bRepeat)
+	, m_iAlpha(_Origin.m_iAlpha)
+	, m_fAcc(_Origin.m_fAcc)
+
 {
 	for (const auto& pair : _Origin.m_mapAnim)
 	{

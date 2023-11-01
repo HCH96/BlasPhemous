@@ -94,3 +94,11 @@ if (KEY_TAP(KEY::RIGHT)) {\
     buffer += L"vPos x : " + std::to_wstring(GetScale().x) + L" y: " + std::to_wstring(GetScale().y);\
     CLogMgr::GetInst()->AddLog(FLog{ LOG_LEVEL::ERR, buffer });\
 }
+
+    //TransparentBlt(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
+    //				  , int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
+    //				  , int(frm.vCutSize.x), int(frm.vCutSize.y)
+    //				  , m_pAtlas->GetDC()
+    //				  , int(frm.vLeftTop.x), int(frm.vLeftTop.y)
+    //				  , int(frm.vCutSize.x), int(frm.vCutSize.y)
+    //				  , RGB(255, 0, 255));

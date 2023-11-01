@@ -17,6 +17,8 @@ private:
 public:
     void SetTexture(CTexture* _pTex) { m_pTex = _pTex; }
     void SetScaleToTex();
+    CAnimator* GetAnimator() { return m_pAnimator; }
+
 
 public:
     virtual void tick(float _DT) override;

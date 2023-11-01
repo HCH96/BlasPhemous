@@ -58,7 +58,9 @@ public:
 	{
 		float fLen = Length();
 
-		assert(fLen != 0.f);
+		if (fLen == 0.f)
+			return *this;
+
 		x /= fLen;
 		y /= fLen;
 
@@ -101,6 +103,7 @@ public:
 
 	Vec2 operator / (float _f) const
 	{
+
 		assert(_f != 0);
 		return Vec2(x / _f, y / _f);
 	}
@@ -156,6 +159,11 @@ public:
 
 	Vec2 operator / (const Vec2& _Other) const
 	{
+		if (_Other.x == 0 || _Other.y == 0)
+		{
+			return *this;
+		}
+
 		assert(_Other.x != 0 && _Other.y != 0);
 		return Vec2(x / _Other.x, y / _Other.y);
 	}
@@ -187,6 +195,11 @@ public:
 
 	Vec2& operator /=(const Vec2& _Other)
 	{
+		if (_Other.x == 0 || _Other.y == 0)
+		{
+			return *this;
+		}
+
 		assert(_Other.x != 0 && _Other.y != 0);
 
 		x /= _Other.x;
