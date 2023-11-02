@@ -137,9 +137,6 @@
     <Filter Include="Game\05. Level\TitleLevel">
       <UniqueIdentifier>{fd43a83a-9ba1-44e2-a3c3-31af60fc056b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\Image">
-      <UniqueIdentifier>{12c5e614-1409-4bc0-94ea-42c9d445fb9c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\05. Level\Mainmenu">
       <UniqueIdentifier>{4508e490-65b4-4bd2-a5c5-31a058a08105}</UniqueIdentifier>
     </Filter>
@@ -148,6 +145,9 @@
     </Filter>
     <Filter Include="Game\04. Object\Penitent">
       <UniqueIdentifier>{65e53f93-3ff1-4f90-b518-5867b84612ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\UI\Image">
+      <UniqueIdentifier>{12c5e614-1409-4bc0-94ea-42c9d445fb9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -312,7 +312,7 @@
       <Filter>Game\05. Level\TitleLevel</Filter>
     </ClInclude>
     <ClInclude Include="CImage.h">
-      <Filter>Game\04. Object\Image</Filter>
+      <Filter>Game\04. Object\UI\Image</Filter>
     </ClInclude>
     <ClInclude Include="CMainMenuLevel.h">
       <Filter>Game\05. Level\Mainmenu</Filter>
@@ -320,7 +320,9 @@
     <ClInclude Include="CSelectBtn.h">
       <Filter>Game\04. Object\UI\SelecBtn</Filter>
     </ClInclude>
-    <ClInclude Include="CPenitent.h" />
+    <ClInclude Include="CPenitent.h">
+      <Filter>Game\04. Object\Penitent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -479,7 +481,7 @@
       <Filter>Game\05. Level\TitleLevel</Filter>
     </ClCompile>
     <ClCompile Include="CImage.cpp">
-      <Filter>Game\04. Object\Image</Filter>
+      <Filter>Game\04. Object\UI\Image</Filter>
     </ClCompile>
     <ClCompile Include="CMainMenuLevel.cpp">
       <Filter>Game\05. Level\Mainmenu</Filter>
@@ -487,6 +489,8 @@
     <ClCompile Include="CSelectBtn.cpp">
       <Filter>Game\04. Object\UI\SelecBtn</Filter>
     </ClCompile>
-    <ClCompile Include="CPenitent.cpp" />
+    <ClCompile Include="CPenitent.cpp">
+      <Filter>Game\04. Object\Penitent</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

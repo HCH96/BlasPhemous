@@ -4,7 +4,6 @@
 class CTexture;
 class CAnimator;
 
-
 class CImage :
     public CObj
 {

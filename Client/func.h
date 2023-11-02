@@ -29,3 +29,4 @@ void SaveWString(const wstring& _str, FILE* _File);
 void LoadWString(wstring& _str, FILE* _File);
 
 void AlphaBlendRender(HDC _dc, CTexture* _pTex, Vec2 _vRenderPos, Vec2 _vScale);
+HBITMAP FlipBitmapHorizontally(HBITMAP hbm);

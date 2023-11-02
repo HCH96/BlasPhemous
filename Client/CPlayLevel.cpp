@@ -12,6 +12,8 @@
 #include "CPlatform.h"
 #include "CPlayer.h"
 #include "CMonster.h"
+#include "CPenitent.h"
+
 
 void CPlayLevel::init()
 {
@@ -29,15 +31,15 @@ void CPlayLevel::init()
 
 
 	// Plyaer 积己
-	CPlayer* pPlayer = new CPlayer;
-	pPlayer->SetPos(Vec2(500.f, 200.f));
-	//pPlayer->SetScale(Vec2(50.f, 50.f));
-	AddObject(LAYER::PLAYER, pPlayer);
-
-	//pPlayer = pPlayer->Clone();
-	//pPlayer->SetPos(Vec2(200.f, 200.f));
-	//pPlayer->SetScale(Vec2(50.f, 50.f));
+	//CPlayer* pPlayer = new CPlayer;
+	//pPlayer->SetPos(Vec2(500.f, 200.f));
+	////pPlayer->SetScale(Vec2(50.f, 50.f));
 	//AddObject(LAYER::PLAYER, pPlayer);
+
+	// Penitent 积己
+	CPenitent* pPenitent = new CPenitent;
+	pPenitent->SetPos(Vec2(500.f, 200.f));
+	AddObject(LAYER::PLAYER, pPenitent);
 
 	//Monster 积己
 	CMonster* pMonster = new CMonster;
@@ -45,7 +47,7 @@ void CPlayLevel::init()
 	pMonster->SetScale(Vec2(100.f, 100.f));
 	AddObject(LAYER::MONSTER, pMonster);
 
-   // 敲阀汽 积己
+    // 敲阀汽 积己
 	CPlatform* pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(800.f, 700.f));
 	AddObject(LAYER::PLATFORM, pPlatform);

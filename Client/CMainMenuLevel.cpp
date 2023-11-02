@@ -48,7 +48,7 @@ void CMainMenuLevel::init()
 	// background
 	CImage* pImage = new CImage;
 	CAnimator* pAnimator = pImage->GetAnimator();
-	pAnimator->LoadAnimation(L"animdata\\MainMenuBackground.txt");
+	pAnimator->LoadAnimation(L"animdata\\UI\\MainMenu\\MainMenuBackground.txt");
 	pImage->SetPos(Vec2(640.f, 360.f));
 	pAnimator->Play(L"MainMenuBackground", true);
 	AddObject(LAYER::DEFAULT, pImage);
@@ -56,7 +56,7 @@ void CMainMenuLevel::init()
 	// Crisanta
 	pImage = new CImage;
 	pAnimator = pImage->GetAnimator();
-	pAnimator->LoadAnimation(L"animdata\\Crisanta.txt");
+	pAnimator->LoadAnimation(L"animdata\\UI\\MainMenu\\Crisanta.txt");
 	pImage->SetPos(Vec2(640.f, 360.f));
 	pImage->SetScale(Vec2(2.f, 2.f));
 	pAnimator->Play(L"Crisanta", true);
@@ -65,7 +65,7 @@ void CMainMenuLevel::init()
 	// Å« ²ÉÀÙ
 	pImage = new CImage;
 	pAnimator = pImage->GetAnimator();
-	pAnimator->LoadAnimation(L"animdata\\Crisanta_BigPetal.txt");
+	pAnimator->LoadAnimation(L"animdata\\UI\\MainMenu\\Crisanta_BigPetal.txt");
 	pImage->SetPos(Vec2(640.f, 360.f));
 	pAnimator->Play(L"Crisanta_BigPetal", true);
 	AddObject(LAYER::DEFAULT, pImage);
@@ -73,7 +73,7 @@ void CMainMenuLevel::init()
 	// ²ÉÀÙ
 	pImage = new CImage;
 	pAnimator = pImage->GetAnimator();
-	pAnimator->LoadAnimation(L"animdata\\Crisanta_Petal.txt");
+	pAnimator->LoadAnimation(L"animdata\\UI\\MainMenu\\Crisanta_Petal.txt");
 	pImage->SetPos(Vec2(640.f, 360.f));
 	pAnimator->Play(L"Crisanta_Petal", true);
 	AddObject(LAYER::DEFAULT, pImage);
@@ -82,7 +82,7 @@ void CMainMenuLevel::init()
 	// ¾Æ±â
 	m_pCursorImg = new CImage;
 	pAnimator = m_pCursorImg->GetAnimator();
-	pAnimator->LoadAnimation(L"animdata\\alliedCherub.txt");
+	pAnimator->LoadAnimation(L"animdata\\UI\\MainMenu\\alliedCherub.txt");
 	m_pCursorImg->SetScale(Vec2(2.f, 2.f));
 	m_pCursorImg->SetPos(Vec2(640.f, 360.f));
 	pAnimator->Play(L"alliedCherub", true);
