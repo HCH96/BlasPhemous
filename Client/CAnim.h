@@ -31,6 +31,7 @@ public:
     void Create(const wstring& _strName, CTexture* _pAtlas, Vec2 _vLeftTop, Vec2 _vCutSize, Vec2 _vOffset, float _fDuration, int _iMaxFrm);
     bool Save(const wstring& _FilePath);
     bool Load(const wstring& _FilePath);
+    bool LoadMeta(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath);
 
     bool IsFinish() { return m_bFinish; }
     void Reset()

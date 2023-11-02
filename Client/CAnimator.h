@@ -31,6 +31,8 @@ public:
     void SaveAnimations(const wstring& _strRelativePath);
     void LoadAnimation(const wstring& _strRelativePath);
 
+    void LoadAnimation(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath);
+
 public:
     virtual void finaltick(float _DT) override;
     virtual void render(HDC _dc) override;

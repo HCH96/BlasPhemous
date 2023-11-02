@@ -141,3 +141,27 @@ void CAnimator::LoadAnimation(const wstring& _strRelativePath)
 	m_mapAnim.insert(make_pair(pNewAnim->GetName(), pNewAnim));
 
 }
+
+void CAnimator::LoadAnimation(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath)
+{
+	if (_pTexture == nullptr)
+	{
+		assert(nullptr);
+	}
+
+	wstring strFilePath = CPathMgr::GetContentDirectory();
+	strFilePath += _strMetaRelativePath;
+
+	CAnim* pNewAnim = new CAnim;
+
+	if (!pNewAnim->LoadMeta(_pTexture, _strAnimKey, strFilePath))
+	{
+		LOG(LOG_LEVEL::ERR, L"Animation Load ½ÇÆÐ");
+		delete pNewAnim;
+		return;
+	}
+
+	pNewAnim->m_pAnimator = this;
+	m_mapAnim.insert(make_pair(_strAnimKey, pNewAnim));
+
+}
