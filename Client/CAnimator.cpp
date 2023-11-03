@@ -80,6 +80,23 @@ void CAnimator::Stop()
 {
 }
 
+void CAnimator::SetAnimDuration(const wstring& _strName, float _fDuration)
+{
+	CAnim* pAnim = FindAnimation(_strName);
+
+	if (pAnim == nullptr)
+	{
+		LOG(LOG_LEVEL::ERR, L"Anim을 찾지 못했습니다.");
+		return;
+	}
+	
+	for (size_t i = 0; i < pAnim->m_vecFrm.size(); ++i)
+	{
+		pAnim->SetDuration(_fDuration, int(i));
+	}
+
+}
+
 void CAnimator::CreateAnimation(const wstring& _strName, CTexture* _pAtlas, Vec2 _vLeftTop, Vec2 _vCutSize, Vec2 _vOffset, float _fDuration, int _iMaxFrm)
 {
 	CAnim* pAnim = FindAnimation(_strName);
@@ -142,7 +159,7 @@ void CAnimator::LoadAnimation(const wstring& _strRelativePath)
 
 }
 
-void CAnimator::LoadAnimation(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath)
+void CAnimator::LoadAnimation(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath, bool _bReverse)
 {
 	if (_pTexture == nullptr)
 	{
@@ -154,14 +171,29 @@ void CAnimator::LoadAnimation(CTexture* _pTexture, const wstring& _strAnimKey, c
 
 	CAnim* pNewAnim = new CAnim;
 
-	if (!pNewAnim->LoadMeta(_pTexture, _strAnimKey, strFilePath))
+	if (!_bReverse)
 	{
-		LOG(LOG_LEVEL::ERR, L"Animation Load 실패");
-		delete pNewAnim;
-		return;
+		if (!pNewAnim->LoadMeta(_pTexture, _strAnimKey, strFilePath))
+		{
+			LOG(LOG_LEVEL::ERR, L"Animation Load 실패");
+			delete pNewAnim;
+			return;
+		}
 	}
+	else
+	{
+		if (!pNewAnim->LoadMetaReverse(_pTexture, _strAnimKey, strFilePath))
+		{
+			LOG(LOG_LEVEL::ERR, L"Animation Load 실패");
+			delete pNewAnim;
+			return;
+		}
+	}
+
+	
 
 	pNewAnim->m_pAnimator = this;
 	m_mapAnim.insert(make_pair(_strAnimKey, pNewAnim));
 
 }
+

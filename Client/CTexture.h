@@ -17,6 +17,7 @@ public:
 private:
     void Create(UINT _iWidth, UINT _iHeight);
     virtual bool Load(const wstring& _strFilePath) override;
+    bool Load_r(const wstring& _strFilePath);
 
 
 private:

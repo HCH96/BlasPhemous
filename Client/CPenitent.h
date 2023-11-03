@@ -18,6 +18,10 @@ private:
     CStateMachine*          m_pSM;
 
 
+private:
+    void AnimationInit();
+
+
 public:
     virtual void tick(float _DT) override;
 

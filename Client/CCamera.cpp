@@ -24,7 +24,7 @@ CCamera::~CCamera()
 
 void CCamera::tick()
 {
-	// 방향키로 카메라가 바라보고 있는 위치를 변경
+	 //방향키로 카메라가 바라보고 있는 위치를 변경
 	//if (KEY_PRESSED(KEY::LEFT))
 	//{
 	//	m_vLookAt.x -= 200.f * DT;

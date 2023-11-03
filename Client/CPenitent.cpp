@@ -18,14 +18,7 @@ CPenitent::CPenitent()
 
 	// Animator init
 	m_pAnimator = AddComponent<CAnimator>(L"Penitent_Animator");
-
-
-	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"Idle", L"texture\\Penitent\\penintent_idle_anim 1.png");
-
-	// Load Meta
-	m_pAnimator->LoadAnimation(pTex, L"Idle", L"animdata\\Penitent\\penitent_idle_anim.txt");
-	m_pAnimator->Play(L"Idle", true);
-
+	AnimationInit();
 
 
 
@@ -55,6 +48,31 @@ CPenitent::~CPenitent()
 {
 }
 
+
+void CPenitent::AnimationInit()
+{
+	// Idle
+	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"Idle", L"texture\\Penitent\\penintent_idle_anim 1.png");
+	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Idle_L", L"texture\\Penitent\\penintent_idle_anim 1.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"Idle", L"animdata\\Penitent\\penitent_idle_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Idle_L", L"animdata\\Penitent\\penitent_idle_anim.txt", true);
+
+	//Death
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Death", L"texture\\Penitent\\death_anim_blood.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Death_L", L"texture\\Penitent\\death_anim_blood.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"Death", L"animdata\\Penitent\\death_anim_blood.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Death_L", L"animdata\\Penitent\\death_anim_blood.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Death", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Death_L", 0.08f);
+
+	//
+
+
+	m_pAnimator->Play(L"Death", true);
+}
 
 void CPenitent::tick(float _DT)
 {

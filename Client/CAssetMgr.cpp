@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CAssetMgr.h"
 
+#include "CEngine.h"
+
 #include "CPathMgr.h"
 #include "CTexture.h"
 #include "CSound.h"
@@ -79,6 +81,34 @@ CTexture* CAssetMgr::LoadTexture(const wstring& _strKey, const wstring& _strRela
 
 	return pTexture;
 }
+
+CTexture* CAssetMgr::LoadTextureReverse(const wstring& _strKey, const wstring& _strRelativePath)
+{
+	CTexture* pTexture = FindTexture(_strKey);
+
+	if (nullptr != pTexture)
+	{
+		return pTexture;
+	}
+
+	wstring strContentPath = CPathMgr::GetContentDirectory();
+	strContentPath += _strRelativePath;
+
+	pTexture = new CTexture;
+	if (!pTexture->Load_r(strContentPath))
+	{
+		delete pTexture;
+		return nullptr;
+	}
+
+	pTexture->m_strKey = _strKey;
+	pTexture->m_strRelativePath = _strRelativePath;
+
+	m_mapTex.insert(make_pair(_strKey, pTexture));
+
+	return pTexture;
+}
+
 
 CSound* CAssetMgr::LoadSound(const wstring& _strKey, const wstring& _strRelativePath)
 {
