@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CAnim.h"
 
+#include "CEngine.h"
+
 #include "CObj.h"
 #include "CAnimator.h"
 #include "CTexture.h"
@@ -256,8 +258,8 @@ bool CAnim::LoadMeta(CTexture* _pTexture, const wstring& _strAnimKey, const wstr
 							frm.vLeftTop.y = _pTexture->GetHeight() - frm.vLeftTop.y - frm.vCutSize.y;
 							break;
 						}
-						
-						
+
+
 
 					}
 				}
@@ -277,7 +279,7 @@ bool CAnim::LoadMeta(CTexture* _pTexture, const wstring& _strAnimKey, const wstr
 						if (!wcscmp(szRead, L"y:"))
 						{
 							fwscanf_s(pFile, L"%s", szRead, 256);
-						
+
 							int length = (int)wcslen(szRead);
 
 							if (length > 0) {
@@ -378,12 +380,12 @@ bool CAnim::LoadMetaReverse(CTexture* _pTexture, const wstring& _strAnimKey, con
 
 						if (!wcscmp(szRead, L"m_Offset:"))
 						{
-							frm.vLeftTop.x = _pTexture->GetWidth() - frm.vLeftTop.x - frm.vCutSize.x + 1;
+							frm.vLeftTop.x = _pTexture->GetWidth() - frm.vLeftTop.x - frm.vCutSize.x;
 							frm.vLeftTop.y = _pTexture->GetHeight() - frm.vLeftTop.y - frm.vCutSize.y;
 							break;
 						}
 
-						
+
 
 					}
 				}
@@ -439,33 +441,49 @@ bool CAnim::LoadMetaReverse(CTexture* _pTexture, const wstring& _strAnimKey, con
 
 void CAnim::finaltick(float _DT)
 {
-	if (m_bFinish)
-		return;
 
-	m_fAccTime += _DT;
 
-	if (m_vecFrm[m_iCurFrm].fDuration < m_fAccTime)
+	// Frame test code
+
+	if (!DEBUG_RENDER)
 	{
-		m_fAccTime = 0.f;
-
-		if (m_vecFrm.size() - 1 <= m_iCurFrm)
-		{
-			m_bFinish = true;
-		}
-		else
+		if (KEY_TAP(KEY::RIGHT))
 		{
 			++m_iCurFrm;
+			if (m_vecFrm.size() <= m_iCurFrm)
+			{
+				m_iCurFrm = 0;
+			}
+		}
+
+		if (KEY_TAP(KEY::LEFT))
+		{
+			--m_iCurFrm;
+			if (0 > m_iCurFrm)
+			{
+				m_iCurFrm = (int)m_vecFrm.size() - 1;
+			}
+		}
+	}
+	else
+	{
+		m_fAccTime += _DT;
+
+		if (m_vecFrm[m_iCurFrm].fDuration < m_fAccTime)
+		{
+			m_fAccTime = 0.f;
+
+			if (m_vecFrm.size() - 1 <= m_iCurFrm)
+			{
+				m_bFinish = true;
+			}
+			else
+			{
+				++m_iCurFrm;
+			}
 		}
 	}
 
-	//if (KEY_TAP(KEY::RIGHT))
-	//{
-	//	++m_iCurFrm;
-	//	if (m_vecFrm.size() <= m_iCurFrm)
-	//	{
-	//		m_iCurFrm = 0;
-	//	}
-	//}
 
 }
 

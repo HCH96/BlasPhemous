@@ -149,6 +149,33 @@
     <Filter Include="Game\04. Object\UI\Image">
       <UniqueIdentifier>{12c5e614-1409-4bc0-94ea-42c9d445fb9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent">
+      <UniqueIdentifier>{02169691-f979-4e7a-9293-63284440f94b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Idle">
+      <UniqueIdentifier>{80a489b3-e74b-406f-88f2-dce5f80f202f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Run">
+      <UniqueIdentifier>{60ca792a-c534-4e59-b8fc-e4accf26b08b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\StartRun">
+      <UniqueIdentifier>{bea98e16-3583-4d6a-84cf-3e44a31d4a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\StopRun">
+      <UniqueIdentifier>{9c13ebc1-a9d1-43ea-b503-af0ca237f428}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Jump">
+      <UniqueIdentifier>{b360a8e8-db6d-4103-bd15-c70b214c0d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\JumpForward">
+      <UniqueIdentifier>{59efe1a0-1a5e-4830-92c0-b65c9867c3fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Fall">
+      <UniqueIdentifier>{8e5827c1-04c4-4754-bdd6-d7fcd637b95c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\ForwardFall">
+      <UniqueIdentifier>{579abb5c-7b0a-46da-bdde-4494f4bbc05a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -323,6 +350,30 @@
     <ClInclude Include="CPenitent.h">
       <Filter>Game\04. Object\Penitent</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentIdle.h">
+      <Filter>Game\08. State\Penitent\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentRun.h">
+      <Filter>Game\08. State\Penitent\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentStartRun.h">
+      <Filter>Game\08. State\Penitent\StartRun</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentStopRun.h">
+      <Filter>Game\08. State\Penitent\StopRun</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentJump.h">
+      <Filter>Game\08. State\Penitent\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentJumpForward.h">
+      <Filter>Game\08. State\Penitent\JumpForward</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentFall.h">
+      <Filter>Game\08. State\Penitent\Fall</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentFowardFall.h">
+      <Filter>Game\08. State\Penitent\ForwardFall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -491,6 +542,30 @@
     </ClCompile>
     <ClCompile Include="CPenitent.cpp">
       <Filter>Game\04. Object\Penitent</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentIdle.cpp">
+      <Filter>Game\08. State\Penitent\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentRun.cpp">
+      <Filter>Game\08. State\Penitent\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentStartRun.cpp">
+      <Filter>Game\08. State\Penitent\StartRun</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentStopRun.cpp">
+      <Filter>Game\08. State\Penitent\StopRun</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentJump.cpp">
+      <Filter>Game\08. State\Penitent\Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentJumpForward.cpp">
+      <Filter>Game\08. State\Penitent\JumpForward</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentFall.cpp">
+      <Filter>Game\08. State\Penitent\Fall</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentFowardFall.cpp">
+      <Filter>Game\08. State\Penitent\ForwardFall</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

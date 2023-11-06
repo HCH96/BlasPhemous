@@ -20,33 +20,48 @@ CMovement::~CMovement()
 
 void CMovement::finaltick(float _DT)
 {
+	CObj* pOwner = GetOwner();
+
 	// 가속도 계산
 	m_vAccel = m_vForce / m_fMass;
 
+	// 중력 계산
 	if (m_bUseGravity && !m_bGround)
 	{
 		m_vAccel += m_vGravityForce;
 	}
 
+	// 정지에 가까운 상태일 경우 초기속도 주기 (x축 방향만)
+	//if (m_vVelocity.x < 0.1f)
+	//{
+	//	if (!m_vAccel.x != 0)
+	//	{
+	//		if (pOwner->GetDir())
+	//		{
+	//			m_vVelocity += Vec2(1.f,0.f) * m_fInitSpeed;
+	//		}
+	//		else
+	//		{
+	//			m_vVelocity += Vec2(-1.f, 0.f) * m_fInitSpeed;
+	//		}
+	//	}
+	//}
+	//else
+	//{
+	//	m_vVelocity += m_vAccel * _DT;
+	//}
 
-	// 정지에 가까운 상태일 경우
-	if (m_vVelocity.Length() < 0.1f)
-	{
-		if (!m_vAccel.IsZero())
-		{
-			Vec2 vAccelDir = m_vAccel;
-			vAccelDir.Normalize();
-			m_vVelocity = vAccelDir * m_fInitSpeed;
-		}
-	}
-	else
-	{
-		m_vVelocity += m_vAccel * _DT;
-	}
+	m_vVelocity += m_vAccel * _DT;
 
+	// 최대 속도 제한
 	if (abs(m_vVelocity.x) > m_fMaxSpeed)
 	{
 		m_vVelocity.x = (m_vVelocity.x / abs(m_vVelocity.x)) * m_fMaxSpeed;
+	}
+
+	if (m_vVelocity.y > m_fMaxDown)
+	{
+		m_vVelocity.y = (m_vVelocity.y / abs(m_vVelocity.y)) * m_fMaxDown;
 	}
 
 
@@ -75,6 +90,4 @@ void CMovement::finaltick(float _DT)
 
 	// 힘 리셋
 	m_vForce = Vec2(0.f, 0.f);
-
-
 }

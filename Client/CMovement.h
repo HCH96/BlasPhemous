@@ -10,8 +10,10 @@ private:
     Vec2    m_vVelocity;
     float   m_fMass;
     float   m_fInitSpeed;
+    float    m_fJumpVel;
 
     float   m_fMaxSpeed;
+    float   m_fMaxDown;
     float   m_fFrictionScale;
 
     Vec2    m_vGravityForce;
@@ -21,6 +23,8 @@ private:
 public:
     Vec2 GetForce() { return m_vForce; }
     Vec2 GetVelocity() { return m_vVelocity; }
+    float GetJumpVel() { return m_fJumpVel; }
+    float GetMaxDown() { return m_fMaxDown; }
     float GetMass() { return m_fMass; }
     float GetInitSpeed() { return m_fInitSpeed; }
     float GetMaxSpeed() { return m_fMaxSpeed; }
@@ -30,6 +34,8 @@ public:
     bool IsGround() { return m_bGround; }
 
 public:
+    void SetJumpVel(float _f) { m_fJumpVel = _f; }
+    void SetMaxDown(float _f) { m_fMaxDown = _f; }
     void AddForce(Vec2 _vForce) { m_vForce += _vForce; }
     void AddVelocity(Vec2 _vAdd) { m_vVelocity += _vAdd; }
     void SetVelocity(Vec2 _vVelocity) { m_vVelocity = _vVelocity; }

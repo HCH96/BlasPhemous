@@ -5,11 +5,17 @@
 #include "CObj.h"
 #include "CAnimator.h"
 
+#include "CKeyMgr.h"
+
 #include "CLevelMgr.h"
 #include "CLevel.h"
 
 #include "CMonster.h"
 #include "CPlayer.h"
+
+
+
+#define GetOwnerObj GetOwnerSM()->GetOwner()
 
 class CState :
     public CEntity

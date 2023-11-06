@@ -17,12 +17,12 @@ private:
     CMovement*              m_pMovement;
     CStateMachine*          m_pSM;
 
-
 private:
     void AnimationInit();
 
 
 public:
+    virtual void begin() override;
     virtual void tick(float _DT) override;
 
 public:

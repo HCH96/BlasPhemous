@@ -11,6 +11,8 @@ private:
 	Vec2				m_vPos;
 	Vec2				m_vScale;
 	int					m_iLayerIdx;
+	bool				m_bPrevDir;
+	bool				m_bDir;
 	
 	vector<CComponent*> m_vecComponent;		// ÄÄÆ÷³ÍÆ® º¤ÅÍ
 
@@ -21,9 +23,12 @@ public:
 
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
+	void SetDir(bool _bDir) { m_bDir = _bDir; }
+	void SetPrevDir(bool _bPrev) { m_bPrevDir = _bPrev; }
 
 	int  GetLayerIdx() { return m_iLayerIdx; }
-	
+	bool GetDir() { return m_bDir; }
+	bool GetPrevDir() { return m_bPrevDir; }
 
 protected:
 	template<typename T>

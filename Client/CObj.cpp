@@ -9,6 +9,8 @@
 CObj::CObj()
 	: m_iLayerIdx(-1)
 	, m_vScale(Vec2(1.f,1.f))
+	, m_bDir(true)
+	, m_bPrevDir(true)
 {
 }
 
@@ -17,6 +19,8 @@ CObj::CObj(const CObj& _Origin)
 	, m_vPos(_Origin.m_vPos)
 	, m_vScale(_Origin.m_vScale)
 	, m_iLayerIdx(-1)
+	, m_bDir(_Origin.m_bDir)
+	, m_bPrevDir(_Origin.m_bPrevDir)
 {
 	for (size_t i = 0; i < _Origin.m_vecComponent.size(); ++i)
 	{

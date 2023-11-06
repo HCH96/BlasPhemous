@@ -8,12 +8,14 @@ class CStateMachine :
 {
 private:
     map<UINT, CState*>  m_mapState;
-    CState* m_pCurState;
+    CState*             m_pCurState;
+    UINT                m_iCurState;
 
     map<wstring, void*> m_mapBlackboard;
 
-
 public:
+    UINT GetCurState() { return m_iCurState; }
+
     void AddState(UINT _id, CState* _State);
     CState* FindState(UINT _id);
     void ChangeState(UINT _NextID);

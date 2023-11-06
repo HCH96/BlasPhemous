@@ -57,7 +57,7 @@ void CLevelMgr::init()
 	}
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::PLAY_LEVEL);
+	ChangeLevel(LEVEL_TYPE::TITLE_LEVEL);
 
 }
 

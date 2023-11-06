@@ -66,6 +66,11 @@ void CAnimator::render(HDC _dc)
 
 }
 
+bool CAnimator::IsFinish()
+{
+	return m_pCurAnim->IsFinish();
+}
+
 void CAnimator::Play(const wstring& _strName, bool _bRepeat)
 {
 	m_bRepeat = _bRepeat;

@@ -19,6 +19,7 @@ private:
 public:
     int GetAlpha() { return m_iAlpha; }
     float GetAcc() { return m_fAcc; }
+    bool IsFinish();
 
 
 public:
