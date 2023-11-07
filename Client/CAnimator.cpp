@@ -114,6 +114,8 @@ void CAnimator::PlayFromFrame(const wstring& _strName, UINT _iFrame, bool _bRepe
 
 void CAnimator::Stop()
 {
+	m_pCurAnim->Reset();
+	m_pCurAnim = nullptr;
 }
 
 void CAnimator::SetAnimDuration(const wstring& _strName, float _fDuration)
@@ -130,6 +132,20 @@ void CAnimator::SetAnimDuration(const wstring& _strName, float _fDuration)
 	{
 		pAnim->SetDuration(_fDuration, int(i));
 	}
+
+}
+
+void CAnimator::SetAnimDuration(const wstring& _strName, UINT _iFrame, float _fDuration)
+{
+	CAnim* pAnim = FindAnimation(_strName);
+
+	if (pAnim == nullptr)
+	{
+		LOG(LOG_LEVEL::ERR, L"Anim을 찾지 못했습니다.");
+		return;
+	}
+
+	pAnim->SetDuration(_fDuration, int(_iFrame));
 
 }
 

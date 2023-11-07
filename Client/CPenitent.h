@@ -16,6 +16,7 @@ private:
 
     CAnimator*              m_pAnimator;
     CAnimator*              m_pEffector;
+    CAnimator*              m_pDustAnimator;
     CCollider*              m_pCollider;
     CMovement*              m_pMovement;
     CStateMachine*          m_pSM;
@@ -23,6 +24,7 @@ private:
 private:
     void AnimationInit();
     void EffectInit();
+    void DustAnimInit();
     void StateInit();
 
 public:

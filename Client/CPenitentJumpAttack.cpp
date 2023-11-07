@@ -13,13 +13,44 @@ CPenitentJumpAttack::~CPenitentJumpAttack()
 void CPenitentJumpAttack::finaltick(float _DT)
 {
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CStateMachine* pOwnerSM = GetOwnerSM();
-	Vec2 vVel = pMovement->GetVelocity();
+	
 
+	Vec2 vVel = pMovement->GetVelocity();
 	bool bDir = GetOwnerObj->GetDir();
 	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
 	bool isFinsh = false;
+	
+
+	// JumpATTSlash1 재생
+	if (pAnimator->GetCurFrame() == 3)
+	{
+		if (bDir)
+		{
+			pEffector->PlayNoReset(L"JumpATTSlash1", false);
+		}
+		else
+		{
+			pEffector->PlayNoReset(L"JumpATTSlash1_L", false);
+		}
+	}
+
+	// JumpATTSlash2 재생
+	if (pAnimator->GetCurFrame() == 7)
+	{
+		if (bDir)
+		{
+			pEffector->PlayNoReset(L"JumpATTSlash2", false);
+		}
+		else
+		{
+			pEffector->PlayNoReset(L"JumpATTSlash2_L", false);
+		}
+	}
+
+
 
 	// 속도 변화
 	if (KEY_NONE(KEY::LEFT) && KEY_NONE(KEY::RIGHT))
@@ -51,7 +82,7 @@ void CPenitentJumpAttack::finaltick(float _DT)
 		pOwnerSM->EditDataToBlackboard(L"IsTapS", true);
 	}
 
-	if (iCurFrame == 4 && !*(bool*)(pOwnerSM->GetDataFromBlackboard(L"IsTapS")))
+	if (iCurFrame == 7 && !*(bool*)(pOwnerSM->GetDataFromBlackboard(L"IsTapS")))
 	{
 		isFinsh = true;
 	}
@@ -87,8 +118,8 @@ void CPenitentJumpAttack::finaltick(float _DT)
 
 void CPenitentJumpAttack::Enter()
 {
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);
 
@@ -101,9 +132,20 @@ void CPenitentJumpAttack::Enter()
 		pAnimator->Play(L"JumpATT_L", false);
 	}
 
+	pEffector->Play(L"JumpATTSlash1", false);
+	pEffector->Play(L"JumpATTSlash2", false);
+
+	pEffector->Play(L"JumpATTSlash1_L", false);
+	pEffector->Play(L"JumpATTSlash2_L", false);
+
+	pEffector->Play(L"None", false);
+
+
 }
 
 void CPenitentJumpAttack::Exit()
 {
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
+	pEffector->Play(L"None", false);
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);
 }

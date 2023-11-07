@@ -15,11 +15,20 @@ private:
     int                     m_iAlpha;
     float                   m_fAcc;
 
+    bool                    m_bPosLock;
+    Vec2                    m_vTmpPos;
+
 public:
     int GetAlpha() { return m_iAlpha; }
     float GetAcc() { return m_fAcc; }
     bool IsFinish();
     int GetCurFrame();
+    bool IsLock() { return m_bPosLock; }
+    Vec2 GetTmpPos() { return m_vTmpPos; }
+
+
+    void SetLock(bool _b) { m_bPosLock = _b; }
+    void SetTmpPos(Vec2 _v) { m_vTmpPos = _v; }
 
 
 
@@ -30,6 +39,7 @@ public:
     void Stop();
 
     void SetAnimDuration(const wstring& _strName, float _fDuration);
+    void SetAnimDuration(const wstring& _strName, UINT _iFrame, float _fDuration);
 
     CAnim* FindAnimation(const wstring& _strName);
 

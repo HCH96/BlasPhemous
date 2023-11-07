@@ -14,12 +14,14 @@ void CPenitentAttack::finaltick(float _DT)
 {
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CStateMachine* pOwnerSM = GetOwnerSM();
 	
 
 	bool isFinsh = false;
 	bool bDir = GetOwnerObj->GetDir();
 	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
+	UINT iEffectFrame = (UINT)pEffector->GetCurFrame();
 
 
 	// 방향 전환
@@ -28,10 +30,12 @@ void CPenitentAttack::finaltick(float _DT)
 		if (bDir)
 		{
 			pAnimator->PlayFromFrame(L"Attack", iCurFrame, false);
+			pEffector->PlayFromFrame(L"AttackSlash", iEffectFrame, false);
 		}
 		else
 		{
 			pAnimator->PlayFromFrame(L"Attack_L", iCurFrame, false);
+			pEffector->PlayFromFrame(L"AttackSlash_L", iEffectFrame, false);
 		}
 	}
 
@@ -109,6 +113,7 @@ void CPenitentAttack::finaltick(float _DT)
 void CPenitentAttack::Enter()
 {
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	int iDir = GetOwnerObj->GetDir();
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);
@@ -116,11 +121,13 @@ void CPenitentAttack::Enter()
 	if (iDir)
 	{
 		pAnimator->Play(L"Attack", true);
+		pEffector->Play(L"AttackSlash", false);
 		pMovement->SetVelocity(Vec2(0.f, 0.f));
 	}
 	else
 	{
 		pAnimator->Play(L"Attack_L", true);
+		pEffector->Play(L"AttackSlash_L", false);
 		pMovement->SetVelocity(Vec2(0.f, 0.f));
 	}
 
@@ -128,6 +135,9 @@ void CPenitentAttack::Enter()
 
 void CPenitentAttack::Exit()
 {
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
+	
+	pEffector->Play(L"None", false);
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);
 }
 

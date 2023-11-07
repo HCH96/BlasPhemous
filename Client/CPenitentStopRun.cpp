@@ -74,15 +74,19 @@ void CPenitentStopRun::Enter()
 {
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
 	bool bDir = GetOwnerObj->GetDir();
-
+	pDustAnimator->SetLock(false);
+	
 	if (bDir)
 	{
 		pAnimator->Play(L"Stop_Run", true);
+		pDustAnimator->Play(L"StopRun", false);
 	}
 	else
 	{
 		pAnimator->Play(L"Stop_Run_L", true);
+		pDustAnimator->Play(L"StopRun_L", false);
 	}
 }
 

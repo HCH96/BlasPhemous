@@ -37,6 +37,7 @@ CPenitent::CPenitent()
 	, m_pEffector(nullptr)
 	, m_pCollider(nullptr)
 	, m_pMovement(nullptr)
+	, m_pDustAnimator(nullptr)
 	, m_pSM(nullptr)
 	, m_fHP(100.f)
 {
@@ -56,6 +57,9 @@ CPenitent::CPenitent()
 	m_pEffector = AddComponent<CAnimator>(L"Penitent_Effector");
 	EffectInit();
 
+	// Dust
+	m_pDustAnimator = AddComponent<CAnimator>(L"Dust_Animator");
+	DustAnimInit();
 
 	// collider
 	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
@@ -134,6 +138,8 @@ void CPenitent::tick(float _DT)
 	}
 
 	// DEBUG
+
+
 	if (KEY_TAP(KEY::Q))
 	{
 		m_fHP = 0.f;
@@ -212,8 +218,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"UpwardAttck", L"animdata\\Penitent\\penitent_upward_attack_clamped_anim.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"UpwardAttck_L", L"animdata\\Penitent\\penitent_upward_attack_clamped_anim.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"UpwardAttck", 0.035f);
-	m_pAnimator->SetAnimDuration(L"UpwardAttck_L", 0.035f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck", 0.05f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck_L", 0.05f);
 
 
 	// Attack
@@ -223,8 +229,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"Attack", L"animdata\\Penitent\\penitent_three_hits_attack_combo_no_slashes.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Attack_L", L"animdata\\Penitent\\penitent_three_hits_attack_combo_no_slashes.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Attack", 0.06f);
-	m_pAnimator->SetAnimDuration(L"Attack_L", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Attack", 0.05f);
+	m_pAnimator->SetAnimDuration(L"Attack_L", 0.05f);
 
 
 	// Run
@@ -237,8 +243,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"Run", L"animdata\\Penitent\\penitent_running_anim.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Run_L", L"animdata\\Penitent\\penitent_running_anim.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Run", 0.06f);
-	m_pAnimator->SetAnimDuration(L"Run_L", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Run", 0.04f);
+	m_pAnimator->SetAnimDuration(L"Run_L", 0.04f);
 
 
 
@@ -378,7 +384,6 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"Dodge_L", 0.04f);
 
 	// JumpATT
-
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"JumpATT", L"texture\\Penitent\\penitent_jumping_attack_noslashes.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"JumpATT_L", L"texture\\Penitent\\penitent_jumping_attack_noslashes.png");
 
@@ -386,8 +391,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"JumpATT", L"animdata\\Penitent\\penitent_jumping_attack_noslashes.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"JumpATT_L", L"animdata\\Penitent\\penitent_jumping_attack_noslashes.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"JumpATT", 0.08f);
-	m_pAnimator->SetAnimDuration(L"JumpATT_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"JumpATT", 0.06f);
+	m_pAnimator->SetAnimDuration(L"JumpATT_L", 0.06f);
 
 	// Healthpotion
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Healthpotion", L"texture\\Penitent\\penitent_healthpotion_consuming_anim.png");
@@ -423,7 +428,7 @@ void CPenitent::AnimationInit()
 	//penitent_crouch_up_anim
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"CrouchUp", L"texture\\Penitent\\penitent_crouch_up_anim.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"CrouchUp_L", L"texture\\Penitent\\penitent_crouch_up_anim.png");
-
+		
 	m_pAnimator->LoadAnimation(pTex, L"CrouchUp", L"animdata\\Penitent\\penitent_crouch_up_anim.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"CrouchUp_L", L"animdata\\Penitent\\penitent_crouch_up_anim.txt", true);
 
@@ -440,13 +445,127 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"CrouchATT", 0.04f);
 	m_pAnimator->SetAnimDuration(L"CrouchATT_L", 0.04f);
 
-	m_pAnimator->Play(L"Death", true);
+	m_pAnimator->Play(L"Stop_Run", true);
 
 	//m_pAnimator->SaveAnimations(L"animdata");
 }
 
 void CPenitent::EffectInit()
 {
+
+	// three_hits_attack_slashes_lvl1_anim
+	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"AttackSlash", L"texture\\Penitent\\three_hits_attack_slashes_lvl1_anim.png");
+	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"AttackSlash_L", L"texture\\Penitent\\three_hits_attack_slashes_lvl1_anim.png");
+
+	m_pEffector->LoadAnimation(pTex, L"AttackSlash", L"animdata\\Penitent\\three_hits_attack_slashes_lvl1_anim.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"AttackSlash_L", L"animdata\\Penitent\\three_hits_attack_slashes_lvl1_anim.txt", true);
+
+	m_pEffector->SetAnimDuration(L"AttackSlash", 0.05f);
+	m_pEffector->SetAnimDuration(L"AttackSlash_L", 0.05f);
+
+
+	// UpwardATT
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"UpwardATT", L"texture\\Penitent\\penitent_upward_attack_slash_lvl1.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"UpwardATT_L", L"texture\\Penitent\\penitent_upward_attack_slash_lvl1.png");
+
+	m_pEffector->LoadAnimation(pTex, L"UpwardATT", L"animdata\\Penitent\\penitent_upward_attack_slash_lvl1.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"UpwardATT_L", L"animdata\\Penitent\\penitent_upward_attack_slash_lvl1.txt", true);
+
+	m_pEffector->SetAnimDuration(L"UpwardATT", 0.05f);
+	m_pEffector->SetAnimDuration(L"UpwardATT_L", 0.05f);
+
+	// UpwardATTJump
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"UpwardATTJump", L"texture\\Penitent\\penitent_upward_attack_slash_lvl1_jump.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"UpwardATTJump_L", L"texture\\Penitent\\penitent_upward_attack_slash_lvl1_jump.png");
+
+	m_pEffector->LoadAnimation(pTex, L"UpwardATTJump", L"animdata\\Penitent\\penitent_upward_attack_slash_lvl1_jump.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"UpwardATTJump_L", L"animdata\\Penitent\\penitent_upward_attack_slash_lvl1_jump.txt", true);
+
+	m_pEffector->SetAnimDuration(L"UpwardATTJump", 0.03f);
+	m_pEffector->SetAnimDuration(L"UpwardATTJump_L", 0.03f);
+
+	// JumpATTSlash1
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"JumpATTSlash1", L"texture\\Penitent\\penitent_jumping_attack_slasheslvl1.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"JumpATTSlash1_L", L"texture\\Penitent\\penitent_jumping_attack_slasheslvl1.png");
+
+	m_pEffector->LoadAnimation(pTex, L"JumpATTSlash1", L"animdata\\Penitent\\penitent_jumping_attack_slasheslvl1.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"JumpATTSlash1_L", L"animdata\\Penitent\\penitent_jumping_attack_slasheslvl1.txt", true);
+
+	m_pEffector->SetAnimDuration(L"JumpATTSlash1", 0.06f);
+	m_pEffector->SetAnimDuration(L"JumpATTSlash1_L", 0.06f);
+
+	// JumpATTSlash1
+	m_pEffector->LoadAnimation(pTex, L"JumpATTSlash2", L"animdata\\Penitent\\penitent_jumping_attack_slasheslvl2.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"JumpATTSlash2_L", L"animdata\\Penitent\\penitent_jumping_attack_slasheslvl2.txt", true);
+
+	m_pEffector->SetAnimDuration(L"JumpATTSlash2", 0.06f);
+	m_pEffector->SetAnimDuration(L"JumpATTSlash2_L", 0.06f);
+
+	// penitent_crouch_slashes_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"CrouchAttackSlash", L"texture\\Penitent\\penitent_crouch_slashes_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"CrouchAttackSlash_L", L"texture\\Penitent\\penitent_crouch_slashes_anim.png");
+
+	m_pEffector->LoadAnimation(pTex, L"CrouchAttackSlash", L"animdata\\Penitent\\penitent_crouch_slashes_anim.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"CrouchAttackSlash_L", L"animdata\\Penitent\\penitent_crouch_slashes_anim.txt", true);
+
+	m_pEffector->SetAnimDuration(L"CrouchAttackSlash", 0.04f);
+	m_pEffector->SetAnimDuration(L"CrouchAttackSlash_L", 0.04f);
+
+		
+	// None
+	m_pEffector->CreateAnimation(L"None", pTex, Vec2(0.f, 0.f), Vec2(0.f, 0.f), Vec2(0.f, 0.f), 0.1f, 1);
+
+	//m_pEffector->Play(L"AttackSlash", true);
+}
+
+void CPenitent::DustAnimInit()
+{
+	// penitent_running_dust_anim
+	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"RunDust", L"texture\\Penitent\\penitent_running_dust_anim.png");
+	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"RunDust_L", L"texture\\Penitent\\penitent_running_dust_anim.png");
+
+	m_pDustAnimator->LoadAnimation(pTex, L"RunDust", L"animdata\\Penitent\\penitent_running_dust_anim.txt");
+	m_pDustAnimator->LoadAnimation(pTexReverse, L"RunDust_L", L"animdata\\Penitent\\penitent_running_dust_anim.txt", true);
+
+	m_pDustAnimator->SetAnimDuration(L"RunDust", 0.08f);
+	m_pDustAnimator->SetAnimDuration(L"RunDust_L", 0.08f);
+
+
+	// penitent_stop_dodge_dust_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"StopDodge", L"texture\\Penitent\\penitent_stop_dodge_dust_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"StopDodge_L", L"texture\\Penitent\\penitent_stop_dodge_dust_anim.png");
+
+	m_pDustAnimator->LoadAnimation(pTex, L"StopDodge", L"animdata\\Penitent\\penitent_stop_dodge_dust_anim.txt");
+	m_pDustAnimator->LoadAnimation(pTexReverse, L"StopDodge_L", L"animdata\\Penitent\\penitent_stop_dodge_dust_anim.txt", true);
+
+	m_pDustAnimator->SetAnimDuration(L"StopDodge", 0.08f);
+	m_pDustAnimator->SetAnimDuration(L"StopDodge_L", 0.08f);
+
+	// penitent_start_dodge_dust_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"StartDodge", L"texture\\Penitent\\penitent_start_dodge_dust_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"StartDodge_L", L"texture\\Penitent\\penitent_start_dodge_dust_anim.png");
+
+	m_pDustAnimator->LoadAnimation(pTex, L"StartDodge", L"animdata\\Penitent\\penitent_start_dodge_dust_anim.txt");
+	m_pDustAnimator->LoadAnimation(pTexReverse, L"StartDodge_L", L"animdata\\Penitent\\penitent_start_dodge_dust_anim.txt", true);
+
+	m_pDustAnimator->SetAnimDuration(L"StartDodge", 0.08f);
+	m_pDustAnimator->SetAnimDuration(L"StartDodge_L", 0.08f);
+
+	// penitent-stop-running-dust
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"StopRun", L"texture\\Penitent\\penitent-stop-running-dust.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"StopRun_L", L"texture\\Penitent\\penitent-stop-running-dust.png");
+
+	m_pDustAnimator->LoadAnimation(pTex, L"StopRun", L"animdata\\Penitent\\penitent-stop-running-dust.txt");
+	m_pDustAnimator->LoadAnimation(pTexReverse, L"StopRun_L", L"animdata\\Penitent\\penitent-stop-running-dust.txt", true);
+
+	m_pDustAnimator->SetAnimDuration(L"StopRun", 0.08f);
+	m_pDustAnimator->SetAnimDuration(L"StopRun_L", 0.08f);
+
+
+	//m_pDustAnimator->Play(L"StopRun", true);
+
+
+
 }
 
 void CPenitent::StateInit()

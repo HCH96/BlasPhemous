@@ -492,9 +492,15 @@ void CAnim::render(HDC _dc)
 	const FFrame& frm = m_vecFrm[m_iCurFrm];
 
 	CObj* pOwnerObject = m_pAnimator->GetOwner();
-	Vec2 vRenderPos = pOwnerObject->GetRenderPos();
 	Vec2 vScale = pOwnerObject->GetScale();
 
+	Vec2 vRenderPos = pOwnerObject->GetRenderPos();
+
+	if (m_pAnimator->IsLock())
+	{
+		vRenderPos = m_pAnimator->GetTmpPos();
+		vRenderPos = CCamera::GetInst()->GetRenderPos(vRenderPos);
+	}
 
 	Vec2 vSize = frm.vCutSize * vScale;
 	Vec2 vOffset = frm.vOffset * vScale;

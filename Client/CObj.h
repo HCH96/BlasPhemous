@@ -13,7 +13,7 @@ private:
 	int					m_iLayerIdx;
 	bool				m_bPrevDir;
 	bool				m_bDir;
-	
+
 	vector<CComponent*> m_vecComponent;		// ÄÄÆ÷³ÍÆ® º¤ÅÍ
 
 public:
@@ -54,6 +54,22 @@ public:
 
 		return nullptr;
 	}
+
+	template<typename T>
+	T* GetComponent(const wstring& _strName)
+	{
+		for (size_t i = 0; i < m_vecComponent.size(); ++i)
+		{
+			T* pComponent = dynamic_cast<T*>(m_vecComponent[i]);
+			if (pComponent && pComponent->GetName() == _strName)
+			{
+				return (T*)m_vecComponent[i];
+			}
+		}
+
+		return nullptr;
+	}
+
 
 	template<typename T>
 	void GetComponents(vector<T*>& _out)
