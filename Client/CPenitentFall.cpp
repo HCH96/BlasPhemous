@@ -45,9 +45,19 @@ void CPenitentFall::finaltick(float _DT)
 		Enter();
 	}
 
-	if (vVel.x !=0.f)
+	if (vVel.x != 0.f)
 	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARDFALL);
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
+	}
+
+	if (KEY_TAP(KEY::S))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPATT);
+	}
+
+	if (KEY_TAP(KEY::S) && KEY_PRESSED(KEY::UP))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACKJUMP);
 	}
 
 	if (pMovement->IsGround())

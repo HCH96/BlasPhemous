@@ -6,14 +6,18 @@
 
 CStateMachine::CStateMachine(CObj* _Owner)
 	: CComponent(_Owner)
+	, m_pGlobalState(nullptr)
 	, m_pCurState(nullptr)
+	, m_pPrevState(nullptr)
 {
 
 }
 
 CStateMachine::CStateMachine(const CStateMachine& _Origin)
 	: CComponent(_Origin)
+	, m_pGlobalState(nullptr)
 	, m_pCurState(nullptr)
+	, m_pPrevState(nullptr)
 {
 	for (const auto& pair : _Origin.m_mapState)
 	{
@@ -103,6 +107,8 @@ void CStateMachine::ChangeState(UINT _NextID)
 	// 새로운 스테이트로 진입(초기작업 수행)
 	m_pCurState->Enter();
 }
+
+
 
 void* CStateMachine::GetDataFromBlackboard(const wstring _strKey)
 {

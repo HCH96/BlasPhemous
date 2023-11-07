@@ -69,11 +69,6 @@ void CPlayLevel::tick()
 {
 	CLevel::tick();
 
-	if (KEY_TAP(KEY::ENTER))
-	{
-		ChangeLevel(LEVEL_TYPE::EDITOR_LEVEL);
-	}
-
 	if (KEY_TAP(KEY::M))
 	{
 		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"BGM_02", L"sound\\BGM_Stage1.wav");

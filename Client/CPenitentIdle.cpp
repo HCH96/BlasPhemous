@@ -19,6 +19,8 @@ void CPenitentIdle::finaltick(float _DT)
 
 
 	// State º¯°æ
+
+	// StartRun
 	if ( (KEY_TAP(KEY::LEFT) || KEY_PRESSED(KEY::LEFT)) && KEY_NONE(KEY::RIGHT))
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STARTRRUN);
@@ -29,15 +31,38 @@ void CPenitentIdle::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STARTRRUN);
 	}
 
-	if ((KEY_TAP(KEY::F)))
+	if (KEY_TAP(KEY::DOWN) || KEY_PRESSED(KEY::DOWN))
 	{
-		// Jump
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCH);
+	}
+
+	if (KEY_TAP(KEY::Z))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::HEALTHPOTION);
+	}
+
+	// Jump
+	if (KEY_TAP(KEY::F))
+	{
 		pMovement->SetGround(false);
 		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMP);
 	}
 
+	if (KEY_TAP(KEY::D))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DODGE);
+	}
 
+	if (KEY_TAP(KEY::S) && !(KEY_TAP(KEY::F)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
+	}
+
+	if (KEY_TAP(KEY::S) && KEY_PRESSED(KEY::UP) && !(KEY_TAP(KEY::F)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACK);
+	}
 
 }
 

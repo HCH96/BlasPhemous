@@ -50,6 +50,16 @@ void CPenitentFowardFall::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
 	}
 
+	if (KEY_TAP(KEY::S))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPATT);
+	}
+
+	if (KEY_TAP(KEY::S) && KEY_PRESSED(KEY::UP))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACKJUMP);
+	}
+
 	if (pMovement->IsGround())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
@@ -68,12 +78,10 @@ void CPenitentFowardFall::Enter()
 	if (bDir)
 	{
 		pAnimator->Play(L"JumpForwardFall", true);
-		//pMovement->SetVelocity(Vec2(1.f * pMovement->GetInitSpeed(), vVel.y));
 	}
 	else
 	{
 		pAnimator->Play(L"JumpForwardFall_L", true);
-		//pMovement->SetVelocity(Vec2(-1.f * pMovement->GetInitSpeed(), vVel.y));
 	}
 }
 

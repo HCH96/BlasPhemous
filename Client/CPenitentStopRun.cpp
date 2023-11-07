@@ -33,12 +33,33 @@ void CPenitentStopRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STARTRRUN);
 	}
 
-	if ((KEY_TAP(KEY::F)))
+	if (KEY_TAP(KEY::DOWN) || KEY_PRESSED(KEY::DOWN))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCH);
+	}
+
+	if (KEY_TAP(KEY::Z))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::HEALTHPOTION);
+	}
+
+	if (KEY_TAP(KEY::D))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DODGE);
+	}
+
+
+	if ((KEY_TAP(KEY::F)) && !(KEY_TAP(KEY::S)))
 	{
 		// Jump
 		pMovement->SetGround(false);
 		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMP);
+	}
+
+	if (KEY_TAP(KEY::S) && !(KEY_TAP(KEY::F)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
 
 	if (pAnimator->IsFinish())

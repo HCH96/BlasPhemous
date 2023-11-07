@@ -42,7 +42,22 @@ void CPenitentStartRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
-	if ((KEY_TAP(KEY::F)) && GetOwnerSM()->GetCurState() != (UINT)PENITENT_STATE::IDLE)
+	if (KEY_TAP(KEY::DOWN) || KEY_PRESSED(KEY::DOWN))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCH);
+	}
+
+	if (KEY_TAP(KEY::Z))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::HEALTHPOTION);
+	}
+
+	if (KEY_TAP(KEY::D))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DODGE);
+	}
+
+	if ((KEY_TAP(KEY::F)) && GetOwnerSM()->GetCurState() != (UINT)PENITENT_STATE::IDLE && !(KEY_TAP(KEY::S)))
 	{
 		// JumpForward
 		pMovement->SetGround(false);
@@ -50,19 +65,23 @@ void CPenitentStartRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
 	}
 
-	if ((KEY_TAP(KEY::F)) && GetOwnerSM()->GetCurState() == (UINT)PENITENT_STATE::IDLE)
+	if ((KEY_TAP(KEY::F)) && GetOwnerSM()->GetCurState() == (UINT)PENITENT_STATE::IDLE && !(KEY_TAP(KEY::S)))
 	{
-		// JumpForward
+		// Jump
 		pMovement->SetGround(false);
 		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMP);
+	}
+
+	if (KEY_TAP(KEY::S) && !(KEY_TAP(KEY::F)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
 
 	if (pAnimator->IsFinish())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::RUN);
 	}
-
 }
 
 void CPenitentStartRun::Enter()

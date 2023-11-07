@@ -176,6 +176,45 @@
     <Filter Include="Game\08. State\Penitent\ForwardFall">
       <UniqueIdentifier>{579abb5c-7b0a-46da-bdde-4494f4bbc05a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\Attack">
+      <UniqueIdentifier>{da62f74b-287b-46f5-95b9-2b2909850f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\FallingAhead">
+      <UniqueIdentifier>{82942247-f537-4325-b16b-ff0f0d598d81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Rising">
+      <UniqueIdentifier>{7688b08a-19ed-4401-a6a0-f122d4b8db64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\UpwardAttackJump">
+      <UniqueIdentifier>{5aa63e75-93bd-4991-9ae9-c8d9870a7cee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\UpwardAttack">
+      <UniqueIdentifier>{79a10eb7-4e90-498a-b5bb-0278c1ba326f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\DodgeToRun">
+      <UniqueIdentifier>{a536d573-5054-4ea4-9b3d-e00a96e76da0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Dodge">
+      <UniqueIdentifier>{8f7c3ada-3a39-4e6a-825f-840e3460c388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\JumpAttack">
+      <UniqueIdentifier>{524b6289-cd2e-430c-9a38-7609f5001e62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\HealthPotion">
+      <UniqueIdentifier>{76bace59-d385-4c28-9049-3b64ecb8dd37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Crouch">
+      <UniqueIdentifier>{fae3d229-0972-4d6b-968d-21582365bea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\CrouchUp">
+      <UniqueIdentifier>{72594432-adaf-4b16-9312-9a2e9c2592f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\CrouchATT">
+      <UniqueIdentifier>{97bf674a-39df-49e1-b086-3cf6cadd77b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Crouching">
+      <UniqueIdentifier>{acbc461c-5cc8-4b44-bd5f-0f932966e34c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -374,6 +413,45 @@
     <ClInclude Include="CPenitentFowardFall.h">
       <Filter>Game\08. State\Penitent\ForwardFall</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentAttack.h">
+      <Filter>Game\08. State\Penitent\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentFallingAhead.h">
+      <Filter>Game\08. State\Penitent\FallingAhead</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentRising.h">
+      <Filter>Game\08. State\Penitent\Rising</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentUpwardATTJump.h">
+      <Filter>Game\08. State\Penitent\UpwardAttackJump</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentUpwardATT.h">
+      <Filter>Game\08. State\Penitent\UpwardAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentDodgeToRun.h">
+      <Filter>Game\08. State\Penitent\DodgeToRun</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentDodge.h">
+      <Filter>Game\08. State\Penitent\Dodge</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentJumpAttack.h">
+      <Filter>Game\08. State\Penitent\JumpAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentHealthPotion.h">
+      <Filter>Game\08. State\Penitent\HealthPotion</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentCrouch.h">
+      <Filter>Game\08. State\Penitent\Crouch</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentCrouchUp.h">
+      <Filter>Game\08. State\Penitent\CrouchUp</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentCrouchATT.h">
+      <Filter>Game\08. State\Penitent\CrouchATT</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentCrouching.h">
+      <Filter>Game\08. State\Penitent\Crouching</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -566,6 +644,45 @@
     </ClCompile>
     <ClCompile Include="CPenitentFowardFall.cpp">
       <Filter>Game\08. State\Penitent\ForwardFall</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentAttack.cpp">
+      <Filter>Game\08. State\Penitent\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentFallingAhead.cpp">
+      <Filter>Game\08. State\Penitent\FallingAhead</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentRising.cpp">
+      <Filter>Game\08. State\Penitent\Rising</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentUpwardATTJump.cpp">
+      <Filter>Game\08. State\Penitent\UpwardAttackJump</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentUpwardATT.cpp">
+      <Filter>Game\08. State\Penitent\UpwardAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentDodgeToRun.cpp">
+      <Filter>Game\08. State\Penitent\DodgeToRun</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentDodge.cpp">
+      <Filter>Game\08. State\Penitent\Dodge</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentJumpAttack.cpp">
+      <Filter>Game\08. State\Penitent\JumpAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentHealthPotion.cpp">
+      <Filter>Game\08. State\Penitent\HealthPotion</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentCrouch.cpp">
+      <Filter>Game\08. State\Penitent\Crouch</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentCrouchUp.cpp">
+      <Filter>Game\08. State\Penitent\CrouchUp</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentCrouchATT.cpp">
+      <Filter>Game\08. State\Penitent\CrouchATT</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentCrouching.cpp">
+      <Filter>Game\08. State\Penitent\Crouching</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -17,7 +17,6 @@ void CPenitentJump::finaltick(float _DT)
 	Vec2 vVel = pMovement->GetVelocity();
 	
 	// 속도 변화
-
 	if (KEY_NONE(KEY::LEFT) && KEY_NONE(KEY::RIGHT))
 	{
 		pMovement->SetVelocity(Vec2(0.f, vVel.y));
@@ -61,6 +60,21 @@ void CPenitentJump::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
 	}
+
+
+	if (KEY_TAP(KEY::S))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPATT);
+	}
+
+	if (KEY_TAP(KEY::S) && KEY_PRESSED(KEY::UP))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACKJUMP);
+	}
+
+	
+
+
 
 	if (pMovement->IsGround())
 	{

@@ -1,26 +1,23 @@
 #include "pch.h"
-#include "CPenitentJumpForward.h"
+#include "CPenitentUpwardATTJump.h"
 
-CPenitentJumpForward::CPenitentJumpForward()
-{
-	SetName(L"CPenitentJumpForward");
-}
 
-CPenitentJumpForward::~CPenitentJumpForward()
+CPenitentUpwardATTJump::CPenitentUpwardATTJump()
 {
 }
 
+CPenitentUpwardATTJump::~CPenitentUpwardATTJump()
+{
+}
 
-void CPenitentJumpForward::finaltick(float _DT)
+void CPenitentUpwardATTJump::finaltick(float _DT)
 {
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-
+	
 	Vec2 vVel = pMovement->GetVelocity();
-	bool bDir = GetOwnerObj->GetDir();
 
 	// 속도 변화
-
 	if (KEY_NONE(KEY::LEFT) && KEY_NONE(KEY::RIGHT))
 	{
 		pMovement->SetVelocity(Vec2(0.f, vVel.y));
@@ -42,53 +39,44 @@ void CPenitentJumpForward::finaltick(float _DT)
 		pMovement->AddVelocity(Vec2(200.f, 0.f));
 	}
 
-
 	// 상태 변화
-
 	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
 	{
 		Enter();
 	}
 
-	if (vVel.y > 0 && pAnimator->IsFinish())
+	if (pAnimator->IsFinish())
 	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
-	}
-
-	if (KEY_TAP(KEY::S))
-	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPATT);
-	}
-
-	if (KEY_TAP(KEY::S) && KEY_PRESSED(KEY::UP))
-	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACKJUMP);
+		if (vVel.x == 0)
+			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+		else
+			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
 	}
 
 	if (pMovement->IsGround())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
-	
+
+
 }
 
-void CPenitentJumpForward::Enter()
+void CPenitentUpwardATTJump::Enter()
 {
-	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-	Vec2 vVel = pMovement->GetVelocity();
+	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();
 
 	if (bDir)
 	{
-		pAnimator->Play(L"JumpForward", false);
+		pAnimator->Play(L"UpwardAttck_Jump", false);
 	}
 	else
 	{
-		pAnimator->Play(L"JumpForward_L", false);
+		pAnimator->Play(L"UpwardAttck_Jump_L", false);
 	}
 }
 
-void CPenitentJumpForward::Exit()
+void CPenitentUpwardATTJump::Exit()
 {
 }

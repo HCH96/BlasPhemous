@@ -71,6 +71,11 @@ bool CAnimator::IsFinish()
 	return m_pCurAnim->IsFinish();
 }
 
+int CAnimator::GetCurFrame()
+{
+	return m_pCurAnim->m_iCurFrm;
+}
+
 void CAnimator::Play(const wstring& _strName, bool _bRepeat)
 {
 	m_bRepeat = _bRepeat;
@@ -78,6 +83,24 @@ void CAnimator::Play(const wstring& _strName, bool _bRepeat)
 
 	m_pCurAnim->Reset();
 
+	assert(m_pCurAnim);
+}
+
+void CAnimator::PlayFromFrame(const wstring& _strName, UINT _iFrame, bool _bRepeat)
+{
+	m_bRepeat = _bRepeat;
+	m_pCurAnim = FindAnimation(_strName);
+
+	if (m_pCurAnim->m_vecFrm.size() > _iFrame)
+	{
+		m_pCurAnim->m_iCurFrm = _iFrame;
+		m_pCurAnim->m_fAccTime = 0.f;
+		m_pCurAnim->m_bFinish = false;
+	}
+	else
+	{
+		LOG(LOG_LEVEL::WARNING, L"!!인자로 받은 Frame이 MaxFrame보다 큽니다!!");
+	}
 	assert(m_pCurAnim);
 }
 

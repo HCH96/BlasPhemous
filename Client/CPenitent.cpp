@@ -1,11 +1,15 @@
 #include "pch.h"
 #include "CPenitent.h"
 
+#include "CEngine.h"
+
 #include "CAssetMgr.h"
 #include "CTexture.h"
 
 #include "CPlatform.h"
 
+#include "CPenitentFallingAhead.h"
+#include "CPenitentRising.h"
 #include "CPenitentIdle.h"
 #include "CPenitentStartRun.h"
 #include "CPenitentRun.h"
@@ -14,6 +18,17 @@
 #include "CPenitentFall.h"
 #include "CPenitentJumpForward.h"
 #include "CPenitentFowardFall.h"
+#include "CPenitentAttack.h"
+#include "CPenitentUpwardATT.h"
+#include "CPenitentUpwardATTJump.h"
+#include "CPenitentDodge.h"
+#include "CPenitentDodgeToRun.h"
+#include "CPenitentJumpAttack.h"
+#include "CPenitentHealthPotion.h"
+#include "CPenitentCrouch.h"
+#include "CPenitentCrouching.h"
+#include "CPenitentCrouchUp.h"
+#include "CPenitentCrouchATT.h"
 
 
 CPenitent::CPenitent()
@@ -40,6 +55,8 @@ CPenitent::CPenitent()
 
 	// StateMachine 컴포넌트 추가
 	m_pSM = AddComponent<CStateMachine>(L"Penitent_SM");
+	m_pSM->AddState((UINT)PENITENT_STATE::FALLINGAHEAD, new CPenitentFallingAhead);
+	m_pSM->AddState((UINT)PENITENT_STATE::RISING, new CPenitentRising);
 	m_pSM->AddState((UINT)PENITENT_STATE::IDLE, new CPenitentIdle);
 	m_pSM->AddState((UINT)PENITENT_STATE::STARTRRUN, new CPenitentStartRun);
 	m_pSM->AddState((UINT)PENITENT_STATE::RUN, new CPenitentRun);
@@ -47,11 +64,18 @@ CPenitent::CPenitent()
 	m_pSM->AddState((UINT)PENITENT_STATE::JUMP, new CPenitentJump);
 	m_pSM->AddState((UINT)PENITENT_STATE::FALL, new CPenitentFall);
 	m_pSM->AddState((UINT)PENITENT_STATE::JUMPFORWARD, new CPenitentJumpForward);
-	m_pSM->AddState((UINT)PENITENT_STATE::JUMPFORWARDFALL, new CPenitentFowardFall);
-
-	m_pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
-
-
+	m_pSM->AddState((UINT)PENITENT_STATE::FALLFORWARD, new CPenitentFowardFall);
+	m_pSM->AddState((UINT)PENITENT_STATE::ATTACK, new CPenitentAttack);
+	m_pSM->AddState((UINT)PENITENT_STATE::UPWARDATTACK, new CPenitentUpwardATT);
+	m_pSM->AddState((UINT)PENITENT_STATE::UPWARDATTACKJUMP, new CPenitentUpwardATTJump);
+	m_pSM->AddState((UINT)PENITENT_STATE::DODGE, new CPenitentDodge);
+	m_pSM->AddState((UINT)PENITENT_STATE::DODGETORUN, new CPenitentDodgeToRun);
+	m_pSM->AddState((UINT)PENITENT_STATE::JUMPATT, new CPenitentJumpAttack);
+	m_pSM->AddState((UINT)PENITENT_STATE::HEALTHPOTION, new CPenitentHealthPotion);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCH, new CPenitentCrouch);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHING, new CPenitentCrouching);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHUP, new CPenitentCrouchUp);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHATT, new CPenitentCrouchATT);
 
 
 	// Movement 컴포넌트 추가
@@ -62,7 +86,7 @@ CPenitent::CPenitent()
 	m_pMovement->SetFrictionScale(1500.f);
 	m_pMovement->UseGravity(true);
 	m_pMovement->SetGravity(Vec2(0.f, 1600.f));
-	m_pMovement->SetJumpVel(-600.f);
+	m_pMovement->SetJumpVel(-700.f);
 	m_pMovement->SetMaxDown(500.f);
 
 }
@@ -89,7 +113,13 @@ CPenitent::~CPenitent()
 
 void CPenitent::begin()
 {
-	
+	// BackBorad 저장
+	m_pSM->AddDataToBlackboard<bool>(L"IsTapS", false);
+
+
+	// Change State
+	m_pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
+
 }
 
 void CPenitent::tick(float _DT)
@@ -110,6 +140,15 @@ void CPenitent::tick(float _DT)
 		SetDir(true);
 	}
 
+
+
+	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
+	vLookAt /= 2.f;
+
+	if (KEY_TAP(KEY::ENTER))
+	{
+		SetPos(vLookAt);
+	}
 
 }
 
@@ -165,8 +204,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"UpwardAttck_Jump", L"animdata\\Penitent\\penitent_upward_attack_jump.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"UpwardAttck_Jump_L", L"animdata\\Penitent\\penitent_upward_attack_jump.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"UpwardAttck_Jump", 0.08f);
-	m_pAnimator->SetAnimDuration(L"UpwardAttck_Jump_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck_Jump", 0.03f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck_Jump_L", 0.03f);
 
 
 	//UpwardAttck
@@ -176,25 +215,26 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"UpwardAttck", L"animdata\\Penitent\\penitent_upward_attack_clamped_anim.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"UpwardAttck_L", L"animdata\\Penitent\\penitent_upward_attack_clamped_anim.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"UpwardAttck", 0.08f);
-	m_pAnimator->SetAnimDuration(L"UpwardAttck_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck", 0.035f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck_L", 0.035f);
 
 
-	// Atack
+	// Attack
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Attack", L"texture\\Penitent\\penitent_three_hits_attack_combo_no_slashes.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Attack_L", L"texture\\Penitent\\penitent_three_hits_attack_combo_no_slashes.png");
 
 	m_pAnimator->LoadAnimation(pTex, L"Attack", L"animdata\\Penitent\\penitent_three_hits_attack_combo_no_slashes.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Attack_L", L"animdata\\Penitent\\penitent_three_hits_attack_combo_no_slashes.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Attack", 0.08f);
-	m_pAnimator->SetAnimDuration(L"Attack_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Attack", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Attack_L", 0.06f);
 
 
-	// run
+	// Run
 
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Run", L"texture\\Penitent\\penitent_running_anim.png");
-	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Run_L", L"texture\\Penitent\\penitent_running_anim.png");
+	//pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Run_L", L"texture\\Penitent\\penitent_running_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTexture(L"Run_L", L"texture\\Penitent\\penitent_running_anim_L.png");
 
 
 	m_pAnimator->LoadAnimation(pTex, L"Run", L"animdata\\Penitent\\penitent_running_anim.txt");
@@ -205,7 +245,7 @@ void CPenitent::AnimationInit()
 
 
 
-	//penitent_risingFromFallen_anim
+	// Rising
 
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Rising", L"texture\\Penitent\\penitent_risingFromFallen_anim.png");
 	//pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Run_L", L"texture\\Penitent\\penitent_running_anim.png");
@@ -218,7 +258,7 @@ void CPenitent::AnimationInit()
 	//m_pAnimator->SetAnimDuration(L"Run_L", 0.06f);
 
 
-	// Penitent_pushback_grounded
+	// PushBack
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"PushBack", L"texture\\Penitent\\Penitent_pushback_grounded.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"PushBack_L", L"texture\\Penitent\\Penitent_pushback_grounded.png");
 
@@ -230,7 +270,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"PushBack_L", 0.06f);
 
 
-	// penitent_priedieu_stand_up_anim
+	// PrayEnd
+
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"PrayEnd", L"texture\\Penitent\\penitent_priedieu_stand_up_anim.png");
 	//pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Run_L", L"texture\\Penitent\\penitent_running_anim.png");
 
@@ -243,7 +284,7 @@ void CPenitent::AnimationInit()
 
 
 
-	// penintent_start_run_anim
+	// Start_Run
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Start_Run", L"texture\\Penitent\\penintent_start_run_anim.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Start_Run_L", L"texture\\Penitent\\penintent_start_run_anim.png");
 
@@ -256,7 +297,7 @@ void CPenitent::AnimationInit()
 
 
 
-	// penintent_stop_run_anim
+	// Stop_Run
 
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Stop_Run", L"texture\\Penitent\\penintent_stop_run_anim.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Stop_Run_L", L"texture\\Penitent\\penintent_stop_run_anim.png");
@@ -293,7 +334,7 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"Fall", 0.05f);
 	m_pAnimator->SetAnimDuration(L"Fall_L", 0.05f);
 
-	// penitent_jum_forward_anim
+	// JumpForward
 
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"JumpForward", L"texture\\Penitent\\penitent_jum_forward_anim.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"JumpForward_L", L"texture\\Penitent\\penitent_jum_forward_anim.png");
@@ -304,7 +345,7 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"JumpForward", 0.1f);
 	m_pAnimator->SetAnimDuration(L"JumpForward_L", 0.1f);
 
-	//penitent_jum_forward_fall
+	// JumpForwardFall
 		
 	m_pAnimator->LoadAnimation(pTex, L"JumpForwardFall", L"animdata\\Penitent\\penitent_jum_forward_fall.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"JumpForwardFall_L", L"animdata\\Penitent\\penitent_jum_forward_fall.txt", true);
@@ -312,8 +353,97 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"JumpForwardFall", 0.05f);
 	m_pAnimator->SetAnimDuration(L"JumpForwardFall_L", 0.05f);
 
+	// FallingAhead
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"FallingAhead", L"texture\\Penitent\\penitent_falling_ahead_anim 1.png");
+	m_pAnimator->LoadAnimation(L"animdata\\Penitent\\penitent_falling_ahead_anim.txt");
 
-	m_pAnimator->Play(L"JumpForward", true);
+
+	// penitent_start_to_run_from_dodge_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"DodgeToRun", L"texture\\Penitent\\penitent_start_to_run_from_dodge_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"DodgeToRun_L", L"texture\\Penitent\\penitent_start_to_run_from_dodge_anim.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"DodgeToRun", L"animdata\\Penitent\\penitent_start_to_run_from_dodge_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"DodgeToRun_L", L"animdata\\Penitent\\penitent_start_to_run_from_dodge_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"DodgeToRun", 0.04f);
+	m_pAnimator->SetAnimDuration(L"DodgeToRun_L", 0.04f);
+
+	// Dodge
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Dodge", L"texture\\Penitent\\penitent_dodge_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Dodge_L", L"texture\\Penitent\\penitent_dodge_anim.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"Dodge", L"animdata\\Penitent\\penitent_dodge_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Dodge_L", L"animdata\\Penitent\\penitent_dodge_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Dodge", 0.04f);
+	m_pAnimator->SetAnimDuration(L"Dodge_L", 0.04f);
+
+	// JumpATT
+
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"JumpATT", L"texture\\Penitent\\penitent_jumping_attack_noslashes.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"JumpATT_L", L"texture\\Penitent\\penitent_jumping_attack_noslashes.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"JumpATT", L"animdata\\Penitent\\penitent_jumping_attack_noslashes.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"JumpATT_L", L"animdata\\Penitent\\penitent_jumping_attack_noslashes.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"JumpATT", 0.08f);
+	m_pAnimator->SetAnimDuration(L"JumpATT_L", 0.08f);
+
+	// Healthpotion
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Healthpotion", L"texture\\Penitent\\penitent_healthpotion_consuming_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Healthpotion_L", L"texture\\Penitent\\penitent_healthpotion_consuming_anim.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"Healthpotion", L"animdata\\Penitent\\penitent_healthpotion_consuming_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Healthpotion_L", L"animdata\\Penitent\\penitent_healthpotion_consuming_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Healthpotion", 0.05f);
+	m_pAnimator->SetAnimDuration(L"Healthpotion_L", 0.05f);
+
+	// penitent_crouch_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Crouch", L"texture\\Penitent\\penitent_crouch_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Crouch_L", L"texture\\Penitent\\penitent_crouch_anim.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"Crouch", L"animdata\\Penitent\\penitent_crouch_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Crouch_L", L"animdata\\Penitent\\penitent_crouch_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Crouch", 0.05f);
+	m_pAnimator->SetAnimDuration(L"Crouch_L", 0.05f);
+
+	//penitent_crouching_anim
+	//pTex = CAssetMgr::GetInst()->LoadTexture(L"Crouch", L"texture\\Penitent\\penitent_crouch_anim.png");
+	//pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Crouch_L", L"texture\\Penitent\\penitent_crouch_anim");
+
+	m_pAnimator->LoadAnimation(pTex, L"Crouching", L"animdata\\Penitent\\penitent_crouching_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Crouching_L", L"animdata\\Penitent\\penitent_crouching_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Crouching", 0.1f);
+	m_pAnimator->SetAnimDuration(L"Crouching_L", 0.1f);
+
+
+	//penitent_crouch_up_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"CrouchUp", L"texture\\Penitent\\penitent_crouch_up_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"CrouchUp_L", L"texture\\Penitent\\penitent_crouch_up_anim.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"CrouchUp", L"animdata\\Penitent\\penitent_crouch_up_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"CrouchUp_L", L"animdata\\Penitent\\penitent_crouch_up_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"CrouchUp", 0.06f);
+	m_pAnimator->SetAnimDuration(L"CrouchUp_L", 0.06f);
+
+	//penitent_crouchslash_noslashes_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"CrouchATT", L"texture\\Penitent\\penitent_crouchslash_noslashes_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"CrouchATT_L", L"texture\\Penitent\\penitent_crouchslash_noslashes_anim.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"CrouchATT", L"animdata\\Penitent\\penitent_crouchslash_noslashes_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"CrouchATT_L", L"animdata\\Penitent\\penitent_crouchslash_noslashes_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"CrouchATT", 0.04f);
+	m_pAnimator->SetAnimDuration(L"CrouchATT_L", 0.04f);
+
+	//m_pAnimator->Play(L"JumpATT_L", true);
 
 	//m_pAnimator->SaveAnimations(L"animdata");
 }

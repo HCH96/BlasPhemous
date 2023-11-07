@@ -12,7 +12,6 @@ private:
     map<wstring, CAnim*>    m_mapAnim;
     bool                    m_bRepeat;
 
-
     int                     m_iAlpha;
     float                   m_fAcc;
 
@@ -20,10 +19,13 @@ public:
     int GetAlpha() { return m_iAlpha; }
     float GetAcc() { return m_fAcc; }
     bool IsFinish();
+    int GetCurFrame();
+
 
 
 public:
     void Play(const wstring& _strName, bool _bRepeat);
+    void PlayFromFrame(const wstring& _strName, UINT _iFrame, bool _bRepeat);
     void Stop();
 
     void SetAnimDuration(const wstring& _strName, float _fDuration);
