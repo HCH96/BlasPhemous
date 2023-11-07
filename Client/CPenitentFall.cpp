@@ -40,11 +40,6 @@ void CPenitentFall::finaltick(float _DT)
 
 	// 상태 변화
 
-	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
-	{
-		Enter();
-	}
-
 	if (vVel.x != 0.f)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);

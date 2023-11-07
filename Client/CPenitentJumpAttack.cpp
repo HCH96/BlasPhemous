@@ -17,7 +17,8 @@ void CPenitentJumpAttack::finaltick(float _DT)
 	CStateMachine* pOwnerSM = GetOwnerSM();
 	Vec2 vVel = pMovement->GetVelocity();
 
-	int iCurFrame = pAnimator->GetCurFrame();
+	bool bDir = GetOwnerObj->GetDir();
+	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
 	bool isFinsh = false;
 
 	// 속도 변화
@@ -56,11 +57,17 @@ void CPenitentJumpAttack::finaltick(float _DT)
 	}
 
 
-
-
+	// 방향 전환
 	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
 	{
-		Enter();
+		if (bDir)
+		{
+			pAnimator->PlayFromFrame(L"JumpATT", iCurFrame, false);
+		}
+		else
+		{
+			pAnimator->PlayFromFrame(L"JumpATT_L", iCurFrame, false);
+		}
 	}
 
 	if (isFinsh)

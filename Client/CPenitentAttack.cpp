@@ -17,8 +17,24 @@ void CPenitentAttack::finaltick(float _DT)
 	CStateMachine* pOwnerSM = GetOwnerSM();
 	
 
-	int iCurFrame = pAnimator->GetCurFrame();
 	bool isFinsh = false;
+	bool bDir = GetOwnerObj->GetDir();
+	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
+
+
+	// 방향 전환
+	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
+	{
+		if (bDir)
+		{
+			pAnimator->PlayFromFrame(L"Attack", iCurFrame, false);
+		}
+		else
+		{
+			pAnimator->PlayFromFrame(L"Attack_L", iCurFrame, false);
+		}
+	}
+
 
 	// Attack 1 ( 0 Frame ~ 7 Frame )
 	if (iCurFrame >= 0 && iCurFrame <= 8)

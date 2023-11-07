@@ -40,11 +40,24 @@ void CPenitentFowardFall::finaltick(float _DT)
 
 
 	// 상태 변화
+	// 방향 전환
+	bool bDir = GetOwnerObj->GetDir();
+	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
+
 	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
 	{
-		Enter();
+		if (bDir)
+		{
+			pAnimator->PlayFromFrame(L"JumpForwardFall", iCurFrame, false);
+		}
+		else
+		{
+			pAnimator->PlayFromFrame(L"JumpForwardFall_L", iCurFrame, false);
+		}
 	}
 
+	// Fall
 	if (pMovement->GetVelocity().x == 0.f)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);

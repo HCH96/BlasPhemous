@@ -16,12 +16,8 @@ void CPenitentUpwardATT::finaltick(float _DT)
 
 	Vec2 vVel = pMovement->GetVelocity();
 
-	// 상태 변화
-	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
-	{
-		Enter();
-	}
 
+	// 상태 변화
 	if (pAnimator->IsFinish())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);

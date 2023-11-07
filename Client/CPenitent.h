@@ -12,14 +12,22 @@ class CPenitent :
 {
     GENERATED_OBJECT(CObj);
 private:
+    float                   m_fHP;
+
     CAnimator*              m_pAnimator;
+    CAnimator*              m_pEffector;
     CCollider*              m_pCollider;
     CMovement*              m_pMovement;
     CStateMachine*          m_pSM;
 
 private:
     void AnimationInit();
+    void EffectInit();
+    void StateInit();
 
+public:
+    float GetHP() { return m_fHP; }
+    void SetHP(float _f) { m_fHP = _f; }
 
 public:
     virtual void begin() override;

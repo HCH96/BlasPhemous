@@ -41,26 +41,21 @@ void CPenitentJump::finaltick(float _DT)
 	
 
 	// 상태 변화
-	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
+
+	if ((KEY_TAP(KEY::LEFT) || KEY_PRESSED(KEY::LEFT)) && KEY_NONE(KEY::RIGHT))
 	{
-		Enter();
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
 	}
 
-	if (vVel.y > 0)
+	if ((KEY_TAP(KEY::RIGHT) || KEY_PRESSED(KEY::RIGHT)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
+	}
+
+	if (vVel.y > 0 && vVel.x == 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
 	}
-
-	if ((KEY_TAP(KEY::LEFT) || KEY_PRESSED(KEY::LEFT)) && KEY_NONE(KEY::RIGHT) && GetOwnerSM()->GetCurState() != (UINT)PENITENT_STATE::FALL)
-	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
-	}
-
-	if ((KEY_TAP(KEY::RIGHT) || KEY_PRESSED(KEY::RIGHT)) && GetOwnerSM()->GetCurState() != (UINT)PENITENT_STATE::FALL)
-	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
-	}
-
 
 	if (KEY_TAP(KEY::S))
 	{

@@ -29,13 +29,16 @@
 #include "CPenitentCrouching.h"
 #include "CPenitentCrouchUp.h"
 #include "CPenitentCrouchATT.h"
+#include "CPenitentDeath.h"
 
 
 CPenitent::CPenitent()
 	: m_pAnimator(nullptr)
+	, m_pEffector(nullptr)
 	, m_pCollider(nullptr)
 	, m_pMovement(nullptr)
 	, m_pSM(nullptr)
+	, m_fHP(100.f)
 {
 	// 이름 설정
 	SetName(L"Penitent");
@@ -44,8 +47,15 @@ CPenitent::CPenitent()
 	SetScale(Vec2(2.f, 2.f));
 
 	// Animator init
+	
+	// Penitent
 	m_pAnimator = AddComponent<CAnimator>(L"Penitent_Animator");
 	AnimationInit();
+	
+	// Effector
+	m_pEffector = AddComponent<CAnimator>(L"Penitent_Effector");
+	EffectInit();
+
 
 	// collider
 	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
@@ -55,27 +65,9 @@ CPenitent::CPenitent()
 
 	// StateMachine 컴포넌트 추가
 	m_pSM = AddComponent<CStateMachine>(L"Penitent_SM");
-	m_pSM->AddState((UINT)PENITENT_STATE::FALLINGAHEAD, new CPenitentFallingAhead);
-	m_pSM->AddState((UINT)PENITENT_STATE::RISING, new CPenitentRising);
-	m_pSM->AddState((UINT)PENITENT_STATE::IDLE, new CPenitentIdle);
-	m_pSM->AddState((UINT)PENITENT_STATE::STARTRRUN, new CPenitentStartRun);
-	m_pSM->AddState((UINT)PENITENT_STATE::RUN, new CPenitentRun);
-	m_pSM->AddState((UINT)PENITENT_STATE::STOPRUN, new CPenitentStopRun);
-	m_pSM->AddState((UINT)PENITENT_STATE::JUMP, new CPenitentJump);
-	m_pSM->AddState((UINT)PENITENT_STATE::FALL, new CPenitentFall);
-	m_pSM->AddState((UINT)PENITENT_STATE::JUMPFORWARD, new CPenitentJumpForward);
-	m_pSM->AddState((UINT)PENITENT_STATE::FALLFORWARD, new CPenitentFowardFall);
-	m_pSM->AddState((UINT)PENITENT_STATE::ATTACK, new CPenitentAttack);
-	m_pSM->AddState((UINT)PENITENT_STATE::UPWARDATTACK, new CPenitentUpwardATT);
-	m_pSM->AddState((UINT)PENITENT_STATE::UPWARDATTACKJUMP, new CPenitentUpwardATTJump);
-	m_pSM->AddState((UINT)PENITENT_STATE::DODGE, new CPenitentDodge);
-	m_pSM->AddState((UINT)PENITENT_STATE::DODGETORUN, new CPenitentDodgeToRun);
-	m_pSM->AddState((UINT)PENITENT_STATE::JUMPATT, new CPenitentJumpAttack);
-	m_pSM->AddState((UINT)PENITENT_STATE::HEALTHPOTION, new CPenitentHealthPotion);
-	m_pSM->AddState((UINT)PENITENT_STATE::CROUCH, new CPenitentCrouch);
-	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHING, new CPenitentCrouching);
-	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHUP, new CPenitentCrouchUp);
-	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHATT, new CPenitentCrouchATT);
+	StateInit();
+
+	
 
 
 	// Movement 컴포넌트 추가
@@ -118,6 +110,7 @@ void CPenitent::begin()
 
 
 	// Change State
+	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);
 	m_pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
 
 }
@@ -140,7 +133,11 @@ void CPenitent::tick(float _DT)
 		SetDir(true);
 	}
 
-
+	// DEBUG
+	if (KEY_TAP(KEY::Q))
+	{
+		m_fHP = 0.f;
+	}
 
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
@@ -184,8 +181,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"Death", L"animdata\\Penitent\\death_anim_blood.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Death_L", L"animdata\\Penitent\\death_anim_blood.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Death", 0.08f);
-	m_pAnimator->SetAnimDuration(L"Death_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Death", 0.05f);
+	m_pAnimator->SetAnimDuration(L"Death_L", 0.05f);
 
 	//ThrowBack
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"ThrowBack", L"texture\\Penitent\\penitent_throwback_anim.png");
@@ -443,7 +440,37 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"CrouchATT", 0.04f);
 	m_pAnimator->SetAnimDuration(L"CrouchATT_L", 0.04f);
 
-	//m_pAnimator->Play(L"JumpATT_L", true);
+	m_pAnimator->Play(L"Death", true);
 
 	//m_pAnimator->SaveAnimations(L"animdata");
+}
+
+void CPenitent::EffectInit()
+{
+}
+
+void CPenitent::StateInit()
+{
+	m_pSM->AddState((UINT)PENITENT_STATE::FALLINGAHEAD, new CPenitentFallingAhead);
+	m_pSM->AddState((UINT)PENITENT_STATE::RISING, new CPenitentRising);
+	m_pSM->AddState((UINT)PENITENT_STATE::IDLE, new CPenitentIdle);
+	m_pSM->AddState((UINT)PENITENT_STATE::STARTRRUN, new CPenitentStartRun);
+	m_pSM->AddState((UINT)PENITENT_STATE::RUN, new CPenitentRun);
+	m_pSM->AddState((UINT)PENITENT_STATE::STOPRUN, new CPenitentStopRun);
+	m_pSM->AddState((UINT)PENITENT_STATE::JUMP, new CPenitentJump);
+	m_pSM->AddState((UINT)PENITENT_STATE::FALL, new CPenitentFall);
+	m_pSM->AddState((UINT)PENITENT_STATE::JUMPFORWARD, new CPenitentJumpForward);
+	m_pSM->AddState((UINT)PENITENT_STATE::FALLFORWARD, new CPenitentFowardFall);
+	m_pSM->AddState((UINT)PENITENT_STATE::ATTACK, new CPenitentAttack);
+	m_pSM->AddState((UINT)PENITENT_STATE::UPWARDATTACK, new CPenitentUpwardATT);
+	m_pSM->AddState((UINT)PENITENT_STATE::UPWARDATTACKJUMP, new CPenitentUpwardATTJump);
+	m_pSM->AddState((UINT)PENITENT_STATE::DODGE, new CPenitentDodge);
+	m_pSM->AddState((UINT)PENITENT_STATE::DODGETORUN, new CPenitentDodgeToRun);
+	m_pSM->AddState((UINT)PENITENT_STATE::JUMPATT, new CPenitentJumpAttack);
+	m_pSM->AddState((UINT)PENITENT_STATE::HEALTHPOTION, new CPenitentHealthPotion);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCH, new CPenitentCrouch);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHING, new CPenitentCrouching);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHUP, new CPenitentCrouchUp);
+	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHATT, new CPenitentCrouchATT);
+	m_pSM->AddState((UINT)PENITENT_STATE::DEATH, new CPenitentDeath);
 }

@@ -177,6 +177,7 @@
     <ClInclude Include="CPenitentCrouchATT.h" />
     <ClInclude Include="CPenitentCrouching.h" />
     <ClInclude Include="CPenitentCrouchUp.h" />
+    <ClInclude Include="CPenitentDeath.h" />
     <ClInclude Include="CPenitentDodge.h" />
     <ClInclude Include="CPenitentDodgeToRun.h" />
     <ClInclude Include="CPenitentFall.h" />
@@ -256,6 +257,7 @@
     <ClCompile Include="CPenitentCrouchATT.cpp" />
     <ClCompile Include="CPenitentCrouching.cpp" />
     <ClCompile Include="CPenitentCrouchUp.cpp" />
+    <ClCompile Include="CPenitentDeath.cpp" />
     <ClCompile Include="CPenitentDodge.cpp" />
     <ClCompile Include="CPenitentDodgeToRun.cpp" />
     <ClCompile Include="CPenitentFall.cpp" />

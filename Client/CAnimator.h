@@ -25,6 +25,7 @@ public:
 
 public:
     void Play(const wstring& _strName, bool _bRepeat);
+    void PlayNoReset(const wstring& _strName, bool _bRepeat);
     void PlayFromFrame(const wstring& _strName, UINT _iFrame, bool _bRepeat);
     void Stop();
 

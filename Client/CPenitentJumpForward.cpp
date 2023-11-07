@@ -15,9 +15,9 @@ void CPenitentJumpForward::finaltick(float _DT)
 {
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-
-	Vec2 vVel = pMovement->GetVelocity();
 	bool bDir = GetOwnerObj->GetDir();
+	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
+	Vec2 vVel = pMovement->GetVelocity();
 
 	// 속도 변화
 
@@ -45,9 +45,18 @@ void CPenitentJumpForward::finaltick(float _DT)
 
 	// 상태 변화
 
+
+	// 방향 전환
 	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
 	{
-		Enter();
+		if (bDir)
+		{
+			pAnimator->PlayFromFrame(L"JumpForward", iCurFrame, false);
+		}
+		else
+		{
+			pAnimator->PlayFromFrame(L"JumpForward_L", iCurFrame, false);
+		}
 	}
 
 	if (vVel.y > 0 && pAnimator->IsFinish())

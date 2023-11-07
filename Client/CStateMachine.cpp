@@ -8,7 +8,8 @@ CStateMachine::CStateMachine(CObj* _Owner)
 	: CComponent(_Owner)
 	, m_pGlobalState(nullptr)
 	, m_pCurState(nullptr)
-	, m_pPrevState(nullptr)
+	, m_iPrevState(0)
+	, m_iCurState(0)
 {
 
 }
@@ -17,7 +18,8 @@ CStateMachine::CStateMachine(const CStateMachine& _Origin)
 	: CComponent(_Origin)
 	, m_pGlobalState(nullptr)
 	, m_pCurState(nullptr)
-	, m_pPrevState(nullptr)
+	, m_iPrevState(_Origin.m_iPrevState)
+	, m_iCurState(_Origin.m_iCurState)
 {
 	for (const auto& pair : _Origin.m_mapState)
 	{
@@ -52,6 +54,12 @@ CStateMachine::~CStateMachine()
 
 void CStateMachine::finaltick(float _DT)
 {
+
+	if (nullptr != m_pGlobalState)
+	{
+		m_pGlobalState->finaltick(_DT);
+	}
+
 	if (nullptr != m_pCurState)
 	{
 		m_pCurState->finaltick(_DT);
@@ -70,6 +78,19 @@ void CStateMachine::AddState(UINT _id, CState* _State)
 
 	m_mapState.insert(make_pair(_id, _State));
 	_State->m_pSM = this;
+}
+
+void CStateMachine::SetGlobalState(UINT _id)
+{
+	CState* pFindState = FindState(_id);
+
+	if (nullptr == pFindState)
+	{
+		LOG(LOG_LEVEL::ERR, L"!!해당하는 State가 없습니다!!");
+		return;
+	}
+
+	m_pGlobalState = pFindState;
 }
 
 CState* CStateMachine::FindState(UINT _id)
@@ -94,6 +115,12 @@ void CStateMachine::ChangeState(UINT _NextID)
 		return;
 	}
 
+	if (pNextState == m_pCurState)
+		return;
+
+	// 이전 스테이트 저장
+	m_iPrevState = m_iCurState;
+
 	// 기존 스테이트 마무리
 	if (nullptr != m_pCurState)
 	{
@@ -107,6 +134,7 @@ void CStateMachine::ChangeState(UINT _NextID)
 	// 새로운 스테이트로 진입(초기작업 수행)
 	m_pCurState->Enter();
 }
+
 
 
 

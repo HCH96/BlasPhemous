@@ -8,20 +8,26 @@ class CStateMachine :
 {
 private:
     map<UINT, CState*>  m_mapState;
-    CState*             m_pPrevState;
     CState*             m_pCurState;
     CState*             m_pGlobalState;
     
+    UINT                m_iPrevState;
     UINT                m_iCurState;
 
     map<wstring, void*> m_mapBlackboard;
 
 public:
     UINT GetCurState() { return m_iCurState; }
+    
+    void SetGlobalState(UINT _id);
 
-    void AddState(UINT _id, CState* _State);
+
+public:
     CState* FindState(UINT _id);
+    void AddState(UINT _id, CState* _State);
     void ChangeState(UINT _NextID);
+
+    void RevertToPrevState() { ChangeState(m_iPrevState); }
 
     template<typename T>
     void AddDataToBlackboard(const wstring& _strKey, const T& _Data);

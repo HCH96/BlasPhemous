@@ -14,7 +14,8 @@ void CPenitentUpwardATTJump::finaltick(float _DT)
 {
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-	
+	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
+	bool bDir = GetOwnerObj->GetDir();
 	Vec2 vVel = pMovement->GetVelocity();
 
 	// 속도 변화
@@ -40,9 +41,18 @@ void CPenitentUpwardATTJump::finaltick(float _DT)
 	}
 
 	// 상태 변화
+
+	// 방향 전환
 	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
 	{
-		Enter();
+		if (bDir)
+		{
+			pAnimator->PlayFromFrame(L"UpwardAttck_Jump", iCurFrame, false);
+		}
+		else
+		{
+			pAnimator->PlayFromFrame(L"UpwardAttck_Jump_L", iCurFrame, false);
+		}
 	}
 
 	if (pAnimator->IsFinish())

@@ -215,6 +215,9 @@
     <Filter Include="Game\08. State\Penitent\Crouching">
       <UniqueIdentifier>{acbc461c-5cc8-4b44-bd5f-0f932966e34c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\Death">
+      <UniqueIdentifier>{af0c1027-4d03-40b0-9fdd-a9b5a7959171}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -452,6 +455,9 @@
     <ClInclude Include="CPenitentCrouching.h">
       <Filter>Game\08. State\Penitent\Crouching</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentDeath.h">
+      <Filter>Game\08. State\Penitent\Death</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -683,6 +689,9 @@
     </ClCompile>
     <ClCompile Include="CPenitentCrouching.cpp">
       <Filter>Game\08. State\Penitent\Crouching</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentDeath.cpp">
+      <Filter>Game\08. State\Penitent\Death</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

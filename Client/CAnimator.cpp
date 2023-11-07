@@ -86,6 +86,14 @@ void CAnimator::Play(const wstring& _strName, bool _bRepeat)
 	assert(m_pCurAnim);
 }
 
+void CAnimator::PlayNoReset(const wstring& _strName, bool _bRepeat)
+{
+	m_bRepeat = _bRepeat;
+	m_pCurAnim = FindAnimation(_strName);
+
+	assert(m_pCurAnim);
+}
+
 void CAnimator::PlayFromFrame(const wstring& _strName, UINT _iFrame, bool _bRepeat)
 {
 	m_bRepeat = _bRepeat;
