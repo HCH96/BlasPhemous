@@ -26,8 +26,8 @@ void CPenitentDodgeToRun::finaltick(float _DT)
 		pMovement->SetVelocity(Vec2(-300.f, 0.f));
 	}
 
-	// 상태 변화
 
+	// 상태 변화
 	if (m_bDir != bDir)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::RUN);
@@ -38,10 +38,24 @@ void CPenitentDodgeToRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::RUN);
 	}
 
+	// JumpForward
+	if (KEY_TAP(KEY::F))
+	{
+		pMovement->SetGround(false);
+		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
+	}
+
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
+	}
+	
 }
 
 void CPenitentDodgeToRun::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	m_bDir = GetOwnerObj->GetDir();

@@ -70,7 +70,7 @@ void CPenitentRun::finaltick(float _DT)
 
 	if ((KEY_TAP(KEY::F)) && GetOwnerSM()->GetCurState() == (UINT)PENITENT_STATE::STOPRUN && !(KEY_TAP(KEY::S)))
 	{
-		// JumpForward
+		// Jump
 		pMovement->SetGround(false);
 		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMP);
@@ -80,10 +80,16 @@ void CPenitentRun::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
+
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
+	}
 }
 
 void CPenitentRun::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");

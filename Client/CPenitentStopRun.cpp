@@ -67,11 +67,16 @@ void CPenitentStopRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+	}
 
 }
 
 void CPenitentStopRun::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");

@@ -41,10 +41,13 @@ void CPenitentCrouchUp::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
+
+
 }
 
 void CPenitentCrouchUp::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bDir = GetOwnerObj->GetDir();
 

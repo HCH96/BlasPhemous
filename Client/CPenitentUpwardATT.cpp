@@ -38,6 +38,11 @@ void CPenitentUpwardATT::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+	}
+
 }
 
 void CPenitentUpwardATT::Enter()

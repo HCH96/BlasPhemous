@@ -9,6 +9,11 @@ enum class LEVEL_TYPE
 
 	TITLE_LEVEL,
 	MAINMENU_LEVEL,
+	STAGE01_1,
+	//STAGE01_2,
+	//STAGE01_3,
+	//BOSS_1,
+	//STAGE01_4,
 
 	END,
 };

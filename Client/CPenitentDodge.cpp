@@ -53,11 +53,16 @@ void CPenitentDodge::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
 	}
 
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
+	}
 
 }
 
 void CPenitentDodge::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();

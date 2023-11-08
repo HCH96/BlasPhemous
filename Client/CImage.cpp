@@ -37,7 +37,8 @@ void CImage::render(HDC _dc)
 	}
 
 	Vec2 vRenderPos = GetRenderPos();
+	Vec2 vPos = GetPos();
 	Vec2 vScale = GetScale();
 
-	AlphaBlendRender(_dc, m_pTex, vRenderPos, vScale);
+	AlphaBlendRender(_dc, m_pTex, vPos, vScale);
 }

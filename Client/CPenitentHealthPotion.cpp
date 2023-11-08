@@ -24,6 +24,7 @@ void CPenitentHealthPotion::finaltick(float _DT)
 
 void CPenitentHealthPotion::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	int iDir = GetOwnerObj->GetDir();
 

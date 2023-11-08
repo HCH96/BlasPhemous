@@ -18,10 +18,12 @@ void CPenitentRising::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
+
 }
 
 void CPenitentRising::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 
 	pAnimator->Play(L"Rising", false);

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CPenitentIdle.h"
 
+#include "CCamera.h"
+
 #include "CPenitent.h"
 
 CPenitentIdle::CPenitentIdle()
@@ -64,12 +66,19 @@ void CPenitentIdle::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACK);
 	}
 
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+	}
+
 }
 
 void CPenitentIdle::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	int iDir = GetOwnerObj->GetDir();
+	// Vec2(60.f, -230.f);
 
 	if (iDir)
 	{

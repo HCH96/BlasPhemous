@@ -15,6 +15,18 @@ CLayer::~CLayer()
 }
 
 
+void CLayer::PullAllObject()
+{
+	for (size_t i = 0; i < m_vecObjects.size(); ++i)
+	{
+		m_vecObjects[i]->SetLayerIdx(-1);
+	}
+	
+	m_vecObjects.clear();
+	m_vecCollider.clear();
+
+}
+
 void CLayer::DeleteAllObjects()
 {
 	for (size_t i = 0; i < m_vecObjects.size(); ++i)

@@ -71,7 +71,8 @@ CPenitent::CPenitent()
 	m_pSM = AddComponent<CStateMachine>(L"Penitent_SM");
 	StateInit();
 
-	
+	// BackBorad 저장
+	m_pSM->AddDataToBlackboard<bool>(L"IsTapS", false);
 
 
 	// Movement 컴포넌트 추가
@@ -98,6 +99,8 @@ CPenitent::CPenitent(const CPenitent& _Origin)
 	m_pAnimator = GetComponent<CAnimator>();
 	m_pMovement = GetComponent<CMovement>();
 	m_pSM = GetComponent<CStateMachine>();
+
+	
 }
 
 CPenitent::~CPenitent()
@@ -109,14 +112,17 @@ CPenitent::~CPenitent()
 
 void CPenitent::begin()
 {
-	// BackBorad 저장
-	m_pSM->AddDataToBlackboard<bool>(L"IsTapS", false);
-
+	// 레벨 진입 시
 
 	// Change State
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);
-	m_pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
+	m_pSM->ChangeState((UINT)PENITENT_STATE::FALL);
 
+	// Movement 세팅
+	m_pMovement->SetGround(false);
+
+
+	
 }
 
 void CPenitent::tick(float _DT)

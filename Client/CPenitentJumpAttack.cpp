@@ -118,6 +118,7 @@ void CPenitentJumpAttack::finaltick(float _DT)
 
 void CPenitentJumpAttack::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bDir = GetOwnerObj->GetDir();

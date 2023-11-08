@@ -83,6 +83,7 @@ void CPenitentJumpForward::finaltick(float _DT)
 
 void CPenitentJumpForward::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	Vec2 vVel = pMovement->GetVelocity();

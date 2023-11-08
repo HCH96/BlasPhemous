@@ -22,6 +22,7 @@ void CPenitentFallingAhead::finaltick(float _DT)
 
 void CPenitentFallingAhead::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(0.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 
 	pAnimator->Play(L"FallingAhead", true);

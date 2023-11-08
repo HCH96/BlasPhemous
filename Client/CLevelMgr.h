@@ -1,6 +1,7 @@
 #pragma once
 
 class CLevel;
+class CPenitent;
 
 class CLevelMgr
 {
@@ -9,9 +10,11 @@ class CLevelMgr
 private:
 	CLevel*			m_pCurLevel;
 	CLevel*			m_arrLevels[(UINT)LEVEL_TYPE::END];
+	CPenitent*		m_pPenitent;
 
 
 public:
+	CPenitent* GetPenitent() { return m_pPenitent; }
 	CLevel* GetCurLevel() { return m_pCurLevel; }
 	
 private:

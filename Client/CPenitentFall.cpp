@@ -64,6 +64,7 @@ void CPenitentFall::finaltick(float _DT)
 
 void CPenitentFall::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bDir = GetOwnerObj->GetDir();
 

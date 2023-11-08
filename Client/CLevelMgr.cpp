@@ -7,10 +7,15 @@
 
 #include "CTitleLevel.h"
 #include "CMainMenuLevel.h"
+#include "CStage01_1.h"
+
+
+#include "CPenitent.h"
 
 CLevelMgr::CLevelMgr()
 	: m_pCurLevel(nullptr)
 	, m_arrLevels{}
+	, m_pPenitent(nullptr)
 {}
 
 
@@ -48,7 +53,7 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::EDITOR_LEVEL] = new CEditorLevel;
 	m_arrLevels[(UINT)LEVEL_TYPE::TITLE_LEVEL] = new CTitleLevel;
 	m_arrLevels[(UINT)LEVEL_TYPE::MAINMENU_LEVEL] = new CMainMenuLevel;
-
+	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_1] = new CStage01_1;
 
 	// 레벨 초기화
 	for (UINT i = 0; i < (UINT)LEVEL_TYPE::END; ++i)
@@ -56,9 +61,13 @@ void CLevelMgr::init()
 		m_arrLevels[i]->init();
 	}
 
+	// Penitent 포인터를 등록
+	CPenitent* pPenitent = new CPenitent;
+	m_pPenitent = pPenitent;
+
+
 	// Level 
 	ChangeLevel(LEVEL_TYPE::PLAY_LEVEL);
-
 }
 
 void CLevelMgr::tick()

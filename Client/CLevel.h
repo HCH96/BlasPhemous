@@ -1,6 +1,9 @@
 #pragma once
 
 #include "CEntity.h"
+
+#include "CLevelMgr.h"
+
 #include "CLayer.h"
 
 
@@ -34,6 +37,7 @@ public:
 
 protected:
 	void AddObject(LAYER _eLayer, CObj* _Object);
+	void PullOutObject(LAYER _eLayer);
 	void DeleteAllObjects();
 	void DeleteObjectsByLayer(LAYER _eLayer);
 

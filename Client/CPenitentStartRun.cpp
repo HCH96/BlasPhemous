@@ -82,10 +82,16 @@ void CPenitentStartRun::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::RUN);
 	}
+
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
+	}
 }
 
 void CPenitentStartRun::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();

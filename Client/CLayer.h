@@ -14,6 +14,7 @@ private:
 public:
 	void clear() { m_vecCollider.clear(); }
 	void AddObject(CObj* _pObject) { m_vecObjects.push_back(_pObject); }
+	void PullAllObject();
 	void DeleteAllObjects();
 	void RegisterCollider(CCollider* _pCollider) { m_vecCollider.push_back(_pCollider); }
 

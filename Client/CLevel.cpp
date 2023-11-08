@@ -88,6 +88,16 @@ void CLevel::AddObject(LAYER _eLayer, CObj* _Object)
 	_Object->m_iLayerIdx = (int)_eLayer;
 }
 
+void CLevel::PullOutObject(LAYER _eLayer)
+{
+	m_arrLayer[(UINT)_eLayer]->PullAllObject();
+
+
+}
+
+	
+
+
 void CLevel::DeleteAllObjects()
 {
 	for (UINT i = 0; i < (UINT)LAYER::END; ++i)

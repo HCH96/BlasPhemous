@@ -218,6 +218,12 @@
     <Filter Include="Game\08. State\Penitent\Death">
       <UniqueIdentifier>{af0c1027-4d03-40b0-9fdd-a9b5a7959171}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\05. Level\Stage01-1">
+      <UniqueIdentifier>{6d6a4696-4c3a-4639-bc53-b3e348136b05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\BackGround">
+      <UniqueIdentifier>{50479dd3-e6e2-44df-bbe1-9359d335ba0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -458,6 +464,12 @@
     <ClInclude Include="CPenitentDeath.h">
       <Filter>Game\08. State\Penitent\Death</Filter>
     </ClInclude>
+    <ClInclude Include="CStage01_1.h">
+      <Filter>Game\05. Level\Stage01-1</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackground.h">
+      <Filter>Game\04. Object\BackGround</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -692,6 +704,12 @@
     </ClCompile>
     <ClCompile Include="CPenitentDeath.cpp">
       <Filter>Game\08. State\Penitent\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage01_1.cpp">
+      <Filter>Game\05. Level\Stage01-1</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackground.cpp">
+      <Filter>Game\04. Object\BackGround</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

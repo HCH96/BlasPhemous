@@ -107,11 +107,17 @@ void CPenitentAttack::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DODGE);
 	}
 
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+	}
+
 
 }
 
 void CPenitentAttack::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();

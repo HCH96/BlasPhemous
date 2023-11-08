@@ -25,6 +25,7 @@ public:
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	void SetDir(bool _bDir) { m_bDir = _bDir; }
 	void SetPrevDir(bool _bPrev) { m_bPrevDir = _bPrev; }
+	void SetLayerIdx(int _iIdx) { m_iLayerIdx = _iIdx; }
 
 	int  GetLayerIdx() { return m_iLayerIdx; }
 	bool GetDir() { return m_bDir; }

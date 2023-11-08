@@ -12,6 +12,7 @@ CPenitentCrouching::~CPenitentCrouching()
 void CPenitentCrouching::finaltick(float _DT)
 {
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();
 	
 	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
@@ -29,10 +30,16 @@ void CPenitentCrouching::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCHATT);
 	}
 
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+	}
+
 }
 
 void CPenitentCrouching::Enter()
 {
+	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bDir = GetOwnerObj->GetDir();
 
