@@ -22,11 +22,11 @@ void CPenitentDodge::finaltick(float _DT)
 	{
 		if (m_iDir)
 		{
-			pMovement->SetVelocity(Vec2(700.f, 0.f));
+			pMovement->SetVelocity(Vec2(700.f, pMovement->GetVelocity().y));
 		}
 		else
 		{
-			pMovement->SetVelocity(Vec2(-700.f, 0.f));
+			pMovement->SetVelocity(Vec2(-700.f, pMovement->GetVelocity().y));
 		}
 	}
 
@@ -70,6 +70,7 @@ void CPenitentDodge::Enter()
 	m_iDir = GetOwnerObj->GetDir();
 
 	pMovement->SetMaxSpeed(800.f);
+	pMovement->SetGravity(Vec2(0.f, 8000.f));
 
 	pDustAnimator->SetLock(true);
 	pDustAnimator->SetTmpPos(GetOwnerObj->GetPos());
@@ -96,6 +97,7 @@ void CPenitentDodge::Exit()
 
 	// Movement 설정 값 되돌려주기
 	pMovement->SetMaxSpeed(300.f);
+	pMovement->SetGravity(Vec2(0.f, 1600.f));
 
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
 	//pDustAnimator->SetLock(false);

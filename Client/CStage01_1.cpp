@@ -49,23 +49,47 @@ void CStage01_1::init()
 	pBackGround->SetScale(Vec2(2.f,2.f));
 	AddObject(LAYER::TILE, pBackGround);
 
-	// Foreground 1
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_Door", L"texture\\Map\\Brotherhood\\1-1\\1_1_Door.png"));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::FOREGROUND, pBackGround);
+	//// Foreground 1
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_Door", L"texture\\Map\\Brotherhood\\1-1\\1_1_Door.png"));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::FOREGROUND, pBackGround);
 
-	// Foreground 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_AfterLayer", L"texture\\Map\\Brotherhood\\1-1\\1_1_AfterLayer.png"));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::FOREGROUND, pBackGround);
+	//// Foreground 2
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_AfterLayer", L"texture\\Map\\Brotherhood\\1-1\\1_1_AfterLayer.png"));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::FOREGROUND, pBackGround);
 
 
 	// ÇÃ·§Æû »ý¼º
 	CPlatform* pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(1000.f, 1200.f));
+	pPlatform->SetPos(Vec2(280.f, 1440.f));
+	pPlatform->SetScale(Vec2(200.f,30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(720.f, 1240.f));
+	pPlatform->SetScale(Vec2(800.f, 30.f));
+	pPlatform->SetAngle(-27.f);
+	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(1220.f, 1060.f));
+	pPlatform->SetScale(Vec2(300.f, 30.f));
+	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(2120.f, 1440.f));
+	pPlatform->SetScale(Vec2(1680.f, 30.f));
+	pPlatform->SetAngle(27.f);
+	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(3300.f, 1830.f));
+	pPlatform->SetScale(Vec2(900.f, 30.f));
+	AddObject(LAYER::PLATFORM, pPlatform);
+
 
 
 }

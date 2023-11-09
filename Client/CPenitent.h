@@ -14,6 +14,8 @@ class CPenitent :
 private:
     float                   m_fHP;
 
+    int                     m_iOverlapGround;
+
     CAnimator*              m_pAnimator;
     CAnimator*              m_pEffector;
     CAnimator*              m_pDustAnimator;

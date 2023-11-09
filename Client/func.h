@@ -30,3 +30,5 @@ void LoadWString(wstring& _str, FILE* _File);
 
 void AlphaBlendRender(HDC _dc, CTexture* _pTex, Vec2 _vRenderPos, Vec2 _vScale);
 HBITMAP FlipBitmapHorizontally(HBITMAP hbm);
+
+void DrawRotatedRectangle(HDC hdc, int x, int y, int width, int height, float angle);

@@ -26,7 +26,7 @@ void CMovement::finaltick(float _DT)
 	m_vAccel = m_vForce / m_fMass;
 
 	// 중력 계산
-	if (m_bUseGravity && !m_bGround)
+	if (m_bUseGravity)
 	{
 		m_vAccel += m_vGravityForce;
 	}

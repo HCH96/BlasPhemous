@@ -10,6 +10,9 @@
 #include <memory.h>
 #include <tchar.h>
 
+// math
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 // render
 #pragma comment(lib, "Msimg32.lib")

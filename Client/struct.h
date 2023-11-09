@@ -20,6 +20,11 @@ public:
 		, y(_y)
 	{}
 
+	Vec2(double _x, double _y)
+		: x(float(_x))
+		, y(float(_y))
+	{}
+
 	Vec2(int _x, int _y)
 		: x((float)_x)
 		, y((float)_y)
@@ -67,14 +72,21 @@ public:
 		return *this;
 	}
 
-	Vec2 Rotate(float _fTheta)
+	Vec2 Rotate(float _fAngle)
 	{
 		Vec2 tmp;
 
-		tmp.x = x * cosf(_fTheta) - y * sinf(_fTheta);
-		tmp.y = x * sinf(_fTheta) + y * cosf(_fTheta);
+		float radians = _fAngle * (M_PI / 180.0f);
+
+		tmp.x = x * cosf(radians) - y * sinf(radians);
+		tmp.y = x * sinf(radians) + y * cosf(radians);
 
 		return tmp;
+	}
+
+	float Dot(Vec2 _Other)
+	{
+		return x * _Other.x + y * _Other.y;
 	}
 
 

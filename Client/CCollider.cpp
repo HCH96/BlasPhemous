@@ -12,6 +12,7 @@
 CCollider::CCollider(CObj* _pOwner)
 	: CComponent(_pOwner)
 	, m_iCollisionCount(0)
+	, m_fAngle(0.f)
 {
 }
 
@@ -57,20 +58,23 @@ void CCollider::render(HDC _dc)
 		SELECT_PEN(_dc, PEN_TYPE::RED);
 
 		// render
-		Rectangle(_dc, int(vRenderPos.x - m_vScale.x / 2.f)
-			, int(vRenderPos.y - m_vScale.y / 2.f)
-			, int(vRenderPos.x + m_vScale.x / 2.f)
-			, int(vRenderPos.y + m_vScale.y / 2.f));
+		DrawRotatedRectangle(_dc, vRenderPos.x, vRenderPos.y, m_vScale.x, m_vScale.y, m_fAngle);
+
+		//Rectangle(_dc, int(vRenderPos.x - m_vScale.x / 2.f)
+		//	, int(vRenderPos.y - m_vScale.y / 2.f)
+		//	, int(vRenderPos.x + m_vScale.x / 2.f)
+		//	, int(vRenderPos.y + m_vScale.y / 2.f));
 	}
 	else
 	{
 		SELECT_PEN(_dc, PEN_TYPE::GREEN);
 
+		DrawRotatedRectangle(_dc, vRenderPos.x, vRenderPos.y, m_vScale.x, m_vScale.y, m_fAngle);
 		// render
-		Rectangle(_dc, int(vRenderPos.x - m_vScale.x / 2.f)
-			, int(vRenderPos.y - m_vScale.y / 2.f)
-			, int(vRenderPos.x + m_vScale.x / 2.f)
-			, int(vRenderPos.y + m_vScale.y / 2.f));
+		//Rectangle(_dc, int(vRenderPos.x - m_vScale.x / 2.f)
+		//	, int(vRenderPos.y - m_vScale.y / 2.f)
+		//	, int(vRenderPos.x + m_vScale.x / 2.f)
+		//	, int(vRenderPos.y + m_vScale.y / 2.f));
 	}
 }
 

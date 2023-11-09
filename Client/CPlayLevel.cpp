@@ -24,6 +24,21 @@ void CPlayLevel::init()
 	// 객체 생성
 	// 위치 설정
 
+	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
+	vLookAt /= 2.f;
+
+	// 몬스터 생성
+	CMonster* pMonster = new CMonster;
+
+	pMonster->SetPos(vLookAt);
+	pMonster->SetScale(Vec2(100.f, 100.f));
+	AddObject(LAYER::MONSTER, pMonster);
+
+	pMonster = new CMonster;
+	pMonster->SetPos(vLookAt + Vec2(150.f, 0.f));
+	pMonster->SetScale(Vec2(100.f, 100.f));
+	AddObject(LAYER::PLAYER, pMonster);
+
 
 
 	// 충돌 설정
@@ -35,7 +50,7 @@ void CPlayLevel::init()
 
     // 플랫폼 생성
 	CPlatform* pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(1000.f, 2200.f));
+	pPlatform->SetPos(Vec2(vLookAt + Vec2(0.f, 200.f)));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
 
@@ -52,15 +67,23 @@ void CPlayLevel::enter()
 
 
 	// Penitent 생성
-	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
-	pPenitent->SetPos(Vec2(1000.f, 2000.f));
-	AddObject(LAYER::PLAYER, pPenitent);
+	//CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	//pPenitent->SetPos(Vec2(1000.f, 2000.f));
+	//AddObject(LAYER::PLAYER, pPenitent);
+
+
 
 	// 카메라 설정
-	CCamera::GetInst()->InitLookAt(pPenitent->GetPos());
-	CCamera::GetInst()->SetCameraLimit(Vec2(4000.f, 4000.f));
-	CCamera::GetInst()->SetTarget(pPenitent);
-	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
+	CCamera::GetInst()->InitLookAt(Vec2(1140.f, 2100.f));
+	CCamera::GetInst()->SetLookAt(Vec2(1140.f, 2100.f));
+
+	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
+	vLookAt /= 2.f;
+
+	CCamera::GetInst()->InitLookAt(vLookAt);
+	CCamera::GetInst()->SetLookAt(vLookAt);
+	CCamera::GetInst()->SetCameraLimit(Vec2(1280.f, 720.f));
+
 
 	//CCamera::GetInst()->FadeIn(2.5f);
 	//CCamera::GetInst()->FadeOut(2.5f);
@@ -78,6 +101,8 @@ void CPlayLevel::enter()
 
 void CPlayLevel::exit()
 {
+	// Player 빼주기
+
 	PullOutObject(LAYER::PLAYER);
 
 }

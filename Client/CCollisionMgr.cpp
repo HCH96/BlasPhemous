@@ -86,7 +86,7 @@ void CCollisionMgr::CollisionBtwLayer(LAYER _eLeft, LAYER _eRight)
 			for (size_t j = 0; j < vecRight.size(); ++j)
 			{
 				COLLIDER_ID ID = { vecLeft[i]->GetID(), vecRight[j]->GetID() };
-				
+
 				map<COLLIDER_ID, bool>::iterator iter = m_mapID.find(ID);
 
 				if (m_mapID.end() == iter)
@@ -104,7 +104,7 @@ void CCollisionMgr::CollisionBtwLayer(LAYER _eLeft, LAYER _eRight)
 							vecLeft[i]->BeginOverlap(vecRight[j]);
 							vecRight[j]->BeginOverlap(vecLeft[i]);
 						}
-						
+
 					}
 					else
 					{
@@ -140,14 +140,56 @@ void CCollisionMgr::CollisionBtwLayer(LAYER _eLeft, LAYER _eRight)
 
 }
 
-bool CCollisionMgr::IsCollision(CCollider* _pLeft, CCollider* _pRight)
+bool CheckShaft(Vec2 _NorVec, Vec2 _vAxis, CCollider* _pLeft, CCollider* _pRight)
 {
-	if (_pLeft->GetScale().x / 2.f + _pRight->GetScale().x / 2.f >= abs(_pLeft->GetPos().x - _pRight->GetPos().x)
-		&& _pLeft->GetScale().y / 2.f + _pRight->GetScale().y / 2.f >= abs(_pLeft->GetPos().y - _pRight->GetPos().y))
+	// 축 기준 내적 거리
+	float fDistance = abs(_vAxis.Dot(_NorVec));
+
+	// Box 1
+	Vec2 vLColScale = _pLeft->GetScale();
+
+	// Box 2
+	Vec2 vRColScale = _pRight->GetScale();
+
+	Vec2 vLColUp = Vec2(0.f, 1.f).Rotate(_pLeft->GetAngle());
+	Vec2 vLColRight = Vec2(1.f, 0.f).Rotate(_pLeft->GetAngle());
+
+	Vec2 vRColUp = Vec2(0.f, 1.f).Rotate(_pRight->GetAngle());
+	Vec2 vRColRight = Vec2(1.f, 0.f).Rotate(_pRight->GetAngle());
+
+	if (fDistance > abs(_vAxis.Dot(vLColUp * vLColScale.y / 2.f) )
+		+ abs(_vAxis.Dot(vLColRight * vLColScale.x / 2.f) )
+		+ abs(_vAxis.Dot(vRColUp * vRColScale.y / 2.f) )
+		+ abs(_vAxis.Dot(vRColRight * vRColScale.x / 2.f)) )
 	{
-		return true;
+		return false;
 	}
 
-
-	return false;
+	return true;
 }
+
+bool CCollisionMgr::IsCollision(CCollider* _pLeft, CCollider* _pRight)
+{
+	Vec2 vLColUp = Vec2(0.f, 1.f).Rotate(_pLeft->GetAngle());
+	Vec2 vLColRight = Vec2(1.f, 0.f).Rotate(_pLeft->GetAngle());
+
+	Vec2 vRColUp = Vec2(0.f, 1.f).Rotate(_pRight->GetAngle());
+	Vec2 vRColRight = Vec2(1.f, 0.f).Rotate(_pRight->GetAngle());
+
+
+	Vec2 vNorVec = _pLeft->GetPos() - _pRight->GetPos();
+
+	// 모든 법선벡터를 한번씩 축으로 검사 진행
+	if (!CheckShaft(vNorVec, vLColUp, _pLeft, _pRight))
+		return false;
+	if (!CheckShaft(vNorVec, vLColRight, _pLeft, _pRight))
+		return false;
+	if (!CheckShaft(vNorVec, vRColUp, _pLeft, _pRight))
+		return false;
+	if (!CheckShaft(vNorVec, vRColRight, _pLeft, _pRight))
+		return false;
+
+
+	return true;
+}
+

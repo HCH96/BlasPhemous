@@ -19,11 +19,11 @@ void CPenitentDodgeToRun::finaltick(float _DT)
 	// 속도 변화
 	if (m_bDir)
 	{
-		pMovement->SetVelocity(Vec2(300.f, 0.f));
+		pMovement->SetVelocity(Vec2(300.f, pMovement->GetVelocity().y));
 	}
 	else
 	{
-		pMovement->SetVelocity(Vec2(-300.f, 0.f));
+		pMovement->SetVelocity(Vec2(-300.f, pMovement->GetVelocity().y));
 	}
 
 
@@ -63,13 +63,13 @@ void CPenitentDodgeToRun::Enter()
 	if (m_bDir)
 	{
 		pAnimator->Play(L"DodgeToRun", false);
-		pMovement->SetVelocity(Vec2(100.f, 0.f) * pMovement->GetInitSpeed());
+		pMovement->SetVelocity(Vec2(100.f, pMovement->GetVelocity().y) * pMovement->GetInitSpeed());
 		//pMovement->AddForce(Vec2(100.f, 0.f));
 	}
 	else
 	{
 		pAnimator->Play(L"DodgeToRun_L", false);
-		pMovement->SetVelocity(Vec2(-100.f, 0.f) * pMovement->GetInitSpeed());
+		pMovement->SetVelocity(Vec2(-100.f, pMovement->GetVelocity().y) * pMovement->GetInitSpeed());
 		//pMovement->AddForce(Vec2(100.f, 0.f));
 	}
 }

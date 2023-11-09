@@ -10,7 +10,7 @@ private:
     Vec2    m_vVelocity;
     float   m_fMass;
     float   m_fInitSpeed;
-    float    m_fJumpVel;
+    float   m_fJumpVel;
 
     float   m_fMaxSpeed;
     float   m_fMaxDown;

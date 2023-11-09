@@ -97,3 +97,30 @@ HBITMAP FlipBitmapHorizontally(HBITMAP hbm) {
 
 	return hbmFlipped;
 }
+
+void DrawRotatedRectangle(HDC hdc, int x, int y, int width, int height, float angle) {
+	// 회전된 사각형의 꼭짓점 계산
+	float radians = angle * (3.14159265358979323846f / 180.0f);
+	float cosTheta = cos(radians);
+	float sinTheta = sin(radians);
+
+	int x1 = static_cast<int>(x - width / 2 * cosTheta + height / 2 * sinTheta);
+	int y1 = static_cast<int>(y - width / 2 * sinTheta - height / 2 * cosTheta);
+
+	int x2 = static_cast<int>(x + width / 2 * cosTheta + height / 2 * sinTheta);
+	int y2 = static_cast<int>(y + width / 2 * sinTheta - height / 2 * cosTheta);
+
+	int x3 = static_cast<int>(x + width / 2 * cosTheta - height / 2 * sinTheta);
+	int y3 = static_cast<int>(y + width / 2 * sinTheta + height / 2 * cosTheta);
+
+	int x4 = static_cast<int>(x - width / 2 * cosTheta - height / 2 * sinTheta);
+	int y4 = static_cast<int>(y - width / 2 * sinTheta + height / 2 * cosTheta);
+
+	// 꼭짓점 좌표를 배열에 저장
+	POINT points[4] = { {x1, y1}, {x2, y2}, {x3, y3}, {x4, y4} };
+
+	// 다각형 그리기
+	Polygon(hdc, points, 4);
+}
+
+

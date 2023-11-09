@@ -40,6 +40,7 @@ CPenitent::CPenitent()
 	, m_pDustAnimator(nullptr)
 	, m_pSM(nullptr)
 	, m_fHP(100.f)
+	, m_iOverlapGround(0)
 {
 	// 이름 설정
 	SetName(L"Penitent");
@@ -166,6 +167,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 {
 	if (dynamic_cast<CPlatform*>(_pOtherObj))
 	{
+		++m_iOverlapGround;
 		m_pMovement->SetGround(true);
 	}
 }
@@ -174,7 +176,13 @@ void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Othe
 {
 	if (dynamic_cast<CPlatform*>(_OtherObj))
 	{
-		m_pMovement->SetGround(false);
+		--m_iOverlapGround;
+
+		if (m_iOverlapGround <= 0)
+		{
+			m_pMovement->SetGround(false);
+
+		}
 	}
 }
 

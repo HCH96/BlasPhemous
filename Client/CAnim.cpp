@@ -445,7 +445,7 @@ void CAnim::finaltick(float _DT)
 
 	// Frame test code
 
-	if (!DEBUG_RENDER)
+	if (KEY_PRESSED(KEY::SPACE))
 	{
 		if (KEY_TAP(KEY::RIGHT))
 		{
