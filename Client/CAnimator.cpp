@@ -11,6 +11,7 @@ CAnimator::CAnimator(CObj* _Owner)
 	, m_bRepeat(false)
 	, m_iAlpha(255)
 	, m_fAcc(0.f)
+	, m_bPosLock(false)
 {
 }
 

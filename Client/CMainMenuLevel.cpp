@@ -36,13 +36,6 @@ void CMainMenuLevel::ChangeCursorImg()
 
 void CMainMenuLevel::init()
 {
-	// 카메라 설정
-	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
-	vLookAt /= 2.f;
-
-	CCamera::GetInst()->SetLookAt(vLookAt);
-
-
 	// Object 배치
 	
 	// background
@@ -139,6 +132,14 @@ void CMainMenuLevel::enter()
 {
 	CCamera::GetInst()->FadeIn(1.f);
 
+
+	// 카메라 설정
+	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
+	vLookAt /= 2.f;
+
+	CCamera::GetInst()->InitLookAt(vLookAt);
+	CCamera::GetInst()->SetLookAt(vLookAt);
+	CCamera::GetInst()->SetCameraLimit(Vec2(1280.f, 720.f));
 }
 
 void CMainMenuLevel::exit()

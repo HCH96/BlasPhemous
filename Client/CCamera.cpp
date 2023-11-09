@@ -29,6 +29,7 @@ CCamera::~CCamera()
 void CCamera::tick()
 {
 
+
 	Vec2 vResolution = CEngine::GetInst()->GetResolution();
 	Vec2 vCenter = vResolution / 2.f;
 

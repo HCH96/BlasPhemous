@@ -72,7 +72,6 @@ void CStage01_1::init()
 
 void CStage01_1::enter()
 {
-
 	//Penitent »ý¼º
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
 	pPenitent->SetPos(Vec2(1000.f, 1000.f));
@@ -83,9 +82,9 @@ void CStage01_1::enter()
 	vLookAt /= 2.f;
 
 	CCamera::GetInst()->InitLookAt(vLookAt);
-	CCamera::GetInst()->SetCameraLimit(Vec2(1920.f * 2.f, 1027.f * 2.f));
 	CCamera::GetInst()->SetTarget(pPenitent);
 	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
+	CCamera::GetInst()->SetCameraLimit(Vec2(1920.f * 2.f, 1027.f * 2.f));
 }
 
 void CStage01_1::exit()
