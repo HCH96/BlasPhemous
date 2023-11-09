@@ -44,6 +44,7 @@ private:
 public:
 	Vec2 GetRenderPos(Vec2 _vRealPos) { return _vRealPos - m_vDiff; }
 	Vec2 GetRealPos(Vec2 _vRenderPos) { return _vRenderPos + m_vDiff; }
+	Vec2 GetCurLookAt() { return m_vCurLookAt; }
 
 	void SetLookAt(Vec2 _vLookAt) { m_vLookAt = _vLookAt; }
 	void InitLookAt(Vec2 _vLookAt)

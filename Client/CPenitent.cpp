@@ -105,6 +105,7 @@ CPenitent::CPenitent(const CPenitent& _Origin)
 
 CPenitent::~CPenitent()
 {
+	int a = 0;
 }
 
 

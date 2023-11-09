@@ -3,10 +3,10 @@
 // Level
 enum class LEVEL_TYPE
 {
-	START_LEVEL,
-	PLAY_LEVEL,
-	EDITOR_LEVEL,
+	//Debug Level
+	TEST_LEVEL,
 
+	// Game Level
 	TITLE_LEVEL,
 	MAINMENU_LEVEL,
 	STAGE01_1,
@@ -24,7 +24,10 @@ enum class LEVEL_TYPE
 enum class LAYER
 {
 	DEFAULT,
+	BACKGROUND,
 	TILE,
+
+
 	MONSTER,
 	PLAYER,
 	PLATFORM,
@@ -32,7 +35,7 @@ enum class LAYER
 	MONST_PJ,
 	WORLD_STATIC,
 
-
+	FOREGROUND,
 	UI = 31,
 	END = 32,
 };

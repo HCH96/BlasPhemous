@@ -14,6 +14,7 @@
 
 CCamera::CCamera()
 	: m_pVeil(nullptr)
+	, m_pTarget(nullptr)
 	, m_Alpha(0)
 {
 	Vec2 vResol = CEngine::GetInst()->GetResolution();
@@ -27,6 +28,7 @@ CCamera::~CCamera()
 
 void CCamera::tick()
 {
+
 	Vec2 vResolution = CEngine::GetInst()->GetResolution();
 	Vec2 vCenter = vResolution / 2.f;
 
@@ -45,9 +47,9 @@ void CCamera::tick()
 			}
 			else
 			{
-				m_vLookAt = m_pTarget->GetPos() + (m_vLookAtOffset * Vec2(-1.f,1.f));
+				m_vLookAt = m_pTarget->GetPos() + (m_vLookAtOffset * Vec2(-1.f, 1.f));
 			}
-			
+
 		}
 		else
 		{
@@ -60,7 +62,28 @@ void CCamera::tick()
 	}
 
 
-	
+	// DEBUG
+	if (KEY_PRESSED(KEY::LEFT))
+	{
+		m_vLookAt.x -= 500.f * DT;
+	}
+
+	if (KEY_PRESSED(KEY::RIGHT))
+	{
+		m_vLookAt.x += 500.f * DT;
+	}
+
+	if (KEY_PRESSED(KEY::UP))
+	{
+		m_vLookAt.y -= 500.f * DT;
+	}
+
+	if (KEY_PRESSED(KEY::DOWN))
+	{
+		m_vLookAt.y += 500.f * DT;
+	}
+
+
 
 	// 이전 LookAt과 현재 Look의 차이값을 보정해서 현재의 LookAt을 구한다.
 	Vec2 vLookDir = m_vLookAt - m_vPrevLookAt;
@@ -73,13 +96,24 @@ void CCamera::tick()
 	}
 
 	// 카메라가 제한지점을 넘어갔다면
-	if (m_vCurLookAt.x - vResolution.x/2.f < 0 || m_vCurLookAt.x + vResolution.x / 2.f > m_vCameraLimit.x)
+	if (m_vCurLookAt.x - vResolution.x / 2.f < 0)
 	{
-		m_vCurLookAt.x = m_vPrevLookAt.x;
+		m_vCurLookAt.x = vResolution.x / 2.f + 1.f;
 	}
-	if (m_vCurLookAt.y - vResolution.y / 2.f < 0 || m_vCurLookAt.y + vResolution.y / 2.f > m_vCameraLimit.y)
+
+	if (m_vCurLookAt.x + vResolution.x / 2.f > m_vCameraLimit.x)
 	{
-		m_vCurLookAt.y = m_vPrevLookAt.y;
+		m_vCurLookAt.x = m_vCameraLimit.x - vResolution.x / 2.f - 1.f;
+	}
+
+	if (m_vCurLookAt.y - vResolution.y / 2.f < 0)
+	{
+		m_vCurLookAt.y = vResolution.y / 2.f + 1.f;
+	}
+
+	if (m_vCurLookAt.y + vResolution.y / 2.f > m_vCameraLimit.y)
+	{
+		m_vCurLookAt.y = m_vCameraLimit.y - vResolution.y / 2.f - 1.f;
 	}
 
 

@@ -95,12 +95,6 @@
     <Filter Include="Game\05. Level\PlayLevel">
       <UniqueIdentifier>{654c4876-18fc-4502-a072-6210bb271d65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\05. Level\EditorLevel">
-      <UniqueIdentifier>{24ce7ff4-ee07-4e5e-8c77-de25cf9f32b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\05. Level\StartLevel">
-      <UniqueIdentifier>{e14da4c8-cff9-443b-88ce-d51c44e282cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\04. Object\Tile">
       <UniqueIdentifier>{af43a641-2fd2-4046-a432-cf5049aa2019}</UniqueIdentifier>
     </Filter>
@@ -218,11 +212,14 @@
     <Filter Include="Game\08. State\Penitent\Death">
       <UniqueIdentifier>{af0c1027-4d03-40b0-9fdd-a9b5a7959171}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\05. Level\Stage01-1">
-      <UniqueIdentifier>{6d6a4696-4c3a-4639-bc53-b3e348136b05}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\04. Object\BackGround">
       <UniqueIdentifier>{50479dd3-e6e2-44df-bbe1-9359d335ba0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05. Level\Stage01">
+      <UniqueIdentifier>{5ffbe728-fbb6-4d59-80d7-8cebff88f01f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05. Level\Stage01\Stage01-1">
+      <UniqueIdentifier>{6d6a4696-4c3a-4639-bc53-b3e348136b05}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -344,14 +341,8 @@
     <ClInclude Include="CPlatform.h">
       <Filter>Game\04. Object\Platform</Filter>
     </ClInclude>
-    <ClInclude Include="CEditorLevel.h">
-      <Filter>Game\05. Level\EditorLevel</Filter>
-    </ClInclude>
     <ClInclude Include="CPlayLevel.h">
       <Filter>Game\05. Level\PlayLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="CStartLevel.h">
-      <Filter>Game\05. Level\StartLevel</Filter>
     </ClInclude>
     <ClInclude Include="CTile.h">
       <Filter>Game\04. Object\Tile</Filter>
@@ -465,7 +456,7 @@
       <Filter>Game\08. State\Penitent\Death</Filter>
     </ClInclude>
     <ClInclude Include="CStage01_1.h">
-      <Filter>Game\05. Level\Stage01-1</Filter>
+      <Filter>Game\05. Level\Stage01\Stage01-1</Filter>
     </ClInclude>
     <ClInclude Include="CBackground.h">
       <Filter>Game\04. Object\BackGround</Filter>
@@ -585,14 +576,8 @@
     <ClCompile Include="CPlatform.cpp">
       <Filter>Game\04. Object\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="CEditorLevel.cpp">
-      <Filter>Game\05. Level\EditorLevel</Filter>
-    </ClCompile>
     <ClCompile Include="CPlayLevel.cpp">
       <Filter>Game\05. Level\PlayLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="CStartLevel.cpp">
-      <Filter>Game\05. Level\StartLevel</Filter>
     </ClCompile>
     <ClCompile Include="CTile.cpp">
       <Filter>Game\04. Object\Tile</Filter>
@@ -706,7 +691,7 @@
       <Filter>Game\08. State\Penitent\Death</Filter>
     </ClCompile>
     <ClCompile Include="CStage01_1.cpp">
-      <Filter>Game\05. Level\Stage01-1</Filter>
+      <Filter>Game\05. Level\Stage01\Stage01-1</Filter>
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>Game\04. Object\BackGround</Filter>

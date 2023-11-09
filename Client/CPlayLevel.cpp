@@ -57,15 +57,8 @@ void CPlayLevel::enter()
 	AddObject(LAYER::PLAYER, pPenitent);
 
 	// 카메라 설정
-	//Vec2 vLookAt = CEngine::GetInst()->GetResolution();
-	//vLookAt /= 2.f;
-
-	//CCamera::GetInst()->SetLookAt(vLookAt);
-
 	CCamera::GetInst()->InitLookAt(pPenitent->GetPos());
 	CCamera::GetInst()->SetCameraLimit(Vec2(4000.f, 4000.f));
-
-
 	CCamera::GetInst()->SetTarget(pPenitent);
 	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
 

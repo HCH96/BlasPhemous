@@ -118,9 +118,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
-            case ID_CREATE_TILE:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_CREATE_TILE), hWnd, CreateTileProc);
-                break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }

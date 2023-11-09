@@ -182,7 +182,7 @@ void CMainMenuLevel::tick()
 
 void LevelChageCallBack()
 {
-	::ChangeLevel(LEVEL_TYPE::PLAY_LEVEL);
+	::ChangeLevel(LEVEL_TYPE::TEST_LEVEL);
 }
 
 void ExitCallBack()
