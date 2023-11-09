@@ -45,6 +45,7 @@ void CPlayLevel::init()
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::MONSTER, LAYER::PLAYER);
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER_PJ, LAYER::MONSTER);
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::PLATFORM);
+	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::PORTAL);
 
 
 

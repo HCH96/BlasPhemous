@@ -9,11 +9,12 @@
 #include "CCamera.h"
 #include "CKeyMgr.h"
 
-#include "CPenitent.h"
-#include "CPlatform.h"
-
-#include "CImage.h"
 #include "CBackground.h"
+#include "CPlatform.h"
+#include "CWall.h"
+#include "CPortal.h"
+
+#include "CPenitent.h"
 
 
 void CStage01_1::init()
@@ -39,7 +40,7 @@ void CStage01_1::init()
 	pBackGround = new CBackground;
 	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_BeforeParallax_2", L"texture\\Map\\Brotherhood\\1-1\\1_1_BeforeParallax_2.png"));
 	pBackGround->SetParallaxSpeed(Vec2(0.5f, 0.75f));
-	pBackGround->SetPos(Vec2(-300.f, -300.f));
+	pBackGround->SetPos(Vec2(-300.f, -200.f));
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
@@ -49,17 +50,17 @@ void CStage01_1::init()
 	pBackGround->SetScale(Vec2(2.f,2.f));
 	AddObject(LAYER::TILE, pBackGround);
 
-	//// Foreground 1
-	//pBackGround = new CBackground;
-	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_Door", L"texture\\Map\\Brotherhood\\1-1\\1_1_Door.png"));
-	//pBackGround->SetScale(Vec2(2.f, 2.f));
-	//AddObject(LAYER::FOREGROUND, pBackGround);
+	// Foreground 1
+	pBackGround = new CBackground;
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_Door", L"texture\\Map\\Brotherhood\\1-1\\1_1_Door.png"));
+	pBackGround->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::FOREGROUND, pBackGround);
 
-	//// Foreground 2
-	//pBackGround = new CBackground;
-	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_AfterLayer", L"texture\\Map\\Brotherhood\\1-1\\1_1_AfterLayer.png"));
-	//pBackGround->SetScale(Vec2(2.f, 2.f));
-	//AddObject(LAYER::FOREGROUND, pBackGround);
+	// Foreground 2
+	pBackGround = new CBackground;
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_AfterLayer", L"texture\\Map\\Brotherhood\\1-1\\1_1_AfterLayer.png"));
+	pBackGround->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::FOREGROUND, pBackGround);
 
 
 	// 敲阀汽 积己
@@ -90,6 +91,18 @@ void CStage01_1::init()
 	pPlatform->SetScale(Vec2(900.f, 30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	// Wall 积己
+	CWall* pWall = new CWall;
+	pWall->SetPos(Vec2(130.f, 900.f));
+	pWall->SetScale(Vec2(100.f, 1060.f));
+	AddObject(LAYER::PLATFORM, pWall);
+
+	// Portal 积己
+	CPortal* pPortal = new CPortal;
+	pPortal->SetPos(Vec2(3700.f, 1680.f));
+	pPortal->SetScale(Vec2(100.f, 300.f));
+	pPortal->SetNextLevel(LEVEL_TYPE::TITLE_LEVEL);
+	AddObject(LAYER::PORTAL, pPortal);
 
 
 }
@@ -119,9 +132,4 @@ void CStage01_1::exit()
 void CStage01_1::tick()
 {
 	CLevel::tick();
-
-	if (KEY_TAP(KEY::N))
-	{
-		ChangeLevel(LEVEL_TYPE::TEST_LEVEL);
-	}
 }

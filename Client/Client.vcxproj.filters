@@ -221,6 +221,12 @@
     <Filter Include="Game\05. Level\Stage01\Stage01-1">
       <UniqueIdentifier>{6d6a4696-4c3a-4639-bc53-b3e348136b05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\Wall">
+      <UniqueIdentifier>{2ac2c288-5cd5-47b2-95e1-cc74f5b5ff59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Portal">
+      <UniqueIdentifier>{896afb27-fdee-4485-b73c-efe742e1975e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -461,6 +467,12 @@
     <ClInclude Include="CBackground.h">
       <Filter>Game\04. Object\BackGround</Filter>
     </ClInclude>
+    <ClInclude Include="CWall.h">
+      <Filter>Game\04. Object\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="CPortal.h">
+      <Filter>Game\04. Object\Portal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -695,6 +707,12 @@
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
       <Filter>Game\04. Object\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="CWall.cpp">
+      <Filter>Game\04. Object\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="CPortal.cpp">
+      <Filter>Game\04. Object\Portal</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,7 +7,6 @@
 CPlatform::CPlatform()
 {
 	m_pCollider = AddComponent<CCollider>(L"Collider");
-
 	m_pCollider->SetOffsetPos(Vec2(0.f,0.f));
 	
 }
@@ -29,10 +28,6 @@ void CPlatform::begin()
 	m_pCollider->SetScale(GetScale());
 }
 
-void CPlatform::tick(float _DT)
-{
-
-}
 
 void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {

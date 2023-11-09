@@ -1,6 +1,6 @@
 #pragma once
 #include "CObj.h"
-class CPlatform :
+class CWall :
     public CObj
 {
     GENERATED_OBJECT(CObj);
@@ -17,9 +17,10 @@ public:
 
 
 public:
-    CLONE(CPlatform);
-    CPlatform();
-    CPlatform(const CPlatform& _Origin);
-    ~CPlatform();
+    CLONE(CWall);
+    CWall();
+    CWall(const CWall& _Origin);
+    ~CWall();
+
 };
 

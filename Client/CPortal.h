@@ -1,15 +1,17 @@
 #pragma once
 #include "CObj.h"
-class CPlatform :
+class CPortal :
     public CObj
 {
     GENERATED_OBJECT(CObj);
 private:
     class CCollider* m_pCollider;
 
+    LEVEL_TYPE m_eNextLevel;
+
 
 public:
-    void SetAngle(float _f) { m_pCollider->SetAngle(_f); }
+    void SetNextLevel(LEVEL_TYPE _eNext) { m_eNextLevel = _eNext; }
 
 public:
     virtual void begin() override;
@@ -17,9 +19,11 @@ public:
 
 
 public:
-    CLONE(CPlatform);
-    CPlatform();
-    CPlatform(const CPlatform& _Origin);
-    ~CPlatform();
+    CLONE_DISABLE(CPortal);
+    CPortal();
+    CPortal(const CPortal& _Origin) = delete;
+    ~CPortal();
+
+
 };
 
