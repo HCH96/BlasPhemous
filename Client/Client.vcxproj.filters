@@ -248,6 +248,9 @@
     <Filter Include="Game\05. Level\Stage02\Stage02-2">
       <UniqueIdentifier>{c03cf5e6-e3e0-4f24-a313-c9c7708fec87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\05. Level\Stage02\Stage02-3">
+      <UniqueIdentifier>{fa00d1dd-2ae1-4357-a3b2-b0d71932036c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -512,6 +515,9 @@
     <ClInclude Include="CStage02_2.h">
       <Filter>Game\05. Level\Stage02\Stage02-2</Filter>
     </ClInclude>
+    <ClInclude Include="CStage02_3.h">
+      <Filter>Game\05. Level\Stage02\Stage02-3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -770,6 +776,9 @@
     </ClCompile>
     <ClCompile Include="CStage02_2.cpp">
       <Filter>Game\05. Level\Stage02\Stage02-2</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage02_3.cpp">
+      <Filter>Game\05. Level\Stage02\Stage02-3</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

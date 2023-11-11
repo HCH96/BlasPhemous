@@ -12,11 +12,12 @@ enum class LEVEL_TYPE
 	STAGE01_1,
 	STAGE01_2,
 	STAGE01_3,
-	STAGE01_4, //Boss 1
+	STAGE01_4, // Boss 1
 	STAGE01_5,
 
 	STAGE02_1,
-	STAGE02_2,
+	STAGE02_2, // Boss 2-1
+	STAGE02_3, // Boss 2-2
 
 	
 
