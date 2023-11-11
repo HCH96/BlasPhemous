@@ -13,6 +13,7 @@ private:
 	int					m_iLayerIdx;
 	bool				m_bPrevDir;
 	bool				m_bDir;
+	bool                m_bIsFix;
 
 	vector<CComponent*> m_vecComponent;		// ÄÄÆ÷³ÍÆ® º¤ÅÍ
 
@@ -20,12 +21,14 @@ public:
 	Vec2 GetPos() { return m_vPos; }
 	Vec2 GetScale() { return m_vScale; }
 	Vec2 GetRenderPos() { return CCamera::GetInst()->GetRenderPos(m_vPos); }
+	bool GetIsFix() { return m_bIsFix; }
 
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	void SetDir(bool _bDir) { m_bDir = _bDir; }
 	void SetPrevDir(bool _bPrev) { m_bPrevDir = _bPrev; }
 	void SetLayerIdx(int _iIdx) { m_iLayerIdx = _iIdx; }
+	void SetIsFix(bool _b) { m_bIsFix = _b; }
 
 	int  GetLayerIdx() { return m_iLayerIdx; }
 	bool GetDir() { return m_bDir; }

@@ -55,8 +55,8 @@ void CBackground::render(HDC _dc)
 		, 0, 0
 		, (int)vResolution.x, (int)vResolution.y
 		, m_pTex->GetDC()
-		, (int)vCurTexLeftTop.x - vPos.x / vScale.x
-		, (int)vCurTexLeftTop.y - vPos.y / vScale.y
+		, (int)vCurTexLeftTop.x - int(vPos.x / vScale.x)
+		, (int)vCurTexLeftTop.y - int(vPos.y / vScale.y)
 		, (int)vTextureRenderSize.x, (int)vTextureRenderSize.y
 		, blend);
 

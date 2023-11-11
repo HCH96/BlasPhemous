@@ -160,8 +160,13 @@ void CCamera::tick()
 
 		if (evnt.Duration <= evnt.AccTime)
 		{
+			LEVEL_TYPE eNextType = evnt.NextLevel;
 			m_EventList.pop_front();
 			m_Alpha = 255;
+			if (evnt.NextLevel != LEVEL_TYPE::END)
+			{
+				::ChangeLevel(eNextType);
+			}
 		}
 		else
 		{

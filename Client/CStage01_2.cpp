@@ -85,6 +85,8 @@ void CStage01_2::enter()
 	//AddObject(LAYER::PLAYER, pPenitent);
 
 	// 카메라 설정
+	// 카메라 설정
+	CCamera::GetInst()->FadeIn(1.f);
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
 

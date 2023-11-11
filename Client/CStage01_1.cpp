@@ -12,7 +12,6 @@
 #include "CBackground.h"
 #include "CPlatform.h"
 #include "CWall.h"
-#include "CPortal.h"
 
 #include "CPenitent.h"
 
@@ -91,18 +90,17 @@ void CStage01_1::init()
 	pPlatform->SetScale(Vec2(900.f, 30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
-	// Wall 积己
-	CWall* pWall = new CWall;
-	pWall->SetPos(Vec2(130.f, 900.f));
-	pWall->SetScale(Vec2(100.f, 1060.f));
-	AddObject(LAYER::PLATFORM, pWall);
 
-	// Portal 积己
-	CPortal* pPortal = new CPortal;
-	pPortal->SetPos(Vec2(3700.f, 1680.f));
-	pPortal->SetScale(Vec2(100.f, 300.f));
-	pPortal->SetNextLevel(LEVEL_TYPE::TITLE_LEVEL);
-	AddObject(LAYER::PORTAL, pPortal);
+	pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(130.f, 900.f));
+	pPlatform->SetScale(Vec2(100.f, 1060.f));
+	AddObject(LAYER::PLATFORM, pPlatform);
+
+	// Wall 积己
+	//CWall* pWall = new CWall;
+	//pWall->SetPos(Vec2(130.f, 900.f));
+	//pWall->SetScale(Vec2(100.f, 1060.f));
+	//AddObject(LAYER::PLATFORM, pWall);
 
 
 }
@@ -115,6 +113,8 @@ void CStage01_1::enter()
 	AddObject(LAYER::PLAYER, pPenitent);
 
 	// 墨皋扼 汲沥
+	CCamera::GetInst()->FadeIn(1.f);
+
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
 
@@ -132,4 +132,15 @@ void CStage01_1::exit()
 void CStage01_1::tick()
 {
 	CLevel::tick();
+
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+
+	if (pPenitent->GetPos().x > 1845.f * 2)
+	{
+		pPenitent->SetPos(Vec2(0.f, 0.f));
+		pPenitent->SetIsFix(true);
+		CCamera::GetInst()->FixLookAt();
+
+		CCamera::GetInst()->FadeOut(1.f, LEVEL_TYPE::STAGE01_2);
+	}
 }

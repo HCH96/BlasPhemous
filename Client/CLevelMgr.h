@@ -12,6 +12,9 @@ private:
 	CLevel*			m_arrLevels[(UINT)LEVEL_TYPE::END];
 	CPenitent*		m_pPenitent;
 
+	UINT			m_iPrevLevel;
+	UINT			m_iCurLevel;
+
 
 public:
 	CPenitent* GetPenitent() { return m_pPenitent; }

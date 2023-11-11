@@ -13,13 +13,13 @@ void CStage03_2::init()
 {
 	// Tile 
 	CBackground* pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"2_3_Tile", L"texture\\Map\\\BuriedChurches\\2-3\\2_3_Tile.png"));
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"2_3_Tile", L"texture\\Map\\BuriedChurches\\2-3\\2_3_Tile.png"));
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::TILE, pBackGround);
 
 	// Foreground 1
 	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"2_3_Door", L"texture\\Map\\\BuriedChurches\\2-3\\2_3_Door.png"));
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"2_3_Door", L"texture\\Map\\BuriedChurches\\2-3\\2_3_Door.png"));
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::FOREGROUND, pBackGround);
 }

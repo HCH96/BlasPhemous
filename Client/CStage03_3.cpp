@@ -13,12 +13,12 @@ void CStage03_3::init()
 {
 	// Tile 
 	CBackground* pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"Shop_Tile", L"texture\\Map\\\Shop\\15-1\\Shop_Tile.png"));
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"Shop_Tile", L"texture\\Map\\Shop\\15-1\\Shop_Tile.png"));
 	AddObject(LAYER::TILE, pBackGround);
 
 	// Foreground 1
 	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"Shop_AfterLayer", L"texture\\Map\\\Shop\\15-1\\Shop_AfterLayer.png"));
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"Shop_AfterLayer", L"texture\\Map\\Shop\\15-1\\Shop_AfterLayer.png"));
 	pBackGround->SetPos(Vec2(0.f, -70.f));
 	AddObject(LAYER::FOREGROUND, pBackGround);
 }

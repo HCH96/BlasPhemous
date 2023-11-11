@@ -14,6 +14,8 @@ class CPenitent :
 private:
     float                   m_fHP;
 
+    
+
     int                     m_iOverlapGround;
 
     CAnimator*              m_pAnimator;
@@ -31,6 +33,7 @@ private:
 
 public:
     float GetHP() { return m_fHP; }
+
     void SetHP(float _f) { m_fHP = _f; }
 
 public:

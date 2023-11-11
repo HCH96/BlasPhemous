@@ -25,6 +25,8 @@ CLevelMgr::CLevelMgr()
 	: m_pCurLevel(nullptr)
 	, m_arrLevels{}
 	, m_pPenitent(nullptr)
+	, m_iPrevLevel(-1)
+	, m_iCurLevel(-1)
 {}
 
 
@@ -49,7 +51,11 @@ void CLevelMgr::ChangeLevel(LEVEL_TYPE _eType)
 	if (nullptr != m_pCurLevel)
 		m_pCurLevel->exit();
 
+	// 이전 레벨 저장
+	m_iPrevLevel = m_iCurLevel;
+
 	m_pCurLevel = m_arrLevels[(UINT)_eType];
+	m_iCurLevel = (UINT)_eType;
 
 	m_pCurLevel->enter();
 	m_pCurLevel->begin();
@@ -87,7 +93,7 @@ void CLevelMgr::init()
 
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::STAGE03_3);
+	ChangeLevel(LEVEL_TYPE::STAGE01_1);
 }
 
 void CLevelMgr::tick()

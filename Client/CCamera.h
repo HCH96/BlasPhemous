@@ -3,6 +3,8 @@
 class CTexture;
 class CObj;
 
+typedef void(*EffectCallBack)(LEVEL_TYPE _eLevelType);
+
 enum class CAM_EFFECT
 {
 	FADE_IN,
@@ -14,6 +16,7 @@ struct FCamEvent
 	CAM_EFFECT	Type;
 	float		AccTime;
 	float		Duration;
+	LEVEL_TYPE	NextLevel;
 };
 
 class CCamera
@@ -32,11 +35,11 @@ private:
 	Vec2		m_vLookAtOffset;// 카메라가 바라봐야할 지점의 오프셋
 	float		m_fSpeed;		// 타겟을 따라가는 속도
 
-	
 
 
-	CTexture*	m_pVeil;
-	CObj*		m_pTarget;
+
+	CTexture* m_pVeil;
+	CObj* m_pTarget;
 
 
 	list<FCamEvent>		m_EventList;
@@ -46,6 +49,7 @@ public:
 	Vec2 GetRenderPos(Vec2 _vRealPos) { return _vRealPos - m_vDiff; }
 	Vec2 GetRealPos(Vec2 _vRenderPos) { return _vRenderPos + m_vDiff; }
 	Vec2 GetCurLookAt() { return m_vCurLookAt; }
+	int GetEventCount() { return (int)m_EventList.size(); }
 
 	void SetLookAt(Vec2 _vLookAt) { m_vLookAt = _vLookAt; }
 	void InitLookAt(Vec2 _vLookAt)
@@ -59,6 +63,7 @@ public:
 	void SetLookAtOffset(Vec2 _vOffset) { m_vLookAtOffset = _vOffset; }
 	void SetLookAtOffsetX(float _f) { m_vLookAtOffset.x = _f; }
 	void SetLookAtOffsetY(float _f) { m_vLookAtOffset.y = _f; }
+	void FixLookAt() { m_pTarget = nullptr;	m_vLookAt = m_vCurLookAt; }
 
 	void SetTarget(CObj* _pTarget) { m_pTarget = _pTarget; }
 public:
@@ -66,21 +71,24 @@ public:
 	void render(HDC _dc);
 
 public:
-	void FadeIn(float _time)
+	void FadeIn(float _time, LEVEL_TYPE _eLevelType = LEVEL_TYPE::END)
 	{
 		FCamEvent evnt = {};
 		evnt.Type = CAM_EFFECT::FADE_IN;
 		evnt.AccTime = 0.f;
 		evnt.Duration = _time;
+		evnt.NextLevel = _eLevelType;
+
 		m_EventList.push_back(evnt);
 	}
 
-	void FadeOut(float _time)
+	void FadeOut(float _time, LEVEL_TYPE _eLevelType = LEVEL_TYPE::END)
 	{
 		FCamEvent evnt = {};
 		evnt.Type = CAM_EFFECT::FADE_OUT;
 		evnt.AccTime = 0.f;
 		evnt.Duration = _time;
+		evnt.NextLevel = _eLevelType;
 		m_EventList.push_back(evnt);
 	}
 };

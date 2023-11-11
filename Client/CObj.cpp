@@ -44,6 +44,9 @@ CObj::~CObj()
 
 void CObj::tick(float _DT)
 {
+	if (m_bIsFix)
+		return;
+
 	for (size_t i = 0; i < m_vecComponent.size(); ++i)
 	{
 		m_vecComponent[i]->tick(_DT);
@@ -52,6 +55,8 @@ void CObj::tick(float _DT)
 
 void CObj::finaltick(float _DT)
 {
+	if (m_bIsFix)
+		return;
 	for (size_t i = 0; i < m_vecComponent.size(); ++i)
 	{
 		m_vecComponent[i]->finaltick(_DT);

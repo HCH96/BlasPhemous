@@ -49,7 +49,7 @@ void CTitleLevel::tick()
 {
 	if (KEY_TAP(KEY::ENTER))
 	{
-		ChangeLevel(LEVEL_TYPE::MAINMENU_LEVEL);
+		CCamera::GetInst()->FadeOut(1.f, LEVEL_TYPE::MAINMENU_LEVEL);
 	}
 
 }

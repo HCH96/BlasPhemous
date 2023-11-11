@@ -183,7 +183,10 @@ void CMainMenuLevel::tick()
 
 void LevelChageCallBack()
 {
-	::ChangeLevel(LEVEL_TYPE::TEST_LEVEL);
+	if (CCamera::GetInst()->GetEventCount() == 0)
+	{
+		CCamera::GetInst()->FadeOut(1.f, LEVEL_TYPE::STAGE01_1);
+	}
 }
 
 void ExitCallBack()

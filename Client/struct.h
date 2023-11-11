@@ -76,7 +76,7 @@ public:
 	{
 		Vec2 tmp;
 
-		float radians = _fAngle * (M_PI / 180.0f);
+		float radians = float(_fAngle * (M_PI / 180.0f));
 
 		tmp.x = x * cosf(radians) - y * sinf(radians);
 		tmp.y = x * sinf(radians) + y * cosf(radians);

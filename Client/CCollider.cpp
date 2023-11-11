@@ -58,7 +58,7 @@ void CCollider::render(HDC _dc)
 		SELECT_PEN(_dc, PEN_TYPE::RED);
 
 		// render
-		DrawRotatedRectangle(_dc, vRenderPos.x, vRenderPos.y, m_vScale.x, m_vScale.y, m_fAngle);
+		DrawRotatedRectangle(_dc, (int)vRenderPos.x, (int)vRenderPos.y, (int)m_vScale.x, (int)m_vScale.y, m_fAngle);
 
 		//Rectangle(_dc, int(vRenderPos.x - m_vScale.x / 2.f)
 		//	, int(vRenderPos.y - m_vScale.y / 2.f)
@@ -69,7 +69,7 @@ void CCollider::render(HDC _dc)
 	{
 		SELECT_PEN(_dc, PEN_TYPE::GREEN);
 
-		DrawRotatedRectangle(_dc, vRenderPos.x, vRenderPos.y, m_vScale.x, m_vScale.y, m_fAngle);
+		DrawRotatedRectangle(_dc, (int)vRenderPos.x, (int)vRenderPos.y, (int)m_vScale.x, (int)m_vScale.y, m_fAngle);
 		// render
 		//Rectangle(_dc, int(vRenderPos.x - m_vScale.x / 2.f)
 		//	, int(vRenderPos.y - m_vScale.y / 2.f)
