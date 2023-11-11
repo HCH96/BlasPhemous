@@ -19,6 +19,10 @@ enum class LEVEL_TYPE
 	STAGE02_2, // Boss 2-1
 	STAGE02_3, // Boss 2-2
 
+	STAGE03_1, // Save Point
+	STAGE03_2, // 상점 입구 
+	STAGE03_3, // 상점
+
 	
 
 	END,

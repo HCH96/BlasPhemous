@@ -212,6 +212,9 @@
     <ClInclude Include="CStage02_1.h" />
     <ClInclude Include="CStage02_2.h" />
     <ClInclude Include="CStage02_3.h" />
+    <ClInclude Include="CStage03_1.h" />
+    <ClInclude Include="CStage03_2.h" />
+    <ClInclude Include="CStage03_3.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CStateMachine.h" />
     <ClInclude Include="CTaskMgr.h" />
@@ -301,6 +304,9 @@
     <ClCompile Include="CStage02_1.cpp" />
     <ClCompile Include="CStage02_2.cpp" />
     <ClCompile Include="CStage02_3.cpp" />
+    <ClCompile Include="CStage03_1.cpp" />
+    <ClCompile Include="CStage03_2.cpp" />
+    <ClCompile Include="CStage03_3.cpp" />
     <ClCompile Include="CState.cpp" />
     <ClCompile Include="CStateMachine.cpp" />
     <ClCompile Include="CTaskMgr.cpp" />

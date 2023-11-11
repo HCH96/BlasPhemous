@@ -133,7 +133,7 @@ void CEngine::CreateDefaultGDI()
 
 void CEngine::Clear()
 {
-	SELECT_BRUSH(m_pSubTex->GetDC(), BRUSH_TYPE::BLACK);
+	//SELECT_BRUSH(m_pSubTex->GetDC(), BRUSH_TYPE::BLACK);
 
 	Rectangle(m_pSubTex->GetDC(), -1, -1, m_ptResolution.x + 1, m_ptResolution.y);
 }
