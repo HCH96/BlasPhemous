@@ -5,7 +5,10 @@
 
 #include "CTitleLevel.h"
 #include "CMainMenuLevel.h"
+
 #include "CStage01_1.h"
+#include "CStage01_2.h"
+#include "CStage01_3.h"
 
 
 #include "CPenitent.h"
@@ -56,6 +59,9 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::TITLE_LEVEL] = new CTitleLevel;
 	m_arrLevels[(UINT)LEVEL_TYPE::MAINMENU_LEVEL] = new CMainMenuLevel;
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_1] = new CStage01_1;
+	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_2] = new CStage01_2;
+	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_3] = new CStage01_3;
+
 
 	// 레벨 초기화
 	for (UINT i = 0; i < (UINT)LEVEL_TYPE::END; ++i)
@@ -65,7 +71,7 @@ void CLevelMgr::init()
 
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::STAGE01_1);
+	ChangeLevel(LEVEL_TYPE::STAGE01_3);
 }
 
 void CLevelMgr::tick()

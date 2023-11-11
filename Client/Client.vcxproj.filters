@@ -227,6 +227,12 @@
     <Filter Include="Game\04. Object\Portal">
       <UniqueIdentifier>{896afb27-fdee-4485-b73c-efe742e1975e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\05. Level\Stage01\Stage01-2">
+      <UniqueIdentifier>{88fe5354-1f3c-46d9-98ba-2172b3966121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05. Level\Stage01\Stage01-3">
+      <UniqueIdentifier>{0106d990-4168-47e5-98da-045c27f784ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -473,6 +479,12 @@
     <ClInclude Include="CPortal.h">
       <Filter>Game\04. Object\Portal</Filter>
     </ClInclude>
+    <ClInclude Include="CStage01_2.h">
+      <Filter>Game\05. Level\Stage01\Stage01-2</Filter>
+    </ClInclude>
+    <ClInclude Include="CStage01_3.h">
+      <Filter>Game\05. Level\Stage01\Stage01-3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -713,6 +725,12 @@
     </ClCompile>
     <ClCompile Include="CPortal.cpp">
       <Filter>Game\04. Object\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage01_2.cpp">
+      <Filter>Game\05. Level\Stage01\Stage01-2</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage01_3.cpp">
+      <Filter>Game\05. Level\Stage01\Stage01-3</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

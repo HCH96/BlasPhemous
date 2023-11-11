@@ -16,6 +16,8 @@ CCamera::CCamera()
 	: m_pVeil(nullptr)
 	, m_pTarget(nullptr)
 	, m_Alpha(0)
+	, m_vCameraLimitLT(0.f, 0.f)
+	, m_vCameraLimit(12800.f,7200.f)
 {
 	Vec2 vResol = CEngine::GetInst()->GetResolution();
 	m_pVeil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", (int)vResol.x, (int)vResol.y);
@@ -97,9 +99,9 @@ void CCamera::tick()
 	}
 
 	// 카메라가 제한지점을 넘어갔다면
-	if (m_vCurLookAt.x - vResolution.x / 2.f < 0)
+	if (m_vCurLookAt.x - vResolution.x / 2.f < m_vCameraLimitLT.x)
 	{
-		m_vCurLookAt.x = vResolution.x / 2.f + 1.f;
+		m_vCurLookAt.x = m_vCameraLimitLT.x + vResolution.x / 2.f + 1.f;
 	}
 
 	if (m_vCurLookAt.x + vResolution.x / 2.f > m_vCameraLimit.x)
@@ -107,9 +109,9 @@ void CCamera::tick()
 		m_vCurLookAt.x = m_vCameraLimit.x - vResolution.x / 2.f - 1.f;
 	}
 
-	if (m_vCurLookAt.y - vResolution.y / 2.f < 0)
+	if (m_vCurLookAt.y - vResolution.y / 2.f < m_vCameraLimitLT.y)
 	{
-		m_vCurLookAt.y = vResolution.y / 2.f + 1.f;
+		m_vCurLookAt.y = m_vCameraLimitLT.y + vResolution.y / 2.f + 1.f;
 	}
 
 	if (m_vCurLookAt.y + vResolution.y / 2.f > m_vCameraLimit.y)
