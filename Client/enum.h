@@ -16,6 +16,7 @@ enum class LEVEL_TYPE
 	STAGE01_5,
 
 	STAGE02_1,
+	STAGE02_2,
 
 	
 
