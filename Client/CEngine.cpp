@@ -11,7 +11,6 @@
 #include "CCamera.h"
 #include "CCollisionMgr.h"
 #include "CGCMgr.h"
-#include "CUIMgr.h"
 #include "CAssetMgr.h"
 #include "CSoundMgr.h"
 

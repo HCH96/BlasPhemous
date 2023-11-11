@@ -14,6 +14,9 @@
 #include "CMonster.h"
 #include "CPenitent.h"
 
+#include "CPenitentUI.h"
+#include "CTearsUI.h"
+
 
 void CPlayLevel::init()
 {
@@ -51,11 +54,16 @@ void CPlayLevel::init()
 
     // 플랫폼 생성
 	CPlatform* pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(vLookAt + Vec2(0.f, 200.f)));
+	pPlatform->SetPos(Vec2(640.f, 600.f));
+	pPlatform->SetScale(Vec2(1000.f, 30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	// UI 생성
+	CPenitentUI* pPenitentUI = new CPenitentUI;
+	AddObject(LAYER::UI, pPenitentUI);
 
-
+	CTearsUI* pTearsUI = new CTearsUI;
+	AddObject(LAYER::UI, pTearsUI);
 }
 
 void CPlayLevel::enter()
@@ -68,16 +76,13 @@ void CPlayLevel::enter()
 
 
 	// Penitent 생성
-	//CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
-	//pPenitent->SetPos(Vec2(1000.f, 2000.f));
-	//AddObject(LAYER::PLAYER, pPenitent);
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	pPenitent->SetPos(Vec2(640.f, 360.f));
+	AddObject(LAYER::PLAYER, pPenitent);
 
 
 
 	// 카메라 설정
-	CCamera::GetInst()->InitLookAt(Vec2(1140.f, 2100.f));
-	CCamera::GetInst()->SetLookAt(Vec2(1140.f, 2100.f));
-
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
 

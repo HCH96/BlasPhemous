@@ -3,6 +3,7 @@
 
 #include "components.h"
 
+#include "CPenitent.h"
 
 CPlatform::CPlatform()
 {
@@ -41,8 +42,6 @@ void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		// 왼쪽으로 충돌했을 경우
 		if (vPos.x > vObjPos.x)
 		{
-			
-
 			_OtherObj->SetPos(Vec2(vPos.x - _OwnCol->GetScale().x / 2.f - _OtherCol->GetScale().x / 2.f - 1.f, vObjPos.y));
 		}
 
@@ -57,14 +56,20 @@ void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		float fAngle = m_pCollider->GetAngle();
 		float radians = float(fAngle * (M_PI / 180.0f));
 
-
-
 		float fTargetY = vPos.y + (vObjPos.x - vPos.x) * tan(radians);
 
 
 		if (vObjPos.y > fTargetY)
 		{
 			_OtherObj->SetPos(Vec2(vObjPos.x, fTargetY));
+
+			CPenitent* pPenitent = dynamic_cast<CPenitent*>(_OtherObj);
+			if (pPenitent)
+			{
+				CMovement* pPenitentMovement = pPenitent->GetComponent<CMovement>();
+				pPenitentMovement->SetGround(true);
+			}
+
 		}
 	}
 

@@ -13,7 +13,7 @@
 #include "CMonster.h"
 #include "CPlayer.h"
 
-
+#include "CPenitent.h"
 
 #define GetOwnerObj GetOwnerSM()->GetOwner()
 

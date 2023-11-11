@@ -3,8 +3,6 @@
 class CStage01_1 :
     public CLevel
 {
-private:
-    bool isEnter;
 
 public:
     virtual void init() override;

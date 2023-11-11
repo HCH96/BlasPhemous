@@ -101,14 +101,8 @@
     <Filter Include="Game\04. Object\UI">
       <UniqueIdentifier>{a117e0ff-d712-4396-b06c-0988a7d5d54e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\UI\BtnUI">
-      <UniqueIdentifier>{9ab5ee24-8a02-43c7-af53-39aa96d5d151}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\04. Object\UI\PanelUI">
       <UniqueIdentifier>{8411ebdc-2930-4360-b92c-dd3c1fc41000}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\03. Manager\UIManager">
-      <UniqueIdentifier>{2531fac4-0c6c-4432-92e4-1389903123d3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\03. Manager\SoundManager">
       <UniqueIdentifier>{8bfaf346-d3d6-4b2e-bb86-92d27bce2a58}</UniqueIdentifier>
@@ -263,6 +257,21 @@
     <Filter Include="Game\05. Level\Stage03\Stage03-3">
       <UniqueIdentifier>{09e3e79e-a013-4b26-bd82-e281509ffd5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\UI\PenitentUI">
+      <UniqueIdentifier>{1395d1c0-82ca-423f-95c2-8d0f03c39638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\UI\HPUI">
+      <UniqueIdentifier>{ca66ade1-e9a8-4815-b05d-8b14f98e733c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\UI\MPUI">
+      <UniqueIdentifier>{9a4ed796-6a4a-4119-93b2-4a31850f4b7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\UI\PotionUI">
+      <UniqueIdentifier>{5d201be4-4579-4c66-9144-bbfc7b9d3304}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\UI\Tears">
+      <UniqueIdentifier>{cfdd7781-d703-4059-8d12-129fa3ecb8af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -392,14 +401,8 @@
     <ClInclude Include="CUI.h">
       <Filter>Game\04. Object\UI</Filter>
     </ClInclude>
-    <ClInclude Include="CBtnUI.h">
-      <Filter>Game\04. Object\UI\BtnUI</Filter>
-    </ClInclude>
     <ClInclude Include="CPanelUI.h">
       <Filter>Game\04. Object\UI\PanelUI</Filter>
-    </ClInclude>
-    <ClInclude Include="CUIMgr.h">
-      <Filter>Game\03. Manager\UIManager</Filter>
     </ClInclude>
     <ClInclude Include="CSoundMgr.h">
       <Filter>Game\03. Manager\SoundManager</Filter>
@@ -539,6 +542,21 @@
     <ClInclude Include="CStage03_3.h">
       <Filter>Game\05. Level\Stage03\Stage03-3</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentUI.h">
+      <Filter>Game\04. Object\UI\PenitentUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentHP.h">
+      <Filter>Game\04. Object\UI\HPUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentMP.h">
+      <Filter>Game\04. Object\UI\MPUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentPotion.h">
+      <Filter>Game\04. Object\UI\PotionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CTearsUI.h">
+      <Filter>Game\04. Object\UI\Tears</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -663,14 +681,8 @@
     <ClCompile Include="CUI.cpp">
       <Filter>Game\04. Object\UI</Filter>
     </ClCompile>
-    <ClCompile Include="CBtnUI.cpp">
-      <Filter>Game\04. Object\UI\BtnUI</Filter>
-    </ClCompile>
     <ClCompile Include="CPanelUI.cpp">
       <Filter>Game\04. Object\UI\PanelUI</Filter>
-    </ClCompile>
-    <ClCompile Include="CUIMgr.cpp">
-      <Filter>Game\03. Manager\UIManager</Filter>
     </ClCompile>
     <ClCompile Include="CSoundMgr.cpp">
       <Filter>Game\03. Manager\SoundManager</Filter>
@@ -809,6 +821,21 @@
     </ClCompile>
     <ClCompile Include="CStage03_3.cpp">
       <Filter>Game\05. Level\Stage03\Stage03-3</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentUI.cpp">
+      <Filter>Game\04. Object\UI\PenitentUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentHP.cpp">
+      <Filter>Game\04. Object\UI\HPUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentMP.cpp">
+      <Filter>Game\04. Object\UI\MPUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentPotion.cpp">
+      <Filter>Game\04. Object\UI\PotionUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CTearsUI.cpp">
+      <Filter>Game\04. Object\UI\Tears</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -18,6 +18,13 @@ void CTitleLevel::init()
 	CCamera::GetInst()->SetLookAt(vLookAt);
 
 	CImage* pImage = new CImage;
+	pImage->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"BlackBackground", L"texture\\UI\\BlackBackground.png"));
+	pImage->SetScaleToTex();
+	pImage->SetPos(Vec2(640.f, 360.f));
+	AddObject(LAYER::DEFAULT, pImage);
+
+
+	pImage = new CImage;
 	pImage->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"GameLogo", L"texture\\UI\\GameLogo.png"));
 	pImage->SetScaleToTex();
 	pImage->SetPos(Vec2(640.f, 360.f));

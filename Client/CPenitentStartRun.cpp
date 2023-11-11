@@ -14,6 +14,7 @@ CPenitentStartRun::~CPenitentStartRun()
 
 void CPenitentStartRun::finaltick(float _DT)
 {
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();
@@ -47,7 +48,7 @@ void CPenitentStartRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCH);
 	}
 
-	if (KEY_TAP(KEY::Z))
+	if (KEY_TAP(KEY::Z) && pPenitent->GetPotionCount() > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::HEALTHPOTION);
 	}
@@ -55,6 +56,10 @@ void CPenitentStartRun::finaltick(float _DT)
 	if (KEY_TAP(KEY::D))
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DODGE);
+	}
+	if (KEY_TAP(KEY::Z) && pPenitent->GetPotionCount() > 0)
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::HEALTHPOTION);
 	}
 
 	if ((KEY_TAP(KEY::F)) && GetOwnerSM()->GetCurState() != (UINT)PENITENT_STATE::IDLE && !(KEY_TAP(KEY::S)))

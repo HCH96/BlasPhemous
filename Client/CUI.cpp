@@ -5,9 +5,6 @@
 
 CUI::CUI()
 	: m_pParentUI(nullptr)
-	, m_bMouseOn(false)
-	, m_bMouseOn_Prev(false)
-	, m_bMouseLBtnDown(false)
 	, m_vFinalPos{}
 {
 }
@@ -15,9 +12,6 @@ CUI::CUI()
 CUI::CUI(const CUI& _Origin)
 	: CObj(_Origin)
 	, m_pParentUI(nullptr)
-	, m_bMouseOn(false)
-	, m_bMouseLBtnDown(false)
-	, m_bMouseOn_Prev(false)
 {
 	for (size_t i = 0; i < _Origin.m_vecChildUI.size(); ++i)
 	{
@@ -46,19 +40,6 @@ void CUI::tick(float _DT)
 	if (nullptr != m_pParentUI)
 	{
 		m_vFinalPos += m_pParentUI->GetPos();
-	}
-
-	// 마우스 상태 체크
-	m_bMouseOn_Prev = m_bMouseOn;
-
-	Vec2 vMousePos = CKeyMgr::GetInst()->GetMousePos();
-	if (m_vFinalPos.x <= vMousePos.x && m_vFinalPos.y <= vMousePos.y && vMousePos.x <= m_vFinalPos.x + GetScale().x && vMousePos.y <= m_vFinalPos.y + GetScale().y)
-	{
-		m_bMouseOn = true;
-	}
-	else
-	{
-		m_bMouseOn = false;
 	}
 
 	// 자식 UI tick()

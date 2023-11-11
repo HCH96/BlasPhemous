@@ -40,6 +40,8 @@ CPenitent::CPenitent()
 	, m_pDustAnimator(nullptr)
 	, m_pSM(nullptr)
 	, m_fHP(100.f)
+	, m_iMP(3)
+	, m_iPotion(3)
 	, m_iOverlapGround(0)
 {
 	// 이름 설정
@@ -153,6 +155,21 @@ void CPenitent::tick(float _DT)
 		m_fHP = 0.f;
 	}
 
+	if (KEY_TAP(KEY::P))
+	{
+		m_fHP -= 20.f;
+	}
+	if (KEY_TAP(KEY::O) && m_iMP > 0)
+	{
+		--m_iMP;
+	}
+
+	if (KEY_TAP(KEY::I) && m_iMP <= 3 )
+	{
+		++m_iMP;
+	}
+
+
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
 
@@ -168,7 +185,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 	if (dynamic_cast<CPlatform*>(_pOtherObj))
 	{
 		++m_iOverlapGround;
-		m_pMovement->SetGround(true);
+		//m_pMovement->SetGround(true);
 	}
 }
 
@@ -181,7 +198,6 @@ void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Othe
 		if (m_iOverlapGround <= 0)
 		{
 			m_pMovement->SetGround(false);
-
 		}
 	}
 }

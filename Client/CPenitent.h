@@ -13,6 +13,8 @@ class CPenitent :
     GENERATED_OBJECT(CObj);
 private:
     float                   m_fHP;
+    int                     m_iMP;
+    int                     m_iPotion;
 
     
 
@@ -33,8 +35,12 @@ private:
 
 public:
     float GetHP() { return m_fHP; }
-
+    int GetMP() { return m_iMP; }
+    int GetPotionCount() { return m_iPotion; }
+    
     void SetHP(float _f) { m_fHP = _f; }
+    void SetMP(float _f) { m_fHP = _f; }
+    void SetPotionCount(int _iCount) { m_iPotion = _iCount; }
 
 public:
     virtual void begin() override;

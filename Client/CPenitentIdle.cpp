@@ -16,6 +16,7 @@ CPenitentIdle::~CPenitentIdle()
 
 void CPenitentIdle::finaltick(float _DT)
 {
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();
 
@@ -38,7 +39,7 @@ void CPenitentIdle::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCH);
 	}
 
-	if (KEY_TAP(KEY::Z))
+	if (KEY_TAP(KEY::Z) && pPenitent->GetPotionCount() > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::HEALTHPOTION);
 	}

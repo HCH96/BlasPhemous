@@ -21,8 +21,6 @@ void CPenitentDeath::finaltick(float _DT)
 	{
 		if (pPenitent->GetHP() <= 0.f)
 			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DEATH);
-
-
 	}
 
 	// ม๘วเ
@@ -59,7 +57,7 @@ void CPenitentDeath::finaltick(float _DT)
 
 void CPenitentDeath::Enter()
 {
-	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	//CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 
 	bool bDir = GetOwnerObj->GetDir();
