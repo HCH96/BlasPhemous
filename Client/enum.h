@@ -13,6 +13,7 @@ enum class LEVEL_TYPE
 	STAGE01_2,
 	STAGE01_3,
 	STAGE01_4,
+	STAGE01_5,
 	//BOSS_1,
 
 	END,

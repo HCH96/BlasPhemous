@@ -208,6 +208,7 @@
     <ClInclude Include="CPenitentStartRun.h" />
     <ClInclude Include="CStage01_2.h" />
     <ClInclude Include="CStage01_4.h" />
+    <ClInclude Include="CStage01_5.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CStateMachine.h" />
     <ClInclude Include="CTaskMgr.h" />
@@ -293,6 +294,7 @@
     <ClCompile Include="CPenitentStartRun.cpp" />
     <ClCompile Include="CStage01_2.cpp" />
     <ClCompile Include="CStage01_4.cpp" />
+    <ClCompile Include="CStage01_5.cpp" />
     <ClCompile Include="CState.cpp" />
     <ClCompile Include="CStateMachine.cpp" />
     <ClCompile Include="CTaskMgr.cpp" />
