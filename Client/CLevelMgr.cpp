@@ -9,6 +9,7 @@
 #include "CStage01_1.h"
 #include "CStage01_2.h"
 #include "CStage01_3.h"
+#include "CStage01_4.h"
 
 
 #include "CPenitent.h"
@@ -61,6 +62,7 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_1] = new CStage01_1;
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_2] = new CStage01_2;
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_3] = new CStage01_3;
+	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_4] = new CStage01_4;
 
 
 	// 레벨 초기화
@@ -71,7 +73,7 @@ void CLevelMgr::init()
 
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::STAGE01_3);
+	ChangeLevel(LEVEL_TYPE::STAGE01_4);
 }
 
 void CLevelMgr::tick()
