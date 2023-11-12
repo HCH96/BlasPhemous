@@ -43,6 +43,7 @@ CPenitent::CPenitent()
 	, m_iMP(3)
 	, m_iPotion(3)
 	, m_iOverlapGround(0)
+	, m_fTears(0.f)
 {
 	// 이름 설정
 	SetName(L"Penitent");
@@ -167,6 +168,11 @@ void CPenitent::tick(float _DT)
 	if (KEY_TAP(KEY::I) && m_iMP <= 3 )
 	{
 		++m_iMP;
+	}
+
+	if (KEY_TAP(KEY::U))
+	{
+		m_fTears += 100;
 	}
 
 

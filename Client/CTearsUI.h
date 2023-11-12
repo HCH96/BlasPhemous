@@ -6,7 +6,14 @@ class CTearsUI :
     GENERATED_OBJECT(CUI);
 
 private:
-    CTexture* m_pTexture;
+    CTexture*           m_pTexture;
+    vector<CTexture*>   m_vecTex;
+
+    float               m_fCur;
+    float               m_fRender;
+    
+    Vec2                m_vNumPos;
+
 
 public:
     virtual void tick(float _DT) override;
