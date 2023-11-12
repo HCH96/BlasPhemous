@@ -109,7 +109,6 @@ CPenitent::CPenitent(const CPenitent& _Origin)
 
 CPenitent::~CPenitent()
 {
-	int a = 0;
 }
 
 
@@ -165,7 +164,7 @@ void CPenitent::tick(float _DT)
 		--m_iMP;
 	}
 
-	if (KEY_TAP(KEY::I) && m_iMP <= 3 )
+	if (KEY_TAP(KEY::I) && m_iMP < 3 )
 	{
 		++m_iMP;
 	}

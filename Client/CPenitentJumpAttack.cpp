@@ -101,7 +101,7 @@ void CPenitentJumpAttack::finaltick(float _DT)
 		}
 	}
 
-	if (isFinsh)
+	if (isFinsh || pAnimator->IsFinish())
 	{
 		if (vVel.x == 0)
 			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);

@@ -35,20 +35,24 @@ void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 {
 	Vec2 vPos = _OwnCol->GetPos();
 	Vec2 vObjPos = _OtherObj->GetPos();
+	CMovement* pOtherMovement = _OtherObj->GetComponent<CMovement>();
+
 
 	// 옆면 충돌했을 경우
 	if (m_pCollider->GetAngle() == 0.f && _OtherObj->GetPos().y > _OwnCol->GetPos().y + 10.f)
 	{
+		
+
 		// 왼쪽으로 충돌했을 경우
-		if (vPos.x > vObjPos.x)
+		if (vPos.x > vObjPos.x && (pOtherMovement->GetVelocity().x > 0))
 		{
-			_OtherObj->SetPos(Vec2(vPos.x - _OwnCol->GetScale().x / 2.f - _OtherCol->GetScale().x / 2.f - 1.f, vObjPos.y));
+			_OtherObj->SetPos(Vec2(vPos.x - _OwnCol->GetScale().x / 2.f - _OtherCol->GetScale().x / 2.f, vObjPos.y));
 		}
 
 		// 오른쪽으로 충돌했을 경우
-		if (vPos.x < vObjPos.x)
+		if (vPos.x < vObjPos.x && (pOtherMovement->GetVelocity().x < 0))
 		{
-			_OtherObj->SetPos(Vec2(vPos.x + _OwnCol->GetScale().x / 2.f + _OtherCol->GetScale().x / 2.f + 1.f, vObjPos.y));
+			_OtherObj->SetPos(Vec2(vPos.x + _OwnCol->GetScale().x / 2.f + _OtherCol->GetScale().x / 2.f, vObjPos.y));
 		}
 	}
 	else
@@ -62,14 +66,7 @@ void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		if (vObjPos.y > fTargetY)
 		{
 			_OtherObj->SetPos(Vec2(vObjPos.x, fTargetY));
-
-			CPenitent* pPenitent = dynamic_cast<CPenitent*>(_OtherObj);
-			if (pPenitent)
-			{
-				CMovement* pPenitentMovement = pPenitent->GetComponent<CMovement>();
-				pPenitentMovement->SetGround(true);
-			}
-
+			pOtherMovement->SetGround(true);
 		}
 	}
 

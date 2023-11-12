@@ -9,6 +9,8 @@
 
 #include "CPenitent.h"
 
+#include "CPlatform.h"
+
 
 
 void CStage01_2::init()
@@ -73,6 +75,18 @@ void CStage01_2::init()
 	AddObject(LAYER::FOREGROUND, pBackGround);
 
 
+	// 플랫폼 생성
+	CPlatform* pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(530.f, 1520.f));
+	pPlatform->SetScale(Vec2(800.f, 50.f));
+	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(1050.f, 1380.f));
+	pPlatform->SetScale(Vec2(280.f, 30.f));
+	AddObject(LAYER::PLATFORM, pPlatform);
+
+
 
 
 }
@@ -80,9 +94,19 @@ void CStage01_2::init()
 void CStage01_2::enter()
 {
 	//Penitent 생성
-	//CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
-	//pPenitent->SetPos(Vec2(1000.f, 1000.f));
-	//AddObject(LAYER::PLAYER, pPenitent);
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	AddObject(LAYER::PLAYER, pPenitent);
+
+	if ((UINT)LEVEL_TYPE::STAGE01_1 == CLevelMgr::GetInst()->GetPrevLevel())
+	{
+		pPenitent->SetPos(Vec2(170.f, 1500.f));
+	}
+
+	if ((UINT)LEVEL_TYPE::STAGE01_3 == CLevelMgr::GetInst()->GetPrevLevel())
+	{
+
+	}
+
 
 	// 카메라 설정
 	// 카메라 설정
@@ -91,8 +115,8 @@ void CStage01_2::enter()
 	vLookAt /= 2.f;
 
 	CCamera::GetInst()->InitLookAt(Vec2(762.f,1354.f));
-	//CCamera::GetInst()->SetTarget(pPenitent);
-	//CCamera::GetInst()->SetLookAtOffsetY(-230.f);
+	CCamera::GetInst()->SetTarget(pPenitent);
+	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
 	CCamera::GetInst()->SetCameraLimit(Vec2(2112.f * 2.f, 1130.f * 2.f));
 
 }

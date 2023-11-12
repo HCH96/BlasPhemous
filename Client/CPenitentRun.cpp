@@ -87,7 +87,7 @@ void CPenitentRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
 
-	if (!pMovement->IsGround())
+	if (!pMovement->IsGround() && pMovement->GetVelocity().y > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
 	}
