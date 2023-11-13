@@ -30,6 +30,14 @@ void CPenitentCrouching::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCHATT);
 	}
 
+	if (KEY_TAP(KEY::F) && KEY_PRESSED(KEY::DOWN))
+	{
+		pMovement->SetGround(false);
+		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, 0.f));
+		dynamic_cast<CPenitent*>(GetOwnerObj)->SetDownPlatform(true);
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+	}
+
 	if (!pMovement->IsGround())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);

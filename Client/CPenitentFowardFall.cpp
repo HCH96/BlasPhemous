@@ -29,13 +29,13 @@ void CPenitentFowardFall::finaltick(float _DT)
 
 	if ((KEY_TAP(KEY::LEFT) || KEY_PRESSED(KEY::LEFT)) && KEY_NONE(KEY::RIGHT))
 	{
-		pMovement->AddVelocity(Vec2(-200.f, 0.f));
+		pMovement->AddVelocity(Vec2(-150.f, 0.f));
 
 	}
 
 	if ((KEY_TAP(KEY::RIGHT) || KEY_PRESSED(KEY::RIGHT)) && KEY_NONE(KEY::LEFT))
 	{
-		pMovement->AddVelocity(Vec2(200.f, 0.f));
+		pMovement->AddVelocity(Vec2(150.f, 0.f));
 	}
 
 
@@ -75,7 +75,7 @@ void CPenitentFowardFall::finaltick(float _DT)
 
 	if (pMovement->IsGround())
 	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STARTRRUN);
 	}
 
 	

@@ -18,15 +18,15 @@ void CPenitentDodge::finaltick(float _DT)
 	m_iCurFrame = pAnimator->GetCurFrame();
 
 	// 속도 변화
-	if (m_iCurFrame < 2 && m_iCurFrame > 0)
+	if (m_iCurFrame < 3 && m_iCurFrame > 0)
 	{
 		if (m_iDir)
 		{
-			pMovement->SetVelocity(Vec2(700.f, pMovement->GetVelocity().y));
+			pMovement->SetVelocity(Vec2(1050.f, pMovement->GetVelocity().y));
 		}
 		else
 		{
-			pMovement->SetVelocity(Vec2(-700.f, pMovement->GetVelocity().y));
+			pMovement->SetVelocity(Vec2(-1050.f, pMovement->GetVelocity().y));
 		}
 	}
 
@@ -46,6 +46,11 @@ void CPenitentDodge::finaltick(float _DT)
 	}
 
 	
+	if (!pMovement->IsGround())
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
+	}
+
 	if (KEY_TAP(KEY::F) || KEY_PRESSED(KEY::F))
 	{
 		pMovement->SetGround(false);
@@ -53,10 +58,6 @@ void CPenitentDodge::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMPFORWARD);
 	}
 
-	if (!pMovement->IsGround())
-	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
-	}
 
 }
 
@@ -66,6 +67,10 @@ void CPenitentDodge::Enter()
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
+	CCollider* pCol = GetOwnerObj->GetComponent<CCollider>();
+	pCol->SetScale(Vec2(60.f, 70.f));
+	pCol->SetOffsetPos(Vec2(0.f, -35.f));
+
 	m_iCurFrame = 0;
 	m_iDir = GetOwnerObj->GetDir();
 
@@ -74,6 +79,8 @@ void CPenitentDodge::Enter()
 
 	pDustAnimator->SetLock(true);
 	pDustAnimator->SetTmpPos(GetOwnerObj->GetPos());
+
+
 
 	if (m_iDir)
 	{
@@ -97,7 +104,12 @@ void CPenitentDodge::Exit()
 
 	// Movement 설정 값 되돌려주기
 	pMovement->SetMaxSpeed(300.f);
-	pMovement->SetGravity(Vec2(0.f, 1600.f));
+	pMovement->SetGravity(Vec2(0.f, 2000.f));
+	pMovement->SetMaxSpeed(400.f);
+
+	CCollider* pCol = GetOwnerObj->GetComponent<CCollider>();
+	pCol->SetScale(Vec2(40.f, 100.f));
+	pCol->SetOffsetPos(Vec2(0.f, -50.f));
 
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
 	//pDustAnimator->SetLock(false);

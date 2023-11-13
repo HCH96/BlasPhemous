@@ -30,6 +30,7 @@
 #include "CPenitentCrouchUp.h"
 #include "CPenitentCrouchATT.h"
 #include "CPenitentDeath.h"
+#include "CPenitentNone.h"
 
 
 CPenitent::CPenitent()
@@ -44,6 +45,8 @@ CPenitent::CPenitent()
 	, m_iPotion(3)
 	, m_iOverlapGround(0)
 	, m_fTears(0.f)
+	, m_bIsLeft(true)
+	, m_bDownPlatform(false)
 {
 	// 이름 설정
 	SetName(L"Penitent");
@@ -65,10 +68,7 @@ CPenitent::CPenitent()
 	m_pDustAnimator = AddComponent<CAnimator>(L"Dust_Animator");
 	DustAnimInit();
 
-	// collider
-	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
-	m_pCollider->SetOffsetPos(Vec2(0.f, -40.f));
-	m_pCollider->SetScale(Vec2(40.f, 80.f));
+	
 
 
 	// StateMachine 컴포넌트 추가
@@ -82,13 +82,18 @@ CPenitent::CPenitent()
 	// Movement 컴포넌트 추가
 	m_pMovement = AddComponent<CMovement>(L"Penitent_Movement");
 	m_pMovement->SetMass(1.f);
-	m_pMovement->SetInitSpeed(200.f);
-	m_pMovement->SetMaxSpeed(300.f);
-	m_pMovement->SetFrictionScale(1500.f);
+	m_pMovement->SetInitSpeed(300.f);
+	m_pMovement->SetMaxSpeed(350.f);
+	m_pMovement->SetFrictionScale(2000.f);
 	m_pMovement->UseGravity(true);
-	m_pMovement->SetGravity(Vec2(0.f, 1600.f));
-	m_pMovement->SetJumpVel(-700.f);
-	m_pMovement->SetMaxDown(500.f);
+	m_pMovement->SetGravity(Vec2(0.f, 2000.f));
+	m_pMovement->SetJumpVel(-800.f);
+	m_pMovement->SetMaxDown(1500.f);
+	
+	// collider
+	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
+	m_pCollider->SetScale(Vec2(40.f, 100.f));
+	m_pCollider->SetOffsetPos(Vec2(0.f, -50.f));
 
 }
 
@@ -117,16 +122,9 @@ CPenitent::~CPenitent()
 void CPenitent::begin()
 {
 	// 레벨 진입 시
-
-	// Change State
-	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);
-	m_pSM->ChangeState((UINT)PENITENT_STATE::FALL);
-
+	
 	// Movement 세팅
 	m_pMovement->SetGround(false);
-
-
-	
 }
 
 void CPenitent::tick(float _DT)
@@ -199,6 +197,7 @@ void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Othe
 	if (dynamic_cast<CPlatform*>(_OtherObj))
 	{
 		--m_iOverlapGround;
+		SetDownPlatform(false);
 
 		if (m_iOverlapGround <= 0)
 		{
@@ -289,11 +288,10 @@ void CPenitent::AnimationInit()
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Rising", L"texture\\Penitent\\penitent_risingFromFallen_anim.png");
 	//pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Run_L", L"texture\\Penitent\\penitent_running_anim.png");
 
-
 	m_pAnimator->LoadAnimation(pTex, L"Rising", L"animdata\\Penitent\\penitent_risingFromFallen_anim.txt");
 	//m_pAnimator->LoadAnimation(pTexReverse, L"Run_L", L"animdata\\Penitent\\penitent_running_anim.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Rising", 0.05f);
+	m_pAnimator->SetAnimDuration(L"Rising", 0.1f);
 	//m_pAnimator->SetAnimDuration(L"Run_L", 0.06f);
 
 
@@ -381,8 +379,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"JumpForward", L"animdata\\Penitent\\penitent_jum_forward_anim.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"JumpForward_L", L"animdata\\Penitent\\penitent_jum_forward_anim.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"JumpForward", 0.1f);
-	m_pAnimator->SetAnimDuration(L"JumpForward_L", 0.1f);
+	m_pAnimator->SetAnimDuration(L"JumpForward", 0.08f);
+	m_pAnimator->SetAnimDuration(L"JumpForward_L", 0.08f);
 
 	// JumpForwardFall
 		
@@ -628,4 +626,7 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHUP, new CPenitentCrouchUp);
 	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHATT, new CPenitentCrouchATT);
 	m_pSM->AddState((UINT)PENITENT_STATE::DEATH, new CPenitentDeath);
+	m_pSM->AddState((UINT)PENITENT_STATE::NONE, new CPenitentNone);
+
+	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);
 }

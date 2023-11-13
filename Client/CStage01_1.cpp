@@ -14,6 +14,8 @@
 #include "CWall.h"
 
 #include "CPenitent.h"
+#include "CPenitentUI.h"
+#include "CTearsUI.h"
 
 
 void CStage01_1::init()
@@ -76,7 +78,7 @@ void CStage01_1::init()
 
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(1220.f, 1060.f));
-	pPlatform->SetScale(Vec2(300.f, 30.f));
+	pPlatform->SetScale(Vec2(300.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
 	pPlatform = new CPlatform;
@@ -87,20 +89,23 @@ void CStage01_1::init()
 
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(3300.f, 1830.f));
-	pPlatform->SetScale(Vec2(900.f, 30.f));
+	pPlatform->SetScale(Vec2(1000.f, 30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
-
-	pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(130.f, 900.f));
-	pPlatform->SetScale(Vec2(100.f, 1060.f));
-	AddObject(LAYER::PLATFORM, pPlatform);
 
 	// Wall 积己
-	//CWall* pWall = new CWall;
-	//pWall->SetPos(Vec2(130.f, 900.f));
-	//pWall->SetScale(Vec2(100.f, 1060.f));
-	//AddObject(LAYER::PLATFORM, pWall);
+	CWall* pWall = new CWall;
+	pWall->SetPos(Vec2(130.f, 900.f));
+	pWall->SetScale(Vec2(100.f, 1060.f));
+	AddObject(LAYER::PLATFORM, pWall);
+
+
+	// UI 积己
+	CPenitentUI* pPenitentUI = new CPenitentUI;
+	AddObject(LAYER::UI, pPenitentUI);
+
+	CTearsUI* pTearsUI = new CTearsUI;
+	AddObject(LAYER::UI, pTearsUI);
 
 
 }
@@ -109,7 +114,17 @@ void CStage01_1::enter()
 {
 	//Penitent 积己
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
-	pPenitent->SetPos(Vec2(1000.f, 1000.f));
+	if ((UINT)LEVEL_TYPE::STAGE01_2 == CLevelMgr::GetInst()->GetPrevLevel())
+	{
+		pPenitent->SetPos(Vec2(1845.f*2, 895.f*2));
+		pPenitent->SetState(PENITENT_STATE::IDLE);
+	}
+	else
+	{
+		pPenitent->SetPos(Vec2(1200.f, 0.f));
+		pPenitent->SetState(PENITENT_STATE::FALLINGAHEAD);
+	}
+	pPenitent->SetLeft(false);
 	AddObject(LAYER::PLAYER, pPenitent);
 
 	// 墨皋扼 汲沥
@@ -118,9 +133,10 @@ void CStage01_1::enter()
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
 
-	CCamera::GetInst()->InitLookAt(vLookAt);
 	CCamera::GetInst()->SetTarget(pPenitent);
+	CCamera::GetInst()->InitLookAt(pPenitent->GetPos());
 	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
+	CCamera::GetInst()->SetCameraLimitLT(Vec2(0.f * 2.f, 0.f * 2.f));
 	CCamera::GetInst()->SetCameraLimit(Vec2(1920.f * 2.f, 1027.f * 2.f));
 }
 
@@ -135,12 +151,12 @@ void CStage01_1::tick()
 
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
 
-	if (pPenitent->GetPos().x > 1845.f * 2)
+	if (pPenitent->GetPos().x > 1845.f * 2 && !pPenitent->GetIsLeft())
 	{
-		pPenitent->SetPos(Vec2(0.f, 0.f));
-		pPenitent->SetIsFix(true);
 		CCamera::GetInst()->FixLookAt();
+		pPenitent->SetLeft(true);
+		pPenitent->SetState(PENITENT_STATE::NONE);
 
-		CCamera::GetInst()->FadeOut(1.f, LEVEL_TYPE::STAGE01_2);
+		CCamera::GetInst()->FadeOut(0.5f, LEVEL_TYPE::STAGE01_2);
 	}
 }

@@ -33,21 +33,24 @@ void CWall::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
 	
 	Vec2 vPos = _OwnCol->GetPos();
-	Vec2 vScale = _OwnCol->GetScale();
-	Vec2 vOtherPos = _OtherObj->GetPos();
-	Vec2 vOtherScale = _OtherCol->GetScale();
+	Vec2 vObjPos = _OtherObj->GetPos();
+	CMovement* pOtherMovement = _OtherObj->GetComponent<CMovement>();
 
-	// 오른쪽에 오브젝트 있음
-	if (vPos.x - vOtherPos.x < 0)
+	if (m_pCollider->GetAngle() == 0.f)
 	{
-		_OtherObj->SetPos(Vec2(vPos.x + vScale.x/2.f + vOtherScale.x/2.f +1.f , vOtherPos.y));
+		// 왼쪽으로 충돌했을 경우
+		if (vPos.x > vObjPos.x && (pOtherMovement->GetVelocity().x > 0))
+		{
+			_OtherObj->SetPos(Vec2(vPos.x - _OwnCol->GetScale().x / 2.f - _OtherCol->GetScale().x / 2.f, vObjPos.y));
+		}
+
+		// 오른쪽으로 충돌했을 경우
+		if (vPos.x < vObjPos.x && (pOtherMovement->GetVelocity().x < 0))
+		{
+			_OtherObj->SetPos(Vec2(vPos.x + _OwnCol->GetScale().x / 2.f + _OtherCol->GetScale().x / 2.f, vObjPos.y));
+		}
 	}
 
-	// 왼쪽에 오브젝트 있음
-	if (vPos.x - vOtherPos.x > 0)
-	{
-		_OtherObj->SetPos(Vec2(vPos.x - vScale.x / 2.f - vOtherScale.x / 2.f -1.f, vOtherPos.y));
-	}
 
 }
 

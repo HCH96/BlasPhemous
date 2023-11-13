@@ -188,6 +188,7 @@
     <ClInclude Include="CPenitentJumpAttack.h" />
     <ClInclude Include="CPenitentJumpForward.h" />
     <ClInclude Include="CPenitentMP.h" />
+    <ClInclude Include="CPenitentNone.h" />
     <ClInclude Include="CPenitentPotion.h" />
     <ClInclude Include="CPenitentRising.h" />
     <ClInclude Include="CPenitentStopRun.h" />
@@ -283,6 +284,7 @@
     <ClCompile Include="CPenitentJumpAttack.cpp" />
     <ClCompile Include="CPenitentJumpForward.cpp" />
     <ClCompile Include="CPenitentMP.cpp" />
+    <ClCompile Include="CPenitentNone.cpp" />
     <ClCompile Include="CPenitentPotion.cpp" />
     <ClCompile Include="CPenitentRising.cpp" />
     <ClCompile Include="CPenitentStopRun.cpp" />

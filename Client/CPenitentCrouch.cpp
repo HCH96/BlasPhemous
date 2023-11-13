@@ -13,6 +13,7 @@ CPenitentCrouch::~CPenitentCrouch()
 void CPenitentCrouch::finaltick(float _DT)
 {
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();
 	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
 
@@ -44,6 +45,17 @@ void CPenitentCrouch::finaltick(float _DT)
 	if (!(KEY_PRESSED(KEY::DOWN)))
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCHUP);
+	}
+
+	if (KEY_TAP(KEY::F) && KEY_PRESSED(KEY::DOWN))
+	{
+		pMovement->SetGround(false);
+		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, 0.f));
+		
+		dynamic_cast<CPenitent*>(GetOwnerObj)->SetDownPlatform(true);
+
+
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
 	}
 
 	if (pAnimator->IsFinish())

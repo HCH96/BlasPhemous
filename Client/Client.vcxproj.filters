@@ -272,6 +272,9 @@
     <Filter Include="Game\04. Object\UI\Tears">
       <UniqueIdentifier>{cfdd7781-d703-4059-8d12-129fa3ecb8af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\None">
+      <UniqueIdentifier>{f499ce83-1107-45d7-ac3b-7f4bbb1d4a7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -557,6 +560,9 @@
     <ClInclude Include="CTearsUI.h">
       <Filter>Game\04. Object\UI\Tears</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentNone.h">
+      <Filter>Game\08. State\Penitent\None</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -836,6 +842,9 @@
     </ClCompile>
     <ClCompile Include="CTearsUI.cpp">
       <Filter>Game\04. Object\UI\Tears</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentNone.cpp">
+      <Filter>Game\08. State\Penitent\None</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

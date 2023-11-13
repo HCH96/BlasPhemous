@@ -30,6 +30,7 @@ void CPenitentDodgeToRun::finaltick(float _DT)
 	// 상태 변화
 	if (m_bDir != bDir)
 	{
+		pMovement->SetVelocity(Vec2(-pMovement->GetVelocity().x, pMovement->GetVelocity().y));
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::RUN);
 	}
 

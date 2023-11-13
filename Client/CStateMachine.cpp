@@ -107,6 +107,12 @@ CState* CStateMachine::FindState(UINT _id)
 
 void CStateMachine::ChangeState(UINT _NextID)
 {
+	//wchar_t m_reportFileName[256];
+
+	//swprintf_s(m_reportFileName, L"%d", _NextID);
+
+	//LOG(LOG_LEVEL::LOG, m_reportFileName);
+
 	CState* pNextState = FindState(_NextID);
 
 	if (nullptr == pNextState)

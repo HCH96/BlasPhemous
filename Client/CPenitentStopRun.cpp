@@ -87,6 +87,7 @@ void CPenitentStopRun::Enter()
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
 	bool bDir = GetOwnerObj->GetDir();
 	pDustAnimator->SetLock(false);
+
 	
 	if (bDir)
 	{

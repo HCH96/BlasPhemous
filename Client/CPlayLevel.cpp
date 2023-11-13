@@ -10,6 +10,7 @@
 #include "CSound.h"
 
 #include "CPlatform.h"
+#include "CWall.h"
 #include "CPlayer.h"
 #include "CMonster.h"
 #include "CPenitent.h"
@@ -31,16 +32,16 @@ void CPlayLevel::init()
 	vLookAt /= 2.f;
 
 	// 阁胶磐 积己
-	CMonster* pMonster = new CMonster;
+	//CMonster* pMonster = new CMonster;
 
-	pMonster->SetPos(vLookAt);
-	pMonster->SetScale(Vec2(100.f, 100.f));
-	AddObject(LAYER::MONSTER, pMonster);
+	//pMonster->SetPos(vLookAt);
+	//pMonster->SetScale(Vec2(100.f, 100.f));
+	//AddObject(LAYER::MONSTER, pMonster);
 
-	pMonster = new CMonster;
-	pMonster->SetPos(vLookAt + Vec2(150.f, 0.f));
-	pMonster->SetScale(Vec2(100.f, 100.f));
-	AddObject(LAYER::PLAYER, pMonster);
+	//pMonster = new CMonster;
+	//pMonster->SetPos(vLookAt + Vec2(150.f, 0.f));
+	//pMonster->SetScale(Vec2(100.f, 100.f));
+	//AddObject(LAYER::PLAYER, pMonster);
 
 
 
@@ -54,9 +55,19 @@ void CPlayLevel::init()
 
     // 敲阀汽 积己
 	CPlatform* pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(640.f, 600.f));
+	pPlatform->SetPos(Vec2(640.f, 500.f));
 	pPlatform->SetScale(Vec2(1000.f, 30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	//pPlatform = new CPlatform;
+	//pPlatform->SetPos(Vec2(640.f, 700.f));
+	//pPlatform->SetScale(Vec2(1000.f, 30.f));
+	//AddObject(LAYER::PLATFORM, pPlatform);
+	//
+	//CWall* pWall = new CWall;
+	//pWall->SetPos(Vec2(240.f, 500.f));
+	//pWall->SetScale(Vec2(20.f, 1000.f));
+	//AddObject(LAYER::PLATFORM, pWall);
 
 	// UI 积己
 	CPenitentUI* pPenitentUI = new CPenitentUI;
@@ -77,6 +88,7 @@ void CPlayLevel::enter()
 
 	// Penitent 积己
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	pPenitent->SetState(PENITENT_STATE::IDLE);
 	pPenitent->SetPos(Vec2(640.f, 360.f));
 	AddObject(LAYER::PLAYER, pPenitent);
 

@@ -17,9 +17,10 @@ private:
     int                     m_iPotion;
     float                   m_fTears;
 
-    
-
     int                     m_iOverlapGround;
+
+    bool                    m_bIsLeft;
+    bool                    m_bDownPlatform;
 
     CAnimator*              m_pAnimator;
     CAnimator*              m_pEffector;
@@ -39,11 +40,17 @@ public:
     int GetMP() { return m_iMP; }
     int GetPotionCount() { return m_iPotion; }
     float GetTears() { return m_fTears; }
+    bool GetIsLeft() { return m_bIsLeft; }
+    bool GetDownPlatform() { return m_bDownPlatform; }
     
     void SetHP(float _f) { m_fHP = _f; }
     void SetMP(float _f) { m_fHP = _f; }
     void SetPotionCount(int _iCount) { m_iPotion = _iCount; }
-    void SetTears(int _i) { m_fTears = _i; }
+    void SetTears(int _i) { m_fTears = (float)_i; }
+    void SetLeft(bool _b) { m_bIsLeft = _b; }
+    void SetDownPlatform(bool _b) { m_bDownPlatform = _b; }
+
+    void SetState(PENITENT_STATE _eSTATE) { m_pSM->ChangeState((UINT)_eSTATE); }
 
 public:
     virtual void begin() override;

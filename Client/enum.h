@@ -145,6 +145,7 @@ enum class ENORMAL_MON_STATE
 // Penitent 
 enum class PENITENT_STATE
 {
+	NONE,
 	FALLINGAHEAD,
 	RISING,
 	IDLE,

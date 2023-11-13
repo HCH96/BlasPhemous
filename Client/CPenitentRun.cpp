@@ -106,14 +106,14 @@ void CPenitentRun::Enter()
 	if (bDir)
 	{
 		pAnimator->Play(L"Run", true);
-		pMovement->SetVelocity(Vec2(2.f, 0.f) * pMovement->GetInitSpeed());
+		//pMovement->SetVelocity(Vec2(2.f, 0.f) * pMovement->GetInitSpeed());
 		pDustAnimator->Play(L"RunDust", true);
 
 	}
 	else
 	{
 		pAnimator->Play(L"Run_L", true);
-		pMovement->SetVelocity(Vec2(-2.f, 0.f) * pMovement->GetInitSpeed());
+		//pMovement->SetVelocity(Vec2(-2.f, 0.f) * pMovement->GetInitSpeed());
 		pDustAnimator->Play(L"RunDust_L", true);
 	}
 }

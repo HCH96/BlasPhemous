@@ -82,7 +82,7 @@ void CTearsUI::render(HDC _dc)
 	blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
 
-	int iRenderTear = (float)m_fRender;
+	int iRenderTear = (int)m_fRender;
 	Vec2 vNumRenderPos = m_vNumPos;
 
 	AlphaBlend(_dc
@@ -99,8 +99,8 @@ void CTearsUI::render(HDC _dc)
 		Vec2 vNumScale = Vec2(m_vecTex[iRenderTex]->GetWidth(), m_vecTex[iRenderTex]->GetHeight());
 
 		AlphaBlend(_dc
-			, (int)vNumRenderPos.x-vNumScale.x/2.f
-			, (int)vNumRenderPos.y-vNumScale.y/2.f
+			, int(vNumRenderPos.x-vNumScale.x/2.f)
+			, int(vNumRenderPos.y-vNumScale.y/2.f)
 			, int(vNumScale.x), int(vNumScale.y)
 			, m_vecTex[iRenderTex]->GetDC()
 			, 0, 0

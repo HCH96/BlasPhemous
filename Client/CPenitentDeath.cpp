@@ -57,12 +57,13 @@ void CPenitentDeath::finaltick(float _DT)
 
 void CPenitentDeath::Enter()
 {
-	//CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 
 	bool bDir = GetOwnerObj->GetDir();
 
-	
+	pAnimator->FindAnimation(L"Death")->Reset();
+	pAnimator->FindAnimation(L"Death_L")->Reset();
 	pMovement->SetVelocity(Vec2(0.f, 0.f));
 }
 
