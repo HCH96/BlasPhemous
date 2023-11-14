@@ -39,24 +39,6 @@ void CPenitentAttack::finaltick(float _DT)
 			}
 		}
 
-		// 4~6 까지 HitBox 존재
-		if (iCurFrame == 4)
-		{
-			if (m_bDir)
-			{
-				pHitBox->SetScale(Vec2(150.f, 100.f));
-				pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
-				pHitBox->SetTime(0.2f);
-			}
-			else
-			{
-				pHitBox->SetScale(Vec2(150.f, 100.f));
-				pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
-				pHitBox->SetTime(0.2f);
-			}
-			
-		}
-
 		// 4~7 Frame 동안 공격을 시도하지 않았다면 종료
 		if (iCurFrame == 8 && !*(bool*)(pOwnerSM->GetDataFromBlackboard(L"IsTapS")))
 		{
@@ -72,26 +54,7 @@ void CPenitentAttack::finaltick(float _DT)
 		{
 			pOwnerSM->EditDataToBlackboard(L"IsTapS", false);
 		}
-
-		// 11~13까지 HitBox 존재
-		if (iCurFrame == 11)
-		{
-			if (m_bDir)
-			{
-				pHitBox->SetScale(Vec2(150.f, 100.f));
-				pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
-				pHitBox->SetTime(0.15f);
-			}
-			else
-			{
-				pHitBox->SetScale(Vec2(150.f, 100.f));
-				pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
-				pHitBox->SetTime(0.15f);
-			}
-		}
 		
-
-
 		if (iCurFrame >= 9 && iCurFrame < 14)
 		{
 			if (KEY_TAP(KEY::S))
@@ -114,28 +77,16 @@ void CPenitentAttack::finaltick(float _DT)
 			pOwnerSM->EditDataToBlackboard(L"IsTapS", false);
 		}
 
-		if (iCurFrame == 16)
-		{
-			if (m_bDir)
-			{
-				pHitBox->SetScale(Vec2(150.f, 120.f));
-				pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
-				pHitBox->SetTime(0.25f);
-			}
-			else
-			{
-				pHitBox->SetScale(Vec2(150.f, 100.f));
-				pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
-				pHitBox->SetTime(0.25f);
-			}
-		}
-
-
 		// 모든 프레임을 출력한 뒤 종료
 		if (iCurFrame == 27)
 		{
 			isFinsh = true;
 		}
+	}
+
+	if (iCurFrame == 4 ||iCurFrame == 11 || iCurFrame == 18)
+	{
+		pHitBox->On();
 	}
 
 
@@ -163,6 +114,10 @@ void CPenitentAttack::Enter()
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+	pHitBox->SetScale(Vec2(150.f, 110.f));
+	
+	pHitBox->SetTime(0.15f);
 
 
 	
@@ -174,12 +129,14 @@ void CPenitentAttack::Enter()
 		pAnimator->Play(L"Attack", true);
 		pEffector->Play(L"AttackSlash", false);
 		pMovement->SetVelocity(Vec2(0.f, 0.f));
+		pHitBox->SetOffsetPos(Vec2(100.f, -70.f));
 	}
 	else
 	{
 		pAnimator->Play(L"Attack_L", true);
 		pEffector->Play(L"AttackSlash_L", false);
 		pMovement->SetVelocity(Vec2(0.f, 0.f));
+		pHitBox->SetOffsetPos(Vec2(-100.f, -70.f));
 	}
 
 }

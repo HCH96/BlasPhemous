@@ -32,7 +32,7 @@ void CPenitentCrouch::finaltick(float _DT)
 	}
 
 	// 상태 전환
-	if ( (KEY_PRESSED(KEY::S) || KEY_TAP(KEY::S)) && pAnimator->IsFinish())
+	if ( (KEY_PRESSED(KEY::S) || KEY_TAP(KEY::S)))
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCHATT);
 	}

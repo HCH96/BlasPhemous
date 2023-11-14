@@ -275,6 +275,12 @@
     <Filter Include="Game\08. State\Penitent\PrayEnd">
       <UniqueIdentifier>{4cb83846-6889-44c1-852a-ab6fc0ddcd72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\Standing">
+      <UniqueIdentifier>{23f80877-8ec0-46e7-a43a-889265233027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Charging">
+      <UniqueIdentifier>{1d19425b-f02d-46e6-8fb6-60373bd3df1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -563,6 +569,12 @@
     <ClInclude Include="CPenitentPrayEnd.h">
       <Filter>Game\08. State\Penitent\PrayEnd</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentStanding.h">
+      <Filter>Game\08. State\Penitent\Standing</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentCharging.h">
+      <Filter>Game\08. State\Penitent\Charging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -845,6 +857,12 @@
     </ClCompile>
     <ClCompile Include="CPenitentPrayEnd.cpp">
       <Filter>Game\08. State\Penitent\PrayEnd</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentStanding.cpp">
+      <Filter>Game\08. State\Penitent\Standing</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentCharging.cpp">
+      <Filter>Game\08. State\Penitent\Charging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

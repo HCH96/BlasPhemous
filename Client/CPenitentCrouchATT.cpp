@@ -25,17 +25,13 @@ void CPenitentCrouchATT::finaltick(float _DT)
 		if (m_bDir)
 		{
 			pEffector->PlayNoReset(L"CrouchAttackSlash", false);
-			pHitBox->SetScale(Vec2(120.f, 80.f));
-			pHitBox->SetOffsetPos(Vec2(60.f, -20.f));
-			pHitBox->SetTime(0.12f);
+			
 		}
 		else
 		{
 			pEffector->PlayNoReset(L"CrouchAttackSlash_L", false);
-			pHitBox->SetScale(Vec2(-120.f, 80.f));
-			pHitBox->SetOffsetPos(Vec2(-60.f, -20.f));
-			pHitBox->SetTime(0.12f);
 		}
+		pHitBox->On();
 	}
 
 
@@ -49,18 +45,25 @@ void CPenitentCrouchATT::Enter()
 {
 	CCamera::GetInst()->SetLookAtOffsetX(60.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-	bool bDir = GetOwnerObj->GetDir();
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+	pHitBox->SetScale(Vec2(120.f, 80.f));
+	pHitBox->SetOffsetPos(Vec2(60.f, -20.f));
+	pHitBox->SetTime(0.12f);
 
-	if (bDir)
+
+	m_bDir = GetOwnerObj->GetDir();
+
+	if (m_bDir)
 	{
-		m_bDir = bDir;
+		
 		pAnimator->Play(L"CrouchATT", false);
+		pHitBox->SetOffsetPos(Vec2(60.f, -20.f));
 		
 	}
 	else
 	{
-		m_bDir = bDir;
 		pAnimator->Play(L"CrouchATT_L", false);
+		pHitBox->SetOffsetPos(Vec2(-60.f, -20.f));
 	}
 
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");

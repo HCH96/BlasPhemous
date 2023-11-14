@@ -19,6 +19,7 @@ void CPenitentJumpForward::finaltick(float _DT)
 	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
 	Vec2 vVel = pMovement->GetVelocity();
 
+
 	// 속도 변화
 
 	if (KEY_NONE(KEY::LEFT) && KEY_NONE(KEY::RIGHT))
@@ -76,13 +77,7 @@ void CPenitentJumpForward::finaltick(float _DT)
 
 	if (pMovement->IsGround())
 	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STARTRRUN);
-	}
-
-	if (pMovement->IsGround() && ((KEY_PRESSED(KEY::LEFT)) && !(KEY_PRESSED(KEY::LEFT))))
-	{
-
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STANDING);
 	}
 	
 }
@@ -95,13 +90,19 @@ void CPenitentJumpForward::Enter()
 	Vec2 vVel = pMovement->GetVelocity();
 	bool bDir = GetOwnerObj->GetDir();
 
+	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
+	pDustAnimator->SetLock(true);
+	pDustAnimator->SetTmpPos(GetOwnerObj->GetPos());
+
 	if (bDir)
 	{
 		pAnimator->Play(L"JumpForward", false);
+		pDustAnimator->Play(L"Jumping_dust", false);
 	}
 	else
 	{
 		pAnimator->Play(L"JumpForward_L", false);
+		pDustAnimator->Play(L"Jumping_dust_L", false);
 	}
 }
 

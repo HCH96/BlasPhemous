@@ -57,7 +57,7 @@ void CPenitentFall::finaltick(float _DT)
 
 	if (pMovement->IsGround())
 	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STANDING);
 	}
 
 }

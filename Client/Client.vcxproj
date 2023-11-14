@@ -173,6 +173,7 @@
     <ClInclude Include="CPathMgr.h" />
     <ClInclude Include="CPenitent.h" />
     <ClInclude Include="CPenitentAttack.h" />
+    <ClInclude Include="CPenitentCharging.h" />
     <ClInclude Include="CPenitentCrouch.h" />
     <ClInclude Include="CPenitentCrouchATT.h" />
     <ClInclude Include="CPenitentCrouching.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="CPenitentPotion.h" />
     <ClInclude Include="CPenitentPrayEnd.h" />
     <ClInclude Include="CPenitentRising.h" />
+    <ClInclude Include="CPenitentStanding.h" />
     <ClInclude Include="CPenitentStopRun.h" />
     <ClInclude Include="CPenitentIdle.h" />
     <ClInclude Include="CPenitentRun.h" />
@@ -269,6 +271,7 @@
     <ClCompile Include="CPathMgr.cpp" />
     <ClCompile Include="CPenitent.cpp" />
     <ClCompile Include="CPenitentAttack.cpp" />
+    <ClCompile Include="CPenitentCharging.cpp" />
     <ClCompile Include="CPenitentCrouch.cpp" />
     <ClCompile Include="CPenitentCrouchATT.cpp" />
     <ClCompile Include="CPenitentCrouching.cpp" />
@@ -289,6 +292,7 @@
     <ClCompile Include="CPenitentPotion.cpp" />
     <ClCompile Include="CPenitentPrayEnd.cpp" />
     <ClCompile Include="CPenitentRising.cpp" />
+    <ClCompile Include="CPenitentStanding.cpp" />
     <ClCompile Include="CPenitentStopRun.cpp" />
     <ClCompile Include="CPenitentIdle.cpp" />
     <ClCompile Include="CPenitentRun.cpp" />

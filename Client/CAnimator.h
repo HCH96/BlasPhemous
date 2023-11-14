@@ -29,6 +29,7 @@ public:
 
     void SetLock(bool _b) { m_bPosLock = _b; }
     void SetTmpPos(Vec2 _v) { m_vTmpPos = _v; }
+    void SetFrame(int _i);
 
 
 

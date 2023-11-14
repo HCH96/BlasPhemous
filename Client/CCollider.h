@@ -17,13 +17,12 @@ private:
     int     m_iCollisionCount;
 
 public:
-    void On() { m_bOn = true; }
+    void On() { m_bOn = true; m_fAcc = 0.f; }
     void Off() { m_bOn = false; }
 
     void SetTime(float _fDuration) {
         m_fAcc = 0.f;
         m_fDuration = _fDuration;
-        On();
     }
 
     bool IsOn() { return m_bOn; }

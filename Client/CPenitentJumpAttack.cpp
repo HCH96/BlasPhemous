@@ -32,16 +32,14 @@ void CPenitentJumpAttack::finaltick(float _DT)
 		if (bDir)
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash1", false);
-			pHitBox->SetScale(Vec2(150.f, 100.f));
 			pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
-			pHitBox->SetTime(0.15f);
+			pHitBox->On();
 		}
 		else
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash1_L", false);
-			pHitBox->SetScale(Vec2(150.f, 100.f));
 			pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
-			pHitBox->SetTime(0.15f);
+			pHitBox->On();
 		}
 	}
 
@@ -51,17 +49,26 @@ void CPenitentJumpAttack::finaltick(float _DT)
 		if (bDir)
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash2", false);
-			pHitBox->SetScale(Vec2(150.f, 100.f));
-			pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
-			pHitBox->SetTime(0.18f);
 
 		}
 		else
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash2_L", false);
-			pHitBox->SetScale(Vec2(150.f, 100.f));
+		}
+	}
+
+	if (pAnimator->GetCurFrame() == 8)
+	{
+		if (bDir)
+		{
+			pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
+			pHitBox->On();
+
+		}
+		else
+		{
 			pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
-			pHitBox->SetTime(0.18f);
+			pHitBox->On();
 		}
 	}
 
@@ -136,6 +143,9 @@ void CPenitentJumpAttack::Enter()
 	CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+	pHitBox->SetScale(Vec2(150.f, 100.f));
+	pHitBox->SetTime(0.15f);
 	bool bDir = GetOwnerObj->GetDir();
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);
 

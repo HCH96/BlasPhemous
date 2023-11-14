@@ -77,6 +77,11 @@ int CAnimator::GetCurFrame()
 	return m_pCurAnim->m_iCurFrm;
 }
 
+void CAnimator::SetFrame(int _i)
+{
+	m_pCurAnim->SetFrame(_i);
+}
+
 void CAnimator::Play(const wstring& _strName, bool _bRepeat)
 {
 	m_bRepeat = _bRepeat;

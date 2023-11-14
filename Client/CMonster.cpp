@@ -18,7 +18,7 @@ CMonster::CMonster()
 	, m_pTexture(nullptr)
 	, m_pAI(nullptr)
 {
-	m_Info.HP = 5;
+	m_Info.HP = 4;
 	//m_pTexture = CAssetMgr::GetInst()->LoadTexture(L"StartTex", L"texture\\MagicCircle_01.png");
 
 	// 상태머신 컴포넌트 추가 및 설정

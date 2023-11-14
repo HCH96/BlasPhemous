@@ -85,14 +85,19 @@ void CPenitentJump::Enter()
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bDir = GetOwnerObj->GetDir();
 
+	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
+	pDustAnimator->SetLock(true);
+	pDustAnimator->SetTmpPos(GetOwnerObj->GetPos());
 
 	if (bDir)
 	{
 		pAnimator->Play(L"Jump", true);
+		pDustAnimator->Play(L"Jumping_dust", false);
 	}
 	else
 	{
 		pAnimator->Play(L"Jump_L", true);
+		pDustAnimator->Play(L"Jumping_dust_L", false);
 	}
 }
 

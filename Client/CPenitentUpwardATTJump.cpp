@@ -24,9 +24,7 @@ void CPenitentUpwardATTJump::finaltick(float _DT)
 
 	if (pAnimator->GetCurFrame() == 4)
 	{
-		pHitBox->SetScale(Vec2(150.f, 150.f));
-		pHitBox->SetOffsetPos(Vec2(0.f, -180.f));
-		pHitBox->SetTime(0.09f);
+		pHitBox->On();
 
 		if (bDir)
 		{
@@ -97,6 +95,10 @@ void CPenitentUpwardATTJump::Enter()
 {
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+	pHitBox->SetScale(Vec2(150.f, 150.f));
+	pHitBox->SetOffsetPos(Vec2(0.f, -180.f));
+	pHitBox->SetTime(0.09f);
 	bool bDir = GetOwnerObj->GetDir();
 	
 	if (bDir)

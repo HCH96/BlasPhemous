@@ -62,9 +62,14 @@ void CPenitentIdle::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
 
-	if (KEY_TAP(KEY::S) && KEY_PRESSED(KEY::UP) && !(KEY_TAP(KEY::F)))
+	if ((KEY_TAP(KEY::S) || KEY_PRESSED(KEY::S)) && KEY_PRESSED(KEY::UP) && !(KEY_TAP(KEY::F)))
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACK);
+	}
+
+	if (KEY_PRESSED(KEY::S))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CHARGING);
 	}
 
 	if (!pMovement->IsGround() && pMovement->GetVelocity().y > 0)

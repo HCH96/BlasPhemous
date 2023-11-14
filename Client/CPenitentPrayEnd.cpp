@@ -18,7 +18,6 @@ void CPenitentPrayEnd::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
-
 }
 
 void CPenitentPrayEnd::Enter()
