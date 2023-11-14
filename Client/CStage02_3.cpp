@@ -8,6 +8,9 @@
 #include "CBackground.h"
 
 #include "CPenitent.h"
+#include "CPlatform.h"
+#include "CPenitentUI.h"
+#include "CTearsUI.h"
 
 
 void CStage02_3::init()
@@ -31,22 +34,26 @@ void CStage02_3::init()
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::TILE, pBackGround);
 
+
+	CPlatform* pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(1168.f, 1000.f));
+	pPlatform->SetScale(Vec2(2200.f, 50.f));
+	AddObject(LAYER::PLATFORM, pPlatform);
 }
 
 void CStage02_3::enter()
 {
 	//Penitent 생성
-	//CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
-	//pPenitent->SetPos(Vec2(1000.f, 1000.f));
-	//AddObject(LAYER::PLAYER, pPenitent);
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	pPenitent->SetState(PENITENT_STATE::IDLE);
+	pPenitent->SetPos(Vec2(1168.f, 1000.f));
+	pPenitent->SetLeft(false);
+
+	AddObject(LAYER::PLAYER, pPenitent);
 
 	// 카메라 설정
-	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
-	vLookAt /= 2.f;
-
-	CCamera::GetInst()->InitLookAt(vLookAt);
-	//CCamera::GetInst()->SetTarget(pPenitent);
-	//CCamera::GetInst()->SetLookAtOffsetY(-230.f);
+	CCamera::GetInst()->FadeIn(1.f);
+	CCamera::GetInst()->InitLookAt(pPenitent->GetPos());
 	CCamera::GetInst()->SetCameraLimitLT(Vec2(350.f * 2.f, 170.f * 2.f));
 	CCamera::GetInst()->SetCameraLimit(Vec2(990.f * 2.f, 530.f * 2.f));
 }

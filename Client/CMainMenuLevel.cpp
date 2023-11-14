@@ -83,7 +83,7 @@ void CMainMenuLevel::init()
 
 
 
-	// 버튼 초기화
+	//버튼 초기화
 	CAssetMgr::GetInst()->LoadTexture(L"Pilgrimage", L"texture\\UI\\MainMenu\\Pilgrimage.png");
 	CAssetMgr::GetInst()->LoadTexture(L"Pilgrimage_Select", L"texture\\UI\\MainMenu\\Pilgrimage_Select.png");
 	CAssetMgr::GetInst()->LoadTexture(L"Option", L"texture\\UI\\MainMenu\\Option.png");

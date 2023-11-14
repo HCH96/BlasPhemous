@@ -16,6 +16,8 @@ void CPenitentJumpAttack::finaltick(float _DT)
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CStateMachine* pOwnerSM = GetOwnerSM();
+
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
 	
 
 	Vec2 vVel = pMovement->GetVelocity();
@@ -30,10 +32,16 @@ void CPenitentJumpAttack::finaltick(float _DT)
 		if (bDir)
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash1", false);
+			pHitBox->SetScale(Vec2(150.f, 100.f));
+			pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
+			pHitBox->SetTime(0.15f);
 		}
 		else
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash1_L", false);
+			pHitBox->SetScale(Vec2(150.f, 100.f));
+			pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
+			pHitBox->SetTime(0.15f);
 		}
 	}
 
@@ -43,10 +51,17 @@ void CPenitentJumpAttack::finaltick(float _DT)
 		if (bDir)
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash2", false);
+			pHitBox->SetScale(Vec2(150.f, 100.f));
+			pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
+			pHitBox->SetTime(0.18f);
+
 		}
 		else
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash2_L", false);
+			pHitBox->SetScale(Vec2(150.f, 100.f));
+			pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
+			pHitBox->SetTime(0.18f);
 		}
 	}
 

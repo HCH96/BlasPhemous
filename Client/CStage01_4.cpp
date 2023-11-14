@@ -123,7 +123,7 @@ void CStage01_4::enter()
 		pPenitent->SetPos(Vec2(232.f, 1100.f));
 	}
 
-	if ((UINT)LEVEL_TYPE::STAGE01_4 == CLevelMgr::GetInst()->GetPrevLevel())
+	if ((UINT)LEVEL_TYPE::STAGE01_5 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
 		pPenitent->SetPos(Vec2(2740.f, 1100.f));
 	}

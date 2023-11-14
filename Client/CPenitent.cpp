@@ -31,6 +31,7 @@
 #include "CPenitentCrouchATT.h"
 #include "CPenitentDeath.h"
 #include "CPenitentNone.h"
+#include "CPenitentPrayEnd.h"
 
 
 CPenitent::CPenitent()
@@ -88,12 +89,16 @@ CPenitent::CPenitent()
 	m_pMovement->UseGravity(true);
 	m_pMovement->SetGravity(Vec2(0.f, 2000.f));
 	m_pMovement->SetJumpVel(-800.f);
-	m_pMovement->SetMaxDown(1500.f);
+	m_pMovement->SetMaxDown(1000.f);
 	
 	// collider
 	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
 	m_pCollider->SetScale(Vec2(40.f, 100.f));
 	m_pCollider->SetOffsetPos(Vec2(0.f, -50.f));
+
+	// HitBox
+	m_pHitBox = AddComponent<CCollider>(L"Penitent_HitBox");
+	m_pHitBox->Off();
 
 }
 
@@ -253,8 +258,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"UpwardAttck", L"animdata\\Penitent\\penitent_upward_attack_clamped_anim.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"UpwardAttck_L", L"animdata\\Penitent\\penitent_upward_attack_clamped_anim.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"UpwardAttck", 0.05f);
-	m_pAnimator->SetAnimDuration(L"UpwardAttck_L", 0.05f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck", 0.03f);
+	m_pAnimator->SetAnimDuration(L"UpwardAttck_L", 0.03f);
 
 
 	// Attack
@@ -310,14 +315,14 @@ void CPenitent::AnimationInit()
 	// PrayEnd
 
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"PrayEnd", L"texture\\Penitent\\penitent_priedieu_stand_up_anim.png");
-	//pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Run_L", L"texture\\Penitent\\penitent_running_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"PrayEnd_L", L"texture\\Penitent\\penitent_priedieu_stand_up_anim.png");
 
 
 	m_pAnimator->LoadAnimation(pTex, L"PrayEnd", L"animdata\\Penitent\\penitent_priedieu_stand_up_anim.txt");
-	//m_pAnimator->LoadAnimation(pTexReverse, L"Run_L", L"animdata\\Penitent\\penitent_running_anim.txt", true);
+	m_pAnimator->LoadAnimation(pTexReverse, L"PrayEnd_L", L"animdata\\Penitent\\penitent_priedieu_stand_up_anim.txt", true);
 
 	m_pAnimator->SetAnimDuration(L"PrayEnd", 0.05f);
-	//m_pAnimator->SetAnimDuration(L"Run_L", 0.06f);
+	m_pAnimator->SetAnimDuration(L"PrayEnd_L", 0.06f);
 
 
 
@@ -505,8 +510,8 @@ void CPenitent::EffectInit()
 	m_pEffector->LoadAnimation(pTex, L"UpwardATT", L"animdata\\Penitent\\penitent_upward_attack_slash_lvl1.txt");
 	m_pEffector->LoadAnimation(pTexReverse, L"UpwardATT_L", L"animdata\\Penitent\\penitent_upward_attack_slash_lvl1.txt", true);
 
-	m_pEffector->SetAnimDuration(L"UpwardATT", 0.05f);
-	m_pEffector->SetAnimDuration(L"UpwardATT_L", 0.05f);
+	m_pEffector->SetAnimDuration(L"UpwardATT", 0.03f);
+	m_pEffector->SetAnimDuration(L"UpwardATT_L", 0.03f);
 
 	// UpwardATTJump
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"UpwardATTJump", L"texture\\Penitent\\penitent_upward_attack_slash_lvl1_jump.png");
@@ -528,7 +533,7 @@ void CPenitent::EffectInit()
 	m_pEffector->SetAnimDuration(L"JumpATTSlash1", 0.06f);
 	m_pEffector->SetAnimDuration(L"JumpATTSlash1_L", 0.06f);
 
-	// JumpATTSlash1
+	// JumpATTSlash2
 	m_pEffector->LoadAnimation(pTex, L"JumpATTSlash2", L"animdata\\Penitent\\penitent_jumping_attack_slasheslvl2.txt");
 	m_pEffector->LoadAnimation(pTexReverse, L"JumpATTSlash2_L", L"animdata\\Penitent\\penitent_jumping_attack_slasheslvl2.txt", true);
 
@@ -627,6 +632,7 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHATT, new CPenitentCrouchATT);
 	m_pSM->AddState((UINT)PENITENT_STATE::DEATH, new CPenitentDeath);
 	m_pSM->AddState((UINT)PENITENT_STATE::NONE, new CPenitentNone);
+	m_pSM->AddState((UINT)PENITENT_STATE::PRAYEND, new CPenitentPrayEnd);
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);
 }

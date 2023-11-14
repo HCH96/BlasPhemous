@@ -16,15 +16,25 @@ void CPenitentCrouchATT::finaltick(float _DT)
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bCurDir = GetOwnerObj->GetDir();
 
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+
+
+
 	if (pAnimator->GetCurFrame() == 6)
 	{
 		if (m_bDir)
 		{
 			pEffector->PlayNoReset(L"CrouchAttackSlash", false);
+			pHitBox->SetScale(Vec2(120.f, 80.f));
+			pHitBox->SetOffsetPos(Vec2(60.f, -20.f));
+			pHitBox->SetTime(0.12f);
 		}
 		else
 		{
 			pEffector->PlayNoReset(L"CrouchAttackSlash_L", false);
+			pHitBox->SetScale(Vec2(-120.f, 80.f));
+			pHitBox->SetOffsetPos(Vec2(-60.f, -20.f));
+			pHitBox->SetTime(0.12f);
 		}
 	}
 

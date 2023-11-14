@@ -33,6 +33,10 @@ void CPlatform::begin()
 
 void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+	if (_OtherCol->GetName() == L"Penitent_HitBox")
+		return;
+
+
 	Vec2 vPos = _OwnCol->GetPos();
 	Vec2 vScale = _OwnCol->GetScale();
 	Vec2 vObjPos = _OtherObj->GetPos();

@@ -26,6 +26,7 @@ private:
     CAnimator*              m_pEffector;
     CAnimator*              m_pDustAnimator;
     CCollider*              m_pCollider;
+    CCollider*              m_pHitBox;
     CMovement*              m_pMovement;
     CStateMachine*          m_pSM;
 
@@ -42,6 +43,7 @@ public:
     float GetTears() { return m_fTears; }
     bool GetIsLeft() { return m_bIsLeft; }
     bool GetDownPlatform() { return m_bDownPlatform; }
+    UINT GetState() { return m_pSM->GetCurState(); }
     
     void SetHP(float _f) { m_fHP = _f; }
     void SetMP(float _f) { m_fHP = _f; }

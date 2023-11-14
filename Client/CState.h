@@ -11,7 +11,6 @@
 #include "CLevel.h"
 
 #include "CMonster.h"
-#include "CPlayer.h"
 
 #include "CPenitent.h"
 

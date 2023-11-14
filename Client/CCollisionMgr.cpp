@@ -95,20 +95,27 @@ void CCollisionMgr::CollisionBtwLayer(LAYER _eLeft, LAYER _eRight)
 					iter = m_mapID.find(ID);
 				}
 
+				// 충돌 발생
 				if (IsCollision(vecLeft[i], vecRight[j]))
 				{
+					// 이전 프레임에 충돌하지 않았을 때
 					if (false == iter->second)
 					{
-						if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead())
+						// Collider의 오브젝트가 살아있고, Collider가 On일 때
+						if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead() && !vecLeft[i]->IsOff() && !vecRight[j]->IsOff())
 						{
 							vecLeft[i]->BeginOverlap(vecRight[j]);
 							vecRight[j]->BeginOverlap(vecLeft[i]);
 						}
 
+						iter->second = true;
+
 					}
+					// 이전 프레임에 충돌했었을 때
 					else
 					{
-						if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead())
+						// Collider의 오브젝트가 살아있고, Collider가 On일 때
+						if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead() && !vecLeft[i]->IsOff() && !vecRight[j]->IsOff())
 						{
 							vecLeft[i]->Overlap(vecRight[j]);
 							vecRight[j]->Overlap(vecLeft[i]);
@@ -117,13 +124,14 @@ void CCollisionMgr::CollisionBtwLayer(LAYER _eLeft, LAYER _eRight)
 						{
 							vecLeft[i]->EndOverlap(vecRight[j]);
 							vecRight[j]->EndOverlap(vecLeft[i]);
+							iter->second = false;
 						}
 					}
-
-					iter->second = true;
 				}
+				// 충돌 발생 x
 				else
 				{
+					// 이전 프레임에 충돌 했을 때
 					if (iter->second)
 					{
 						vecLeft[i]->EndOverlap(vecRight[j]);
@@ -131,8 +139,6 @@ void CCollisionMgr::CollisionBtwLayer(LAYER _eLeft, LAYER _eRight)
 					}
 					iter->second = false;
 				}
-
-
 			}
 		}
 	}

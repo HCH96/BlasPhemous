@@ -125,7 +125,7 @@ void CMonster::render(HDC _dc)
 
 void CMonster::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
-	if (dynamic_cast<CProjectile*>(_pOtherObj))
+	if(_pOtherCol->GetName() == L"Penitent_HitBox")
 	{
 		m_Info.HP -= 1.f;
 

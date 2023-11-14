@@ -1,10 +1,9 @@
 #pragma once
 #include "CState.h"
-class CPenitentAttack :
+class CPenitentPrayEnd :
     public CState
 {
 private:
-    bool m_bDir;
 
 public:
     virtual void finaltick(float _DT);
@@ -12,9 +11,9 @@ public:
     virtual void Exit();
 
 public:
-    CLONE(CPenitentAttack);
-    CPenitentAttack();
-    ~CPenitentAttack();
+    CLONE(CPenitentPrayEnd);
+    CPenitentPrayEnd();
+    ~CPenitentPrayEnd();
 
 };
 

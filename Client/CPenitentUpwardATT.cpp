@@ -16,13 +16,22 @@ void CPenitentUpwardATT::finaltick(float _DT)
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bDir = GetOwnerObj->GetDir();
 
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+
 	Vec2 vVel = pMovement->GetVelocity();
+
+	
 
 	if (pAnimator->GetCurFrame() == 5)
 	{
+		pHitBox->SetScale(Vec2(150.f, 150.f));
+		pHitBox->SetOffsetPos(Vec2(0.f, -180.f));
+		pHitBox->SetTime(0.09f);
+
 		if (bDir)
 		{
 			pEffector->PlayNoReset(L"UpwardATT", false);
+			
 		}
 		else
 		{

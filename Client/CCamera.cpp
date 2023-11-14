@@ -28,6 +28,12 @@ CCamera::~CCamera()
 
 }
 
+void CCamera::SetTarget(CObj* _pTarget)
+{
+	 m_pTarget = _pTarget; 
+	 InitLookAt(_pTarget->GetPos()); 
+}
+
 void CCamera::tick()
 {
 
@@ -90,7 +96,7 @@ void CCamera::tick()
 
 	// 이전 LookAt과 현재 Look의 차이값을 보정해서 현재의 LookAt을 구한다.
 	Vec2 vLookDir = m_vLookAt - m_vPrevLookAt;
-	float fSpeed = vLookDir.Length();
+	float fSpeed = vLookDir.Length() * 3.f;
 
 
 	// 이전 프레임 카메라의 위치에서 이동해야하는 방향으로 카메라의 CurLookAt을 등록

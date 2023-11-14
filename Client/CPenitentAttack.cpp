@@ -16,28 +16,16 @@ void CPenitentAttack::finaltick(float _DT)
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CStateMachine* pOwnerSM = GetOwnerSM();
+
+	
 	
 
 	bool isFinsh = false;
-	bool bDir = GetOwnerObj->GetDir();
 	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
 	UINT iEffectFrame = (UINT)pEffector->GetCurFrame();
 
-
-	// 방향 전환
-	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
-	{
-		if (bDir)
-		{
-			pAnimator->PlayFromFrame(L"Attack", iCurFrame, false);
-			pEffector->PlayFromFrame(L"AttackSlash", iEffectFrame, false);
-		}
-		else
-		{
-			pAnimator->PlayFromFrame(L"Attack_L", iCurFrame, false);
-			pEffector->PlayFromFrame(L"AttackSlash_L", iEffectFrame, false);
-		}
-	}
+	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+	
 
 
 	// Attack 1 ( 0 Frame ~ 7 Frame )
@@ -49,6 +37,24 @@ void CPenitentAttack::finaltick(float _DT)
 			{
 				pOwnerSM->EditDataToBlackboard(L"IsTapS", true);
 			}
+		}
+
+		// 4~6 까지 HitBox 존재
+		if (iCurFrame == 4)
+		{
+			if (m_bDir)
+			{
+				pHitBox->SetScale(Vec2(150.f, 100.f));
+				pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
+				pHitBox->SetTime(0.2f);
+			}
+			else
+			{
+				pHitBox->SetScale(Vec2(150.f, 100.f));
+				pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
+				pHitBox->SetTime(0.2f);
+			}
+			
 		}
 
 		// 4~7 Frame 동안 공격을 시도하지 않았다면 종료
@@ -67,7 +73,26 @@ void CPenitentAttack::finaltick(float _DT)
 			pOwnerSM->EditDataToBlackboard(L"IsTapS", false);
 		}
 
-		if (iCurFrame >= 11 && iCurFrame < 14)
+		// 11~13까지 HitBox 존재
+		if (iCurFrame == 11)
+		{
+			if (m_bDir)
+			{
+				pHitBox->SetScale(Vec2(150.f, 100.f));
+				pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
+				pHitBox->SetTime(0.15f);
+			}
+			else
+			{
+				pHitBox->SetScale(Vec2(150.f, 100.f));
+				pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
+				pHitBox->SetTime(0.15f);
+			}
+		}
+		
+
+
+		if (iCurFrame >= 9 && iCurFrame < 14)
 		{
 			if (KEY_TAP(KEY::S))
 			{
@@ -88,6 +113,23 @@ void CPenitentAttack::finaltick(float _DT)
 		{
 			pOwnerSM->EditDataToBlackboard(L"IsTapS", false);
 		}
+
+		if (iCurFrame == 16)
+		{
+			if (m_bDir)
+			{
+				pHitBox->SetScale(Vec2(150.f, 120.f));
+				pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
+				pHitBox->SetTime(0.25f);
+			}
+			else
+			{
+				pHitBox->SetScale(Vec2(150.f, 100.f));
+				pHitBox->SetOffsetPos(Vec2(-80.f, -80.f));
+				pHitBox->SetTime(0.25f);
+			}
+		}
+
 
 		// 모든 프레임을 출력한 뒤 종료
 		if (iCurFrame == 27)
@@ -121,10 +163,13 @@ void CPenitentAttack::Enter()
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
-	int iDir = GetOwnerObj->GetDir();
+
+
+	
+	m_bDir = GetOwnerObj->GetDir();
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);
 
-	if (iDir)
+	if (m_bDir)
 	{
 		pAnimator->Play(L"Attack", true);
 		pEffector->Play(L"AttackSlash", false);

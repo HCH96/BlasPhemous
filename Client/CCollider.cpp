@@ -13,6 +13,9 @@ CCollider::CCollider(CObj* _pOwner)
 	: CComponent(_pOwner)
 	, m_iCollisionCount(0)
 	, m_fAngle(0.f)
+	, m_bOn(true)
+	, m_fDuration(-1.f)
+	, m_fAcc(0.f)
 {
 }
 
@@ -22,6 +25,9 @@ CCollider::CCollider(const CCollider& _Origin)
 	, m_vScale(_Origin.m_vScale)
 	, m_vFinalPos(_Origin.m_vFinalPos)
 	, m_iCollisionCount(0)
+	, m_bOn(_Origin.m_bOn)
+	, m_fDuration(_Origin.m_fDuration)
+	, m_fAcc(_Origin.m_fAcc)
 {
 }
 
@@ -31,8 +37,8 @@ CCollider::~CCollider()
 
 void CCollider::finaltick(float _DT)
 {
+	// 좌표 값 수정
 	Vec2 vOwnerPos = GetOwner()->GetPos();
-
 	m_vFinalPos = vOwnerPos + m_vOffsetPos;
 
 	// 현재 속해있는 레이어에 충돌체(본인) 를 등록
@@ -42,13 +48,29 @@ void CCollider::finaltick(float _DT)
 
 	CLayer* pCurLayer = CLevelMgr::GetInst()->GetCurLevel()->GetLayer(iLayerIdx);
 
-	pCurLayer->RegisterCollider(this);
 
+	if(m_bOn)
+		pCurLayer->RegisterCollider(this);
+
+	// Collider Duration Check
+
+	// Duration을 사용하지 않는 Collider, Off 상태인 콜라이더
+	if (m_fDuration == -1.f || !m_bOn)
+		return;
+
+	m_fAcc += _DT;
+	
+	if (m_fAcc > m_fDuration)
+	{
+		m_bOn = false;
+	}
 }
 
 void CCollider::render(HDC _dc)
 {
 	if (!DEBUG_RENDER)
+		return;
+	if (!m_bOn)
 		return;
 
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vFinalPos);
@@ -77,7 +99,6 @@ void CCollider::render(HDC _dc)
 		//	, int(vRenderPos.y + m_vScale.y / 2.f));
 	}
 }
-
 
 void CCollider::BeginOverlap(CCollider* _pOtherCol)
 {

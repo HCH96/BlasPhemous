@@ -11,7 +11,6 @@
 
 #include "CPlatform.h"
 #include "CWall.h"
-#include "CPlayer.h"
 #include "CMonster.h"
 #include "CPenitent.h"
 
@@ -32,11 +31,11 @@ void CPlayLevel::init()
 	vLookAt /= 2.f;
 
 	// 阁胶磐 积己
-	//CMonster* pMonster = new CMonster;
+	CMonster* pMonster = new CMonster;
 
-	//pMonster->SetPos(vLookAt);
-	//pMonster->SetScale(Vec2(100.f, 100.f));
-	//AddObject(LAYER::MONSTER, pMonster);
+	pMonster->SetPos(vLookAt);
+	pMonster->SetScale(Vec2(100.f, 100.f));
+	AddObject(LAYER::MONSTER, pMonster);
 
 	//pMonster = new CMonster;
 	//pMonster->SetPos(vLookAt + Vec2(150.f, 0.f));
@@ -70,11 +69,11 @@ void CPlayLevel::init()
 	//AddObject(LAYER::PLATFORM, pWall);
 
 	// UI 积己
-	CPenitentUI* pPenitentUI = new CPenitentUI;
-	AddObject(LAYER::UI, pPenitentUI);
+	//CPenitentUI* pPenitentUI = new CPenitentUI;
+	//AddObject(LAYER::UI, pPenitentUI);
 
-	CTearsUI* pTearsUI = new CTearsUI;
-	AddObject(LAYER::UI, pTearsUI);
+	//CTearsUI* pTearsUI = new CTearsUI;
+	//AddObject(LAYER::UI, pTearsUI);
 }
 
 void CPlayLevel::enter()

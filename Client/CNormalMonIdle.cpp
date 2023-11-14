@@ -13,6 +13,7 @@ CNormalMonIdle::~CNormalMonIdle()
 
 void CNormalMonIdle::finaltick(float _DT)
 {
+	/*
 	if (nullptr == m_pTarget)
 		return;
 
@@ -35,6 +36,7 @@ void CNormalMonIdle::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)ENORMAL_MON_STATE::NORMAL_MON_TRACE);
 	}
+	*/
 }
 
 void CNormalMonIdle::Enter()
@@ -43,7 +45,7 @@ void CNormalMonIdle::Enter()
 	//pAnimator->Play(L"")
 
 	// 레벨에 있는 플레이어를 알아낸다.
-	m_pTarget = dynamic_cast<CPlayer*>(CLevelMgr::GetInst()->GetCurLevel()->FindObjectByName(L"Player"));
+	//m_pTarget = dynamic_cast<CPlayer*>(CLevelMgr::GetInst()->GetCurLevel()->FindObjectByName(L"Player"));
 }
 
 void CNormalMonIdle::Exit()

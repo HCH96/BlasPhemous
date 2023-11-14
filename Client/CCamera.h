@@ -65,7 +65,7 @@ public:
 	void SetLookAtOffsetY(float _f) { m_vLookAtOffset.y = _f; }
 	void FixLookAt() { m_pTarget = nullptr;	m_vLookAt = m_vCurLookAt; }
 
-	void SetTarget(CObj* _pTarget) { m_pTarget = _pTarget; }
+	void SetTarget(CObj* _pTarget);
 public:
 	void tick();
 	void render(HDC _dc);

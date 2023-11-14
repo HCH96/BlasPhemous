@@ -72,6 +72,13 @@ void CPenitentIdle::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
 	}
 
+
+	// test
+	if (KEY_TAP(KEY::SPACE))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::PRAYEND);
+	}
+
 }
 
 void CPenitentIdle::Enter()

@@ -26,9 +26,6 @@
     <Filter Include="Game\05. Level">
       <UniqueIdentifier>{b5f1b72a-9616-437c-b39d-70ef5114e579}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\Player">
-      <UniqueIdentifier>{6c093201-8ff1-46af-8a24-9c0abd1087ce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\03. Manager\TimeManager">
       <UniqueIdentifier>{6bb95fc8-e3ef-46c5-b6ca-498b93dfbb57}</UniqueIdentifier>
     </Filter>
@@ -218,9 +215,6 @@
     <Filter Include="Game\04. Object\Wall">
       <UniqueIdentifier>{2ac2c288-5cd5-47b2-95e1-cc74f5b5ff59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\Portal">
-      <UniqueIdentifier>{896afb27-fdee-4485-b73c-efe742e1975e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\05. Level\Stage01\Stage01-2">
       <UniqueIdentifier>{88fe5354-1f3c-46d9-98ba-2172b3966121}</UniqueIdentifier>
     </Filter>
@@ -275,6 +269,12 @@
     <Filter Include="Game\08. State\Penitent\None">
       <UniqueIdentifier>{f499ce83-1107-45d7-ac3b-7f4bbb1d4a7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\DeathObject">
+      <UniqueIdentifier>{fd41e6de-c499-460e-80db-f7d191c9e2f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\PrayEnd">
+      <UniqueIdentifier>{4cb83846-6889-44c1-852a-ab6fc0ddcd72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -303,9 +303,6 @@
     </ClInclude>
     <ClInclude Include="CLevel.h">
       <Filter>Game\05. Level</Filter>
-    </ClInclude>
-    <ClInclude Include="CPlayer.h">
-      <Filter>Game\04. Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="struct.h">
       <Filter>Game\01. Header</Filter>
@@ -512,9 +509,6 @@
     <ClInclude Include="CWall.h">
       <Filter>Game\04. Object\Wall</Filter>
     </ClInclude>
-    <ClInclude Include="CPortal.h">
-      <Filter>Game\04. Object\Portal</Filter>
-    </ClInclude>
     <ClInclude Include="CStage01_2.h">
       <Filter>Game\05. Level\Stage01\Stage01-2</Filter>
     </ClInclude>
@@ -563,6 +557,12 @@
     <ClInclude Include="CPenitentNone.h">
       <Filter>Game\08. State\Penitent\None</Filter>
     </ClInclude>
+    <ClInclude Include="CDeathObj.h">
+      <Filter>Game\04. Object\DeathObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentPrayEnd.h">
+      <Filter>Game\08. State\Penitent\PrayEnd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -592,9 +592,6 @@
     </ClCompile>
     <ClCompile Include="CLevel.cpp">
       <Filter>Game\05. Level</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlayer.cpp">
-      <Filter>Game\04. Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="CTimeMgr.cpp">
       <Filter>Game\03. Manager\TimeManager</Filter>
@@ -795,9 +792,6 @@
     <ClCompile Include="CWall.cpp">
       <Filter>Game\04. Object\Wall</Filter>
     </ClCompile>
-    <ClCompile Include="CPortal.cpp">
-      <Filter>Game\04. Object\Portal</Filter>
-    </ClCompile>
     <ClCompile Include="CStage01_2.cpp">
       <Filter>Game\05. Level\Stage01\Stage01-2</Filter>
     </ClCompile>
@@ -845,6 +839,12 @@
     </ClCompile>
     <ClCompile Include="CPenitentNone.cpp">
       <Filter>Game\08. State\Penitent\None</Filter>
+    </ClCompile>
+    <ClCompile Include="CDeathObj.cpp">
+      <Filter>Game\04. Object\DeathObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentPrayEnd.cpp">
+      <Filter>Game\08. State\Penitent\PrayEnd</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

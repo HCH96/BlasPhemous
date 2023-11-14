@@ -64,7 +64,7 @@ void CStage01_5::enter()
 
 	if ((UINT)LEVEL_TYPE::STAGE02_1 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
-		pPenitent->SetPos(Vec2(1720.f, 756.f));
+		pPenitent->SetPos(Vec2(1560.f, 756.f));
 	}
 	AddObject(LAYER::PLAYER, pPenitent);
 
@@ -79,9 +79,30 @@ void CStage01_5::enter()
 
 void CStage01_5::exit()
 {
+	PullOutObject(LAYER::PLAYER);
 }
 
 void CStage01_5::tick()
 {
 	CLevel::tick();
+
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+
+	if (pPenitent->GetPos().x < 180.f * 2 && !pPenitent->GetIsLeft())
+	{
+		CCamera::GetInst()->FixLookAt();
+		pPenitent->SetLeft(true);
+		pPenitent->SetState(PENITENT_STATE::NONE);
+
+		CCamera::GetInst()->FadeOut(0.5f, LEVEL_TYPE::STAGE01_4);
+	}
+
+	if (pPenitent->GetPos().x > 790.f * 2 && !pPenitent->GetIsLeft())
+	{
+		CCamera::GetInst()->FixLookAt();
+		pPenitent->SetLeft(true);
+		pPenitent->SetState(PENITENT_STATE::NONE);
+
+		CCamera::GetInst()->FadeOut(0.5f, LEVEL_TYPE::STAGE02_1);
+	}
 }
