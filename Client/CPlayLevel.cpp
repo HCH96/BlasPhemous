@@ -69,11 +69,11 @@ void CPlayLevel::init()
 	//AddObject(LAYER::PLATFORM, pWall);
 
 	// UI »ý¼º
-	//CPenitentUI* pPenitentUI = new CPenitentUI;
-	//AddObject(LAYER::UI, pPenitentUI);
+	CPenitentUI* pPenitentUI = new CPenitentUI;
+	AddObject(LAYER::UI, pPenitentUI);
 
-	//CTearsUI* pTearsUI = new CTearsUI;
-	//AddObject(LAYER::UI, pTearsUI);
+	CTearsUI* pTearsUI = new CTearsUI;
+	AddObject(LAYER::UI, pTearsUI);
 }
 
 void CPlayLevel::enter()

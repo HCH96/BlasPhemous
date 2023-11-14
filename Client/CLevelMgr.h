@@ -20,6 +20,7 @@ public:
 	CPenitent* GetPenitent() { return m_pPenitent; }
 	CLevel* GetCurLevel() { return m_pCurLevel; }
 	UINT GetPrevLevel() { return m_iPrevLevel; }
+	UINT GetCurLeveli() { return m_iCurLevel; }
 	
 private:
 	void ChangeLevel(LEVEL_TYPE _eType);

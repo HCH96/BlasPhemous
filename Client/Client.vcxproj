@@ -192,7 +192,10 @@
     <ClInclude Include="CPenitentMP.h" />
     <ClInclude Include="CPenitentNone.h" />
     <ClInclude Include="CPenitentPotion.h" />
+    <ClInclude Include="CPenitentPrayAuraOff.h" />
     <ClInclude Include="CPenitentPrayEnd.h" />
+    <ClInclude Include="CPenitentPraying.h" />
+    <ClInclude Include="CPenitentPrayStart.h" />
     <ClInclude Include="CPenitentRising.h" />
     <ClInclude Include="CPenitentStanding.h" />
     <ClInclude Include="CPenitentStopRun.h" />
@@ -290,7 +293,10 @@
     <ClCompile Include="CPenitentMP.cpp" />
     <ClCompile Include="CPenitentNone.cpp" />
     <ClCompile Include="CPenitentPotion.cpp" />
+    <ClCompile Include="CPenitentPrayAuraOff.cpp" />
     <ClCompile Include="CPenitentPrayEnd.cpp" />
+    <ClCompile Include="CPenitentPraying.cpp" />
+    <ClCompile Include="CPenitentPrayStart.cpp" />
     <ClCompile Include="CPenitentRising.cpp" />
     <ClCompile Include="CPenitentStanding.cpp" />
     <ClCompile Include="CPenitentStopRun.cpp" />

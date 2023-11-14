@@ -14,10 +14,12 @@ void CPenitentPrayEnd::finaltick(float _DT)
 {
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 
+
 	if (pAnimator->IsFinish())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
+
 }
 
 void CPenitentPrayEnd::Enter()
@@ -27,11 +29,11 @@ void CPenitentPrayEnd::Enter()
 
 	if (iDir)
 	{
-		pAnimator->Play(L"PrayEnd", true);
+		pAnimator->Play(L"PrayEnd", false);
 	}
 	else
 	{
-		pAnimator->Play(L"PrayEnd_L", true);
+		pAnimator->Play(L"PrayEnd_L", false);
 	}
 }
 

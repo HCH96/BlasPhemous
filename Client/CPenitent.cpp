@@ -33,6 +33,9 @@
 #include "CPenitentCrouchATT.h"
 #include "CPenitentDeath.h"
 #include "CPenitentNone.h"
+#include "CPenitentPrayStart.h"
+#include "CPenitentPraying.h"
+#include "CPenitentPrayAuraOff.h"
 #include "CPenitentPrayEnd.h"
 #include "CPenitentStanding.h"
 #include "CPenitentCharging.h"
@@ -53,6 +56,7 @@ CPenitent::CPenitent()
 	, m_fTears(0.f)
 	, m_bIsLeft(true)
 	, m_bDownPlatform(false)
+	, m_iCheckPoint((UINT)LEVEL_TYPE::STAGE01_1)
 {
 	// 이름 설정
 	SetName(L"Penitent");
@@ -279,6 +283,39 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"PushBack", 0.06f);
 	m_pAnimator->SetAnimDuration(L"PushBack_L", 0.06f);
 
+	// PrayStart
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"PrayStart", L"texture\\Penitent\\penitent_priedieu_kneeling_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"PrayStart_L", L"texture\\Penitent\\penitent_priedieu_kneeling_anim.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"PrayStart", L"animdata\\Penitent\\penitent_priedieu_kneeling_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"PrayStart_L", L"animdata\\Penitent\\penitent_priedieu_kneeling_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"PrayStart", 0.05f);
+	m_pAnimator->SetAnimDuration(L"PrayStart_L", 0.05f);
+
+	// Praying
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Praying", L"texture\\Penitent\\penitent_priedieu_bended_knee_with_aura.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Praying_L", L"texture\\Penitent\\penitent_priedieu_bended_knee_with_aura.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"Praying", L"animdata\\Penitent\\penitent_priedieu_bended_knee_with_aura.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Praying_L", L"animdata\\Penitent\\penitent_priedieu_bended_knee_with_aura.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Praying", 0.05f);
+	m_pAnimator->SetAnimDuration(L"Praying_L", 0.05f);
+
+	// PrayAuraOff
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"PrayingAuraOff", L"texture\\Penitent\\penitent_priedieu_bended_knee_aura_turnoff.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"PrayingAuraOff_L", L"texture\\Penitent\\penitent_priedieu_bended_knee_aura_turnoff.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"PrayingAuraOff", L"animdata\\Penitent\\penitent_priedieu_bended_knee_aura_turnoff.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"PrayingAuraOff_L", L"animdata\\Penitent\\penitent_priedieu_bended_knee_aura_turnoff.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"PrayingAuraOff", 0.05f);
+	m_pAnimator->SetAnimDuration(L"PrayingAuraOff_L", 0.05f);
+
 
 	// PrayEnd
 
@@ -290,7 +327,7 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTexReverse, L"PrayEnd_L", L"animdata\\Penitent\\penitent_priedieu_stand_up_anim.txt", true);
 
 	m_pAnimator->SetAnimDuration(L"PrayEnd", 0.05f);
-	m_pAnimator->SetAnimDuration(L"PrayEnd_L", 0.06f);
+	m_pAnimator->SetAnimDuration(L"PrayEnd_L", 0.05f);
 
 	// FallingAhead
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"FallingAhead", L"texture\\Penitent\\penitent_falling_ahead_anim 1.png");
@@ -674,6 +711,9 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::CROUCHATT, new CPenitentCrouchATT);
 	m_pSM->AddState((UINT)PENITENT_STATE::DEATH, new CPenitentDeath);
 	m_pSM->AddState((UINT)PENITENT_STATE::NONE, new CPenitentNone);
+	m_pSM->AddState((UINT)PENITENT_STATE::PRAYSTART, new CPenitentPrayStart);
+	m_pSM->AddState((UINT)PENITENT_STATE::PRAYING, new CPenitentPraying);
+	m_pSM->AddState((UINT)PENITENT_STATE::PRAYAURAOFF, new CPenitentPrayAuraOff);
 	m_pSM->AddState((UINT)PENITENT_STATE::PRAYEND, new CPenitentPrayEnd);
 	m_pSM->AddState((UINT)PENITENT_STATE::STANDING, new CPenitentStanding);
 	m_pSM->AddState((UINT)PENITENT_STATE::CHARGING, new CPenitentCharging);

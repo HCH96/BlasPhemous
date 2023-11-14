@@ -281,6 +281,15 @@
     <Filter Include="Game\08. State\Penitent\Charging">
       <UniqueIdentifier>{1d19425b-f02d-46e6-8fb6-60373bd3df1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\PrayStart">
+      <UniqueIdentifier>{1a0c6413-efc0-497b-bd43-070d6990e48b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Praying">
+      <UniqueIdentifier>{d2061d45-5561-4e83-9057-c62bc336ef21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\PrayAuraOff">
+      <UniqueIdentifier>{19d3e8ad-9d16-4d68-a10e-cf57ce9840af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -575,6 +584,15 @@
     <ClInclude Include="CPenitentCharging.h">
       <Filter>Game\08. State\Penitent\Charging</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentPrayStart.h">
+      <Filter>Game\08. State\Penitent\PrayStart</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentPraying.h">
+      <Filter>Game\08. State\Penitent\Praying</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentPrayAuraOff.h">
+      <Filter>Game\08. State\Penitent\PrayAuraOff</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -863,6 +881,15 @@
     </ClCompile>
     <ClCompile Include="CPenitentCharging.cpp">
       <Filter>Game\08. State\Penitent\Charging</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentPrayStart.cpp">
+      <Filter>Game\08. State\Penitent\PrayStart</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentPraying.cpp">
+      <Filter>Game\08. State\Penitent\Praying</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentPrayAuraOff.cpp">
+      <Filter>Game\08. State\Penitent\PrayAuraOff</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

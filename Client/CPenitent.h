@@ -22,6 +22,8 @@ private:
     bool                    m_bIsLeft;
     bool                    m_bDownPlatform;
 
+    UINT                    m_iCheckPoint;
+
     CAnimator*              m_pAnimator;
     CAnimator*              m_pEffector;
     CAnimator*              m_pDustAnimator;
@@ -46,13 +48,14 @@ public:
     UINT GetState() { return m_pSM->GetCurState(); }
     
     void SetHP(float _f) { m_fHP = _f; }
-    void SetMP(float _f) { m_fHP = _f; }
+    void SetMP(int _i) { m_iMP = _i; }
     void SetPotionCount(int _iCount) { m_iPotion = _iCount; }
     void SetTears(int _i) { m_fTears = (float)_i; }
     void SetLeft(bool _b) { m_bIsLeft = _b; }
     void SetDownPlatform(bool _b) { m_bDownPlatform = _b; }
 
     void SetState(PENITENT_STATE _eSTATE) { m_pSM->ChangeState((UINT)_eSTATE); }
+    void SetCheckPoint(UINT _iCheckPoint) { m_iCheckPoint = _iCheckPoint; }
 
 public:
     virtual void begin() override;
