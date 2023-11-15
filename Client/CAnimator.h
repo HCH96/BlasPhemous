@@ -25,6 +25,7 @@ public:
     int GetCurFrame();
     bool IsLock() { return m_bPosLock; }
     Vec2 GetTmpPos() { return m_vTmpPos; }
+    CAnim* GetCurAnimp() { return m_pCurAnim; }
 
 
     void SetLock(bool _b) { m_bPosLock = _b; }

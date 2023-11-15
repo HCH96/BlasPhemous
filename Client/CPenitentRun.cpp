@@ -95,7 +95,7 @@ void CPenitentRun::finaltick(float _DT)
 
 void CPenitentRun::Enter()
 {
-	CCamera::GetInst()->SetLookAtOffsetX(20.f);
+	//CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");

@@ -4,6 +4,7 @@
 #include "CEngine.h"
 
 #include "CAssetMgr.h"
+#include "CCollisionMgr.h"
 #include "CCamera.h"
 #include "CKeyMgr.h"
 
@@ -41,6 +42,13 @@ void CTitleLevel::init()
 	pImage->SetScaleToTex();
 	pImage->SetPos(Vec2(640.f, 622.f));
 	AddObject(LAYER::DEFAULT, pImage);
+
+	// 충돌 설정
+	CCollisionMgr::GetInst()->CheckCollision(LAYER::MONSTER, LAYER::PLAYER);
+	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER_PJ, LAYER::MONSTER);
+	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::PLATFORM);
+	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::PORTAL);
+	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::LADDER);
 
 }
 

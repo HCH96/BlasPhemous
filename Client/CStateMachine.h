@@ -18,6 +18,7 @@ private:
 
 public:
     UINT GetCurState() { return m_iCurState; }
+    UINT GetPrevState() { return m_iPrevState; }
     
     void SetGlobalState(UINT _id);
 

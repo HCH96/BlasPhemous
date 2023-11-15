@@ -37,6 +37,15 @@ void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 	if (_OtherCol->GetName() == L"Penitent_HitBox")
 		return;
 
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(_OtherObj);
+	if (pPenitent)
+	{
+		UINT CurState = pPenitent->GetComponent<CStateMachine>()->GetCurState();
+
+		if (CurState == (UINT)PENITENT_STATE::LADDER || CurState == (UINT)PENITENT_STATE::LADDER || CurState == (UINT)PENITENT_STATE::LADDERDOWN)
+			return;
+	}
+
 
 
 	Vec2 vPos = _OwnCol->GetPos();

@@ -1,6 +1,6 @@
 #pragma once
 #include "CObj.h"
-class CLedge :
+class CLadder :
     public CObj
 {
     GENERATED_OBJECT(CObj);
@@ -12,12 +12,11 @@ public:
     virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
     virtual void EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
 
-
 public:
-    CLONE(CLedge);
-    CLedge();
-    CLedge(const CLedge& _Origin);
-    ~CLedge();
+    CLONE(CLadder);
+    CLadder();
+    CLadder(const CLadder& _Origin);
+    ~CLadder();
 
 };
 

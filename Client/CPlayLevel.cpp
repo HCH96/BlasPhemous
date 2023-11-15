@@ -14,6 +14,7 @@
 #include "CLedge.h"
 #include "CMonster.h"
 #include "CPenitent.h"
+#include "CLadder.h"
 
 
 
@@ -35,11 +36,11 @@ void CPlayLevel::init()
 	vLookAt /= 2.f;
 
 	// 몬스터 생성
-	CMonster* pMonster = new CMonster;
+	//CMonster* pMonster = new CMonster;
 
-	pMonster->SetPos(vLookAt);
-	pMonster->SetScale(Vec2(100.f, 100.f));
-	AddObject(LAYER::MONSTER, pMonster);
+	//pMonster->SetPos(vLookAt);
+	//pMonster->SetScale(Vec2(100.f, 100.f));
+	//AddObject(LAYER::MONSTER, pMonster);
 
 	//pMonster = new CMonster;
 	//pMonster->SetPos(vLookAt + Vec2(150.f, 0.f));
@@ -48,24 +49,30 @@ void CPlayLevel::init()
 
 
 
-	// 충돌 설정
-	CCollisionMgr::GetInst()->CheckCollision(LAYER::MONSTER, LAYER::PLAYER);
-	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER_PJ, LAYER::MONSTER);
-	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::PLATFORM);
-	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::PORTAL);
+
 
 
 
     // 플랫폼 생성
 	CPlatform* pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(640.f, 500.f));
+	pPlatform->SetPos(Vec2(640.f, 150.f));
+	pPlatform->SetScale(Vec2(1000.f, 30.f));
+	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pPlatform = new CPlatform;
+	pPlatform->SetPos(Vec2(640.f, 650.f));
 	pPlatform->SetScale(Vec2(1000.f, 30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
 	CLedge* pLedge = new CLedge;
-	pLedge->SetPos(Vec2(440.f, 400.f));
+	pLedge->SetPos(Vec2(840.f, 400.f));
 	pLedge->SetScale(Vec2(100.f, 30.f));
 	AddObject(LAYER::PLATFORM, pLedge);
+
+	CLadder* pLadder = new CLadder;
+	pLadder->SetPos(Vec2(440.f, 350.f));
+	pLadder->SetScale(Vec2(50.f, 400.f));
+	AddObject(LAYER::PLATFORM, pLadder);
 
 
 	//pPlatform = new CPlatform;

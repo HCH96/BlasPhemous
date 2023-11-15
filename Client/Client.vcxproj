@@ -158,6 +158,7 @@
     <ClInclude Include="CGCMgr.h" />
     <ClInclude Include="CImage.h" />
     <ClInclude Include="CKeyMgr.h" />
+    <ClInclude Include="CLadder.h" />
     <ClInclude Include="CLayer.h" />
     <ClInclude Include="CLedge.h" />
     <ClInclude Include="CLevel.h" />
@@ -192,6 +193,9 @@
     <ClInclude Include="CPenitentJump.h" />
     <ClInclude Include="CPenitentJumpAttack.h" />
     <ClInclude Include="CPenitentJumpForward.h" />
+    <ClInclude Include="CPenitentLadder.h" />
+    <ClInclude Include="CPenitentLadderDown.h" />
+    <ClInclude Include="CPenitentLadderUp.h" />
     <ClInclude Include="CPenitentMP.h" />
     <ClInclude Include="CPenitentNone.h" />
     <ClInclude Include="CPenitentPotion.h" />
@@ -264,6 +268,7 @@
     <ClCompile Include="CGCMgr.cpp" />
     <ClCompile Include="CImage.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
+    <ClCompile Include="CLadder.cpp" />
     <ClCompile Include="CLayer.cpp" />
     <ClCompile Include="CLedge.cpp" />
     <ClCompile Include="CLevel.cpp" />
@@ -296,6 +301,9 @@
     <ClCompile Include="CPenitentJump.cpp" />
     <ClCompile Include="CPenitentJumpAttack.cpp" />
     <ClCompile Include="CPenitentJumpForward.cpp" />
+    <ClCompile Include="CPenitentLadder.cpp" />
+    <ClCompile Include="CPenitentLadderDown.cpp" />
+    <ClCompile Include="CPenitentLadderUp.cpp" />
     <ClCompile Include="CPenitentMP.cpp" />
     <ClCompile Include="CPenitentNone.cpp" />
     <ClCompile Include="CPenitentPotion.cpp" />

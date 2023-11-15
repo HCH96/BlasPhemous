@@ -36,6 +36,15 @@ public:
     void SetDuration(float _fDuration, int _iFrmIdx) { m_vecFrm[_iFrmIdx].fDuration = _fDuration; }
     void SetFrame(int _i) { m_iCurFrm = _i; m_fAccTime = 0.f;}
 
+    float GetDuration() { return m_vecFrm[m_iCurFrm].fDuration; }
+    int GetMaxFrm() { return (int)m_vecFrm.size(); }
+
+
+    int GetCurFrm() { return m_iCurFrm; }
+    void SetCurFrm(int _i) { m_iCurFrm = _i; }
+
+    float GetAcc() { return m_fAccTime; }
+    void SetAcc(float _f) { m_fAccTime = _f; }
 
     bool IsFinish() { return m_bFinish; }
     void Reset()

@@ -77,3 +77,28 @@ void CLedge::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 
 }
 
+void CLedge::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
+{
+	if (_OtherCol->GetName() == L"Penitent_HitBox")
+		return;
+
+	if (_OtherObj->GetLayerIdx() != (UINT)LAYER::PLAYER)
+	{
+		return;
+	}
+
+	Vec2 vPos = _OwnCol->GetPos();
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(_OtherObj);
+	CStateMachine* pSM = pPenitent->GetComponent<CStateMachine>();
+
+
+	if (pPenitent->GetOverlapGround() == 0)
+	{
+		CMovement* pOtherMovement = _OtherObj->GetComponent<CMovement>();
+		pOtherMovement->SetGround(false);
+		pSM->ChangeState((UINT)PENITENT_STATE::FALL);
+	}
+
+
+}
+

@@ -102,7 +102,7 @@ void CCamera::tick()
 	// 이전 프레임 카메라의 위치에서 이동해야하는 방향으로 카메라의 CurLookAt을 등록
 	if (!vLookDir.IsZero())
 	{
-		m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * fSpeed * 2.f * DT;
+		m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * fSpeed * 1.5f * DT;
 	}
 
 	if ((m_vCurLookAt - m_vLookAt).Length() < 0.1f)

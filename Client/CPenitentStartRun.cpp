@@ -96,7 +96,7 @@ void CPenitentStartRun::finaltick(float _DT)
 
 void CPenitentStartRun::Enter()
 {
-	CCamera::GetInst()->SetLookAtOffsetX(20.f);
+	//CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	bool bDir = GetOwnerObj->GetDir();

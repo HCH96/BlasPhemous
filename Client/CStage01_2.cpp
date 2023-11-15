@@ -14,6 +14,7 @@
 #include "CLedge.h"
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
+#include "CLadder.h"
 
 
 void CStage01_2::init()
@@ -104,6 +105,18 @@ void CStage01_2::init()
 	pPlatform->SetScale(Vec2(440.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	CLadder* pLadder = new CLadder;
+	pLadder->SetPos(Vec2(1536.f, 1394.f));
+	pLadder->SetScale(Vec2(40.f, 280.f));
+	AddObject(LAYER::LADDER, pLadder);
+
+
+	pLadder = new CLadder;
+	pLadder->SetPos(Vec2(2400.f, 1400.f));
+	pLadder->SetScale(Vec2(40.f, 280.f));
+	AddObject(LAYER::LADDER, pLadder);
+
+
 	CLedge* pLedge = new CLedge;
 	pLedge->SetPos(Vec2(1610.f, 1255.f));
 	pLedge->SetScale(Vec2(24.f, 50.f));
@@ -150,8 +163,8 @@ void CStage01_2::init()
 	AddObject(LAYER::PLATFORM, pWall);
 
 	pWall = new CWall;
-	pWall->SetPos(Vec2(3360.f, 1280.f));
-	pWall->SetScale(Vec2(100.f, 600.f));
+	pWall->SetPos(Vec2(3370.f, 1280.f));
+	pWall->SetScale(Vec2(180.f, 600.f));
 	AddObject(LAYER::PLATFORM, pWall);
 
 	pPlatform = new CPlatform;

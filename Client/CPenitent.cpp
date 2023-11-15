@@ -42,6 +42,9 @@
 #include "CPenitentCharging.h"
 #include "CPenitentClimb.h"
 #include "CPenitentHangOn.h"
+#include "CPenitentLadder.h"
+#include "CPenitentLadderDown.h"
+#include "CPenitentLadderUp.h"
 
 
 
@@ -197,6 +200,11 @@ void CPenitent::tick(float _DT)
 	if (KEY_TAP(KEY::ENTER))
 	{
 		SetPos(vLookAt);
+	}
+
+	if (KEY_TAP(KEY::L))
+	{
+		m_pSM->ChangeState((UINT)PENITENT_STATE::LADDERDOWN);
 	}
 
 }
@@ -515,6 +523,41 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"Climb", 0.04f);
 	m_pAnimator->SetAnimDuration(L"Climb_L", 0.04f);
 
+	//penitent_ladder_down_from_ground_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"LadderDown", L"texture\\Penitent\\penitent_ladder_down_from_ground_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"LadderDown_L", L"texture\\Penitent\\penitent_ladder_down_from_ground_anim.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"LadderDown", L"animdata\\Penitent\\penitent_ladder_down_from_ground_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"LadderDown_L", L"animdata\\Penitent\\penitent_ladder_down_from_ground_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"LadderDown", 0.04f);
+	m_pAnimator->SetAnimDuration(L"LadderDown_L", 0.04f);
+
+	//penintent_ladder_up_from_ground
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"LadderUp", L"texture\\Penitent\\penitent_ladder_down_from_ground_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"LadderUp_L", L"texture\\Penitent\\penitent_ladder_down_from_ground_anim.png");
+
+	
+	m_pAnimator->LoadAnimation(pTex, L"LadderUp", L"animdata\\Penitent\\penintent_ladder_up_from_ground.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"LadderUp_L", L"animdata\\Penitent\\penintent_ladder_up_from_ground.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"LadderUp", 0.04f);
+	m_pAnimator->SetAnimDuration(L"LadderUp_L", 0.04f);
+
+	//penintent_ladder_climb_loop_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Ladder", L"texture\\Penitent\\penintent_ladder_climb_loop_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Ladder_L", L"texture\\Penitent\\penintent_ladder_climb_loop_anim.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"Ladder", L"animdata\\Penitent\\penintent_ladder_climb_loop_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Ladder_L", L"animdata\\Penitent\\penintent_ladder_climb_loop_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Ladder", 0.04f);
+	m_pAnimator->SetAnimDuration(L"Ladder_L", 0.04f);
+
+
+
 
 	// ================
 	//   Attck State
@@ -758,6 +801,9 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::CHARGING, new CPenitentCharging);
 	m_pSM->AddState((UINT)PENITENT_STATE::CLIMB, new CPenitentClimb);
 	m_pSM->AddState((UINT)PENITENT_STATE::HANGON, new CPenitentHangOn);
+	m_pSM->AddState((UINT)PENITENT_STATE::LADDERDOWN, new CPenitentLadderDown);
+	m_pSM->AddState((UINT)PENITENT_STATE::LADDER, new CPenitentLadder);
+	m_pSM->AddState((UINT)PENITENT_STATE::LADDERUP, new CPenitentLadderUp);
 
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);

@@ -299,6 +299,18 @@
     <Filter Include="Game\08. State\Penitent\HangOn">
       <UniqueIdentifier>{8a8124f2-7067-45c9-90f4-1562e079a4d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\LadderDown">
+      <UniqueIdentifier>{34a24f15-451c-476a-b2e7-481d706f76b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Ladder">
+      <UniqueIdentifier>{18a3bcfb-6de6-4f5b-a98d-72dc1ec591a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\LadderUp">
+      <UniqueIdentifier>{41498693-9ff6-45ba-aa52-4b3c213043c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Ladder">
+      <UniqueIdentifier>{9d17e8e0-513a-43c9-8781-117b3c04ba5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -611,6 +623,18 @@
     <ClInclude Include="CPenitentHangOn.h">
       <Filter>Game\08. State\Penitent\HangOn</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentLadder.h">
+      <Filter>Game\08. State\Penitent\Ladder</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentLadderUp.h">
+      <Filter>Game\08. State\Penitent\LadderUp</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentLadderDown.h">
+      <Filter>Game\08. State\Penitent\LadderDown</Filter>
+    </ClInclude>
+    <ClInclude Include="CLadder.h">
+      <Filter>Game\04. Object\Ladder</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -917,6 +941,18 @@
     </ClCompile>
     <ClCompile Include="CPenitentHangOn.cpp">
       <Filter>Game\08. State\Penitent\HangOn</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentLadder.cpp">
+      <Filter>Game\08. State\Penitent\Ladder</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentLadderUp.cpp">
+      <Filter>Game\08. State\Penitent\LadderUp</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentLadderDown.cpp">
+      <Filter>Game\08. State\Penitent\LadderDown</Filter>
+    </ClCompile>
+    <ClCompile Include="CLadder.cpp">
+      <Filter>Game\04. Object\Ladder</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,1292 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_0
+  m_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 30
+    height: 71
+  m_Offset: {x: -0.040000677, y: -35.498}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.49866664, y: 2.8166973E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300000
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cefbefafe0d40000000000000000000000000d8a3f03efafe0d40000000000000000000000000285cefbe000083b8000000000000000000000000d8a3f03e000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 30
+      height: 71
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 14.959999, z: 32, w: 0.0019989014}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.47000003, y: 1.2499375}
+    - {x: 0.47000003, y: 1.9686875}
+    - {x: 0.28250003, y: 2.2186875}
+    - {x: -0.06124997, y: 2.2186875}
+    - {x: -0.09249997, y: 1.9374375}
+    - {x: -0.46749997, y: 1.4374375}
+    - {x: -0.46749997, y: 1.0936875}
+    - {x: -0.40499997, y: 0.78118753}
+    - {x: -0.15499997, y: -6.246567E-05}
+    - {x: 0.06375003, y: -6.246567E-05}
+    - {x: 0.37625003, y: 0.34368753}
+    - {x: 0.40750003, y: 0.59368753}
+    - {x: 0.37625003, y: 0.93743753}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_1
+  m_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 147
+    width: 30
+    height: 67
+  m_Offset: {x: -1.0400007, y: -33.498}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.4653333, y: 2.9848583E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300002
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cdfbefafe0540000000000000000000000000ec51003ffafe0540000000000000000000000000285cdfbe000083b8000000000000000000000000ec51003f000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 147
+      width: 30
+      height: 67
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 13.959999, z: 32, w: 147.002}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.40750003, y: 1.6249375}
+    - {x: 0.37625003, y: 1.6249375}
+    - {x: 0.15750003, y: 2.0936875}
+    - {x: -0.029999971, y: 2.0936875}
+    - {x: -0.09249997, y: 1.8124375}
+    - {x: -0.43624997, y: 1.4686875}
+    - {x: -0.43624997, y: 1.0624375}
+    - {x: -0.31124997, y: 0.90618753}
+    - {x: -0.43624997, y: 0.43743753}
+    - {x: -0.43624997, y: 0.34368753}
+    - {x: -0.21749997, y: -6.246567E-05}
+    - {x: 0.34500003, y: -6.246567E-05}
+    - {x: 0.40750003, y: 0.56243753}
+    - {x: 0.50125, y: 1.0311875}
+    - {x: 0.50125, y: 1.5311875}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_2
+  m_Rect:
+    serializedVersion: 2
+    x: 61
+    y: 0
+    width: 29
+    height: 68
+  m_Offset: {x: -1.5400008, y: -33.998}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.44689652, y: 2.9409633E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300004
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285ccfbefafe0740000000000000000000000000ec51003ffafe0740000000000000000000000000285ccfbe000083b8000000000000000000000000ec51003f000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 61
+      y: 0
+      width: 29
+      height: 68
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 73.96, z: 32, w: 0.0019989014}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.15750003, y: 0.40618753}
+    - {x: 0.12625003, y: 0.37493753}
+    - {x: 0.12625003, y: 0.18743753}
+    - {x: 0.18875003, y: 0.124937534}
+    - {x: 0.28250003, y: 0.124937534}
+    - {x: 0.37625003, y: 0.21868753}
+    - {x: 0.50125, y: 0.71868753}
+    - {x: 0.50125, y: 1.6874375}
+    - {x: 0.22000003, y: 2.1249375}
+    - {x: -0.06124997, y: 2.1249375}
+    - {x: -0.40499997, y: 1.8749375}
+    - {x: -0.40499997, y: 0.18743753}
+    - {x: -0.37374997, y: -6.246567E-05}
+    - {x: 0.03250003, y: -6.246567E-05}
+    - {x: 0.12625003, y: 0.34368753}
+    - {x: 0.15750003, y: 0.46868753}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_3
+  m_Rect:
+    serializedVersion: 2
+    x: 61
+    y: 68
+    width: 27
+    height: 72
+  m_Offset: {x: -2.5400007, y: -35.998}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.4059259, y: 2.7775764E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300006
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cafbefafe0f40000000000000000000000000ec51003ffafe0f40000000000000000000000000285cafbe000083b8000000000000000000000000ec51003f000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 61
+      y: 68
+      width: 27
+      height: 72
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 71.96, z: 32, w: 68.002}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.50125, y: 1.4374375}
+    - {x: 0.28250003, y: 1.6874375}
+    - {x: 0.15750003, y: 2.2499375}
+    - {x: -0.09249997, y: 2.2499375}
+    - {x: -0.34249997, y: 1.9374375}
+    - {x: -0.34249997, y: 1.4686875}
+    - {x: -0.27999997, y: 1.2499375}
+    - {x: -0.31124997, y: 0.40618753}
+    - {x: -0.24874997, y: 0.031187534}
+    - {x: -0.21749997, y: -6.246567E-05}
+    - {x: 0.0012500286, y: -6.246567E-05}
+    - {x: 0.03250003, y: 0.031187534}
+    - {x: 0.37625003, y: 0.53118753}
+    - {x: 0.50125, y: 0.74993753}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_4
+  m_Rect:
+    serializedVersion: 2
+    x: 30
+    y: 138
+    width: 26
+    height: 76
+  m_Offset: {x: -2.0400014, y: -37.998}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.4215384, y: 2.6313883E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300008
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cafbefafe1740000000000000000000000000d8a3f03efafe1740000000000000000000000000285cafbe000083b8000000000000000000000000d8a3f03e000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 30
+      y: 138
+      width: 26
+      height: 76
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 40.96, z: 32, w: 138.002}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.40750003, y: 0.65618753}
+    - {x: 0.47000003, y: 0.78118753}
+    - {x: 0.47000003, y: 1.4686875}
+    - {x: 0.15750003, y: 2.3749375}
+    - {x: -0.06124997, y: 2.3749375}
+    - {x: -0.34249997, y: 1.9686875}
+    - {x: -0.34249997, y: 0.49993753}
+    - {x: -0.31124997, y: 0.43743753}
+    - {x: -0.029999971, y: -6.246567E-05}
+    - {x: 0.15750003, y: -6.246567E-05}
+    - {x: 0.18875003, y: 0.031187534}
+    - {x: 0.18875003, y: 0.21868753}
+    - {x: 0.15750003, y: 0.49993753}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_5
+  m_Rect:
+    serializedVersion: 2
+    x: 30
+    y: 67
+    width: 28
+    height: 71
+  m_Offset: {x: -2.040001, y: -35.498}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.42714283, y: 2.8166973E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300010
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cbfbefafe0d40000000000000000000000000ec51003ffafe0d40000000000000000000000000285cbfbe000083b8000000000000000000000000ec51003f000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 30
+      y: 67
+      width: 28
+      height: 71
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 41.96, z: 32, w: 67.002}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.28250003, y: 0.28118753}
+    - {x: 0.50125, y: 0.56243753}
+    - {x: 0.50125, y: 1.2811875}
+    - {x: 0.31375003, y: 1.5311875}
+    - {x: 0.18875003, y: 2.2186875}
+    - {x: -0.029999971, y: 2.2186875}
+    - {x: -0.12374997, y: 1.6561875}
+    - {x: -0.31124997, y: 1.6874375}
+    - {x: -0.37374997, y: 1.6249375}
+    - {x: -0.37374997, y: 0.28118753}
+    - {x: -0.12374997, y: -6.246567E-05}
+    - {x: 0.18875003, y: -6.246567E-05}
+    - {x: 0.18875003, y: 0.21868753}
+    - {x: 0.03250003, y: 0.43743753}
+    - {x: 0.15750003, y: 0.31243753}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_6
+  m_Rect:
+    serializedVersion: 2
+    x: 30
+    y: 0
+    width: 31
+    height: 67
+  m_Offset: {x: -3.5400012, y: -33.498}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.3858064, y: 2.9848583E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300012
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cbfbefafe0540000000000000000000000000ec51183ffafe0540000000000000000000000000285cbfbe000083b8000000000000000000000000ec51183f000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 30
+      y: 0
+      width: 31
+      height: 67
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 41.96, z: 32, w: 0.0019989014}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.595, y: 0.99993753}
+    - {x: 0.595, y: 1.3436875}
+    - {x: 0.34500003, y: 1.4999375}
+    - {x: 0.25125003, y: 2.0936875}
+    - {x: 0.0012500286, y: 2.0936875}
+    - {x: -0.09249997, y: 1.4999375}
+    - {x: -0.27999997, y: 1.4686875}
+    - {x: -0.37374997, y: 1.3749375}
+    - {x: -0.37374997, y: 0.24993753}
+    - {x: -0.21749997, y: -6.246567E-05}
+    - {x: 0.09500003, y: -6.246567E-05}
+    - {x: 0.43875003, y: 0.15618753}
+    - {x: 0.5325, y: 0.40618753}
+    - {x: 0.56375, y: 0.93743753}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_7
+  m_Rect:
+    serializedVersion: 2
+    x: 90
+    y: 0
+    width: 28
+    height: 68
+  m_Offset: {x: -3.0400012, y: -33.998}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.39142853, y: 2.9409633E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300014
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cafbefafe0740000000000000000000000000ec51083ffafe0740000000000000000000000000285cafbe000083b8000000000000000000000000ec51083f000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 90
+      y: 0
+      width: 28
+      height: 68
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 100.96, z: 32, w: 0.0019989014}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.5325, y: 1.5624375}
+    - {x: 0.34500003, y: 1.6561875}
+    - {x: 0.18875003, y: 2.1249375}
+    - {x: -0.029999971, y: 2.1249375}
+    - {x: -0.15499997, y: 1.5311875}
+    - {x: -0.34249997, y: 1.2811875}
+    - {x: -0.34249997, y: 0.40618753}
+    - {x: -0.24874997, y: 0.062437534}
+    - {x: 0.0012500286, y: -6.246567E-05}
+    - {x: 0.37625003, y: -6.246567E-05}
+    - {x: 0.43875003, y: 0.40618753}
+    - {x: 0.43875003, y: 0.59368753}
+    - {x: 0.5325, y: 0.96868753}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_8
+  m_Rect:
+    serializedVersion: 2
+    x: 61
+    y: 140
+    width: 26
+    height: 72
+  m_Offset: {x: -2.0400014, y: -35.998}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.4215384, y: 2.7775764E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300016
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cafbefafe0f40000000000000000000000000d8a3f03efafe0f40000000000000000000000000285cafbe000083b8000000000000000000000000d8a3f03e000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 61
+      y: 140
+      width: 26
+      height: 72
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 71.96, z: 32, w: 140.002}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.47000003, y: 1.8124375}
+    - {x: 0.34500003, y: 1.8436875}
+    - {x: 0.25125003, y: 1.6874375}
+    - {x: 0.25125003, y: 1.6561875}
+    - {x: 0.22000003, y: 1.9999375}
+    - {x: 0.15750003, y: 2.2499375}
+    - {x: 0.0012500286, y: 2.2499375}
+    - {x: -0.24874997, y: 1.4999375}
+    - {x: -0.34249997, y: 1.4061875}
+    - {x: -0.34249997, y: 0.49993753}
+    - {x: -0.27999997, y: 0.24993753}
+    - {x: 0.03250003, y: -6.246567E-05}
+    - {x: 0.37625003, y: -6.246567E-05}
+    - {x: 0.37625003, y: 0.031187534}
+    - {x: 0.43875003, y: 1.1874375}
+    - {x: 0.47000003, y: 1.2499375}
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: penintent_ladder_climb_loop_anim_9
+  m_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 71
+    width: 27
+    height: 76
+  m_Offset: {x: -1.5400013, y: -37.998}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 32
+  m_Pivot: {x: 0.4429629, y: 2.6313883E-05}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName:
+  m_PackingTag:
+  m_RenderDataKey:
+    000e31fda5d8808489877ed700b769d3: 21300018
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 2
+    texture: {fileID: 2800000, guid: c1fe52ca47cbb3149b3f26996a2f6286, type: 3}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      m_CurrentChannels: 9
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 12
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 285cbfbefafe1740000000000000000000000000d8a3f03efafe1740000000000000000000000000285cbfbe000083b8000000000000000000000000d8a3f03e000083b8000000000000000000000000
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 71
+      width: 27
+      height: 76
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 32, y: 11.959999, z: 32, w: 71.002}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 2
+    texture: {fileID: 0}
+    alphaTexture: {fileID: 0}
+    m_SubMeshes: []
+    m_IndexBuffer:
+    m_VertexData:
+      m_CurrentChannels: 0
+      m_VertexCount: 0
+      m_Channels: []
+      m_DataSize: 0
+      _typelessdata:
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 0, y: 0}
+    settingsRaw: 0
+    uvTransform: {x: 0, y: 0, z: 0, w: 0}
+    downscaleMultiplier: 0
+  m_PhysicsShape:
+  - - {x: 0.47000003, y: 2.2499375}
+    - {x: 0.31375003, y: 2.3436875}
+    - {x: 0.18875003, y: 2.3749375}
+    - {x: -0.029999971, y: 2.3749375}
+    - {x: -0.09249997, y: 2.0936875}
+    - {x: -0.37374997, y: 1.5936875}
+    - {x: -0.37374997, y: 0.78118753}
+    - {x: -0.24874997, y: 0.65618753}
+    - {x: -0.18624997, y: 0.24993753}
+    - {x: -0.12374997, y: -6.246567E-05}
+    - {x: 0.06375003, y: -6.246567E-05}
+    - {x: 0.34500003, y: 0.43743753}
+    - {x: 0.47000003, y: 1.1561875}
