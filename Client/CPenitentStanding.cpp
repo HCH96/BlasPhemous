@@ -19,6 +19,12 @@ void CPenitentStanding::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STARTRRUN);
 	}
 
+	if (KEY_TAP(KEY::DOWN) || KEY_PRESSED(KEY::DOWN))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCH);
+	}
+
+
 	// Jump
 	if (KEY_TAP(KEY::F))
 	{

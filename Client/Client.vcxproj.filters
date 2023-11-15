@@ -290,6 +290,15 @@
     <Filter Include="Game\08. State\Penitent\PrayAuraOff">
       <UniqueIdentifier>{19d3e8ad-9d16-4d68-a10e-cf57ce9840af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\Climb">
+      <UniqueIdentifier>{4e42e114-68d1-4dcb-8687-9a445986d53e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Ledge">
+      <UniqueIdentifier>{210788b2-a6cb-4570-96de-2caafc9d4977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\HangOn">
+      <UniqueIdentifier>{8a8124f2-7067-45c9-90f4-1562e079a4d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -593,6 +602,15 @@
     <ClInclude Include="CPenitentPrayAuraOff.h">
       <Filter>Game\08. State\Penitent\PrayAuraOff</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentClimb.h">
+      <Filter>Game\08. State\Penitent\Climb</Filter>
+    </ClInclude>
+    <ClInclude Include="CLedge.h">
+      <Filter>Game\04. Object\Ledge</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentHangOn.h">
+      <Filter>Game\08. State\Penitent\HangOn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -890,6 +908,15 @@
     </ClCompile>
     <ClCompile Include="CPenitentPrayAuraOff.cpp">
       <Filter>Game\08. State\Penitent\PrayAuraOff</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentClimb.cpp">
+      <Filter>Game\08. State\Penitent\Climb</Filter>
+    </ClCompile>
+    <ClCompile Include="CLedge.cpp">
+      <Filter>Game\04. Object\Ledge</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentHangOn.cpp">
+      <Filter>Game\08. State\Penitent\HangOn</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

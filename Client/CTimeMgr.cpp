@@ -32,10 +32,10 @@ void CTimeMgr::tick()
 
 
 	//DT º¸Á¤
-	if (m_fDeltaTime > (1.f / 60.f))
-	{
-		m_fDeltaTime = 1.f / 60.f;
-	}
+	//if (m_fDeltaTime > (1.f / 60.f))
+	//{
+	//	m_fDeltaTime = 1.f / 60.f;
+	//}
 
 
 	m_fTime += m_fDeltaTime;

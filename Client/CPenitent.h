@@ -46,6 +46,7 @@ public:
     bool GetIsLeft() { return m_bIsLeft; }
     bool GetDownPlatform() { return m_bDownPlatform; }
     UINT GetState() { return m_pSM->GetCurState(); }
+    int GetOverlapGround() { return m_iOverlapGround; }
     
     void SetHP(float _f) { m_fHP = _f; }
     void SetMP(int _i) { m_iMP = _i; }

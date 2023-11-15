@@ -21,7 +21,7 @@
 void CStage01_1::init()
 {
 
-	// Background 0
+	//Background 0
 	CBackground* pBackGround = new CBackground;
 	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_1_BeforeParallax_0", L"texture\\Map\\Brotherhood\\1-1\\1_1_BeforeParallax_0.png"));
 	pBackGround->SetParallaxSpeed(Vec2(0.2f,0.3f));

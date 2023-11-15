@@ -11,6 +11,7 @@
 
 #include "CPlatform.h"
 #include "CWall.h"
+#include "CLedge.h"
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
 
@@ -24,7 +25,7 @@ void CStage01_2::init()
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
-	//// Background 1
+	// Background 1
 	pBackGround = new CBackground;
 	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_2_BeforeParallax_1", L"texture\\Map\\Brotherhood\\1-2\\1_2_BeforeParallax_1.png"));
 	pBackGround->SetParallaxSpeed(Vec2(0.3f, 0.6f));
@@ -32,21 +33,21 @@ void CStage01_2::init()
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
-	//// Background 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_2_BeforeParallax_2", L"texture\\Map\\Brotherhood\\1-2\\1_2_BeforeParallax_2.png"));
-	pBackGround->SetParallaxSpeed(Vec2(0.4f, 0.75f));
-	pBackGround->SetPos(Vec2(-650.f, -240.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::BACKGROUND, pBackGround);
+	// Background 2
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_2_BeforeParallax_2", L"texture\\Map\\Brotherhood\\1-2\\1_2_BeforeParallax_2.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(0.4f, 0.75f));
+	//pBackGround->SetPos(Vec2(-650.f, -240.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::BACKGROUND, pBackGround);
 
 	// Background 3
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_2_BeforeParallax_3", L"texture\\Map\\Brotherhood\\1-2\\1_2_BeforeParallax_3.png"));
-	pBackGround->SetParallaxSpeed(Vec2(0.5f, 0.75f));
-	pBackGround->SetPos(Vec2(-200.f, -50.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::BACKGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_2_BeforeParallax_3", L"texture\\Map\\Brotherhood\\1-2\\1_2_BeforeParallax_3.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(0.5f, 0.75f));
+	//pBackGround->SetPos(Vec2(-200.f, -50.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::BACKGROUND, pBackGround);
 
 	//// Background 4
 	pBackGround = new CBackground;
@@ -69,12 +70,12 @@ void CStage01_2::init()
 	AddObject(LAYER::FOREGROUND, pBackGround);
 
 	// Foreground 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_2_AfterParallax_0", L"texture\\Map\\Brotherhood\\1-2\\1_2_AfterParallax_01.png"));
-	pBackGround->SetParallaxSpeed(Vec2(1.1f, 1.1f));
-	pBackGround->SetPos(Vec2(100.f, 80.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::FOREGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_2_AfterParallax_0", L"texture\\Map\\Brotherhood\\1-2\\1_2_AfterParallax_01.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(1.1f, 1.1f));
+	//pBackGround->SetPos(Vec2(100.f, 80.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::FOREGROUND, pBackGround);
 
 
 	// ÇÃ·§Æû »ý¼º
@@ -103,6 +104,11 @@ void CStage01_2::init()
 	pPlatform->SetScale(Vec2(440.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	CLedge* pLedge = new CLedge;
+	pLedge->SetPos(Vec2(1610.f, 1255.f));
+	pLedge->SetScale(Vec2(24.f, 50.f));
+	AddObject(LAYER::PLATFORM, pLedge);
+
 	pWall = new CWall;
 	pWall->SetPos(Vec2(1414.f, 1476.f));
 	pWall->SetScale(Vec2(94.f, 418.f));
@@ -118,10 +124,25 @@ void CStage01_2::init()
 	pPlatform->SetScale(Vec2(200.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	pLedge = new CLedge;
+	pLedge->SetPos(Vec2(1780.f, 1251.f));
+	pLedge->SetScale(Vec2(24.f, 50.f));
+	AddObject(LAYER::PLATFORM, pLedge);
+
+	pLedge = new CLedge;
+	pLedge->SetPos(Vec2(1970.f, 1251.f));
+	pLedge->SetScale(Vec2(24.f, 50.f));
+	AddObject(LAYER::PLATFORM, pLedge);
+
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(2800.f, 1260.f));
-	pPlatform->SetScale(Vec2(1050.f, 50.f));
+	pPlatform->SetScale(Vec2(1000.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pLedge = new CLedge;
+	pLedge->SetPos(Vec2(2300.f, 1261.f));
+	pLedge->SetScale(Vec2(24.f, 50.f));
+	AddObject(LAYER::PLATFORM, pLedge);
 
 	pWall = new CWall;
 	pWall->SetPos(Vec2(2640.f, 1500.f));

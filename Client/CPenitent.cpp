@@ -7,6 +7,7 @@
 #include "CTexture.h"
 
 #include "CPlatform.h"
+#include "CLedge.h"
 
 
 // State
@@ -39,6 +40,8 @@
 #include "CPenitentPrayEnd.h"
 #include "CPenitentStanding.h"
 #include "CPenitentCharging.h"
+#include "CPenitentClimb.h"
+#include "CPenitentHangOn.h"
 
 
 
@@ -79,16 +82,6 @@ CPenitent::CPenitent()
 	DustAnimInit();
 
 	
-
-
-	// StateMachine 컴포넌트 추가
-	m_pSM = AddComponent<CStateMachine>(L"Penitent_SM");
-	StateInit();
-
-	// BackBorad 저장
-	m_pSM->AddDataToBlackboard<bool>(L"IsTapS", false);
-
-
 	// Movement 컴포넌트 추가
 	m_pMovement = AddComponent<CMovement>(L"Penitent_Movement");
 	m_pMovement->SetMass(1.f);
@@ -99,6 +92,17 @@ CPenitent::CPenitent()
 	m_pMovement->SetGravity(Vec2(0.f, 2000.f));
 	m_pMovement->SetJumpVel(-800.f);
 	m_pMovement->SetMaxDown(1000.f);
+
+
+	// StateMachine 컴포넌트 추가
+	m_pSM = AddComponent<CStateMachine>(L"Penitent_SM");
+	StateInit();
+
+	// BackBorad 저장
+	m_pSM->AddDataToBlackboard<bool>(L"IsTapS", false);
+
+
+	
 	
 	// collider
 	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
@@ -204,6 +208,11 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 		++m_iOverlapGround;
 		//m_pMovement->SetGround(true);
 	}
+
+	//if (dynamic_cast<CLedge*>(_pOtherObj))
+	//{
+	//	++m_iOverlapGround;
+	//}
 }
 
 void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
@@ -218,6 +227,13 @@ void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Othe
 			m_pMovement->SetGround(false);
 		}
 	}
+
+	//if (dynamic_cast<CLedge*>(_OtherObj))
+	//{
+	//	m_pMovement->SetGround(false);
+	//	
+	//}
+
 }
 
 void CPenitent::AnimationInit()
@@ -476,6 +492,29 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"Standing", 0.04f);
 	m_pAnimator->SetAnimDuration(L"Standing_L", 0.04f);
 
+	// HangOn
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"HangOn", L"texture\\Penitent\\penitent_hangonledge_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"HangOn_L", L"texture\\Penitent\\penitent_hangonledge_anim.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"HangOn", L"animdata\\Penitent\\penitent_hangonledge_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"HangOn_L", L"animdata\\Penitent\\penitent_hangonledge_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"HangOn", 0.04f);
+	m_pAnimator->SetAnimDuration(L"HangOn_L", 0.04f);
+
+
+	// Climb
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Climb", L"texture\\Penitent\\penitent_climbledge_reviewed.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Climb_L", L"texture\\Penitent\\penitent_climbledge_reviewed.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"Climb", L"animdata\\Penitent\\penitent_climbledge_reviewed.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Climb_L", L"animdata\\Penitent\\penitent_climbledge_reviewed.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Climb", 0.04f);
+	m_pAnimator->SetAnimDuration(L"Climb_L", 0.04f);
+
 
 	// ================
 	//   Attck State
@@ -717,6 +756,8 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::PRAYEND, new CPenitentPrayEnd);
 	m_pSM->AddState((UINT)PENITENT_STATE::STANDING, new CPenitentStanding);
 	m_pSM->AddState((UINT)PENITENT_STATE::CHARGING, new CPenitentCharging);
+	m_pSM->AddState((UINT)PENITENT_STATE::CLIMB, new CPenitentClimb);
+	m_pSM->AddState((UINT)PENITENT_STATE::HANGON, new CPenitentHangOn);
 
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);

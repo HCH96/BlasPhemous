@@ -11,11 +11,15 @@
 
 #include "CPlatform.h"
 #include "CWall.h"
+#include "CLedge.h"
 #include "CMonster.h"
 #include "CPenitent.h"
 
+
+
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
+
 
 
 void CPlayLevel::init()
@@ -58,6 +62,12 @@ void CPlayLevel::init()
 	pPlatform->SetScale(Vec2(1000.f, 30.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	CLedge* pLedge = new CLedge;
+	pLedge->SetPos(Vec2(440.f, 400.f));
+	pLedge->SetScale(Vec2(100.f, 30.f));
+	AddObject(LAYER::PLATFORM, pLedge);
+
+
 	//pPlatform = new CPlatform;
 	//pPlatform->SetPos(Vec2(640.f, 700.f));
 	//pPlatform->SetScale(Vec2(1000.f, 30.f));
@@ -87,7 +97,7 @@ void CPlayLevel::enter()
 
 	// Penitent »ý¼º
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
-	pPenitent->SetState(PENITENT_STATE::IDLE);
+	pPenitent->SetState(PENITENT_STATE::FALL);
 	pPenitent->SetPos(Vec2(640.f, 360.f));
 	AddObject(LAYER::PLAYER, pPenitent);
 

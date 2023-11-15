@@ -159,6 +159,7 @@
     <ClInclude Include="CImage.h" />
     <ClInclude Include="CKeyMgr.h" />
     <ClInclude Include="CLayer.h" />
+    <ClInclude Include="CLedge.h" />
     <ClInclude Include="CLevel.h" />
     <ClInclude Include="CLevelMgr.h" />
     <ClInclude Include="Client.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="CPenitent.h" />
     <ClInclude Include="CPenitentAttack.h" />
     <ClInclude Include="CPenitentCharging.h" />
+    <ClInclude Include="CPenitentClimb.h" />
     <ClInclude Include="CPenitentCrouch.h" />
     <ClInclude Include="CPenitentCrouchATT.h" />
     <ClInclude Include="CPenitentCrouching.h" />
@@ -184,6 +186,7 @@
     <ClInclude Include="CPenitentFall.h" />
     <ClInclude Include="CPenitentFallingAhead.h" />
     <ClInclude Include="CPenitentFowardFall.h" />
+    <ClInclude Include="CPenitentHangOn.h" />
     <ClInclude Include="CPenitentHealthPotion.h" />
     <ClInclude Include="CPenitentHP.h" />
     <ClInclude Include="CPenitentJump.h" />
@@ -262,6 +265,7 @@
     <ClCompile Include="CImage.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
     <ClCompile Include="CLayer.cpp" />
+    <ClCompile Include="CLedge.cpp" />
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CLevelMgr.cpp" />
     <ClCompile Include="CLogMgr.cpp" />
@@ -275,6 +279,7 @@
     <ClCompile Include="CPenitent.cpp" />
     <ClCompile Include="CPenitentAttack.cpp" />
     <ClCompile Include="CPenitentCharging.cpp" />
+    <ClCompile Include="CPenitentClimb.cpp" />
     <ClCompile Include="CPenitentCrouch.cpp" />
     <ClCompile Include="CPenitentCrouchATT.cpp" />
     <ClCompile Include="CPenitentCrouching.cpp" />
@@ -285,6 +290,7 @@
     <ClCompile Include="CPenitentFall.cpp" />
     <ClCompile Include="CPenitentFallingAhead.cpp" />
     <ClCompile Include="CPenitentFowardFall.cpp" />
+    <ClCompile Include="CPenitentHangOn.cpp" />
     <ClCompile Include="CPenitentHealthPotion.cpp" />
     <ClCompile Include="CPenitentHP.cpp" />
     <ClCompile Include="CPenitentJump.cpp" />
