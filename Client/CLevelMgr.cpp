@@ -84,6 +84,7 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_2] = new CStage03_2;
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_3] = new CStage03_3;
 
+	//penitences-altar-off
 
 	// 레벨 초기화
 	for (UINT i = 0; i < (UINT)LEVEL_TYPE::END; ++i)
@@ -93,7 +94,7 @@ void CLevelMgr::init()
 
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::STAGE01_2);
+	ChangeLevel(LEVEL_TYPE::STAGE01_5);
 }
 
 void CLevelMgr::tick()

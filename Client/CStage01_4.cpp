@@ -32,12 +32,12 @@ void CStage01_4::init()
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
 	// Background 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_BeforeParallax_2", L"texture\\Map\\Brotherhood\\1-4\\1_4_BeforeParallax_2.png"));
-	pBackGround->SetParallaxSpeed(Vec2(0.5f, 0.3f));
-	pBackGround->SetPos(Vec2(0.f, -450.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::BACKGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_BeforeParallax_2", L"texture\\Map\\Brotherhood\\1-4\\1_4_BeforeParallax_2.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(0.5f, 0.3f));
+	//pBackGround->SetPos(Vec2(0.f, -450.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::BACKGROUND, pBackGround);
 
 	// Background 3
 	pBackGround = new CBackground;
@@ -47,7 +47,7 @@ void CStage01_4::init()
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
-	// Background 3
+	// Background 4
 	pBackGround = new CBackground;
 	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_BeforeParallax_4", L"texture\\Map\\Brotherhood\\1-4\\1_4_BeforeParallax_4.png"));
 	pBackGround->SetParallaxSpeed(Vec2(0.8f, 0.3f));

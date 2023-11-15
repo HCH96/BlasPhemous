@@ -86,9 +86,6 @@
     <Filter Include="Game\03. Manager\LogManager">
       <UniqueIdentifier>{d465edc0-d476-4737-a072-f2e92fcca6d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\Platform">
-      <UniqueIdentifier>{68c5c613-b006-4b44-8f12-42e92bf40baa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\05. Level\PlayLevel">
       <UniqueIdentifier>{654c4876-18fc-4502-a072-6210bb271d65}</UniqueIdentifier>
     </Filter>
@@ -203,17 +200,11 @@
     <Filter Include="Game\08. State\Penitent\Death">
       <UniqueIdentifier>{af0c1027-4d03-40b0-9fdd-a9b5a7959171}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\BackGround">
-      <UniqueIdentifier>{50479dd3-e6e2-44df-bbe1-9359d335ba0f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\05. Level\Stage01">
       <UniqueIdentifier>{5ffbe728-fbb6-4d59-80d7-8cebff88f01f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\05. Level\Stage01\Stage01-1">
       <UniqueIdentifier>{6d6a4696-4c3a-4639-bc53-b3e348136b05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\04. Object\Wall">
-      <UniqueIdentifier>{2ac2c288-5cd5-47b2-95e1-cc74f5b5ff59}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\05. Level\Stage01\Stage01-2">
       <UniqueIdentifier>{88fe5354-1f3c-46d9-98ba-2172b3966121}</UniqueIdentifier>
@@ -269,9 +260,6 @@
     <Filter Include="Game\08. State\Penitent\None">
       <UniqueIdentifier>{f499ce83-1107-45d7-ac3b-7f4bbb1d4a7f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\DeathObject">
-      <UniqueIdentifier>{fd41e6de-c499-460e-80db-f7d191c9e2f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\08. State\Penitent\PrayEnd">
       <UniqueIdentifier>{4cb83846-6889-44c1-852a-ab6fc0ddcd72}</UniqueIdentifier>
     </Filter>
@@ -293,9 +281,6 @@
     <Filter Include="Game\08. State\Penitent\Climb">
       <UniqueIdentifier>{4e42e114-68d1-4dcb-8687-9a445986d53e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\Ledge">
-      <UniqueIdentifier>{210788b2-a6cb-4570-96de-2caafc9d4977}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\08. State\Penitent\HangOn">
       <UniqueIdentifier>{8a8124f2-7067-45c9-90f4-1562e079a4d0}</UniqueIdentifier>
     </Filter>
@@ -308,8 +293,41 @@
     <Filter Include="Game\08. State\Penitent\LadderUp">
       <UniqueIdentifier>{41498693-9ff6-45ba-aa52-4b3c213043c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\Ladder">
+    <Filter Include="Game\04. Object\MapObject">
+      <UniqueIdentifier>{b52c5f25-05cc-4164-a21d-bdcede8a8954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\Ladder">
       <UniqueIdentifier>{9d17e8e0-513a-43c9-8781-117b3c04ba5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\Ledge">
+      <UniqueIdentifier>{210788b2-a6cb-4570-96de-2caafc9d4977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\BackGround">
+      <UniqueIdentifier>{50479dd3-e6e2-44df-bbe1-9359d335ba0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\Platform">
+      <UniqueIdentifier>{68c5c613-b006-4b44-8f12-42e92bf40baa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\DeathObject">
+      <UniqueIdentifier>{fd41e6de-c499-460e-80db-f7d191c9e2f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\Wall">
+      <UniqueIdentifier>{2ac2c288-5cd5-47b2-95e1-cc74f5b5ff59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\Candle">
+      <UniqueIdentifier>{c499fc80-2c9a-4b91-b9c9-a7d62e8f0efb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\TexObject">
+      <UniqueIdentifier>{4099c273-2fa4-4444-b8ff-09cfe1c6ea1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\priedieu">
+      <UniqueIdentifier>{df479a80-05ba-4704-bdf2-c06d71af8a75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\Cage">
+      <UniqueIdentifier>{be5216f8-1edd-4cee-8703-19ec010b15d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\Switch">
+      <UniqueIdentifier>{2ec02af9-1325-4b9e-b31a-d880d9c47de9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -426,7 +444,7 @@
       <Filter>Game\06. Component\Movement</Filter>
     </ClInclude>
     <ClInclude Include="CPlatform.h">
-      <Filter>Game\04. Object\Platform</Filter>
+      <Filter>Game\04. Object\MapObject\Platform</Filter>
     </ClInclude>
     <ClInclude Include="CPlayLevel.h">
       <Filter>Game\05. Level\PlayLevel</Filter>
@@ -540,10 +558,10 @@
       <Filter>Game\05. Level\Stage01\Stage01-1</Filter>
     </ClInclude>
     <ClInclude Include="CBackground.h">
-      <Filter>Game\04. Object\BackGround</Filter>
+      <Filter>Game\04. Object\MapObject\BackGround</Filter>
     </ClInclude>
     <ClInclude Include="CWall.h">
-      <Filter>Game\04. Object\Wall</Filter>
+      <Filter>Game\04. Object\MapObject\Wall</Filter>
     </ClInclude>
     <ClInclude Include="CStage01_2.h">
       <Filter>Game\05. Level\Stage01\Stage01-2</Filter>
@@ -594,7 +612,7 @@
       <Filter>Game\08. State\Penitent\None</Filter>
     </ClInclude>
     <ClInclude Include="CDeathObj.h">
-      <Filter>Game\04. Object\DeathObject</Filter>
+      <Filter>Game\04. Object\MapObject\DeathObject</Filter>
     </ClInclude>
     <ClInclude Include="CPenitentPrayEnd.h">
       <Filter>Game\08. State\Penitent\PrayEnd</Filter>
@@ -618,7 +636,7 @@
       <Filter>Game\08. State\Penitent\Climb</Filter>
     </ClInclude>
     <ClInclude Include="CLedge.h">
-      <Filter>Game\04. Object\Ledge</Filter>
+      <Filter>Game\04. Object\MapObject\Ledge</Filter>
     </ClInclude>
     <ClInclude Include="CPenitentHangOn.h">
       <Filter>Game\08. State\Penitent\HangOn</Filter>
@@ -633,7 +651,22 @@
       <Filter>Game\08. State\Penitent\LadderDown</Filter>
     </ClInclude>
     <ClInclude Include="CLadder.h">
-      <Filter>Game\04. Object\Ladder</Filter>
+      <Filter>Game\04. Object\MapObject\Ladder</Filter>
+    </ClInclude>
+    <ClInclude Include="CCandle.h">
+      <Filter>Game\04. Object\MapObject\Candle</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexObj.h">
+      <Filter>Game\04. Object\MapObject\TexObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CPriedieu.h">
+      <Filter>Game\04. Object\MapObject\priedieu</Filter>
+    </ClInclude>
+    <ClInclude Include="CCage.h">
+      <Filter>Game\04. Object\MapObject\Cage</Filter>
+    </ClInclude>
+    <ClInclude Include="CSwitch.h">
+      <Filter>Game\04. Object\MapObject\Switch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -745,7 +778,7 @@
       <Filter>Game\06. Component\Movement</Filter>
     </ClCompile>
     <ClCompile Include="CPlatform.cpp">
-      <Filter>Game\04. Object\Platform</Filter>
+      <Filter>Game\04. Object\MapObject\Platform</Filter>
     </ClCompile>
     <ClCompile Include="CPlayLevel.cpp">
       <Filter>Game\05. Level\PlayLevel</Filter>
@@ -859,10 +892,10 @@
       <Filter>Game\05. Level\Stage01\Stage01-1</Filter>
     </ClCompile>
     <ClCompile Include="CBackground.cpp">
-      <Filter>Game\04. Object\BackGround</Filter>
+      <Filter>Game\04. Object\MapObject\BackGround</Filter>
     </ClCompile>
     <ClCompile Include="CWall.cpp">
-      <Filter>Game\04. Object\Wall</Filter>
+      <Filter>Game\04. Object\MapObject\Wall</Filter>
     </ClCompile>
     <ClCompile Include="CStage01_2.cpp">
       <Filter>Game\05. Level\Stage01\Stage01-2</Filter>
@@ -913,7 +946,7 @@
       <Filter>Game\08. State\Penitent\None</Filter>
     </ClCompile>
     <ClCompile Include="CDeathObj.cpp">
-      <Filter>Game\04. Object\DeathObject</Filter>
+      <Filter>Game\04. Object\MapObject\DeathObject</Filter>
     </ClCompile>
     <ClCompile Include="CPenitentPrayEnd.cpp">
       <Filter>Game\08. State\Penitent\PrayEnd</Filter>
@@ -937,7 +970,7 @@
       <Filter>Game\08. State\Penitent\Climb</Filter>
     </ClCompile>
     <ClCompile Include="CLedge.cpp">
-      <Filter>Game\04. Object\Ledge</Filter>
+      <Filter>Game\04. Object\MapObject\Ledge</Filter>
     </ClCompile>
     <ClCompile Include="CPenitentHangOn.cpp">
       <Filter>Game\08. State\Penitent\HangOn</Filter>
@@ -952,7 +985,22 @@
       <Filter>Game\08. State\Penitent\LadderDown</Filter>
     </ClCompile>
     <ClCompile Include="CLadder.cpp">
-      <Filter>Game\04. Object\Ladder</Filter>
+      <Filter>Game\04. Object\MapObject\Ladder</Filter>
+    </ClCompile>
+    <ClCompile Include="CCandle.cpp">
+      <Filter>Game\04. Object\MapObject\Candle</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexObj.cpp">
+      <Filter>Game\04. Object\MapObject\TexObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CPriedieu.cpp">
+      <Filter>Game\04. Object\MapObject\priedieu</Filter>
+    </ClCompile>
+    <ClCompile Include="CCage.cpp">
+      <Filter>Game\04. Object\MapObject\Cage</Filter>
+    </ClCompile>
+    <ClCompile Include="CSwitch.cpp">
+      <Filter>Game\04. Object\MapObject\Switch</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

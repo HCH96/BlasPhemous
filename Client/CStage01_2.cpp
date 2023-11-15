@@ -12,6 +12,8 @@
 #include "CPlatform.h"
 #include "CWall.h"
 #include "CLedge.h"
+#include "CCandle.h"
+
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
 #include "CLadder.h"
@@ -186,6 +188,47 @@ void CStage01_2::init()
 	pPlatform->SetPos(Vec2(3580.f, 1670.f));
 	pPlatform->SetScale(Vec2(1100.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+
+	// Map Object
+	CCandle* pCandle = new CCandle(2);
+	pCandle->SetPos(Vec2(868.f, 1488.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(4);
+	pCandle->SetPos(Vec2(828.f, 1498.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(2);
+	pCandle->SetPos(Vec2(1114.f, 1366.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(4);
+	pCandle->SetPos(Vec2(1074.f, 1376.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(2);
+	pCandle->SetPos(Vec2(2000.f, 1625.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(4);
+	pCandle->SetPos(Vec2(2025.f, 1635.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(2);
+	pCandle->SetPos(Vec2(2050.f, 1625.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(4);
+	pCandle->SetPos(Vec2(2800.f, 1500.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+	pCandle = new CCandle(4);
+	pCandle->SetPos(Vec2(2820.f, 1500.f));
+	AddObject(LAYER::MAP_OBJECT, pCandle);
+
+
+
 
 
 	// UI »ý¼º

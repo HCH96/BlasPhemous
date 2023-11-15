@@ -72,25 +72,25 @@ void CCamera::tick()
 
 
 	// DEBUG
-	if (KEY_PRESSED(KEY::LEFT))
-	{
-		m_vLookAt.x -= 500.f * DT;
-	}
+	//if (KEY_PRESSED(KEY::LEFT))
+	//{
+	//	m_vLookAt.x -= 500.f * DT;
+	//}
 
-	if (KEY_PRESSED(KEY::RIGHT))
-	{
-		m_vLookAt.x += 500.f * DT;
-	}
+	//if (KEY_PRESSED(KEY::RIGHT))
+	//{
+	//	m_vLookAt.x += 500.f * DT;
+	//}
 
-	if (KEY_PRESSED(KEY::UP))
-	{
-		m_vLookAt.y -= 500.f * DT;
-	}
+	//if (KEY_PRESSED(KEY::UP))
+	//{
+	//	m_vLookAt.y -= 500.f * DT;
+	//}
 
-	if (KEY_PRESSED(KEY::DOWN))
-	{
-		m_vLookAt.y += 500.f * DT;
-	}
+	//if (KEY_PRESSED(KEY::DOWN))
+	//{
+	//	m_vLookAt.y += 500.f * DT;
+	//}
 
 
 
@@ -111,24 +111,29 @@ void CCamera::tick()
 	}
 
 	// 카메라가 제한지점을 넘어갔다면
+
+	// LEFT
 	if (m_vCurLookAt.x - vResolution.x / 2.f < m_vCameraLimitLT.x)
 	{
-		m_vCurLookAt.x = m_vCameraLimitLT.x + vResolution.x / 2.f + 1.f;
+		m_vCurLookAt.x = m_vCameraLimitLT.x + vResolution.x / 2.f;
 	}
 
+	// RIGHT
 	if (m_vCurLookAt.x + vResolution.x / 2.f > m_vCameraLimit.x)
 	{
-		m_vCurLookAt.x = m_vCameraLimit.x - vResolution.x / 2.f - 1.f;
+		m_vCurLookAt.x = m_vCameraLimit.x - vResolution.x / 2.f;
 	}
 
+	// TOP
 	if (m_vCurLookAt.y - vResolution.y / 2.f < m_vCameraLimitLT.y)
 	{
-		m_vCurLookAt.y = m_vCameraLimitLT.y + vResolution.y / 2.f + 1.f;
+		m_vCurLookAt.y = m_vCameraLimitLT.y + vResolution.y / 2.f;
 	}
 
+	// BOTTOM
 	if (m_vCurLookAt.y + vResolution.y / 2.f > m_vCameraLimit.y)
 	{
-		m_vCurLookAt.y = m_vCameraLimit.y - vResolution.y / 2.f - 1.f;
+		m_vCurLookAt.y = m_vCameraLimit.y - vResolution.y / 2.f;
 	}
 
 

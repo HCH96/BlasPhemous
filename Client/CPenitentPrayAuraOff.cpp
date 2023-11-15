@@ -13,7 +13,7 @@ CPenitentPrayAuraOff::~CPenitentPrayAuraOff()
 
 void CPenitentPrayAuraOff::finaltick(float _DT)
 {
-	if (KEY_TAP(KEY::SPACE))
+	if (KEY_TAP(KEY::ESC))
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::PRAYEND);
 	}
@@ -25,6 +25,7 @@ void CPenitentPrayAuraOff::Enter()
 	pPenitent->SetCheckPoint(CLevelMgr::GetInst()->GetCurLeveli());
 	pPenitent->SetHP(100.f);
 	pPenitent->SetMP(3);
+	pPenitent->SetPotionCount(3);
 
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	int iDir = GetOwnerObj->GetDir();
@@ -35,7 +36,7 @@ void CPenitentPrayAuraOff::Enter()
 	}
 	else
 	{
-		pAnimator->Play(L"PrayingAuraOff", false);
+		pAnimator->Play(L"PrayingAuraOff_L", false);
 	}
 }
 

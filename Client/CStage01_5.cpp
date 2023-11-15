@@ -11,6 +11,8 @@
 #include "CPlatform.h"
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
+#include "CCage.h"
+#include "CSwitch.h"
 
 void CStage01_5::init()
 {
@@ -40,6 +42,17 @@ void CStage01_5::init()
 	pPlatform->SetPos(Vec2(1020.f, 772.f));
 	pPlatform->SetScale(Vec2(1500.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	CCage* pCage = new CCage;
+	pCage->SetPos(Vec2(1450.f, 510.f));
+	pCage->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MAP_OBJECT, pCage);
+	
+	CSwitch* pSwitch = new CSwitch(pCage);
+	pSwitch->SetPos(Vec2(1350.f, 360.f));
+	pSwitch->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MAP_OBJECT, pSwitch);
+
 
 	// UI »ý¼º
 	CPenitentUI* pPenitentUI = new CPenitentUI;

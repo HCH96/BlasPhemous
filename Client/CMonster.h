@@ -1,10 +1,6 @@
 #pragma once
 #include "CObj.h"
 
-class CCollider;
-class CTexture;
-class CStateMachine;
-
 class CMonster :
     public CObj
 {

@@ -148,7 +148,9 @@
     <ClInclude Include="CAssetMgr.h" />
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CBackground.h" />
+    <ClInclude Include="CCage.h" />
     <ClInclude Include="CCamera.h" />
+    <ClInclude Include="CCandle.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="CCollisionMgr.h" />
     <ClInclude Include="CComponent.h" />
@@ -213,6 +215,7 @@
     <ClInclude Include="CPenitentUpwardATTJump.h" />
     <ClInclude Include="CPlatform.h" />
     <ClInclude Include="CPlayLevel.h" />
+    <ClInclude Include="CPriedieu.h" />
     <ClInclude Include="CProjectile.h" />
     <ClInclude Include="CProjectile1.h" />
     <ClInclude Include="CProjectile2.h" />
@@ -233,8 +236,10 @@
     <ClInclude Include="CStage03_3.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CStateMachine.h" />
+    <ClInclude Include="CSwitch.h" />
     <ClInclude Include="CTaskMgr.h" />
     <ClInclude Include="CTearsUI.h" />
+    <ClInclude Include="CTexObj.h" />
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
     <ClInclude Include="CTimeMgr.h" />
@@ -258,7 +263,9 @@
     <ClCompile Include="CAssetMgr.cpp" />
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CBackground.cpp" />
+    <ClCompile Include="CCage.cpp" />
     <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="CCandle.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCollisionMgr.cpp" />
     <ClCompile Include="CComponent.cpp" />
@@ -321,6 +328,7 @@
     <ClCompile Include="CPenitentUpwardATTJump.cpp" />
     <ClCompile Include="CPlatform.cpp" />
     <ClCompile Include="CPlayLevel.cpp" />
+    <ClCompile Include="CPriedieu.cpp" />
     <ClCompile Include="CProjectile.cpp" />
     <ClCompile Include="CProjectile1.cpp" />
     <ClCompile Include="CProjectile2.cpp" />
@@ -341,8 +349,10 @@
     <ClCompile Include="CStage03_3.cpp" />
     <ClCompile Include="CState.cpp" />
     <ClCompile Include="CStateMachine.cpp" />
+    <ClCompile Include="CSwitch.cpp" />
     <ClCompile Include="CTaskMgr.cpp" />
     <ClCompile Include="CTearsUI.cpp" />
+    <ClCompile Include="CTexObj.cpp" />
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />

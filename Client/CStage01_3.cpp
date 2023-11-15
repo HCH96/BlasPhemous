@@ -11,6 +11,8 @@
 #include "CPlatform.h"
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
+#include "CTexObj.h"
+#include "CPriedieu.h"
 
 void CStage01_3::init()
 {
@@ -31,12 +33,12 @@ void CStage01_3::init()
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
 	// Background 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_BeforeParallax_2", L"texture\\Map\\Brotherhood\\1-3\\1_3_BeforeParallax_2.png"));
-	pBackGround->SetParallaxSpeed(Vec2(0.3f, 0.3f));
-	pBackGround->SetPos(Vec2(-700.f, -330.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::BACKGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_BeforeParallax_2", L"texture\\Map\\Brotherhood\\1-3\\1_3_BeforeParallax_2.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(0.3f, 0.3f));
+	//pBackGround->SetPos(Vec2(-700.f, -330.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::BACKGROUND, pBackGround);
 
 	// Background 3
 	pBackGround = new CBackground;
@@ -47,12 +49,12 @@ void CStage01_3::init()
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
 	// Background 4
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_BeforeParallax_4", L"texture\\Map\\Brotherhood\\1-3\\1_3_BeforeParallax_4.png"));
-	pBackGround->SetParallaxSpeed(Vec2(0.5f, 0.3f));
-	pBackGround->SetPos(Vec2(-500.f, -350.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::BACKGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_BeforeParallax_4", L"texture\\Map\\Brotherhood\\1-3\\1_3_BeforeParallax_4.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(0.5f, 0.3f));
+	//pBackGround->SetPos(Vec2(-500.f, -350.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::BACKGROUND, pBackGround);
 
 
 	// Tile 
@@ -68,23 +70,36 @@ void CStage01_3::init()
 	AddObject(LAYER::FOREGROUND, pBackGround);
 
 	// Foreground 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-3\\1_3_AfterLayer_0.png"));
-	pBackGround->SetPos(Vec2(-10.f, -20.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::FOREGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-3\\1_3_AfterLayer_0.png"));
+	//pBackGround->SetPos(Vec2(-10.f, -20.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::FOREGROUND, pBackGround);
 
 	// Foreground 3
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_AfterParallax_0", L"texture\\Map\\Brotherhood\\1-3\\1_3_AfterParallax_0.png"));
-	pBackGround->SetParallaxSpeed(Vec2(1.1f, 1.1f));
-	pBackGround->SetPos(Vec2(0.f, 400.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::FOREGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_3_AfterParallax_0", L"texture\\Map\\Brotherhood\\1-3\\1_3_AfterParallax_0.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(1.1f, 1.1f));
+	//pBackGround->SetPos(Vec2(0.f, 400.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::FOREGROUND, pBackGround);
 
 
+	// Alter
+	CTexObj* pObj = new CTexObj;
+	pObj->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"Alter", L"texture\\Object\\penitences-altar-off.png"));
+	pObj->SetPos(Vec2(2570.f, 1150.f));
+	AddObject(LAYER::MAP_OBJECT, pObj);
+
+	// Priedieu
+	CPriedieu* pPriedieu = new CPriedieu;
+	pPriedieu->SetPos(Vec2(1816.f, 1160.f));
+	pPriedieu->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MAP_OBJECT, pPriedieu);
+
+	// Platform
 	CPlatform* pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(1640.f, 1180.f));
+	pPlatform->SetPos(Vec2(1640.f, 1160.f));
 	pPlatform->SetScale(Vec2(3200.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
