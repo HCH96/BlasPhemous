@@ -9,8 +9,9 @@ private:
     FMonInfo        m_Info;
     CCollider*      m_pCollider;
     CStateMachine*  m_pAI;
-
     CTexture*       m_pTexture;
+
+    float           m_fHP;
 
 
 public:

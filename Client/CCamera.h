@@ -9,6 +9,7 @@ enum class CAM_EFFECT
 {
 	FADE_IN,
 	FADE_OUT,
+	SHAKE,
 };
 
 struct FCamEvent
@@ -34,6 +35,11 @@ private:
 	Vec2		m_vCameraLimit; // 카메라가 바라볼 수 있는 제한 지점
 	Vec2		m_vLookAtOffset;// 카메라가 바라봐야할 지점의 오프셋
 	float		m_fSpeed;		// 타겟을 따라가는 속도
+
+
+	float		m_fShakeIntensity; // 카메라를 흔드는 강도
+	Vec2		m_vTarget;	   // 카메라가 흔들릴 때 도착 좌표
+
 
 
 
@@ -89,6 +95,17 @@ public:
 		evnt.AccTime = 0.f;
 		evnt.Duration = _time;
 		evnt.NextLevel = _eLevelType;
+		m_EventList.push_back(evnt);
+	}
+
+	void Shake(float _fTime, float _fShakeIntensity)
+	{
+		m_fShakeIntensity = _fShakeIntensity;
+
+		FCamEvent evnt = {};
+		evnt.Type = CAM_EFFECT::SHAKE;
+		evnt.AccTime = 0.f;
+		evnt.Duration = _fTime;
 		m_EventList.push_back(evnt);
 	}
 };

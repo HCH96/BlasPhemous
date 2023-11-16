@@ -3,6 +3,7 @@
 
 #include "CEngine.h"
 
+#include "CTimeMgr.h"
 #include "CAssetMgr.h"
 #include "CTexture.h"
 
@@ -191,6 +192,7 @@ void CPenitent::tick(float _DT)
 	if (KEY_TAP(KEY::U))
 	{
 		m_fTears += 100;
+		CCamera::GetInst()->Shake(5.f,0.5f);
 	}
 
 
@@ -211,6 +213,12 @@ void CPenitent::tick(float _DT)
 
 void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
+	if (_pOwnCol->GetName() == L"Penitent_HitBox" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER)
+	{
+		CTimeMgr::GetInst()->Delay();
+		CCamera::GetInst()->Shake(0.1f,0.5f);
+	}
+
 	if (dynamic_cast<CPlatform*>(_pOtherObj))
 	{
 		++m_iOverlapGround;

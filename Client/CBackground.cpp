@@ -26,6 +26,7 @@ void CBackground::render(HDC _dc)
 	if (m_pTex == nullptr)
 		return;
 
+
 	Vec2 vResolution = CEngine::GetInst()->GetResolution();
 	
 	// Offset

@@ -185,3 +185,29 @@ enum class PENITENT_STATE
 
 
 };
+
+enum class FOOL_KNIFE
+{
+	IDLE,
+	WALK,
+	TURN,
+	DEATH,
+};
+
+enum class CROSSCRAWLER
+{
+	IDLE,
+	WALK,
+	TURN,
+	DEATH,
+	ATTACK,
+};
+
+enum class LIONHEAD
+{
+	IDLE,
+	WALK,
+	WALKBACK,
+	ATTACK,
+	DEATH,
+};

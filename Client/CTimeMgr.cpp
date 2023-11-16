@@ -10,11 +10,19 @@ CTimeMgr::CTimeMgr()
 	, m_fDeltaTime(0.f)
 	, m_fTime(0.f)
 	, m_iCall(0)
+	, m_bDelay(false)
+	, m_fDelayTime(0.05f)
+	, m_fDelayAcc(0.f)
 {
 }
 
 CTimeMgr::~CTimeMgr()
 {
+}
+
+void CTimeMgr::Delay()
+{
+	m_bDelay = true;
 }
 
 void CTimeMgr::init()
@@ -32,10 +40,10 @@ void CTimeMgr::tick()
 
 
 	//DT º¸Á¤
-	//if (m_fDeltaTime > (1.f / 60.f))
-	//{
-	//	m_fDeltaTime = 1.f / 60.f;
-	//}
+	if (m_fDeltaTime > (1.f / 60.f))
+	{
+		m_fDeltaTime = 1.f / 60.f;
+	}
 
 
 	m_fTime += m_fDeltaTime;
@@ -49,6 +57,18 @@ void CTimeMgr::tick()
 
 		m_fTime = 0.f;
 		m_iCall= 0;
+	}
+
+	if (m_bDelay)
+	{
+		m_fDelayAcc += m_fDeltaTime;
+		m_fDeltaTime = 0.f;
+
+		if (m_fDelayAcc > m_fDelayTime)
+		{
+			m_fDelayAcc = 0.f;
+			m_bDelay = false;
+		}
 	}
 
 	m_llPrevCount = m_llCurCount;

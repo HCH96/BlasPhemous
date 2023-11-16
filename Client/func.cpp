@@ -123,4 +123,46 @@ void DrawRotatedRectangle(HDC hdc, int x, int y, int width, int height, float an
 	Polygon(hdc, points, 4);
 }
 
+float lerp(float a, float b, float t)
+{
+	return a + t * (b - a);
+}
+
+
+
+#include <windows.h>
+#include <gdiplus.h>
+
+using namespace Gdiplus;
+
+void AdjustBrightness(Bitmap* bitmap, float brightnessFactor)
+{
+	int width = bitmap->GetWidth();
+	int height = bitmap->GetHeight();
+
+	BitmapData bitmapData;
+	Rect rect(0, 0, width, height);
+
+	bitmap->LockBits(&rect, ImageLockModeRead | ImageLockModeWrite, PixelFormat32bppARGB, &bitmapData);
+
+	BYTE* scan0 = static_cast<BYTE*>(bitmapData.Scan0);
+
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			BYTE* pixel = scan0 + y * bitmapData.Stride + x * 4;
+
+			// 각 색상 채널에 대해 명도 조절
+			for (int i = 0; i < 3; i++)
+			{
+				int value = pixel[i] + static_cast<int>(brightnessFactor * 255);
+				pixel[i] = static_cast<BYTE>(min(max(value, 0), 255));
+			}
+		}
+	}
+
+	bitmap->UnlockBits(&bitmapData);
+}
+
 

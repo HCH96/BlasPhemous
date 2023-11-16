@@ -1,6 +1,6 @@
 #pragma once
 #include "CObj.h"
-class CFoolKnife :
+class CLionhead :
     public CObj
 {
     GENERATED_OBJECT(CObj);
@@ -10,6 +10,8 @@ private:
     CAnimator* m_pAnimator;
     CMovement* m_pMovement;
     CCollider* m_pCollider;
+
+    CCollider* m_pHitBox;
 
     float       m_fHP;
 
@@ -24,11 +26,10 @@ public:
     virtual void BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) override;
 
 public:
-    CLONE(CFoolKnife);
-    CFoolKnife();
-    CFoolKnife(const CFoolKnife& _Origin);
-    ~CFoolKnife();
-
+    CLONE(CLionhead);
+    CLionhead();
+    CLionhead(const CLionhead& _Origin);
+    ~CLionhead();
 
 };
 

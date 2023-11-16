@@ -18,6 +18,8 @@
 #include "CTearsUI.h"
 #include "CLadder.h"
 
+#include "CFoolKnife.h"
+
 
 void CStage01_2::init()
 {
@@ -134,6 +136,11 @@ void CStage01_2::init()
 	pPlatform->SetScale(Vec2(1200.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	CFoolKnife* pFoolKnife = new CFoolKnife;
+	pFoolKnife->SetPos(Vec2(2100.f, 1660.f));
+	pFoolKnife->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MONSTER, pFoolKnife);
+
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(1870.f, 1250.f));
 	pPlatform->SetScale(Vec2(200.f, 50.f));
@@ -173,6 +180,11 @@ void CStage01_2::init()
 	pPlatform->SetPos(Vec2(2900.f, 1520.f));
 	pPlatform->SetScale(Vec2(260.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	pFoolKnife = new CFoolKnife;
+	pFoolKnife->SetPos(Vec2(2900.f, 1520.f));
+	pFoolKnife->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MONSTER, pFoolKnife);
 
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(3240.f, 1400.f));
@@ -226,7 +238,6 @@ void CStage01_2::init()
 	pCandle = new CCandle(4);
 	pCandle->SetPos(Vec2(2820.f, 1500.f));
 	AddObject(LAYER::MAP_OBJECT, pCandle);
-
 
 
 

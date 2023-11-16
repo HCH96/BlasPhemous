@@ -18,6 +18,8 @@ CCamera::CCamera()
 	, m_Alpha(0)
 	, m_vCameraLimitLT(0.f, 0.f)
 	, m_vCameraLimit(12800.f,7200.f)
+	, m_vTarget(Vec2(0.f,0.f))
+	, m_fShakeIntensity(0.f)
 {
 	Vec2 vResol = CEngine::GetInst()->GetResolution();
 	m_pVeil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", (int)vResol.x, (int)vResol.y);
@@ -36,8 +38,6 @@ void CCamera::SetTarget(CObj* _pTarget)
 
 void CCamera::tick()
 {
-
-
 	Vec2 vResolution = CEngine::GetInst()->GetResolution();
 	Vec2 vCenter = vResolution / 2.f;
 
@@ -136,20 +136,20 @@ void CCamera::tick()
 		m_vCurLookAt.y = m_vCameraLimit.y - vResolution.y / 2.f;
 	}
 
-
-
-	// Diff 계산
-	m_vDiff = m_vCurLookAt - vCenter;
-
-	// PrevLookAt 저장
-	m_vPrevLookAt = m_vCurLookAt;
-
+	
 
 	// 카메라 이벤트 설정
 
 	// 카메라 이벤트가 없으면 리턴
 	if (m_EventList.empty())
+	{
+		// Diff 계산
+		m_vDiff = m_vCurLookAt - vCenter;
+
+		// PrevLookAt 저장
+		m_vPrevLookAt = m_vCurLookAt;
 		return;
+	}
 
 	// 카메라 이벤트가 존재한다면
 	FCamEvent& evnt = m_EventList.front();
@@ -192,6 +192,36 @@ void CCamera::tick()
 			m_Alpha = (UINT)(alpha * 255);
 		}
 	}
+	else if (evnt.Type == CAM_EFFECT::SHAKE)
+	{
+		evnt.AccTime += DT;
+
+		if (evnt.Duration <= evnt.AccTime)
+		{
+			m_fShakeIntensity = 0.f;
+			m_vTarget = Vec2(0.f, 0.f);
+			m_EventList.pop_front(); 
+		}
+		else
+		{
+			float offsetX = (rand() % 100 - 50) * 0.5f; //m_fShakeIntensity;
+			float offsetY = (rand() % 10 - 5) * 1.f;//m_fShakeIntensity;
+
+			m_vTarget.x = m_vCurLookAt.x + offsetX;
+			m_vTarget.y = m_vCurLookAt.y + offsetY;
+
+			m_vCurLookAt.x = lerp(m_vCurLookAt.x, m_vTarget.x, 0.5f);
+			m_vCurLookAt.y = lerp(m_vCurLookAt.y, m_vTarget.y, 0.5f);
+
+		}
+	}
+
+
+	// Diff 계산
+	m_vDiff = m_vCurLookAt - vCenter;
+
+	// PrevLookAt 저장
+	m_vPrevLookAt = m_vCurLookAt;
 }
 
 void CCamera::render(HDC _dc)

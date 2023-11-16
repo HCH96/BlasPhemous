@@ -329,6 +329,54 @@
     <Filter Include="Game\04. Object\MapObject\Switch">
       <UniqueIdentifier>{2ec02af9-1325-4b9e-b31a-d880d9c47de9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\Monster\Normal">
+      <UniqueIdentifier>{9cf5b807-34ab-462b-aa1d-cbb2b247a32d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Monster\Boss">
+      <UniqueIdentifier>{08175bec-0e90-40a0-aa7b-2fd0dae168ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Monster\Normal\FoolKnife">
+      <UniqueIdentifier>{73702599-2f5e-4bc0-aef8-041151d1acc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\FoolKnife">
+      <UniqueIdentifier>{425f4b11-f499-40bd-bce2-0d489571580a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\FoolKnife\Idle">
+      <UniqueIdentifier>{7864766f-f87e-4deb-8dad-a1f0971171b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\FoolKnife\Death">
+      <UniqueIdentifier>{3995a4fe-d319-400d-9542-d18b12b6329b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\FoolKnife\Walk">
+      <UniqueIdentifier>{1969a84a-85b1-4bb0-9ad9-094d0604c7a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\FoolKnife\Turn">
+      <UniqueIdentifier>{e1397891-90a5-4874-ad96-cf05f3e8da41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Monster\Normal\Crosscrawler">
+      <UniqueIdentifier>{958378e5-eea4-4d93-bb72-f84bbb453e0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Croscrawler">
+      <UniqueIdentifier>{cd899b4d-408d-4731-b793-1e9eaf124b7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Croscrawler\Idle">
+      <UniqueIdentifier>{3ee157ea-3787-4183-b856-3cc3750637a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Croscrawler\Death">
+      <UniqueIdentifier>{aad063d3-acc1-4e22-a68e-09cfe43232ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Croscrawler\Turn">
+      <UniqueIdentifier>{4d440ffa-c687-41c5-9d0a-552c8bc7e91c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Croscrawler\Walk">
+      <UniqueIdentifier>{aee01121-5474-4eac-a7d6-ff75fa609316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Croscrawler\Attack">
+      <UniqueIdentifier>{2ec20aeb-72a3-42cc-8ddd-038b6c32310a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Monster\Normal\LionHead">
+      <UniqueIdentifier>{fcb191e6-6c11-44d6-afd0-1f39e8b1e1df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -668,6 +716,42 @@
     <ClInclude Include="CSwitch.h">
       <Filter>Game\04. Object\MapObject\Switch</Filter>
     </ClInclude>
+    <ClInclude Include="CFoolKnife.h">
+      <Filter>Game\04. Object\Monster\Normal\FoolKnife</Filter>
+    </ClInclude>
+    <ClInclude Include="CFoolKnifeIdle.h">
+      <Filter>Game\08. State\FoolKnife\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CFoolKnifeDeath.h">
+      <Filter>Game\08. State\FoolKnife\Death</Filter>
+    </ClInclude>
+    <ClInclude Include="CFoolKnifeTurn.h">
+      <Filter>Game\08. State\FoolKnife\Turn</Filter>
+    </ClInclude>
+    <ClInclude Include="CFoolKnifeWalk.h">
+      <Filter>Game\08. State\FoolKnife\Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrosscrawler.h">
+      <Filter>Game\04. Object\Monster\Normal\Crosscrawler</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrosscrawlerIdle.h">
+      <Filter>Game\08. State\Croscrawler\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrosscrawlerDeath.h">
+      <Filter>Game\08. State\Croscrawler\Death</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrosscrawlerAttack.h">
+      <Filter>Game\08. State\Croscrawler\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrosscrawlerWalk.h">
+      <Filter>Game\08. State\Croscrawler\Walk</Filter>
+    </ClInclude>
+    <ClInclude Include="CCrosscrawlerTurn.h">
+      <Filter>Game\08. State\Croscrawler\Turn</Filter>
+    </ClInclude>
+    <ClInclude Include="CLionhead.h">
+      <Filter>Game\04. Object\Monster\Normal\LionHead</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1001,6 +1085,42 @@
     </ClCompile>
     <ClCompile Include="CSwitch.cpp">
       <Filter>Game\04. Object\MapObject\Switch</Filter>
+    </ClCompile>
+    <ClCompile Include="CFoolKnife.cpp">
+      <Filter>Game\04. Object\Monster\Normal\FoolKnife</Filter>
+    </ClCompile>
+    <ClCompile Include="CFoolKnifeIdle.cpp">
+      <Filter>Game\08. State\FoolKnife\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CFoolKnifeDeath.cpp">
+      <Filter>Game\08. State\FoolKnife\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CFoolKnifeTurn.cpp">
+      <Filter>Game\08. State\FoolKnife\Turn</Filter>
+    </ClCompile>
+    <ClCompile Include="CFoolKnifeWalk.cpp">
+      <Filter>Game\08. State\FoolKnife\Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrosscrawler.cpp">
+      <Filter>Game\04. Object\Monster\Normal\Crosscrawler</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrosscrawlerIdle.cpp">
+      <Filter>Game\08. State\Croscrawler\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrosscrawlerDeath.cpp">
+      <Filter>Game\08. State\Croscrawler\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrosscrawlerAttack.cpp">
+      <Filter>Game\08. State\Croscrawler\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrosscrawlerWalk.cpp">
+      <Filter>Game\08. State\Croscrawler\Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="CCrosscrawlerTurn.cpp">
+      <Filter>Game\08. State\Croscrawler\Turn</Filter>
+    </ClCompile>
+    <ClCompile Include="CLionhead.cpp">
+      <Filter>Game\04. Object\Monster\Normal\LionHead</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -32,3 +32,6 @@ void AlphaBlendRender(HDC _dc, CTexture* _pTex, Vec2 _vRenderPos, Vec2 _vScale);
 HBITMAP FlipBitmapHorizontally(HBITMAP hbm);
 
 void DrawRotatedRectangle(HDC hdc, int x, int y, int width, int height, float angle);
+
+// 선형 보간 함수
+float lerp(float a, float b, float t);

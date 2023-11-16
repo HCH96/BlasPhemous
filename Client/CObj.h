@@ -13,6 +13,7 @@ private:
 	int					m_iLayerIdx;
 	bool				m_bPrevDir;
 	bool				m_bDir;
+	bool				m_bPlatEnd;
 
 	vector<CComponent*> m_vecComponent;		// ÄÄÆ÷³ÍÆ® º¤ÅÍ
 
@@ -30,6 +31,9 @@ public:
 	int  GetLayerIdx() { return m_iLayerIdx; }
 	bool GetDir() { return m_bDir; }
 	bool GetPrevDir() { return m_bPrevDir; }
+	bool GetPlatEnd() { return m_bPlatEnd; }
+	void SetPlatEnd(bool _b) { m_bPlatEnd = _b; }
+
 
 protected:
 	template<typename T>

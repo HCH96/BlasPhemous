@@ -11,6 +11,7 @@ CObj::CObj()
 	, m_vScale(Vec2(1.f,1.f))
 	, m_bDir(true)
 	, m_bPrevDir(true)
+	, m_bPlatEnd(false)
 {
 }
 

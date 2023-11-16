@@ -14,6 +14,9 @@
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
 
+#include "CCrosscrawler.h"
+
+
 void CStage02_1::init()
 {
 	// Background 0
@@ -59,6 +62,10 @@ void CStage02_1::init()
 	pPlatform->SetPos(Vec2(482.f, 782.f));
 	pPlatform->SetScale(Vec2(960.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	
+
+
 
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(896.f, 910.f));
@@ -119,6 +126,11 @@ void CStage02_1::init()
 	pPlatform->SetPos(Vec2(1750.f, 778.f));
 	pPlatform->SetScale(Vec2(1060.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	CCrosscrawler* pCorsscrawler = new CCrosscrawler;
+	pCorsscrawler->SetPos(Vec2(1750.f, 778.f));
+	pCorsscrawler->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MONSTER, pCorsscrawler);
 
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(3326.f, 778.f));
