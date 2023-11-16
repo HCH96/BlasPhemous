@@ -63,22 +63,25 @@ void CPenitentDodge::finaltick(float _DT)
 
 void CPenitentDodge::Enter()
 {
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
+	pPenitent->SetHit(true);
+
 	CCamera::GetInst()->SetLookAtOffsetX(20.f);
-	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
-	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
-	CCollider* pCol = GetOwnerObj->GetComponent<CCollider>();
+	CAnimator* pDustAnimator = pPenitent->GetComponent<CAnimator>(L"Dust_Animator");
+	CAnimator* pAnimator = pPenitent->GetComponent<CAnimator>();
+	CMovement* pMovement = pPenitent->GetComponent<CMovement>();
+	CCollider* pCol = pPenitent->GetComponent<CCollider>();
 	pCol->SetScale(Vec2(60.f, 70.f));
 	pCol->SetOffsetPos(Vec2(0.f, -35.f));
 
 	m_iCurFrame = 0;
-	m_iDir = GetOwnerObj->GetDir();
+	m_iDir = pPenitent->GetDir();
 
 	pMovement->SetMaxSpeed(800.f);
 	pMovement->SetGravity(Vec2(0.f, 8000.f));
 
 	pDustAnimator->SetLock(true);
-	pDustAnimator->SetTmpPos(GetOwnerObj->GetPos());
+	pDustAnimator->SetTmpPos(pPenitent->GetPos());
 
 
 
@@ -98,20 +101,23 @@ void CPenitentDodge::Enter()
 
 void CPenitentDodge::Exit()
 {
-	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
-	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
-	bool bDir = GetOwnerObj->GetDir();
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
+	pPenitent->SetHit(true);
+
+	CAnimator* pAnimator = pPenitent->GetComponent<CAnimator>();
+	CMovement* pMovement = pPenitent->GetComponent<CMovement>();
+	bool bDir = pPenitent->GetDir();
 
 	// Movement 설정 값 되돌려주기
 	pMovement->SetMaxSpeed(300.f);
 	pMovement->SetGravity(Vec2(0.f, 2000.f));
 	pMovement->SetMaxSpeed(400.f);
 
-	CCollider* pCol = GetOwnerObj->GetComponent<CCollider>();
+	CCollider* pCol = pPenitent->GetComponent<CCollider>();
 	pCol->SetScale(Vec2(40.f, 100.f));
 	pCol->SetOffsetPos(Vec2(0.f, -50.f));
 
-	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
+	CAnimator* pDustAnimator = pPenitent->GetComponent<CAnimator>(L"Dust_Animator");
 	//pDustAnimator->SetLock(false);
 
 }

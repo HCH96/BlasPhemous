@@ -65,6 +65,8 @@ CPenitent::CPenitent()
 	, m_bIsLeft(true)
 	, m_bDownPlatform(false)
 	, m_iCheckPoint((UINT)LEVEL_TYPE::STAGE01_1)
+	, m_bIsHit(false)
+	, m_fHitTimer(0.f)
 {
 	// 이름 설정
 	SetName(L"Penitent");
@@ -168,6 +170,17 @@ void CPenitent::tick(float _DT)
 		SetDir(true);
 	}
 
+	// 무적 상태 관리
+	if (m_bIsHit)
+	{
+		m_fHitTimer += _DT;
+		if (m_fHitTimer >= 1.2f)
+		{
+			m_bIsHit = false;
+			m_fHitTimer = 0.f;
+		}
+	}
+
 	// DEBUG
 
 
@@ -214,7 +227,15 @@ void CPenitent::tick(float _DT)
 
 void CPenitent::OnDamaged()
 {
-	m_pSM->ChangeState((UINT)PENITENT_STATE::PUSHBACK);
+	m_bIsHit = true;
+	m_fHitTimer = 0.f;
+
+	// 땅에 있을 때
+	if (m_pMovement->IsGround())
+	{
+		m_pSM->ChangeState((UINT)PENITENT_STATE::PUSHBACK);
+	}
+
 
 }
 
@@ -228,7 +249,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 	}
 
 	// 피격
-	if (_pOwnCol->GetName() == L"Penitent_Collider" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER)
+	if (_pOwnCol->GetName() == L"Penitent_Collider" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER && !m_bIsHit)
 	{
 		OnDamaged();
 	}

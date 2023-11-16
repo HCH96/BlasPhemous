@@ -16,11 +16,12 @@ private:
     int                     m_iMP;
     int                     m_iPotion;
     float                   m_fTears;
-
     int                     m_iOverlapGround;
-
     bool                    m_bIsLeft;
     bool                    m_bDownPlatform;
+
+    bool                    m_bIsHit;
+    float                   m_fHitTimer;
 
     UINT                    m_iCheckPoint;
 
@@ -40,6 +41,7 @@ private:
 
 public:
     void OnDamaged();
+    void SetHit(bool _b) { m_bIsHit = _b; }
 
 public:
     float GetHP() { return m_fHP; }
