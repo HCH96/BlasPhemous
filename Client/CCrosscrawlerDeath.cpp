@@ -25,8 +25,9 @@ void CCrosscrawlerDeath::Enter()
 {
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
+	CCollider* pCollider = pOwner->GetComponent<CCollider>();
 	bool bDir = pOwner->GetDir();
-
+	pCollider->Off();
 	if (bDir)
 	{
 		pAnimator->Play(L"Death", false);

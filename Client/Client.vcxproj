@@ -178,6 +178,11 @@
     <ClInclude Include="CLevelMgr.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="CLionhead.h" />
+    <ClInclude Include="CLionheadAttack.h" />
+    <ClInclude Include="CLionheadDeath.h" />
+    <ClInclude Include="CLionheadIdle.h" />
+    <ClInclude Include="CLionheadWalk.h" />
+    <ClInclude Include="CLionheadWalkback.h" />
     <ClInclude Include="CLogMgr.h" />
     <ClInclude Include="CMainMenuLevel.h" />
     <ClInclude Include="CMonster.h" />
@@ -304,6 +309,11 @@
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CLevelMgr.cpp" />
     <ClCompile Include="CLionhead.cpp" />
+    <ClCompile Include="CLionheadAttack.cpp" />
+    <ClCompile Include="CLionheadDeath.cpp" />
+    <ClCompile Include="CLionheadIdle.cpp" />
+    <ClCompile Include="CLionheadWalk.cpp" />
+    <ClCompile Include="CLionheadWalkback.cpp" />
     <ClCompile Include="CLogMgr.cpp" />
     <ClCompile Include="CMainMenuLevel.cpp" />
     <ClCompile Include="CMonster.cpp" />

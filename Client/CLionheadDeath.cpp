@@ -1,16 +1,17 @@
 #include "pch.h"
-#include "CFoolKnifeDeath.h"
+#include "CLionheadDeath.h"
 
-CFoolKnifeDeath::CFoolKnifeDeath()
+
+CLionheadDeath::CLionheadDeath()
 {
 }
 
-CFoolKnifeDeath::~CFoolKnifeDeath()
+CLionheadDeath::~CLionheadDeath()
 {
 }
 
 
-void CFoolKnifeDeath::finaltick(float _DT)
+void CLionheadDeath::finaltick(float _DT)
 {
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
@@ -21,27 +22,25 @@ void CFoolKnifeDeath::finaltick(float _DT)
 	}
 }
 
-void CFoolKnifeDeath::Enter()
+void CLionheadDeath::Enter()
 {
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
 	CCollider* pCollider = pOwner->GetComponent<CCollider>();
 	bool bDir = pOwner->GetDir();
-
 	pCollider->Off();
-
 	if (bDir)
 	{
-		pAnimator->Play(L"Death", true);
+		pAnimator->Play(L"Death", false);
 	}
 	else
 	{
-		pAnimator->Play(L"Death_L", true);
+		pAnimator->Play(L"Death_L", false);
 	}
+
 }
 
-void CFoolKnifeDeath::Exit()
+void CLionheadDeath::Exit()
 {
-	
 }
 

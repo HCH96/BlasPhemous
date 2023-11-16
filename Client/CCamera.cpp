@@ -204,8 +204,8 @@ void CCamera::tick()
 		}
 		else
 		{
-			float offsetX = (rand() % 100 - 50) * 0.5f; //m_fShakeIntensity;
-			float offsetY = (rand() % 10 - 5) * 1.f;//m_fShakeIntensity;
+			float offsetX = (rand() % 100 - 50) * m_fShakeIntensity;
+			float offsetY = (rand() % 10 - 5) * m_fShakeIntensity;
 
 			m_vTarget.x = m_vCurLookAt.x + offsetX;
 			m_vTarget.y = m_vCurLookAt.y + offsetY;

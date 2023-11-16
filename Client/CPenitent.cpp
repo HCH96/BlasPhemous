@@ -192,7 +192,7 @@ void CPenitent::tick(float _DT)
 	if (KEY_TAP(KEY::U))
 	{
 		m_fTears += 100;
-		CCamera::GetInst()->Shake(5.f,0.5f);
+		CCamera::GetInst()->Shake(0.1f,0.5f);
 	}
 
 

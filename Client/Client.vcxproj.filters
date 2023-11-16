@@ -377,6 +377,24 @@
     <Filter Include="Game\04. Object\Monster\Normal\LionHead">
       <UniqueIdentifier>{fcb191e6-6c11-44d6-afd0-1f39e8b1e1df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Lionhead">
+      <UniqueIdentifier>{ff460d37-2fb0-47fc-b4d7-1fd28ad06d4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Lionhead\Idle">
+      <UniqueIdentifier>{6c4751db-dae6-4bb2-8b2e-f878401ee0f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Lionhead\Walk">
+      <UniqueIdentifier>{090eeea4-89cf-40bb-9220-d794ac9b979f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Lionhead\Walkback">
+      <UniqueIdentifier>{fda30f5d-a57d-4647-b63b-610d7dcb8fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Lionhead\Death">
+      <UniqueIdentifier>{0aa56070-6b2e-474a-95bb-297060d50732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Lionhead\Attack">
+      <UniqueIdentifier>{9aecb95c-03e7-4f61-8ced-2ccdb5416d1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -752,6 +770,21 @@
     <ClInclude Include="CLionhead.h">
       <Filter>Game\04. Object\Monster\Normal\LionHead</Filter>
     </ClInclude>
+    <ClInclude Include="CLionheadIdle.h">
+      <Filter>Game\08. State\Lionhead\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CLionheadDeath.h">
+      <Filter>Game\08. State\Lionhead\Death</Filter>
+    </ClInclude>
+    <ClInclude Include="CLionheadAttack.h">
+      <Filter>Game\08. State\Lionhead\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CLionheadWalkback.h">
+      <Filter>Game\08. State\Lionhead\Walkback</Filter>
+    </ClInclude>
+    <ClInclude Include="CLionheadWalk.h">
+      <Filter>Game\08. State\Lionhead\Walk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1121,6 +1154,21 @@
     </ClCompile>
     <ClCompile Include="CLionhead.cpp">
       <Filter>Game\04. Object\Monster\Normal\LionHead</Filter>
+    </ClCompile>
+    <ClCompile Include="CLionheadIdle.cpp">
+      <Filter>Game\08. State\Lionhead\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CLionheadDeath.cpp">
+      <Filter>Game\08. State\Lionhead\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CLionheadAttack.cpp">
+      <Filter>Game\08. State\Lionhead\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CLionheadWalkback.cpp">
+      <Filter>Game\08. State\Lionhead\Walkback</Filter>
+    </ClCompile>
+    <ClCompile Include="CLionheadWalk.cpp">
+      <Filter>Game\08. State\Lionhead\Walk</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -15,6 +15,7 @@
 #include "CTearsUI.h"
 
 #include "CCrosscrawler.h"
+#include "CLionhead.h"
 
 
 void CStage02_1::init()
@@ -136,6 +137,11 @@ void CStage02_1::init()
 	pPlatform->SetPos(Vec2(3326.f, 778.f));
 	pPlatform->SetScale(Vec2(1580.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	CLionhead* pLionhead = new CLionhead;
+	pLionhead->SetPos(Vec2(3326.f, 778.f));
+	pLionhead->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MONSTER, pLionhead);
 
 	CWall* pWall = new CWall;
 	pWall->SetPos(Vec2(1772.f, 1392.f));
