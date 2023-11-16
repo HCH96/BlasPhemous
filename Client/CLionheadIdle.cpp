@@ -44,7 +44,7 @@ void CLionheadIdle::finaltick(float _DT)
 	}
 
 	// 사거리를 벗어난 경우
-	if (fLength > 500.f)
+	if (fLength > 700.f)
 	{
 		// 오른쪽을 쳐다보고 있을 때
 		if (bDir)

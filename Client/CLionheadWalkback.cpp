@@ -65,7 +65,7 @@ void CLionheadWalkback::finaltick(float _DT)
 			}
 
 			// 사거리 안에 들어온 경우
-			if (fLength < 500.f)
+			if (fLength < 700.f)
 			{
 				GetOwnerSM()->ChangeState((UINT)LIONHEAD::WALK);
 			}
@@ -99,7 +99,7 @@ void CLionheadWalkback::finaltick(float _DT)
 			}
 
 			// 사거리 안에 들어온 경우
-			if (fLength < 500.f)
+			if (fLength < 700.f)
 			{
 				GetOwnerSM()->ChangeState((UINT)LIONHEAD::WALK);
 			}

@@ -46,6 +46,7 @@
 #include "CPenitentLadder.h"
 #include "CPenitentLadderDown.h"
 #include "CPenitentLadderUp.h"
+#include "CPenitentPushBack.h"
 
 
 
@@ -211,24 +212,34 @@ void CPenitent::tick(float _DT)
 
 }
 
+void CPenitent::OnDamaged()
+{
+	m_pSM->ChangeState((UINT)PENITENT_STATE::PUSHBACK);
+
+}
+
 void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
+	// 몬스터 Hit
 	if (_pOwnCol->GetName() == L"Penitent_HitBox" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER)
 	{
 		CTimeMgr::GetInst()->Delay();
 		CCamera::GetInst()->Shake(0.1f,0.5f);
 	}
 
+	// 피격
+	if (_pOwnCol->GetName() == L"Penitent_Collider" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER)
+	{
+		OnDamaged();
+	}
+
+
+	// Platform
 	if (dynamic_cast<CPlatform*>(_pOtherObj))
 	{
 		++m_iOverlapGround;
-		//m_pMovement->SetGround(true);
 	}
 
-	//if (dynamic_cast<CLedge*>(_pOtherObj))
-	//{
-	//	++m_iOverlapGround;
-	//}
 }
 
 void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
@@ -812,7 +823,10 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::LADDERDOWN, new CPenitentLadderDown);
 	m_pSM->AddState((UINT)PENITENT_STATE::LADDER, new CPenitentLadder);
 	m_pSM->AddState((UINT)PENITENT_STATE::LADDERUP, new CPenitentLadderUp);
+	m_pSM->AddState((UINT)PENITENT_STATE::PUSHBACK, new CPenitentPushBack);
 
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);
 }
+
+

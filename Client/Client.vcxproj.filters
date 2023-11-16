@@ -395,6 +395,9 @@
     <Filter Include="Game\08. State\Lionhead\Attack">
       <UniqueIdentifier>{9aecb95c-03e7-4f61-8ced-2ccdb5416d1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\PushBack">
+      <UniqueIdentifier>{98756b0c-9162-4dae-b37b-95fd7ff4c1e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -785,6 +788,9 @@
     <ClInclude Include="CLionheadWalk.h">
       <Filter>Game\08. State\Lionhead\Walk</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentPushBack.h">
+      <Filter>Game\08. State\Penitent\PushBack</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1169,6 +1175,9 @@
     </ClCompile>
     <ClCompile Include="CLionheadWalk.cpp">
       <Filter>Game\08. State\Lionhead\Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentPushBack.cpp">
+      <Filter>Game\08. State\Penitent\PushBack</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

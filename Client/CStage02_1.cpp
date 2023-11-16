@@ -139,7 +139,7 @@ void CStage02_1::init()
 	AddObject(LAYER::PLATFORM, pPlatform);
 
 	CLionhead* pLionhead = new CLionhead;
-	pLionhead->SetPos(Vec2(3326.f, 778.f));
+	pLionhead->SetPos(Vec2(3626.f, 778.f));
 	pLionhead->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::MONSTER, pLionhead);
 

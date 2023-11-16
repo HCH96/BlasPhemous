@@ -67,7 +67,7 @@ void CLionheadWalk::finaltick(float _DT)
 			}
 
 			// 사거리를 벗어난 경우
-			if (fLength > 500.f)
+			if (fLength > 700.f)
 			{
 				GetOwnerSM()->ChangeState((UINT)LIONHEAD::WALKBACK);
 			}
@@ -108,7 +108,7 @@ void CLionheadWalk::finaltick(float _DT)
 			}
 
 			// 사거리를 벗어난 경우
-			if (fLength > 500.f)
+			if (fLength > 700.f)
 			{
 				GetOwnerSM()->ChangeState((UINT)LIONHEAD::WALKBACK);
 			}

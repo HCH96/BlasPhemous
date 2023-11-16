@@ -39,6 +39,9 @@ private:
     void StateInit();
 
 public:
+    void OnDamaged();
+
+public:
     float GetHP() { return m_fHP; }
     int GetMP() { return m_iMP; }
     int GetPotionCount() { return m_iPotion; }
