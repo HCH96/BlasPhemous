@@ -12,6 +12,8 @@
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
 
+#include "CElderBrother.h"
+
 
 void CStage01_4::init()
 {
@@ -48,12 +50,12 @@ void CStage01_4::init()
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
 	// Background 4
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_BeforeParallax_4", L"texture\\Map\\Brotherhood\\1-4\\1_4_BeforeParallax_4.png"));
-	pBackGround->SetParallaxSpeed(Vec2(0.8f, 0.3f));
-	pBackGround->SetPos(Vec2(-100.f, 100.f));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::BACKGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_BeforeParallax_4", L"texture\\Map\\Brotherhood\\1-4\\1_4_BeforeParallax_4.png"));
+	//pBackGround->SetParallaxSpeed(Vec2(0.8f, 0.3f));
+	//pBackGround->SetPos(Vec2(-100.f, 100.f));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::BACKGROUND, pBackGround);
 
 
 	// Tile 
@@ -69,10 +71,10 @@ void CStage01_4::init()
 	AddObject(LAYER::FOREGROUND, pBackGround);
 
 	// Foreground 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-4\\1_4_AfterLayer_0.png"));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::FOREGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-4\\1_4_AfterLayer_0.png"));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::FOREGROUND, pBackGround);
 
 	CPlatform* pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(524.f, 1126.f));
@@ -90,6 +92,12 @@ void CStage01_4::init()
 	pPlatform->SetScale(Vec2(500.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+	CElderBrother* pElder = new CElderBrother;
+	pElder->SetPos(Vec2(1470.f, 1060.f));
+	pElder->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MONSTER, pElder);
+
+
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(1860.f, 1095.f));
 	pPlatform->SetScale(Vec2(300.f, 50.f));
@@ -100,6 +108,9 @@ void CStage01_4::init()
 	pPlatform->SetPos(Vec2(2450.f, 1130.f));
 	pPlatform->SetScale(Vec2(950.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+
+
 
 	// UI »ý¼º
 	CPenitentUI* pPenitentUI = new CPenitentUI;

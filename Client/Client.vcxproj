@@ -161,6 +161,11 @@
     <ClInclude Include="CCrosscrawlerTurn.h" />
     <ClInclude Include="CCrosscrawlerWalk.h" />
     <ClInclude Include="CDeathObj.h" />
+    <ClInclude Include="CElderBrother.h" />
+    <ClInclude Include="CElderBrotherAttack.h" />
+    <ClInclude Include="CElderBrotherDeath.h" />
+    <ClInclude Include="CElderBrotherIdle.h" />
+    <ClInclude Include="CElderBrotherJump.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
     <ClInclude Include="CFoolKnife.h" />
@@ -305,6 +310,11 @@
     <ClCompile Include="CCrosscrawlerTurn.cpp" />
     <ClCompile Include="CCrosscrawlerWalk.cpp" />
     <ClCompile Include="CDeathObj.cpp" />
+    <ClCompile Include="CElderBrother.cpp" />
+    <ClCompile Include="CElderBrotherAttack.cpp" />
+    <ClCompile Include="CElderBrotherDeath.cpp" />
+    <ClCompile Include="CElderBrotherIdle.cpp" />
+    <ClCompile Include="CElderBrotherJump.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="CFoolKnife.cpp" />

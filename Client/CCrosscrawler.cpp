@@ -88,8 +88,6 @@ CCrosscrawler::CCrosscrawler()
 	m_pAI->AddState((UINT)CROSSCRAWLER::ATTACK, new CCrosscrawlerAttack);
 	m_pAI->AddState((UINT)CROSSCRAWLER::WALK, new CCrosscrawlerWalk);
 
-	m_pAI->ChangeState((UINT)FOOL_KNIFE::IDLE);
-
 	// Collider
 	m_pCollider = AddComponent<CCollider>(L"Crosscrawler");
 	m_pCollider->SetScale(Vec2(50.f, 100.f));
@@ -100,6 +98,8 @@ CCrosscrawler::CCrosscrawler()
 	m_pHitBox->SetOffsetPos(Vec2(0.f, 0.f));
 	m_pHitBox->SetTime(0.5f);
 	m_pHitBox->Off();
+
+	m_pAI->ChangeState((UINT)FOOL_KNIFE::IDLE);
 }
 
 CCrosscrawler::CCrosscrawler(const CCrosscrawler& _Origin)

@@ -434,6 +434,27 @@
     <Filter Include="Game\08. State\ShieldMaiden\Walk">
       <UniqueIdentifier>{5ff32d92-390b-4e76-a365-843f94ccf47f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\Monster\Boss\ElderBrother">
+      <UniqueIdentifier>{e3718960-f599-42ef-b8e7-1ff497d0719d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\skill">
+      <UniqueIdentifier>{e8676153-105a-475c-a9ed-28dfb18c977b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother">
+      <UniqueIdentifier>{3887e996-d397-4233-8c79-e21f14af772b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\Idle">
+      <UniqueIdentifier>{d0ba1c0b-a414-4cc7-9082-e4ef00be3f1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\Jump">
+      <UniqueIdentifier>{f7e91314-1b22-4d70-a0d4-7f31a4997879}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\Attack">
+      <UniqueIdentifier>{02d2d067-ed7b-4f7c-94bb-af98b9dfff65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\Death">
+      <UniqueIdentifier>{72434611-8373-448a-8529-a8bfea116912}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -860,6 +881,21 @@
     <ClInclude Include="CShieldMaidenWalk.h">
       <Filter>Game\08. State\ShieldMaiden\Walk</Filter>
     </ClInclude>
+    <ClInclude Include="CElderBrother.h">
+      <Filter>Game\04. Object\Monster\Boss\ElderBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderBrotherIdle.h">
+      <Filter>Game\08. State\ElderBrother\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderBrotherJump.h">
+      <Filter>Game\08. State\ElderBrother\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderBrotherAttack.h">
+      <Filter>Game\08. State\ElderBrother\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderBrotherDeath.h">
+      <Filter>Game\08. State\ElderBrother\Death</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1280,6 +1316,21 @@
     </ClCompile>
     <ClCompile Include="CShieldMaidenWalk.cpp">
       <Filter>Game\08. State\ShieldMaiden\Walk</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderBrother.cpp">
+      <Filter>Game\04. Object\Monster\Boss\ElderBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderBrotherIdle.cpp">
+      <Filter>Game\08. State\ElderBrother\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderBrotherJump.cpp">
+      <Filter>Game\08. State\ElderBrother\Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderBrotherAttack.cpp">
+      <Filter>Game\08. State\ElderBrother\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderBrotherDeath.cpp">
+      <Filter>Game\08. State\ElderBrother\Death</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
