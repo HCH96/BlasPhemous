@@ -47,7 +47,9 @@
 #include "CPenitentLadderDown.h"
 #include "CPenitentLadderUp.h"
 #include "CPenitentPushBack.h"
-
+#include "CPenitentParry.h"
+#include "CPenitentParryCounter.h"
+#include "CPenitentGuardSlide.h"
 
 
 CPenitent::CPenitent()
@@ -67,6 +69,7 @@ CPenitent::CPenitent()
 	, m_iCheckPoint((UINT)LEVEL_TYPE::STAGE01_1)
 	, m_bIsHit(false)
 	, m_fHitTimer(0.f)
+	, m_iParrySucces(0)
 {
 	// 이름 설정
 	SetName(L"Penitent");
@@ -110,7 +113,6 @@ CPenitent::CPenitent()
 
 
 	
-	
 	// collider
 	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
 	m_pCollider->SetScale(Vec2(40.f, 100.f));
@@ -119,6 +121,7 @@ CPenitent::CPenitent()
 	// HitBox
 	m_pHitBox = AddComponent<CCollider>(L"Penitent_HitBox");
 	m_pHitBox->Off();
+	
 
 }
 
@@ -147,6 +150,8 @@ CPenitent::~CPenitent()
 void CPenitent::begin()
 {
 	// 레벨 진입 시
+	m_iOverlapGround = 0;
+
 	
 	// Movement 세팅
 	m_pMovement->SetGround(false);
@@ -206,7 +211,7 @@ void CPenitent::tick(float _DT)
 	if (KEY_TAP(KEY::U))
 	{
 		m_fTears += 100;
-		CCamera::GetInst()->Shake(0.1f,0.5f);
+		CCamera::GetInst()->Shake(0.1f,0.3f);
 	}
 
 
@@ -227,31 +232,60 @@ void CPenitent::tick(float _DT)
 
 void CPenitent::OnDamaged()
 {
+	CTimeMgr::GetInst()->Delay();
+	CCamera::GetInst()->Shake(0.1f, 0.3f);
+
 	m_bIsHit = true;
 	m_fHitTimer = 0.f;
+	m_fHP -= 10.f;
 
 	// 땅에 있을 때
 	if (m_pMovement->IsGround())
 	{
 		m_pSM->ChangeState((UINT)PENITENT_STATE::PUSHBACK);
 	}
+}
 
+void CPenitent::OnHit()
+{
+	CTimeMgr::GetInst()->Delay();
+	CCamera::GetInst()->Shake(0.1f, 0.3f);
 
+	if (GetDir())
+	{
+		m_pEffector->Play(L"AttackSpark",false);
+	}
+	else
+	{
+		m_pEffector->Play(L"AttackSpark_L", false);
+	}
 }
 
 void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
 	// 몬스터 Hit
-	if (_pOwnCol->GetName() == L"Penitent_HitBox" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER)
+	if (_pOwnCol->GetName() == L"Penitent_HitBox" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER && _pOtherCol->GetName() != L"Mon_HitBox")
 	{
-		CTimeMgr::GetInst()->Delay();
-		CCamera::GetInst()->Shake(0.1f,0.5f);
+		OnHit();
 	}
 
 	// 피격
 	if (_pOwnCol->GetName() == L"Penitent_Collider" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER && !m_bIsHit)
 	{
-		OnDamaged();
+		// Parry 성공했을 때
+		if (m_pSM->GetCurState() == (UINT)PENITENT_STATE::PARRY && _pOtherCol->GetName() == L"Mon_HitBox")
+		{
+			m_iParrySucces = 1;
+		}
+		else if(m_pSM->GetCurState() == (UINT)PENITENT_STATE::PARRY && _pOtherCol->GetName() == L"Shield_HitBox")
+		{
+			m_iParrySucces = 2;
+		}
+		else
+		{
+			OnDamaged();
+		}
+
 	}
 
 
@@ -664,6 +698,47 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"Charging", 0.04f);
 	m_pAnimator->SetAnimDuration(L"Charging_L", 0.04f);
 
+	// penitent_parry_failed
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"Parry", L"texture\\Penitent\\penitent_parry_failed.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Parry_L", L"texture\\Penitent\\penitent_parry_failed.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"Parry", L"animdata\\Penitent\\penitent_parry_failed.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Parry_L", L"animdata\\Penitent\\penitent_parry_failed.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Parry", 0.04f);
+	m_pAnimator->SetAnimDuration(L"Parry_L", 0.04f);
+
+	// penitent_parry_success_animv3
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"ParrySuccess", L"texture\\Penitent\\penitent_parry_success_animv3.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"ParrySuccess_L", L"texture\\Penitent\\penitent_parry_success_animv3.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"ParrySuccess", L"animdata\\Penitent\\penitent_parry_success_animv3.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"ParrySuccess_L", L"animdata\\Penitent\\penitent_parry_success_animv3.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"ParrySuccess", 0.04f);
+	m_pAnimator->SetAnimDuration(L"ParrySuccess_L", 0.04f);
+
+
+
+	//penitent_parry_counter_v2_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"ParryCounter", L"texture\\Penitent\\penitent_parry_counter_v2_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"ParryCounter_L", L"texture\\Penitent\\penitent_parry_counter_v2_anim.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"ParryCounter", L"animdata\\Penitent\\penitent_parry_counter_v2_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"ParryCounter_L", L"animdata\\Penitent\\penitent_parry_counter_v2_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"ParryCounter", 0.04f);
+	m_pAnimator->SetAnimDuration(L"ParryCounter_L", 0.04f);
+
+	// penitent_guardSlide_back_to_idle
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"GuardSlide", L"texture\\Penitent\\penitent_guardSlide_back_to_idle.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"GuardSlide_L", L"texture\\Penitent\\penitent_guardSlide_back_to_idle.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"GuardSlide", L"animdata\\Penitent\\penitent_guardSlide_back_to_idle.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"GuardSlide_L", L"animdata\\Penitent\\penitent_guardSlide_back_to_idle.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"GuardSlide", 0.04f);
+	m_pAnimator->SetAnimDuration(L"GuardSlide_L", 0.04f);
 
 }
 
@@ -728,6 +803,35 @@ void CPenitent::EffectInit()
 	m_pEffector->SetAnimDuration(L"CrouchAttackSlash", 0.04f);
 	m_pEffector->SetAnimDuration(L"CrouchAttackSlash_L", 0.04f);
 
+	// penitent_crouch_slashes_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"GuardSlideSpark", L"texture\\Penitent\\penitent_guardslide_sparks_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"GuardSlideSpark_L", L"texture\\Penitent\\penitent_guardslide_sparks_anim.png");
+
+	m_pEffector->LoadAnimation(pTex, L"GuardSlideSpark", L"animdata\\Penitent\\penitent_guardslide_sparks_anim.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"GuardSlideSpark_L", L"animdata\\Penitent\\penitent_guardslide_sparks_anim.txt", true);
+
+	m_pEffector->SetAnimDuration(L"GuardSlideSpark", 0.04f);
+	m_pEffector->SetAnimDuration(L"GuardSlideSpark_L", 0.04f);
+
+	// pushback_sparks_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"PushBackSpark", L"texture\\Penitent\\pushback_sparks_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"PushBackSpark_L", L"texture\\Penitent\\pushback_sparks_anim.png");
+
+	m_pEffector->LoadAnimation(pTex, L"PushBackSpark", L"animdata\\Penitent\\pushback_sparks_anim.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"PushBackSpark_L", L"animdata\\Penitent\\pushback_sparks_anim.txt", true);
+
+	m_pEffector->SetAnimDuration(L"PushBackSpark", 0.06f);
+	m_pEffector->SetAnimDuration(L"PushBackSpark_L", 0.06f);
+
+	// penitent_attack_spark_1_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"AttackSpark", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"AttackSpark_L", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
+
+	m_pEffector->LoadAnimation(pTex, L"AttackSpark", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"AttackSpark_L", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt", true);
+
+	m_pEffector->SetAnimDuration(L"AttackSpark", 0.06f);
+	m_pEffector->SetAnimDuration(L"AttackSpark_L", 0.06f);
 
 
 
@@ -799,6 +903,16 @@ void CPenitent::DustAnimInit()
 	m_pDustAnimator->SetAnimDuration(L"Jumping_dust", 0.08f);
 	m_pDustAnimator->SetAnimDuration(L"Jumping_dust_L", 0.08f);
 
+	// penitent_pushback_grounded_dust_effect_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"PushBackDust", L"texture\\Penitent\\penitent_pushback_grounded_dust_effect_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"PushBackDust_L", L"texture\\Penitent\\penitent_pushback_grounded_dust_effect_anim.png");
+
+	m_pDustAnimator->LoadAnimation(pTex, L"PushBackDust", L"animdata\\Penitent\\penitent_pushback_grounded_dust_effect_anim.txt");
+	m_pDustAnimator->LoadAnimation(pTexReverse, L"PushBackDust_L", L"animdata\\Penitent\\penitent_pushback_grounded_dust_effect_anim.txt", true);
+
+	m_pDustAnimator->SetAnimDuration(L"PushBackDust", 0.06f);
+	m_pDustAnimator->SetAnimDuration(L"PushBackDust_L", 0.06f);
+
 
 
 
@@ -845,6 +959,9 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::LADDER, new CPenitentLadder);
 	m_pSM->AddState((UINT)PENITENT_STATE::LADDERUP, new CPenitentLadderUp);
 	m_pSM->AddState((UINT)PENITENT_STATE::PUSHBACK, new CPenitentPushBack);
+	m_pSM->AddState((UINT)PENITENT_STATE::PARRY, new CPenitentParry);
+	m_pSM->AddState((UINT)PENITENT_STATE::PARRYCOUNTER, new CPenitentParryCounter);
+	m_pSM->AddState((UINT)PENITENT_STATE::GUARDSLIDE, new CPenitentGuardSlide);
 
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);

@@ -29,7 +29,10 @@ void CPenitentPushBack::Enter()
 	CObj* pObj = GetOwnerObj;
 	CAnimator* pAnimator = pObj->GetComponent<CAnimator>();
 	CMovement* pMovement = pObj->GetComponent<CMovement>();
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
+	CAnimator* pDustAnimator = pObj->GetComponent<CAnimator>(L"Dust_Animator");
 	m_bDir = pObj->GetDir();
+	pDustAnimator->SetLock(false);
 
 	pMovement->SetMaxSpeed(800.f);
 
@@ -38,11 +41,15 @@ void CPenitentPushBack::Enter()
 	{
 		pMovement->SetVelocity(Vec2(-1000.f, 0.f));
 		pAnimator->Play(L"PushBack", true);
+		pEffector->Play(L"PushBackSpark", false);
+		pDustAnimator->Play(L"PushBackDust", false);
 	}
 	else
 	{
 		pMovement->SetVelocity(Vec2(1000.f, 0.f));
 		pAnimator->Play(L"PushBack_L", true);
+		pEffector->Play(L"PushBackSpark_L", false);
+		pDustAnimator->Play(L"PushBackDust_L", false);
 	}
 
 

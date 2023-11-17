@@ -23,6 +23,8 @@ private:
     bool                    m_bIsHit;
     float                   m_fHitTimer;
 
+    int                    m_iParrySucces;
+
     UINT                    m_iCheckPoint;
 
     CAnimator*              m_pAnimator;
@@ -40,7 +42,10 @@ private:
     void StateInit();
 
 public:
+    void SetParry(int _i) { m_iParrySucces = _i; }
+    int GetParry() { return m_iParrySucces; }
     void OnDamaged();
+    void OnHit();
     void SetHit(bool _b) { m_bIsHit = _b; }
 
 public:

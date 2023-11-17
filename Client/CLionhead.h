@@ -26,6 +26,8 @@ public:
 public:
     virtual void BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) override;
 
+    virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
+
 public:
     CLONE(CLionhead);
     CLionhead();

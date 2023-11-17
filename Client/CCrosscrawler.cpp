@@ -28,8 +28,8 @@ CCrosscrawler::CCrosscrawler()
 	m_pAnimator->LoadAnimation(pTex, L"Idle", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_idle.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Idle_L", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_idle.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Idle", 0.08f);
-	m_pAnimator->SetAnimDuration(L"Idle_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Idle", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Idle_L", 0.06f);
 
 
 	// Death
@@ -39,8 +39,8 @@ CCrosscrawler::CCrosscrawler()
 	m_pAnimator->LoadAnimation(pTex, L"Death", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_death.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Death_L", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_death.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Death", 0.08f);
-	m_pAnimator->SetAnimDuration(L"Death_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Death", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Death_L", 0.06f);
 
 	// Turn
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Cross_Turn", L"texture\\Monster\\Normal\\Crosscrawler\\crosscrawler_turnaround.png");
@@ -49,8 +49,8 @@ CCrosscrawler::CCrosscrawler()
 	m_pAnimator->LoadAnimation(pTex, L"Turn", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_turnaround.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Turn_L", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_turnaround.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Turn", 0.08f);
-	m_pAnimator->SetAnimDuration(L"Turn_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Turn", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Turn_L", 0.06f);
 
 	// Walk
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Cross_Walk", L"texture\\Monster\\Normal\\Crosscrawler\\crosscrawler_walking.png");
@@ -59,8 +59,8 @@ CCrosscrawler::CCrosscrawler()
 	m_pAnimator->LoadAnimation(pTex, L"Walk", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_walking.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Walk_L", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_walking.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Walk", 0.08f);
-	m_pAnimator->SetAnimDuration(L"Walk_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Walk", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Walk_L", 0.06f);
 
 	// Attack
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Cross_Attack", L"texture\\Monster\\Normal\\Crosscrawler\\crosscrawler_attack.png");
@@ -69,8 +69,8 @@ CCrosscrawler::CCrosscrawler()
 	m_pAnimator->LoadAnimation(pTex, L"Attack", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_attack.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Attack_L", L"animdata\\Monster\\Normal\\Crosscrawler\\crosscrawler_attack.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Attack", 0.08f);
-	m_pAnimator->SetAnimDuration(L"Attack_L", 0.08f);
+	m_pAnimator->SetAnimDuration(L"Attack", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Attack_L", 0.06f);
 
 	// Movement
 	m_pMovement = AddComponent<CMovement>(L"Crosscrawler");
@@ -78,6 +78,17 @@ CCrosscrawler::CCrosscrawler()
 	m_pMovement->SetFrictionScale(2000.f);
 	m_pMovement->UseGravity(true);
 	m_pMovement->SetGround(true);
+
+	// AI
+	m_pAI = AddComponent<CStateMachine>(L"Crosscrawler");
+
+	m_pAI->AddState((UINT)CROSSCRAWLER::IDLE, new CCrosscrawlerIdle);
+	m_pAI->AddState((UINT)CROSSCRAWLER::TURN, new CCrosscrawlerTurn);
+	m_pAI->AddState((UINT)CROSSCRAWLER::DEATH, new CCrosscrawlerDeath);
+	m_pAI->AddState((UINT)CROSSCRAWLER::ATTACK, new CCrosscrawlerAttack);
+	m_pAI->AddState((UINT)CROSSCRAWLER::WALK, new CCrosscrawlerWalk);
+
+	m_pAI->ChangeState((UINT)FOOL_KNIFE::IDLE);
 
 	// Collider
 	m_pCollider = AddComponent<CCollider>(L"Crosscrawler");
@@ -87,19 +98,8 @@ CCrosscrawler::CCrosscrawler()
 	m_pHitBox = AddComponent<CCollider>(L"Mon_HitBox");
 	m_pHitBox->SetScale(Vec2(200.f, 100.f));
 	m_pHitBox->SetOffsetPos(Vec2(0.f, 0.f));
-	m_pHitBox->SetTime(1.f);
+	m_pHitBox->SetTime(0.5f);
 	m_pHitBox->Off();
-
-	// AI
-	m_pAI = AddComponent<CStateMachine>(L"FoolKnife");
-
-	m_pAI->AddState((UINT)CROSSCRAWLER::IDLE, new CCrosscrawlerIdle);
-	m_pAI->AddState((UINT)CROSSCRAWLER::TURN, new CCrosscrawlerTurn);
-	m_pAI->AddState((UINT)CROSSCRAWLER::DEATH, new CCrosscrawlerDeath);
-	m_pAI->AddState((UINT)CROSSCRAWLER::ATTACK, new CCrosscrawlerAttack);
-	m_pAI->AddState((UINT)CROSSCRAWLER::WALK, new CCrosscrawlerWalk);
-
-	m_pAI->ChangeState((UINT)FOOL_KNIFE::IDLE);
 }
 
 CCrosscrawler::CCrosscrawler(const CCrosscrawler& _Origin)

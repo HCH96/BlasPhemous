@@ -11,7 +11,7 @@ CTimeMgr::CTimeMgr()
 	, m_fTime(0.f)
 	, m_iCall(0)
 	, m_bDelay(false)
-	, m_fDelayTime(0.05f)
+	, m_fDelayTime(0.1f)
 	, m_fDelayAcc(0.f)
 {
 }

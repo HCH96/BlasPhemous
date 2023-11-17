@@ -398,6 +398,42 @@
     <Filter Include="Game\08. State\Penitent\PushBack">
       <UniqueIdentifier>{98756b0c-9162-4dae-b37b-95fd7ff4c1e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\Parry">
+      <UniqueIdentifier>{85655827-942a-4fe0-8516-3e049db14820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\ParryCounter">
+      <UniqueIdentifier>{d1dc5e6b-f3cd-4223-a0bc-e375de6d13db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\GuardSlide">
+      <UniqueIdentifier>{1855c68c-068a-4cda-a2ad-fe425b5fd3cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Monster\Normal\ShieldMaiden">
+      <UniqueIdentifier>{e591e1cd-8dd8-4148-a565-e8176b26e03f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden">
+      <UniqueIdentifier>{44b724e1-4461-4a4e-a6c1-0fe346927bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden\Idle">
+      <UniqueIdentifier>{b8a8e8fc-f867-4133-8441-287197a38288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden\Attack">
+      <UniqueIdentifier>{ca12b050-6fbe-4b44-bfbc-44f3ac714085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden\Death">
+      <UniqueIdentifier>{659697c5-2b60-46ab-9eef-3efc98c466f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden\ParryReaction">
+      <UniqueIdentifier>{4b39c528-6b64-479d-8b92-4013a9449948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden\Stun">
+      <UniqueIdentifier>{2551e936-2f1d-41d8-b109-ef5f941d0c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden\ToIdle">
+      <UniqueIdentifier>{e72c3506-4505-40d8-8f5f-c82604dbc1b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ShieldMaiden\Walk">
+      <UniqueIdentifier>{5ff32d92-390b-4e76-a365-843f94ccf47f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -463,7 +499,6 @@
     <ClInclude Include="func.h">
       <Filter>Game\01. Header</Filter>
     </ClInclude>
-    <ClInclude Include="CEntity.h" />
     <ClInclude Include="CLayer.h">
       <Filter>Game\05. Level</Filter>
     </ClInclude>
@@ -790,6 +825,40 @@
     </ClInclude>
     <ClInclude Include="CPenitentPushBack.h">
       <Filter>Game\08. State\Penitent\PushBack</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentParry.h">
+      <Filter>Game\08. State\Penitent\Parry</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentParryCounter.h">
+      <Filter>Game\08. State\Penitent\ParryCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentGuardSlide.h">
+      <Filter>Game\08. State\Penitent\GuardSlide</Filter>
+    </ClInclude>
+    <ClInclude Include="CShieldMaiden.h">
+      <Filter>Game\04. Object\Monster\Normal\ShieldMaiden</Filter>
+    </ClInclude>
+    <ClInclude Include="CShieldMaidenIdle.h">
+      <Filter>Game\08. State\ShieldMaiden\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CShieldMaidenAttack.h">
+      <Filter>Game\08. State\ShieldMaiden\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CShieldMaidenDeath.h">
+      <Filter>Game\08. State\ShieldMaiden\Death</Filter>
+    </ClInclude>
+    <ClInclude Include="CShieldMaidenParryReaction.h">
+      <Filter>Game\08. State\ShieldMaiden\ParryReaction</Filter>
+    </ClInclude>
+    <ClInclude Include="CShieldMaidenToIdle.h">
+      <Filter>Game\08. State\ShieldMaiden\ToIdle</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CShieldMaidenStun.h">
+      <Filter>Game\08. State\ShieldMaiden\Stun</Filter>
+    </ClInclude>
+    <ClInclude Include="CShieldMaidenWalk.h">
+      <Filter>Game\08. State\ShieldMaiden\Walk</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1178,6 +1247,39 @@
     </ClCompile>
     <ClCompile Include="CPenitentPushBack.cpp">
       <Filter>Game\08. State\Penitent\PushBack</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentParry.cpp">
+      <Filter>Game\08. State\Penitent\Parry</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentParryCounter.cpp">
+      <Filter>Game\08. State\Penitent\ParryCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentGuardSlide.cpp">
+      <Filter>Game\08. State\Penitent\GuardSlide</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaiden.cpp">
+      <Filter>Game\04. Object\Monster\Normal\ShieldMaiden</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaidenIdle.cpp">
+      <Filter>Game\08. State\ShieldMaiden\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaidenAttack.cpp">
+      <Filter>Game\08. State\ShieldMaiden\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaidenDeath.cpp">
+      <Filter>Game\08. State\ShieldMaiden\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaidenParryReaction.cpp">
+      <Filter>Game\08. State\ShieldMaiden\ParryReaction</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaidenToIdle.cpp">
+      <Filter>Game\08. State\ShieldMaiden\ToIdle</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaidenStun.cpp">
+      <Filter>Game\08. State\ShieldMaiden\Stun</Filter>
+    </ClCompile>
+    <ClCompile Include="CShieldMaidenWalk.cpp">
+      <Filter>Game\08. State\ShieldMaiden\Walk</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

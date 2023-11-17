@@ -72,6 +72,11 @@ void CPenitentIdle::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CHARGING);
 	}
 
+	if (KEY_TAP(KEY::A))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::PARRY);
+	}
+
 	if (!pMovement->IsGround() && pMovement->GetVelocity().y > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);

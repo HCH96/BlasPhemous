@@ -27,7 +27,7 @@ void CPenitentCharging::finaltick(float _DT)
 	{
 		if (iCurFrame == 29 && KEY_PRESSED(KEY::S))
 			pAnimator->SetFrame(23);
-		if (KEY_RELEASED(KEY::S))
+		if (!(KEY_PRESSED(KEY::S)))
 		{
 			pAnimator->SetFrame(30);
 		}

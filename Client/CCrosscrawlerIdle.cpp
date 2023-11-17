@@ -35,7 +35,7 @@ void CCrosscrawlerIdle::finaltick(float _DT)
 	}
 
 	// 거리가 300 이하 일 때
-	if (fLength < 300.f)
+	if (fLength < 500.f)
 	{
 		// 방향이 다르다면
 		if (bDirToTarget != pOwner->GetDir())

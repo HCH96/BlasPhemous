@@ -206,6 +206,7 @@
     <ClInclude Include="CPenitentFall.h" />
     <ClInclude Include="CPenitentFallingAhead.h" />
     <ClInclude Include="CPenitentFowardFall.h" />
+    <ClInclude Include="CPenitentGuardSlide.h" />
     <ClInclude Include="CPenitentHangOn.h" />
     <ClInclude Include="CPenitentHealthPotion.h" />
     <ClInclude Include="CPenitentHP.h" />
@@ -217,6 +218,8 @@
     <ClInclude Include="CPenitentLadderUp.h" />
     <ClInclude Include="CPenitentMP.h" />
     <ClInclude Include="CPenitentNone.h" />
+    <ClInclude Include="CPenitentParry.h" />
+    <ClInclude Include="CPenitentParryCounter.h" />
     <ClInclude Include="CPenitentPotion.h" />
     <ClInclude Include="CPenitentPrayAuraOff.h" />
     <ClInclude Include="CPenitentPrayEnd.h" />
@@ -239,6 +242,14 @@
     <ClInclude Include="CProjectile2.h" />
     <ClInclude Include="CProjectile3.h" />
     <ClInclude Include="CSelectBtn.h" />
+    <ClInclude Include="CShieldMaiden.h" />
+    <ClInclude Include="CShieldMaidenAttack.h" />
+    <ClInclude Include="CShieldMaidenDeath.h" />
+    <ClInclude Include="CShieldMaidenIdle.h" />
+    <ClInclude Include="CShieldMaidenParryReaction.h" />
+    <ClInclude Include="CShieldMaidenStun.h" />
+    <ClInclude Include="CShieldMaidenToIdle.h" />
+    <ClInclude Include="CShieldMaidenWalk.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundMgr.h" />
     <ClInclude Include="CStage01_1.h" />
@@ -337,6 +348,7 @@
     <ClCompile Include="CPenitentFall.cpp" />
     <ClCompile Include="CPenitentFallingAhead.cpp" />
     <ClCompile Include="CPenitentFowardFall.cpp" />
+    <ClCompile Include="CPenitentGuardSlide.cpp" />
     <ClCompile Include="CPenitentHangOn.cpp" />
     <ClCompile Include="CPenitentHealthPotion.cpp" />
     <ClCompile Include="CPenitentHP.cpp" />
@@ -348,6 +360,8 @@
     <ClCompile Include="CPenitentLadderUp.cpp" />
     <ClCompile Include="CPenitentMP.cpp" />
     <ClCompile Include="CPenitentNone.cpp" />
+    <ClCompile Include="CPenitentParry.cpp" />
+    <ClCompile Include="CPenitentParryCounter.cpp" />
     <ClCompile Include="CPenitentPotion.cpp" />
     <ClCompile Include="CPenitentPrayAuraOff.cpp" />
     <ClCompile Include="CPenitentPrayEnd.cpp" />
@@ -370,6 +384,14 @@
     <ClCompile Include="CProjectile2.cpp" />
     <ClCompile Include="CProjectile3.cpp" />
     <ClCompile Include="CSelectBtn.cpp" />
+    <ClCompile Include="CShieldMaiden.cpp" />
+    <ClCompile Include="CShieldMaidenAttack.cpp" />
+    <ClCompile Include="CShieldMaidenDeath.cpp" />
+    <ClCompile Include="CShieldMaidenIdle.cpp" />
+    <ClCompile Include="CShieldMaidenParryReaction.cpp" />
+    <ClCompile Include="CShieldMaidenStun.cpp" />
+    <ClCompile Include="CShieldMaidenToIdle.cpp" />
+    <ClCompile Include="CShieldMaidenWalk.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundMgr.cpp" />
     <ClCompile Include="CStage01_1.cpp" />

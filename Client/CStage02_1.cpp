@@ -16,6 +16,7 @@
 
 #include "CCrosscrawler.h"
 #include "CLionhead.h"
+#include "CShieldMaiden.h"
 
 
 void CStage02_1::init()
@@ -92,6 +93,11 @@ void CStage02_1::init()
 	pPlatform->SetPos(Vec2(2400.f, 1436.f));
 	pPlatform->SetScale(Vec2(800.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	CShieldMaiden* pShiledMaiden = new CShieldMaiden;
+	pShiledMaiden->SetPos(Vec2(2400.f, 1436.f));
+	pShiledMaiden->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MONSTER, pShiledMaiden);
 
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(2662.f, 1182.f));

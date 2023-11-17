@@ -8,6 +8,7 @@ CPenitentStanding::CPenitentStanding()
 CPenitentStanding::~CPenitentStanding()
 {
 }
+
 void CPenitentStanding::finaltick(float _DT)
 {
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
@@ -57,7 +58,7 @@ void CPenitentStanding::finaltick(float _DT)
 
 void CPenitentStanding::Enter()
 {
-	CCamera::GetInst()->SetLookAtOffsetX(20.f);
+	//CCamera::GetInst()->SetLookAtOffsetX(20.f);
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
@@ -70,13 +71,13 @@ void CPenitentStanding::Enter()
 	if (bDir)
 	{
 		pAnimator->Play(L"Standing", true);
-		pDustAnimator->Play(L"StandingDust", true);
+		pDustAnimator->Play(L"StandingDust", false);
 
 	}
 	else
 	{
 		pAnimator->Play(L"Standing_L", true);
-		pDustAnimator->Play(L"StandingDust_L", true);
+		pDustAnimator->Play(L"StandingDust_L", false);
 	}
 	
 }

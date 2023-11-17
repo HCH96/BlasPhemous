@@ -63,6 +63,7 @@ void CCollider::finaltick(float _DT)
 	if (m_fAcc > m_fDuration)
 	{
 		m_bOn = false;
+		m_fAcc = 0.f;
 	}
 }
 

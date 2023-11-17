@@ -27,8 +27,8 @@ CFoolKnife::CFoolKnife()
 	m_pAnimator->LoadAnimation(pTex, L"Idle", L"animdata\\Monster\\Normal\\Fool_knife\\fool_idle_knife.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Idle_L", L"animdata\\Monster\\Normal\\Fool_knife\\fool_idle_knife.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Idle", 0.1f);
-	m_pAnimator->SetAnimDuration(L"Idle_L", 0.1f);
+	m_pAnimator->SetAnimDuration(L"Idle", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Idle_L", 0.06f);
 
 
 	// Death
@@ -38,8 +38,8 @@ CFoolKnife::CFoolKnife()
 	m_pAnimator->LoadAnimation(pTex, L"Death", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_death_knife.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Death_L", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_death_knife.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Death", 0.1f);
-	m_pAnimator->SetAnimDuration(L"Death_L", 0.1f);
+	m_pAnimator->SetAnimDuration(L"Death", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Death_L", 0.06f);
 
 	// Turn
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Fool_Turn", L"texture\\Monster\\Normal\\Fool_knife\\Fool_turn_knife.png");
@@ -48,8 +48,8 @@ CFoolKnife::CFoolKnife()
 	m_pAnimator->LoadAnimation(pTex, L"Turn", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_turn_knife.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Turn_L", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_turn_knife.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Turn", 0.1f);
-	m_pAnimator->SetAnimDuration(L"Turn_L", 0.1f);
+	m_pAnimator->SetAnimDuration(L"Turn", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Turn_L", 0.06f);
 
 	// Walk
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"Fool_Walk", L"texture\\Monster\\Normal\\Fool_knife\\Fool_walk_knife.png");
@@ -58,8 +58,8 @@ CFoolKnife::CFoolKnife()
 	m_pAnimator->LoadAnimation(pTex, L"Walk", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_walk_knife.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Walk_L", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_walk_knife.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Walk", 0.1f);
-	m_pAnimator->SetAnimDuration(L"Walk_L", 0.1f);
+	m_pAnimator->SetAnimDuration(L"Walk", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Walk_L", 0.06f);
 
 
 	// Movement
