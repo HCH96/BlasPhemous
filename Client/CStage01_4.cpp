@@ -14,6 +14,11 @@
 
 #include "CElderBrother.h"
 
+#include "CRayBeam.h"
+#include "CSpawner.h"
+
+#include "CKeyMgr.h"
+
 
 void CStage01_4::init()
 {
@@ -71,10 +76,10 @@ void CStage01_4::init()
 	AddObject(LAYER::FOREGROUND, pBackGround);
 
 	// Foreground 2
-	//pBackGround = new CBackground;
-	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-4\\1_4_AfterLayer_0.png"));
-	//pBackGround->SetScale(Vec2(2.f, 2.f));
-	//AddObject(LAYER::FOREGROUND, pBackGround);
+	pBackGround = new CBackground;
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-4\\1_4_AfterLayer_0.png"));
+	pBackGround->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::FOREGROUND, pBackGround);
 
 	CPlatform* pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(524.f, 1126.f));
@@ -108,6 +113,48 @@ void CStage01_4::init()
 	pPlatform->SetPos(Vec2(2450.f, 1130.f));
 	pPlatform->SetScale(Vec2(950.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	CSpawner* pSpawner = new CSpawner;
+	pSpawner->Off();
+	AddObject(LAYER::SPAWNER, pSpawner);
+
+	CRayBeam* pRay = new CRayBeam;
+	pRay->SetScale(Vec2(2.f, 2.f));
+	pSpawner->AddRay(pRay);
+	AddObject(LAYER::MONSTER_PJ, pRay);
+
+	pRay = new CRayBeam;
+	pRay->SetScale(Vec2(2.f, 2.f));
+	pSpawner->AddRay(pRay);
+	AddObject(LAYER::MONSTER_PJ, pRay);
+
+	pRay = new CRayBeam;
+	pRay->SetScale(Vec2(2.f, 2.f));
+	pSpawner->AddRay(pRay);
+	AddObject(LAYER::MONSTER_PJ, pRay);
+
+	pRay = new CRayBeam;
+	pRay->SetScale(Vec2(2.f, 2.f));
+	pSpawner->AddRay(pRay);
+	AddObject(LAYER::MONSTER_PJ, pRay);
+
+	pRay = new CRayBeam;
+	pRay->SetScale(Vec2(2.f, 2.f));
+	pSpawner->AddRay(pRay);
+	AddObject(LAYER::MONSTER_PJ, pRay);
+
+	pRay = new CRayBeam;
+	pRay->SetScale(Vec2(2.f, 2.f));
+	pSpawner->AddRay(pRay);
+	AddObject(LAYER::MONSTER_PJ, pRay);
+
+	pRay = new CRayBeam;
+	pRay->SetScale(Vec2(2.f, 2.f));
+	pSpawner->AddRay(pRay);
+	AddObject(LAYER::MONSTER_PJ, pRay);
+
+	
+
 
 
 
@@ -177,5 +224,6 @@ void CStage01_4::tick()
 
 		CCamera::GetInst()->FadeOut(0.5f, LEVEL_TYPE::STAGE01_5);
 	}
+
 
 }

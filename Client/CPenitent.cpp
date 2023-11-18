@@ -270,7 +270,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 	}
 
 	// 피격
-	if (_pOwnCol->GetName() == L"Penitent_Collider" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER && !m_bIsHit)
+	if (_pOwnCol->GetName() == L"Penitent_Collider" && (_pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER || _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER_PJ) && !m_bIsHit)
 	{
 		// Parry 성공했을 때
 		if (m_pSM->GetCurState() == (UINT)PENITENT_STATE::PARRY && _pOtherCol->GetName() == L"Mon_HitBox")

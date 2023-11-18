@@ -25,6 +25,8 @@ public:
         m_fDuration = _fDuration;
     }
 
+    void SetFinalPos(Vec2 _vPos) { m_vFinalPos = _vPos; }
+
     bool IsOn() { return m_bOn; }
     bool IsOff() { return !m_bOn; }
 

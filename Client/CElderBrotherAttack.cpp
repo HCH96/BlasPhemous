@@ -4,9 +4,13 @@
 #include "CLevelMgr.h"
 #include "CObj.h"
 
+#include "CLevel.h"
+
+#include "CSpawner.h"
 
 CElderBrotherAttack::CElderBrotherAttack()
 	: m_pTarget(nullptr)
+	, m_PrevFrame(0)
 {
 }
 
@@ -19,6 +23,25 @@ void CElderBrotherAttack::finaltick(float _DT)
 {
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
+	int iCurFrame = pAnimator->GetCurFrame();
+
+
+	if (m_PrevFrame == 13 && iCurFrame == 14)
+	{
+		if (pOwner->GetDir())
+		{
+			m_pSpawner->On(pOwner->GetPos()+10.f, pOwner->GetDir());
+
+		}
+		else
+		{
+			m_pSpawner->On(pOwner->GetPos() - 10.f, pOwner->GetDir());
+		}
+
+	}
+
+	m_PrevFrame = iCurFrame;
+
 
 	if (pAnimator->IsFinish())
 	{
@@ -29,6 +52,13 @@ void CElderBrotherAttack::finaltick(float _DT)
 
 void CElderBrotherAttack::Enter()
 {
+	// Spawner 가져오기
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+
+	const vector<CObj*> pLayer = pCurLevel->GetObjects(LAYER::SPAWNER);
+	m_pSpawner = dynamic_cast<CSpawner*>(pLayer[0]);
+
+
 	m_pTarget = CLevelMgr::GetInst()->GetPenitent();
 	CObj* pOwner = GetOwnerObj;
 	

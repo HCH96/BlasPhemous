@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CElderBrotherJump.h"
 
+#include "CCamera.h"
+
 #include "CLevelMgr.h"
 
 CElderBrotherJump::CElderBrotherJump()
@@ -10,6 +12,8 @@ CElderBrotherJump::CElderBrotherJump()
 	, m_fAcc(0.f)
 	, m_fDuration(0.80f)
 	, m_PrevFrame(0)
+	, m_fJumpStart(0.f)
+	, m_fJumpEnd(0.f)
 {
 }
 
@@ -30,6 +34,16 @@ void CElderBrotherJump::finaltick(float _DT)
 
 	int iCurFrame = pAnimator->GetCurFrame();
 
+	// 플레이어 예상 위치 찾기
+	if (m_PrevFrame == 7 && iCurFrame == 8)
+	{
+		CMovement* pTargetMovement = m_pTarget->GetComponent<CMovement>();
+		Vec2 vTargetVel = pTargetMovement->GetVelocity();
+
+		m_fStart = pOwner->GetPos().x;
+		m_fEnd = m_pTarget->GetPos().x + vTargetVel.x * 1.2f;
+	}
+
 	// x축 값 이동
 	if(iCurFrame > 8 && iCurFrame < 19)
 	{
@@ -38,23 +52,83 @@ void CElderBrotherJump::finaltick(float _DT)
 		{
 			m_fAcc = m_fDuration;
 		}
+	}
 
+	if (m_PrevFrame == 18 && iCurFrame == 19)
+	{
+
+		CCamera::GetInst()->Shake(0.3f, 0.8f);
 	}
 
 	float fCurX = m_fStart + m_fAcc/ m_fDuration * (m_fEnd - m_fStart);
+
+
+	// y 축 값 이동
+	
+	// Jump 중간 시간
+	float mid = 0.36f;
+
+	// 중간 시간에서 부터의 시간
+	float t = abs(mid - m_fAcc) / m_fDuration / 2.f;
+
+	float fCurY = vCurPos.y;
+
+	// 올라갈 때 가중치가 작아져야 함
+	if (m_fAcc < mid && m_fAcc>0.f)
+	{
+		fCurY = lerp(fCurY, m_fJumpEnd, 0.1f);
+	}
+
+	// 내려올 때 가중치가 커져야 함
+	if (m_fAcc < m_fDuration - 0.08f && m_fAcc >mid)
+	{
+		float weightedT = t * t * (0.5f - 0.25f * t);
+		fCurY = lerp(fCurY, m_fJumpStart + 50.f, weightedT);
+	}
+
+
 
 	// Jump 
 	if (m_PrevFrame == 8 && iCurFrame == 9)
 	{
 		pMovement->SetGround(false);
-		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
+		//pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
 	}
 
-	Vec2 vVel = pMovement->GetVelocity();
+	if (m_PrevFrame == 17 && iCurFrame == 18)
+	{
+		Vec2 vTargetPos = m_pTarget->GetPos();
+
+		// 방향 정하기
+		if ((vTargetPos.x - vCurPos.x) > 0)
+		{
+			pOwner->SetDir(true);
+			pAnimator->PlayFromFrame(L"Jump", 18, false);
+		}
+		else
+		{
+			pOwner->SetDir(false);
+			pAnimator->PlayFromFrame(L"Jump_L", 18, true);
+		}
+	}
+
+	if (iCurFrame > 18 && !pMovement->IsGround())
+	{
+		pAnimator->SetFrame(18);
+	}
+
+	if (m_PrevFrame == 18 && pMovement->IsGround())
+	{
+		pAnimator->SetFrame(19);
+	}
 
 
 
-	pOwner->SetPos(Vec2(fCurX, vCurPos.y));
+	//Vec2 vVel = pMovement->GetVelocity();
+
+
+
+	pOwner->SetPos(Vec2(fCurX, fCurY));
 
 
 
@@ -83,7 +157,12 @@ void CElderBrotherJump::Enter()
 	CObj* pOwner = GetOwnerObj;
 
 	m_fStart = pOwner->GetPos().x;
-	m_fEnd = m_pTarget->GetPos().x + vTargetVel.x * 0.8f;
+	m_fEnd = m_pTarget->GetPos().x + vTargetVel.x * 1.2f;
+
+	// y축 좌표 세팅
+	m_fJumpStart = pOwner->GetPos().y;
+	m_fJumpEnd = pOwner->GetPos().y - 700.f;
+
 
 	
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();

@@ -64,8 +64,8 @@ CElderBrother::CElderBrother()
     m_pMovement = AddComponent<CMovement>(L"ElderBrother");
     m_pMovement->SetMass(1.f);
     m_pMovement->UseGravity(true);
-    m_pMovement->SetGravity(Vec2(0.f, 1000.f));
-    m_pMovement->SetJumpVel(-500.f);
+    m_pMovement->SetGravity(Vec2(0.f, 3000.f));
+    m_pMovement->SetJumpVel(-1500.f);
     m_pMovement->SetMaxDown(1000.f);
 
     // AI
@@ -111,9 +111,22 @@ void CElderBrother::render(HDC _dc)
     Super::render(_dc);
 }
 
+void CElderBrother::OnHit()
+{
+    m_fHP -= 1.f;
+}
+
+void CElderBrother::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
+{
+    if (_pOtherCol->GetName() == L"Penitent_HitBox")
+    {
+        OnHit();
+    }
+}
+
 void CElderBrother::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
-    if (_OtherObj->GetLayerIdx() != (UINT)LAYER::PLAYER)
+    if (_OtherObj->GetLayerIdx() != (UINT)LAYER::PLAYER || m_pAI->GetCurState() == (UINT)ELDERBROTHER::ATTACK)
         return;
 
 

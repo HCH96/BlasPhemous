@@ -455,6 +455,12 @@
     <Filter Include="Game\08. State\ElderBrother\Death">
       <UniqueIdentifier>{72434611-8373-448a-8529-a8bfea116912}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\skill\RayBeam">
+      <UniqueIdentifier>{fe7698b0-cb23-41bb-a88b-7d2f48ef1785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\skill\Spawner">
+      <UniqueIdentifier>{dc8e91d6-62bb-4155-8de1-c4648877004b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -896,6 +902,12 @@
     <ClInclude Include="CElderBrotherDeath.h">
       <Filter>Game\08. State\ElderBrother\Death</Filter>
     </ClInclude>
+    <ClInclude Include="CRayBeam.h">
+      <Filter>Game\04. Object\skill\RayBeam</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpawner.h">
+      <Filter>Game\04. Object\skill\Spawner</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1331,6 +1343,12 @@
     </ClCompile>
     <ClCompile Include="CElderBrotherDeath.cpp">
       <Filter>Game\08. State\ElderBrother\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CRayBeam.cpp">
+      <Filter>Game\04. Object\skill\RayBeam</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpawner.cpp">
+      <Filter>Game\04. Object\skill\Spawner</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

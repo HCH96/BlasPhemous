@@ -14,6 +14,9 @@ private:
     float m_fAcc;
     int m_PrevFrame;
 
+    float m_fJumpStart;
+    float m_fJumpEnd;
+
 
 
 public:

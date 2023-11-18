@@ -246,6 +246,7 @@
     <ClInclude Include="CProjectile1.h" />
     <ClInclude Include="CProjectile2.h" />
     <ClInclude Include="CProjectile3.h" />
+    <ClInclude Include="CRayBeam.h" />
     <ClInclude Include="CSelectBtn.h" />
     <ClInclude Include="CShieldMaiden.h" />
     <ClInclude Include="CShieldMaidenAttack.h" />
@@ -257,6 +258,7 @@
     <ClInclude Include="CShieldMaidenWalk.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundMgr.h" />
+    <ClInclude Include="CSpawner.h" />
     <ClInclude Include="CStage01_1.h" />
     <ClInclude Include="CPenitentStartRun.h" />
     <ClInclude Include="CStage01_2.h" />
@@ -393,6 +395,7 @@
     <ClCompile Include="CProjectile1.cpp" />
     <ClCompile Include="CProjectile2.cpp" />
     <ClCompile Include="CProjectile3.cpp" />
+    <ClCompile Include="CRayBeam.cpp" />
     <ClCompile Include="CSelectBtn.cpp" />
     <ClCompile Include="CShieldMaiden.cpp" />
     <ClCompile Include="CShieldMaidenAttack.cpp" />
@@ -404,6 +407,7 @@
     <ClCompile Include="CShieldMaidenWalk.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundMgr.cpp" />
+    <ClCompile Include="CSpawner.cpp" />
     <ClCompile Include="CStage01_1.cpp" />
     <ClCompile Include="CPenitentStartRun.cpp" />
     <ClCompile Include="CStage01_2.cpp" />
