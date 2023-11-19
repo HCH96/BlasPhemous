@@ -19,6 +19,9 @@
 
 #include "CKeyMgr.h"
 
+#include "CBossPanel.h"
+#include "CBossHP.h"
+
 
 void CStage01_4::init()
 {
@@ -154,7 +157,7 @@ void CStage01_4::init()
 	AddObject(LAYER::MONSTER_PJ, pRay);
 
 	
-
+	RegisterBoss(pElder);
 
 
 
@@ -165,6 +168,10 @@ void CStage01_4::init()
 
 	CTearsUI* pTearsUI = new CTearsUI;
 	AddObject(LAYER::UI, pTearsUI);
+
+	CBossPanel* pBossPanel = new CBossPanel;
+	AddObject(LAYER::UI, pBossPanel);
+
 
 
 }

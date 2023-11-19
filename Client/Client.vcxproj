@@ -148,6 +148,8 @@
     <ClInclude Include="CAssetMgr.h" />
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CBackground.h" />
+    <ClInclude Include="CBossHP.h" />
+    <ClInclude Include="CBossPanel.h" />
     <ClInclude Include="CCage.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCandle.h" />
@@ -299,6 +301,8 @@
     <ClCompile Include="CAssetMgr.cpp" />
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CBackground.cpp" />
+    <ClCompile Include="CBossHP.cpp" />
+    <ClCompile Include="CBossPanel.cpp" />
     <ClCompile Include="CCage.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCandle.cpp" />

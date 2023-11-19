@@ -14,6 +14,9 @@ private:
     float       m_fHP;
 
 public:
+    float GetHP() { return m_fHP; }
+
+public:
     virtual void tick(float _DT) override;
     virtual void render(HDC _dc) override;
 

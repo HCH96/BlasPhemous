@@ -30,6 +30,7 @@ private:
     CAnimator*              m_pAnimator;
     CAnimator*              m_pEffector;
     CAnimator*              m_pDustAnimator;
+    CAnimator*              m_pSparkAnimator;
     CCollider*              m_pCollider;
     CCollider*              m_pHitBox;
     CMovement*              m_pMovement;

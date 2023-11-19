@@ -57,6 +57,7 @@ CPenitent::CPenitent()
 	, m_pEffector(nullptr)
 	, m_pCollider(nullptr)
 	, m_pMovement(nullptr)
+	, m_pSparkAnimator(nullptr)
 	, m_pDustAnimator(nullptr)
 	, m_pSM(nullptr)
 	, m_fHP(100.f)
@@ -91,6 +92,17 @@ CPenitent::CPenitent()
 	m_pDustAnimator = AddComponent<CAnimator>(L"Dust_Animator");
 	DustAnimInit();
 
+	m_pSparkAnimator = AddComponent<CAnimator>(L"Spark_Animator");
+
+	// penitent_attack_spark_1_anim
+	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"AttackSpark", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
+	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"AttackSpark_L", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
+
+	m_pSparkAnimator->LoadAnimation(pTex, L"AttackSpark", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt");
+	m_pSparkAnimator->LoadAnimation(pTexReverse, L"AttackSpark_L", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt", true);
+
+	m_pSparkAnimator->SetAnimDuration(L"AttackSpark", 0.06f);
+	m_pSparkAnimator->SetAnimDuration(L"AttackSpark_L", 0.06f);
 	
 	// Movement 컴포넌트 추가
 	m_pMovement = AddComponent<CMovement>(L"Penitent_Movement");
@@ -253,11 +265,11 @@ void CPenitent::OnHit()
 
 	if (GetDir())
 	{
-		m_pEffector->Play(L"AttackSpark",false);
+		m_pSparkAnimator->Play(L"AttackSpark",false);
 	}
 	else
 	{
-		m_pEffector->Play(L"AttackSpark_L", false);
+		m_pSparkAnimator->Play(L"AttackSpark_L", false);
 	}
 }
 
@@ -823,16 +835,6 @@ void CPenitent::EffectInit()
 	m_pEffector->SetAnimDuration(L"PushBackSpark", 0.06f);
 	m_pEffector->SetAnimDuration(L"PushBackSpark_L", 0.06f);
 
-	// penitent_attack_spark_1_anim
-	pTex = CAssetMgr::GetInst()->LoadTexture(L"AttackSpark", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
-	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"AttackSpark_L", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
-
-	m_pEffector->LoadAnimation(pTex, L"AttackSpark", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt");
-	m_pEffector->LoadAnimation(pTexReverse, L"AttackSpark_L", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt", true);
-
-	m_pEffector->SetAnimDuration(L"AttackSpark", 0.06f);
-	m_pEffector->SetAnimDuration(L"AttackSpark_L", 0.06f);
-
 
 
 		
@@ -912,6 +914,8 @@ void CPenitent::DustAnimInit()
 
 	m_pDustAnimator->SetAnimDuration(L"PushBackDust", 0.06f);
 	m_pDustAnimator->SetAnimDuration(L"PushBackDust_L", 0.06f);
+
+
 
 
 

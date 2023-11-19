@@ -461,6 +461,12 @@
     <Filter Include="Game\04. Object\skill\Spawner">
       <UniqueIdentifier>{dc8e91d6-62bb-4155-8de1-c4648877004b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\UI\BossHP">
+      <UniqueIdentifier>{00b1352f-e316-40e3-b0aa-dcbf6c5bd258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\UI\CBossPanel">
+      <UniqueIdentifier>{46aed6e2-83c0-4da6-949c-080ebdaba662}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -908,6 +914,12 @@
     <ClInclude Include="CSpawner.h">
       <Filter>Game\04. Object\skill\Spawner</Filter>
     </ClInclude>
+    <ClInclude Include="CBossHP.h">
+      <Filter>Game\04. Object\UI\BossHP</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossPanel.h">
+      <Filter>Game\04. Object\UI\CBossPanel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1349,6 +1361,12 @@
     </ClCompile>
     <ClCompile Include="CSpawner.cpp">
       <Filter>Game\04. Object\skill\Spawner</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossHP.cpp">
+      <Filter>Game\04. Object\UI\BossHP</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossPanel.cpp">
+      <Filter>Game\04. Object\UI\CBossPanel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

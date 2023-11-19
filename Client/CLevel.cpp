@@ -8,6 +8,7 @@
 #include "CTile.h"
 
 
+
 CLevel::CLevel()
 	: m_iTileCol(0)
 	, m_iTileRow(0)

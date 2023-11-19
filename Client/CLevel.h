@@ -19,6 +19,13 @@ private:
 	UINT			m_iTileRow;
 	UINT			m_iTileCol;
 
+	CObj*			m_pBoss;
+
+public:
+	CObj* GetBoss() { return m_pBoss; }
+	void RegisterBoss(CObj* _pBoss) { m_pBoss = _pBoss; }
+
+
 public:
 	template<typename T>
 	void GetObjects(vector<T*>& _Out);
