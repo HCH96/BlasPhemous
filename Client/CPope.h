@@ -2,45 +2,48 @@
 #include "CObj.h"
 
 class CFireboltSpawner;
+class CMagicMissileSpawner;
 
 class CPope :
-    public CObj
+	public CObj
 {
 
-    GENERATED_OBJECT(CObj);
+	GENERATED_OBJECT(CObj);
 
 private:
-    CAnimator* m_pAnimator;
-    CAnimator* m_pEffector;
-    CAnimator* m_pSymbol;
-    CAnimator* m_pBlock;
+	CAnimator* m_pAnimator;
+	CAnimator* m_pEffector;
+	CAnimator* m_pSymbol;
+	CAnimator* m_pBlock;
 
-    CCollider* m_pCollider;
-    CStateMachine* m_pAI;
+	CCollider* m_pCollider;
+	CStateMachine* m_pAI;
 
-    CFireboltSpawner* m_pFireSpawner;
+	CFireboltSpawner* m_pFireSpawner;
+	CMagicMissileSpawner* m_pMagicMissileSpawner;
 
-
-    float       m_fHP;
-
-public:
-    float GetHP() { return m_fHP; }
-    CFireboltSpawner* GetFireSpawner() { return m_pFireSpawner; }
-
-    void RegisterFireSpawner(CFireboltSpawner* _pSpawner) { m_pFireSpawner = _pSpawner; }
+	float       m_fHP;
 
 public:
-    virtual void tick(float _DT) override;
-    virtual void render(HDC _dc) override;
+	float GetHP() { return m_fHP; }
+	CFireboltSpawner* GetFireSpawner() { return m_pFireSpawner; }
+	CMagicMissileSpawner* GetMagicSpawner() { return m_pMagicMissileSpawner; }
 
-    void OnHit();
+	void RegisterFireSpawner(CFireboltSpawner* _pSpawner) { m_pFireSpawner = _pSpawner; }
+	void RegisterMagicSpawner(CMagicMissileSpawner* _pSpawner) { m_pMagicMissileSpawner = _pSpawner; }
 
 public:
-    virtual void BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) override;
+	virtual void tick(float _DT) override;
+	virtual void render(HDC _dc) override;
+
+	void OnHit();
 
 public:
-    CLONE_DISABLE(CPope);
-    CPope();
-    ~CPope();
+	virtual void BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol) override;
+
+public:
+	CLONE_DISABLE(CPope);
+	CPope();
+	~CPope();
 };
 

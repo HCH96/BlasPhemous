@@ -83,11 +83,6 @@ void CPenitentIdle::finaltick(float _DT)
 	}
 
 
-	// test
-	if (KEY_TAP(KEY::SPACE))
-	{
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CLIMB);
-	}
 
 }
 

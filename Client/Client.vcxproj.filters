@@ -494,6 +494,9 @@
     <Filter Include="Game\04. Object\skill\MagicMissile">
       <UniqueIdentifier>{85338fe1-d5fd-465f-81d8-78ce3b8bbb22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\skill\Lightning">
+      <UniqueIdentifier>{39eb50a7-ebef-46e5-ac5b-9d20dd6f84c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">

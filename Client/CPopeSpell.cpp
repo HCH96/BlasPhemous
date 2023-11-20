@@ -3,6 +3,7 @@
 
 #include "CPope.h"
 #include "CFireboltSpawner.h"
+#include "CMagicMissileSpawner.h"
 
 CPopeSpell::CPopeSpell()
 	:m_iSpellIdx(0)
@@ -22,7 +23,6 @@ void CPopeSpell::finaltick(float _DT)
 
 	int iCurFrame = pAnimator->GetCurFrame();
 
-	m_iSpellIdx = 0;
 
 	if (m_iPrevFrame == 27 && iCurFrame == 28)
 	{
@@ -42,7 +42,8 @@ void CPopeSpell::finaltick(float _DT)
 		}
 		else if (m_iSpellIdx == 2)
 		{
-
+			CMagicMissileSpawner* pSpawner = pPope->GetMagicSpawner();
+			pSpawner->On(pOwner->GetPos(), pOwner->GetDir());
 		}
 		else
 		{
@@ -73,6 +74,10 @@ void CPopeSpell::Enter()
 	// 0 firebolt / 1 Toxic / 2 magicmissile
 
 	m_iSpellIdx = (rand() % 3);
+
+
+	m_iSpellIdx = 2;
+
 	GetOwnerSM()->EditDataToBlackboard(L"Spell", m_iSpellIdx);
 
 

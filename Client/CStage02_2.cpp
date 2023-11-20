@@ -19,6 +19,11 @@
 #include "CFirebolt.h"
 #include "CFireboltSpawner.h"
 
+#include "CMagicMissile.h"
+#include "CMagicMissileSpawner.h"
+
+#include "CKeyMgr.h"
+
 void CStage02_2::init()
 {
 	//Background 0
@@ -114,6 +119,47 @@ void CStage02_2::init()
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
 
+	// MagicMissile 
+	CMagicMissileSpawner* pMagicMissileSpawner = new CMagicMissileSpawner;
+	AddObject(LAYER::SPAWNER, pMagicMissileSpawner);
+	pPope->RegisterMagicSpawner(pMagicMissileSpawner);
+
+	CMagicMissile* pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+
+
+
+
 
 
 	// UI »ý¼º
@@ -165,6 +211,13 @@ void CStage02_2::tick()
 {
 	CLevel::tick();
 
+	if (KEY_TAP(KEY::K))
+	{
+		// CMagicMissile
+		CMagicMissile* pMagicMissile = new CMagicMissile;
+		pMagicMissile->On(Vec2(240.f, 1740.f), true);
+		AddObject(LAYER::PROJECTILE, pMagicMissile);
+	}
 
 
 }

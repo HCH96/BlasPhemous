@@ -49,13 +49,18 @@ void CPenitentCrouch::finaltick(float _DT)
 
 	if (KEY_TAP(KEY::F) && KEY_PRESSED(KEY::DOWN))
 	{
-		pMovement->SetGround(false);
-		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, 0.f));
+		if (CLevelMgr::GetInst()->GetCurLeveli() == (UINT)LEVEL_TYPE::STAGE01_2 || CLevelMgr::GetInst()->GetCurLeveli() == (UINT)LEVEL_TYPE::STAGE02_1)
+		{
+			pMovement->SetGround(false);
+			pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, 0.f));
+
+			dynamic_cast<CPenitent*>(GetOwnerObj)->SetDownPlatform(true);
+
+
+			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
+		}
+
 		
-		dynamic_cast<CPenitent*>(GetOwnerObj)->SetDownPlatform(true);
-
-
-		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
 	}
 
 	if (pAnimator->IsFinish())
@@ -72,6 +77,11 @@ void CPenitentCrouch::Enter()
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
 	bool bDir = GetOwnerObj->GetDir();
 
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
+	CCollider* pCol = pPenitent->GetComponent<CCollider>();
+	pCol->SetScale(Vec2(40.f, 70.f));
+	pCol->SetOffsetPos(Vec2(0.f, -35.f));
+
 	if (bDir)
 	{
 		pAnimator->Play(L"Crouch", false);
@@ -84,5 +94,10 @@ void CPenitentCrouch::Enter()
 
 void CPenitentCrouch::Exit()
 {
+
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
+	CCollider* pCol = pPenitent->GetComponent<CCollider>();
+	pCol->SetScale(Vec2(40.f, 120.f));
+	pCol->SetOffsetPos(Vec2(0.f, -60.f));
 }
 

@@ -127,8 +127,8 @@ CPenitent::CPenitent()
 	
 	// collider
 	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
-	m_pCollider->SetScale(Vec2(40.f, 100.f));
-	m_pCollider->SetOffsetPos(Vec2(0.f, -50.f));
+	m_pCollider->SetScale(Vec2(40.f, 120.f));
+	m_pCollider->SetOffsetPos(Vec2(0.f, -60.f));
 
 	// HitBox
 	m_pHitBox = AddComponent<CCollider>(L"Penitent_HitBox");

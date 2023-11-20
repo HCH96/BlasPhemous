@@ -19,8 +19,6 @@ CFirebolt::CFirebolt()
 
 	m_pAnimator = AddComponent<CAnimator>(L"Firebolt");
 
-	SetAngle(90.f);
-
 
 	// Spawn
 	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"Firebolt_Spawn", L"texture\\Effect\\pope_fireBallVortex.png");

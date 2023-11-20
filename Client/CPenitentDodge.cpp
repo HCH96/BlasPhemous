@@ -114,8 +114,8 @@ void CPenitentDodge::Exit()
 	pMovement->SetMaxSpeed(400.f);
 
 	CCollider* pCol = pPenitent->GetComponent<CCollider>();
-	pCol->SetScale(Vec2(40.f, 100.f));
-	pCol->SetOffsetPos(Vec2(0.f, -50.f));
+	pCol->SetScale(Vec2(40.f, 120.f));
+	pCol->SetOffsetPos(Vec2(0.f, -60.f));
 
 	CAnimator* pDustAnimator = pPenitent->GetComponent<CAnimator>(L"Dust_Animator");
 	//pDustAnimator->SetLock(false);

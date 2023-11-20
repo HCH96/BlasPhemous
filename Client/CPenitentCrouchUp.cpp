@@ -13,6 +13,7 @@ CPenitentCrouchUp::~CPenitentCrouchUp()
 void CPenitentCrouchUp::finaltick(float _DT)
 {
 	CAnimator* pAnimator = GetOwnerObj->GetComponent<CAnimator>();
+	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 
 	// 방향 전환
 	if (GetOwnerObj->GetDir() != GetOwnerObj->GetPrevDir())
@@ -34,6 +35,14 @@ void CPenitentCrouchUp::finaltick(float _DT)
 	if ((KEY_PRESSED(KEY::DOWN)))
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::CROUCH);
+	}
+
+	// Jump
+	if (KEY_TAP(KEY::F))
+	{
+		pMovement->SetGround(false);
+		pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::JUMP);
 	}
 
 	if (pAnimator->IsFinish())
@@ -59,9 +68,20 @@ void CPenitentCrouchUp::Enter()
 	{
 		pAnimator->Play(L"CrouchUp_L", false);
 	}
+
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
+	CCollider* pCol = pPenitent->GetComponent<CCollider>();
+	pCol->SetScale(Vec2(40.f, 70.f));
+	pCol->SetOffsetPos(Vec2(0.f, -35.f));
+
 }
 
 void CPenitentCrouchUp::Exit()
 {
+	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
+	CCollider* pCol = pPenitent->GetComponent<CCollider>();
+	pCol->SetScale(Vec2(40.f, 120.f));
+	pCol->SetOffsetPos(Vec2(0.f, -60.f));
+
 }
 
