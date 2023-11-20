@@ -17,7 +17,7 @@
 #include "CPope.h"
 
 #include "CFirebolt.h"
-#include "CKeyMgr.h"
+#include "CFireboltSpawner.h"
 
 void CStage02_2::init()
 {
@@ -48,10 +48,72 @@ void CStage02_2::init()
 	pPlatform->SetScale(Vec2(4430.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
+
+	// Boss
 	CPope* pPope = new CPope;
 	pPope->SetPos(Vec2(2250.f, 1740.f));
 	pPope->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::MONSTER, pPope);
+
+
+	// Firebolt
+	CFireboltSpawner* pFireSpawner = new CFireboltSpawner;
+	AddObject(LAYER::SPAWNER, pFireSpawner);
+	pPope->RegisterFireSpawner(pFireSpawner);
+
+
+	CFirebolt* pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
 
 
 	// UI »ý¼º
@@ -103,12 +165,6 @@ void CStage02_2::tick()
 {
 	CLevel::tick();
 
-	if (KEY_TAP(KEY::L))
-	{
-		CFirebolt* pFirebolt = new CFirebolt;
-		AddObject(LAYER::PROJECTILE, pFirebolt);
-		pFirebolt->On(Vec2(240.f, 1540.f), Vec2(1.f,1.f));
-	}
 
 
 }

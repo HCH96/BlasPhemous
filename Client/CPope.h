@@ -1,5 +1,8 @@
 #pragma once
 #include "CObj.h"
+
+class CFireboltSpawner;
+
 class CPope :
     public CObj
 {
@@ -15,10 +18,16 @@ private:
     CCollider* m_pCollider;
     CStateMachine* m_pAI;
 
+    CFireboltSpawner* m_pFireSpawner;
+
+
     float       m_fHP;
 
 public:
     float GetHP() { return m_fHP; }
+    CFireboltSpawner* GetFireSpawner() { return m_pFireSpawner; }
+
+    void RegisterFireSpawner(CFireboltSpawner* _pSpawner) { m_pFireSpawner = _pSpawner; }
 
 public:
     virtual void tick(float _DT) override;

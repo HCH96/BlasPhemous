@@ -1,8 +1,12 @@
 #include "pch.h"
 #include "CPopeSpell.h"
 
+#include "CPope.h"
+#include "CFireboltSpawner.h"
+
 CPopeSpell::CPopeSpell()
 	:m_iSpellIdx(0)
+	, m_iPrevFrame(0)
 {
 }
 
@@ -15,6 +19,41 @@ void CPopeSpell::finaltick(float _DT)
 {
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
+
+	int iCurFrame = pAnimator->GetCurFrame();
+
+	m_iSpellIdx = 0;
+
+	if (m_iPrevFrame == 27 && iCurFrame == 28)
+	{
+		CPope* pPope = dynamic_cast<CPope*>(pOwner);
+		
+
+
+		if (m_iSpellIdx == 0)
+		{
+			CFireboltSpawner* pSpawner = pPope->GetFireSpawner();
+			pSpawner->On(pOwner->GetPos());
+		}
+		else if (m_iSpellIdx == 1)
+		{
+
+
+		}
+		else if (m_iSpellIdx == 2)
+		{
+
+		}
+		else
+		{
+			assert(nullptr);
+		}
+	}
+
+	
+
+	m_iPrevFrame = iCurFrame;
+
 
 	if (pAnimator->IsFinish())
 	{

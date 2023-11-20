@@ -28,8 +28,9 @@ void CPopeVanish::Enter()
 {
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
+	CCollider* pCollider = pOwner->GetComponent<CCollider>();
 	bool bDir = pOwner->GetDir();
-
+	pCollider->SetTime(0.f);
 
 	if (bDir)
 	{
@@ -47,5 +48,9 @@ void CPopeVanish::Enter()
 
 void CPopeVanish::Exit()
 {
+	CObj* pOwner = GetOwnerObj;
+	CCollider* pCollider = pOwner->GetComponent<CCollider>();
+	pCollider->SetTime(-1.f);
+	pCollider->On();
 }
 

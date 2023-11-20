@@ -18,6 +18,7 @@ CPope::CPope()
 	, m_pBlock(nullptr)
 	, m_pAI(nullptr)
 	, m_fHP(10.f)
+	, m_pFireSpawner(nullptr)
 {
 	SetName(L"Pope");
 

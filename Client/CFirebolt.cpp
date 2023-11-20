@@ -4,6 +4,9 @@
 #include "CAssetMgr.h"
 #include "CTexture.h"
 
+#include "CLevelMgr.h"
+#include "CPenitent.h"
+
 
 CFirebolt::CFirebolt()
 	: m_pAnimator(nullptr)
@@ -65,11 +68,11 @@ void CFirebolt::On(Vec2 _vPos, Vec2 _vDir)
 	m_bIsOn = true;
 	m_vDir = _vDir.Normalize();
 
-
 	SetAngle(RadiansToDegrees(_vDir.ToRadian()));
 
-	m_eState = FIREBOLT::ACTIVE;
-	m_pAnimator->Play(L"Active", true);
+
+	m_eState = FIREBOLT::SPAWN;
+	m_pAnimator->Play(L"Spawn", true);
 
 	m_pCollider->SetTime(10.f);
 	m_pCollider->On();
@@ -102,13 +105,31 @@ void CFirebolt::tick(float _DT)
 		{
 			if (m_pAnimator->IsFinish())
 			{
+				m_pAnimator->Play(L"Active", true);
 				m_eState = FIREBOLT::ACTIVE;
+
+				// Spawn이 끝나는 시점 Target 저장
+
+				CObj* pTarget = CLevelMgr::GetInst()->GetPenitent();
+				Vec2 vPos = GetPos();
+				Vec2 vTargetDir = pTarget->GetPos();
+				vTargetDir.y -= 100.f;
+				
+				
+				Vec2 vDir = (vTargetDir - vPos).Normalize();
+
+				SetAngle(RadiansToDegrees(vDir.ToRadian()));
+
+				m_vDir = vDir;
+
+
 			}
 		}
 
 		break;
 		case FIREBOLT::ACTIVE:
 		{
+
 			Vec2 vPos = GetPos();
 			m_fVelocity = m_fVelocity + m_fAccel;
 			vPos += m_vDir * m_fVelocity * _DT;
@@ -122,6 +143,7 @@ void CFirebolt::tick(float _DT)
 			break;
 		case FIREBOLT::IMPACT:
 		{
+			m_pCollider->SetTime(0.f);
 			if (m_pAnimator->IsFinish())
 			{
 				Off();

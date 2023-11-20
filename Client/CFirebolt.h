@@ -25,6 +25,7 @@ private:
     bool m_bIsOn;
     Vec2 m_vDir;
 
+
 public:
     void On(Vec2 _vPos, Vec2 _vDir);
     void Off();

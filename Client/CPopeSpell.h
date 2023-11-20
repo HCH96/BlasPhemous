@@ -6,6 +6,7 @@ class CPopeSpell :
 {
 private:
     int m_iSpellIdx;
+    int m_iPrevFrame;
 
 public:
     virtual void finaltick(float _DT);

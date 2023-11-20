@@ -1,7 +1,7 @@
 #pragma once
 #include "CObj.h"
 
-class Firebolt;
+class CFirebolt;
 
 class CFireboltSpawner :
     public CObj
@@ -9,8 +9,8 @@ class CFireboltSpawner :
     GENERATED_OBJECT(CObj);
 
 private:
-
-    vector<Firebolt*> m_vecFirebolt;
+    vector<CFirebolt*>   m_vecFirebolt;
+    CObj*               m_pTarget;
 
     bool m_bIsOn;
 
@@ -21,8 +21,8 @@ private:
     int m_iCurFire;
 
 public:
-    void AddRay(Firebolt* _pRayBeam) { m_vecFirebolt.push_back(_pRayBeam); }
-    void On(Vec2 _vPos, bool _bDir);
+    void AddFirebolt(CFirebolt* _pFirebolt) { m_vecFirebolt.push_back(_pFirebolt); }
+    void On(Vec2 _vPos);
     void Off();
 
 public:
