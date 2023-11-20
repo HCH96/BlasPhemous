@@ -3,6 +3,7 @@
 
 enum class FIREBOLT
 {
+    SPAWN,
     ACTIVE,
     IMPACT, 
 

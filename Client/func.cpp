@@ -128,6 +128,11 @@ float lerp(float a, float b, float t)
 	return a + t * (b - a);
 }
 
+float DegreeToRadian(float _fDegree)
+{
+	return float(_fDegree * (M_PI / 180.0f));
+}
+
 
 
 #include <windows.h>

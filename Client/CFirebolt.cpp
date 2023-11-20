@@ -4,6 +4,7 @@
 #include "CAssetMgr.h"
 #include "CTexture.h"
 
+
 CFirebolt::CFirebolt()
 	: m_pAnimator(nullptr)
 	, m_pCollider(nullptr)
@@ -14,6 +15,8 @@ CFirebolt::CFirebolt()
 	SetScale(Vec2(2.f, 2.f));
 
 	m_pAnimator = AddComponent<CAnimator>(L"Firebolt");
+
+	m_pAnimator->SetAngle(90.f);
 
 
 	// Spawn
@@ -93,6 +96,15 @@ void CFirebolt::tick(float _DT)
 	{
 		switch (m_eState)
 		{
+		case FIREBOLT::SPAWN:
+		{
+			if (m_pAnimator->IsFinish())
+			{
+				m_eState = FIREBOLT::ACTIVE;
+			}
+		}
+
+		break;
 		case FIREBOLT::ACTIVE:
 		{
 			Vec2 vPos = GetPos();
@@ -100,6 +112,9 @@ void CFirebolt::tick(float _DT)
 			vPos += m_vDir * m_fVelocity * _DT;
 
 			SetPos(vPos);
+
+
+
 		}
 
 			break;

@@ -18,6 +18,8 @@ private:
     bool                    m_bPosLock;
     Vec2                    m_vTmpPos;
 
+    float                   m_fAngle;
+
 public:
     int GetAlpha() { return m_iAlpha; }
     float GetAcc() { return m_fAcc; }
@@ -26,11 +28,13 @@ public:
     bool IsLock() { return m_bPosLock; }
     Vec2 GetTmpPos() { return m_vTmpPos; }
     CAnim* GetCurAnimp() { return m_pCurAnim; }
+    float GetAngle() { return m_fAngle; }
 
 
     void SetLock(bool _b) { m_bPosLock = _b; }
     void SetTmpPos(Vec2 _v) { m_vTmpPos = _v; }
     void SetFrame(int _i);
+    void SetAngle(float _f) { m_fAngle = _f; }
 
 
 

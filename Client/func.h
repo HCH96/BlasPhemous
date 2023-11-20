@@ -35,3 +35,5 @@ void DrawRotatedRectangle(HDC hdc, int x, int y, int width, int height, float an
 
 // 선형 보간 함수
 float lerp(float a, float b, float t);
+
+float DegreeToRadian(float _fDegree);
