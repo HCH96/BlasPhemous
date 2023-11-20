@@ -37,3 +37,5 @@ void DrawRotatedRectangle(HDC hdc, int x, int y, int width, int height, float an
 float lerp(float a, float b, float t);
 
 float DegreeToRadian(float _fDegree);
+
+float VecToRadian(Vec2 _vDir);

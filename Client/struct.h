@@ -59,6 +59,11 @@ public:
 		return false;
 	}
 
+	float ToRadian()
+	{
+		return atan2(y, x);
+	}
+
 	Vec2& Normalize()
 	{
 		float fLen = Length();

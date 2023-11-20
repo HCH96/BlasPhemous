@@ -133,6 +133,13 @@ float DegreeToRadian(float _fDegree)
 	return float(_fDegree * (M_PI / 180.0f));
 }
 
+float VecToRadian(Vec2 _vDir)
+{
+	float angleRadians = atan2(_vDir.y, _vDir.x);
+
+	return angleRadians;
+}
+
 
 
 #include <windows.h>

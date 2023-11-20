@@ -103,12 +103,5 @@ void CStage02_2::tick()
 {
 	CLevel::tick();
 
-	if (KEY_TAP(KEY::L))
-	{
-		CFirebolt* pFirebolt = new CFirebolt;
-		AddObject(LAYER::PROJECTILE, pFirebolt);
-		pFirebolt->On(Vec2(240.f, 1540.f), Vec2(0.f,1.f));
-	}
-
 
 }

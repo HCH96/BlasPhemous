@@ -542,7 +542,7 @@ void CAnim::render(HDC _dc)
 		//
 		// (destDC, 0, 0, dest_width, dest_height, PATCOPY);                           // 선택된 브러시로, 회전할 비트맵을 출력받을 DC에, 미리 색상을 채워 지움   
 
-		float rot = DegreeToRadian(m_pAnimator->GetAngle());
+		float rot = m_pAnimator->GetAngle();
 		
 
 		float cosine = (float)cos(rot);                                              // 회전이동변환 행렬에 들어갈 cos세타 값을 구함          

@@ -66,6 +66,8 @@ void CFirebolt::On(Vec2 _vPos, Vec2 _vDir)
 	m_vDir = _vDir.Normalize();
 
 
+	m_pAnimator->SetAngle(_vDir.ToRadian());
+
 	m_eState = FIREBOLT::ACTIVE;
 	m_pAnimator->Play(L"Active", true);
 
