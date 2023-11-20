@@ -16,6 +16,9 @@
 
 #include "CPope.h"
 
+#include "CFirebolt.h"
+#include "CKeyMgr.h"
+
 void CStage02_2::init()
 {
 	//Background 0
@@ -60,7 +63,6 @@ void CStage02_2::init()
 
 	RegisterBoss(pPope);
 
-
 	CBossPanel* pBossPanel = new CBossPanel;
 	AddObject(LAYER::UI, pBossPanel);
 
@@ -100,4 +102,5 @@ void CStage02_2::exit()
 void CStage02_2::tick()
 {
 	CLevel::tick();
+
 }

@@ -220,25 +220,10 @@ void CPenitent::tick(float _DT)
 		++m_iMP;
 	}
 
-	if (KEY_TAP(KEY::U))
-	{
-		m_fTears += 100;
-		CCamera::GetInst()->Shake(0.1f,0.3f);
-	}
 
 
-	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
-	vLookAt /= 2.f;
 
-	if (KEY_TAP(KEY::ENTER))
-	{
-		SetPos(vLookAt);
-	}
 
-	if (KEY_TAP(KEY::L))
-	{
-		m_pSM->ChangeState((UINT)PENITENT_STATE::LADDERDOWN);
-	}
 
 }
 
@@ -282,7 +267,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 	}
 
 	// 피격
-	if (_pOwnCol->GetName() == L"Penitent_Collider" && (_pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER || _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER_PJ) && !m_bIsHit)
+	if (_pOwnCol->GetName() == L"Penitent_Collider" && (_pOtherObj->GetLayerIdx() == (UINT)LAYER::PROJECTILE || _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER || _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER_PJ) && !m_bIsHit)
 	{
 		// Parry 성공했을 때
 		if (m_pSM->GetCurState() == (UINT)PENITENT_STATE::PARRY && _pOtherCol->GetName() == L"Mon_HitBox")
