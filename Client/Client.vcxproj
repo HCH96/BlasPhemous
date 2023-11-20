@@ -243,6 +243,12 @@
     <ClInclude Include="CPenitentUpwardATTJump.h" />
     <ClInclude Include="CPlatform.h" />
     <ClInclude Include="CPlayLevel.h" />
+    <ClInclude Include="CPope.h" />
+    <ClInclude Include="CPopeAppear.h" />
+    <ClInclude Include="CPopeDeath.h" />
+    <ClInclude Include="CPopeIdle.h" />
+    <ClInclude Include="CPopeSpell.h" />
+    <ClInclude Include="CPopeVanish.h" />
     <ClInclude Include="CPriedieu.h" />
     <ClInclude Include="CProjectile.h" />
     <ClInclude Include="CProjectile1.h" />
@@ -394,6 +400,12 @@
     <ClCompile Include="CPenitentUpwardATTJump.cpp" />
     <ClCompile Include="CPlatform.cpp" />
     <ClCompile Include="CPlayLevel.cpp" />
+    <ClCompile Include="CPope.cpp" />
+    <ClCompile Include="CPopeAppear.cpp" />
+    <ClCompile Include="CPopeDeath.cpp" />
+    <ClCompile Include="CPopeIdle.cpp" />
+    <ClCompile Include="CPopeSpell.cpp" />
+    <ClCompile Include="CPopeVanish.cpp" />
     <ClCompile Include="CPriedieu.cpp" />
     <ClCompile Include="CProjectile.cpp" />
     <ClCompile Include="CProjectile1.cpp" />

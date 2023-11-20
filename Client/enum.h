@@ -234,3 +234,14 @@ enum class ELDERBROTHER
 	ATTACK,
 	DEATH,
 };
+
+enum class POPE
+{
+	IDLE,
+	APPEAR,
+	SPELL,
+	VANISH,
+	DEATH,
+
+
+};

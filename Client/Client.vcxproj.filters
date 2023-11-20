@@ -467,6 +467,27 @@
     <Filter Include="Game\04. Object\UI\CBossPanel">
       <UniqueIdentifier>{46aed6e2-83c0-4da6-949c-080ebdaba662}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\Monster\Boss\Pope">
+      <UniqueIdentifier>{cc47304b-db4b-4126-a3fc-eb48b909e242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pope">
+      <UniqueIdentifier>{f758adb6-07b2-4dd2-93e5-5ec5be06291c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pope\Idle">
+      <UniqueIdentifier>{bb8cbe2a-f891-4ec9-bd78-c98055fdcf11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pope\Death">
+      <UniqueIdentifier>{8cff0518-5a05-4c84-9b0b-a13f7927b6fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pope\Spell">
+      <UniqueIdentifier>{6dcfb6d1-4f36-40bf-acec-b6bf2c39433e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pope\Appear">
+      <UniqueIdentifier>{2ea76abf-2815-479a-952e-67f3226adfee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pope\Vanish">
+      <UniqueIdentifier>{3b3cf73e-464e-47da-8a1e-bc46be9d2ea9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -920,6 +941,24 @@
     <ClInclude Include="CBossPanel.h">
       <Filter>Game\04. Object\UI\CBossPanel</Filter>
     </ClInclude>
+    <ClInclude Include="CPope.h">
+      <Filter>Game\04. Object\Monster\Boss\Pope</Filter>
+    </ClInclude>
+    <ClInclude Include="CPopeIdle.h">
+      <Filter>Game\08. State\Pope\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CPopeDeath.h">
+      <Filter>Game\08. State\Pope\Death</Filter>
+    </ClInclude>
+    <ClInclude Include="CPopeAppear.h">
+      <Filter>Game\08. State\Pope\Appear</Filter>
+    </ClInclude>
+    <ClInclude Include="CPopeVanish.h">
+      <Filter>Game\08. State\Pope\Vanish</Filter>
+    </ClInclude>
+    <ClInclude Include="CPopeSpell.h">
+      <Filter>Game\08. State\Pope\Spell</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1367,6 +1406,24 @@
     </ClCompile>
     <ClCompile Include="CBossPanel.cpp">
       <Filter>Game\04. Object\UI\CBossPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="CPope.cpp">
+      <Filter>Game\04. Object\Monster\Boss\Pope</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopeIdle.cpp">
+      <Filter>Game\08. State\Pope\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopeDeath.cpp">
+      <Filter>Game\08. State\Pope\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopeAppear.cpp">
+      <Filter>Game\08. State\Pope\Appear</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopeVanish.cpp">
+      <Filter>Game\08. State\Pope\Vanish</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopeSpell.cpp">
+      <Filter>Game\08. State\Pope\Spell</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

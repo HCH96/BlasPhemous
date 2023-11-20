@@ -42,6 +42,8 @@ public:
 
     void SetAnimDuration(const wstring& _strName, float _fDuration);
     void SetAnimDuration(const wstring& _strName, UINT _iFrame, float _fDuration);
+    void SetAnimOffset(const wstring& _strName, Vec2 _vOffset);
+
 
     CAnim* FindAnimation(const wstring& _strName);
 

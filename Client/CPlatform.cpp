@@ -34,7 +34,7 @@ void CPlatform::begin()
 
 void CPlatform::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
-	if (_OtherCol->GetName() == L"Penitent_HitBox")
+	if (_OtherCol->GetName() == L"Penitent_HitBox" || _OtherObj->GetName() == L"Pope")
 		return;
 
 	CPenitent* pPenitent = dynamic_cast<CPenitent*>(_OtherObj);

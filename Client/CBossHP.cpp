@@ -91,6 +91,7 @@ void CBossHP::render(HDC _dc)
 	Vec2 vPos = GetFinalPos();
 	Vec2 vScale = GetScale();
 
+
 	// HPBack
 	BLENDFUNCTION blend = {};
 	blend.BlendOp = AC_SRC_OVER;

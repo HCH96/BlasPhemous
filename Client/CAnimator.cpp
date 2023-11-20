@@ -124,6 +124,8 @@ void CAnimator::Stop()
 	m_pCurAnim = nullptr;
 }
 
+
+
 void CAnimator::SetAnimDuration(const wstring& _strName, float _fDuration)
 {
 	CAnim* pAnim = FindAnimation(_strName);
@@ -137,6 +139,23 @@ void CAnimator::SetAnimDuration(const wstring& _strName, float _fDuration)
 	for (size_t i = 0; i < pAnim->m_vecFrm.size(); ++i)
 	{
 		pAnim->SetDuration(_fDuration, int(i));
+	}
+
+}
+
+void CAnimator::SetAnimOffset(const wstring& _strName, Vec2 _vOffset)
+{
+	CAnim* pAnim = FindAnimation(_strName);
+
+	if (pAnim == nullptr)
+	{
+		LOG(LOG_LEVEL::ERR, L"Anim을 찾지 못했습니다.");
+		return;
+	}
+
+	for (size_t i = 0; i < pAnim->m_vecFrm.size(); ++i)
+	{
+		pAnim->SetOffset(_vOffset, int(i));
 	}
 
 }

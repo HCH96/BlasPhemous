@@ -12,6 +12,8 @@
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
 
+#include "CPope.h"
+
 void CStage02_2::init()
 {
 	//Background 0
@@ -40,6 +42,12 @@ void CStage02_2::init()
 	pPlatform->SetPos(Vec2(2250.f, 1740.f));
 	pPlatform->SetScale(Vec2(4430.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	CPope* pPope = new CPope;
+	pPope->SetPos(Vec2(2250.f, 1740.f));
+	pPope->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::MONSTER, pPope);
+
 
 	// UI »ý¼º
 	CPenitentUI* pPenitentUI = new CPenitentUI;
@@ -73,8 +81,8 @@ void CStage02_2::enter()
 	CCamera::GetInst()->SetLookAtOffsetY(-50.f);
 	CCamera::GetInst()->InitLookAt(pPenitent->GetPos());
 	CCamera::GetInst()->SetTarget(pPenitent);
-	CCamera::GetInst()->SetCameraLimitLT(Vec2(90.f * 2.f, 570.f * 2.f));
-	CCamera::GetInst()->SetCameraLimit(Vec2(2030.f * 2.f, 930.f * 2.f));
+	CCamera::GetInst()->SetCameraLimitLT(Vec2(90.f * 2.f, 580.f * 2.f));
+	CCamera::GetInst()->SetCameraLimit(Vec2(2030.f * 2.f, 940.f * 2.f));
 }
 
 void CStage02_2::exit()
