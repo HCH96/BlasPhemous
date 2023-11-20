@@ -458,9 +458,6 @@
     <Filter Include="Game\04. Object\skill\RayBeam">
       <UniqueIdentifier>{fe7698b0-cb23-41bb-a88b-7d2f48ef1785}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\04. Object\skill\Spawner">
-      <UniqueIdentifier>{dc8e91d6-62bb-4155-8de1-c4648877004b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\04. Object\UI\BossHP">
       <UniqueIdentifier>{00b1352f-e316-40e3-b0aa-dcbf6c5bd258}</UniqueIdentifier>
     </Filter>
@@ -487,6 +484,15 @@
     </Filter>
     <Filter Include="Game\08. State\Pope\Vanish">
       <UniqueIdentifier>{3b3cf73e-464e-47da-8a1e-bc46be9d2ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\skill\Firebolt">
+      <UniqueIdentifier>{2c78e219-c896-4019-84fb-1bde9e5b50fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\skill\Toxic">
+      <UniqueIdentifier>{7aaf139a-061b-4ec9-b6f1-343329726377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\skill\MagicMissile">
+      <UniqueIdentifier>{85338fe1-d5fd-465f-81d8-78ce3b8bbb22}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -932,9 +938,6 @@
     <ClInclude Include="CRayBeam.h">
       <Filter>Game\04. Object\skill\RayBeam</Filter>
     </ClInclude>
-    <ClInclude Include="CSpawner.h">
-      <Filter>Game\04. Object\skill\Spawner</Filter>
-    </ClInclude>
     <ClInclude Include="CBossHP.h">
       <Filter>Game\04. Object\UI\BossHP</Filter>
     </ClInclude>
@@ -958,6 +961,27 @@
     </ClInclude>
     <ClInclude Include="CPopeSpell.h">
       <Filter>Game\08. State\Pope\Spell</Filter>
+    </ClInclude>
+    <ClInclude Include="CSpawner.h">
+      <Filter>Game\04. Object\skill\RayBeam</Filter>
+    </ClInclude>
+    <ClInclude Include="CFirebolt.h">
+      <Filter>Game\04. Object\skill\Firebolt</Filter>
+    </ClInclude>
+    <ClInclude Include="CFireboltSpawner.h">
+      <Filter>Game\04. Object\skill\Firebolt</Filter>
+    </ClInclude>
+    <ClInclude Include="CToxicSpawner.h">
+      <Filter>Game\04. Object\skill\Toxic</Filter>
+    </ClInclude>
+    <ClInclude Include="CToxic.h">
+      <Filter>Game\04. Object\skill\Toxic</Filter>
+    </ClInclude>
+    <ClInclude Include="CMagicMissile.h">
+      <Filter>Game\04. Object\skill\MagicMissile</Filter>
+    </ClInclude>
+    <ClInclude Include="CMagicMissileSpawner.h">
+      <Filter>Game\04. Object\skill\MagicMissile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1398,9 +1422,6 @@
     <ClCompile Include="CRayBeam.cpp">
       <Filter>Game\04. Object\skill\RayBeam</Filter>
     </ClCompile>
-    <ClCompile Include="CSpawner.cpp">
-      <Filter>Game\04. Object\skill\Spawner</Filter>
-    </ClCompile>
     <ClCompile Include="CBossHP.cpp">
       <Filter>Game\04. Object\UI\BossHP</Filter>
     </ClCompile>
@@ -1424,6 +1445,27 @@
     </ClCompile>
     <ClCompile Include="CPopeSpell.cpp">
       <Filter>Game\08. State\Pope\Spell</Filter>
+    </ClCompile>
+    <ClCompile Include="CSpawner.cpp">
+      <Filter>Game\04. Object\skill\RayBeam</Filter>
+    </ClCompile>
+    <ClCompile Include="CFirebolt.cpp">
+      <Filter>Game\04. Object\skill\Firebolt</Filter>
+    </ClCompile>
+    <ClCompile Include="CFireboltSpawner.cpp">
+      <Filter>Game\04. Object\skill\Firebolt</Filter>
+    </ClCompile>
+    <ClCompile Include="CToxic.cpp">
+      <Filter>Game\04. Object\skill\Toxic</Filter>
+    </ClCompile>
+    <ClCompile Include="CToxicSpawner.cpp">
+      <Filter>Game\04. Object\skill\Toxic</Filter>
+    </ClCompile>
+    <ClCompile Include="CMagicMissile.cpp">
+      <Filter>Game\04. Object\skill\MagicMissile</Filter>
+    </ClCompile>
+    <ClCompile Include="CMagicMissileSpawner.cpp">
+      <Filter>Game\04. Object\skill\MagicMissile</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

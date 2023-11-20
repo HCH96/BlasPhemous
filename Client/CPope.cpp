@@ -179,8 +179,8 @@ CPope::CPope()
 
 	// Collider
 	m_pCollider = AddComponent<CCollider>(L"Pope");
-	m_pCollider->SetScale(Vec2(40.f, 100.f));
-	m_pCollider->SetOffsetPos(Vec2(0.f, -50.f));
+	m_pCollider->SetScale(Vec2(70.f, 180.f));
+	m_pCollider->SetOffsetPos(Vec2(0.f, -90.f));
 
 	m_pAI->ChangeState((UINT)POPE::IDLE);
 }
@@ -216,6 +216,11 @@ void CPope::OnHit()
 	}
 
 	m_fHP -= 1.f;
+
+	if (m_fHP <= 0)
+	{
+		m_pAI->ChangeState((UINT)POPE::DEATH);
+	}
 }
 
 void CPope::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)

@@ -96,13 +96,9 @@ void CElderBrother::tick(float _DT)
 
     if (m_fHP <= 0)
     {
-        m_pAI->ChangeState((UINT)FOOL_KNIFE::DEATH);
+        m_pAI->ChangeState((UINT)ELDERBROTHER::DEATH);
     }
 
-    if(KEY_TAP(KEY::Y))
-    {
-        SetPos(Vec2(1470.f, 1060.f));
-    }
 
 }
 

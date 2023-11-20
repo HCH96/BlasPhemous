@@ -12,6 +12,8 @@
 #include "CPenitentUI.h"
 #include "CTearsUI.h"
 
+#include "CBossPanel.h"
+
 #include "CPope.h"
 
 void CStage02_2::init()
@@ -55,6 +57,12 @@ void CStage02_2::init()
 
 	CTearsUI* pTearsUI = new CTearsUI;
 	AddObject(LAYER::UI, pTearsUI);
+
+	RegisterBoss(pPope);
+
+
+	CBossPanel* pBossPanel = new CBossPanel;
+	AddObject(LAYER::UI, pBossPanel);
 
 }
 

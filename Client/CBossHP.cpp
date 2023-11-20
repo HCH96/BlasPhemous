@@ -10,6 +10,7 @@
 #include "CTexture.h"
 
 #include "CElderBrother.h"
+#include "CPope.h"
 
 
 
@@ -43,6 +44,14 @@ void CBossHP::begin()
 	if (iCurLv == (UINT)LEVEL_TYPE::STAGE01_4)
 	{
 		m_fMaxHP = 12.f;
+		m_fCurHP = 12.f;
+		m_fPrevHP = 12.f;
+	}
+	else if (iCurLv == (UINT)LEVEL_TYPE::STAGE02_2)
+	{
+		m_fMaxHP = 10.f;
+		m_fCurHP = 10.f;
+		m_fPrevHP = 10.f;
 	}
 	
 
@@ -61,6 +70,13 @@ void CBossHP::tick(float _DT)
 	{
 		CObj* pBoss = pCurLv->GetBoss();
 		CElderBrother* pElder = dynamic_cast<CElderBrother*>(pBoss);
+
+		m_fCurHP = pElder->GetHP();
+	}
+	else if (iCurLv == (UINT)LEVEL_TYPE::STAGE02_2)
+	{
+		CObj* pBoss = pCurLv->GetBoss();
+		CPope* pElder = dynamic_cast<CPope*>(pBoss);
 
 		m_fCurHP = pElder->GetHP();
 	}

@@ -170,6 +170,8 @@
     <ClInclude Include="CElderBrotherJump.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CFirebolt.h" />
+    <ClInclude Include="CFireboltSpawner.h" />
     <ClInclude Include="CFoolKnife.h" />
     <ClInclude Include="CFoolKnifeDeath.h" />
     <ClInclude Include="CFoolKnifeIdle.h" />
@@ -191,6 +193,8 @@
     <ClInclude Include="CLionheadWalk.h" />
     <ClInclude Include="CLionheadWalkback.h" />
     <ClInclude Include="CLogMgr.h" />
+    <ClInclude Include="CMagicMissile.h" />
+    <ClInclude Include="CMagicMissileSpawner.h" />
     <ClInclude Include="CMainMenuLevel.h" />
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CMovement.h" />
@@ -288,6 +292,8 @@
     <ClInclude Include="CTile.h" />
     <ClInclude Include="CTimeMgr.h" />
     <ClInclude Include="CTitleLevel.h" />
+    <ClInclude Include="CToxic.h" />
+    <ClInclude Include="CToxicSpawner.h" />
     <ClInclude Include="CUI.h" />
     <ClInclude Include="CWall.h" />
     <ClInclude Include="define.h" />
@@ -329,6 +335,8 @@
     <ClCompile Include="CElderBrotherJump.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
+    <ClCompile Include="CFirebolt.cpp" />
+    <ClCompile Include="CFireboltSpawner.cpp" />
     <ClCompile Include="CFoolKnife.cpp" />
     <ClCompile Include="CFoolKnifeDeath.cpp" />
     <ClCompile Include="CFoolKnifeIdle.cpp" />
@@ -349,6 +357,8 @@
     <ClCompile Include="CLionheadWalk.cpp" />
     <ClCompile Include="CLionheadWalkback.cpp" />
     <ClCompile Include="CLogMgr.cpp" />
+    <ClCompile Include="CMagicMissile.cpp" />
+    <ClCompile Include="CMagicMissileSpawner.cpp" />
     <ClCompile Include="CMainMenuLevel.cpp" />
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CMovement.cpp" />
@@ -445,6 +455,8 @@
     <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
     <ClCompile Include="CTitleLevel.cpp" />
+    <ClCompile Include="CToxic.cpp" />
+    <ClCompile Include="CToxicSpawner.cpp" />
     <ClCompile Include="CUI.cpp" />
     <ClCompile Include="CWall.cpp" />
     <ClCompile Include="func.cpp" />

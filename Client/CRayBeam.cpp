@@ -88,7 +88,6 @@ void CRayBeam::tick(float _DT)
 
 void CRayBeam::render(HDC _dc)
 {
-
 	Super::render(_dc);
 }
 
