@@ -509,7 +509,7 @@ void CAnim::render(HDC _dc)
 	int iAlpha = m_pAnimator->GetAlpha();
 
 
-	float fAngle = DegreeToRadian(m_pAnimator->GetAngle());
+	float fAngle = DegreeToRadian(pOwnerObject->GetAngle());
 
 
 	HDC mainDC = CEngine::GetInst()->GetMainDC();
@@ -542,11 +542,10 @@ void CAnim::render(HDC _dc)
 		//
 		// (destDC, 0, 0, dest_width, dest_height, PATCOPY);                           // 선택된 브러시로, 회전할 비트맵을 출력받을 DC에, 미리 색상을 채워 지움   
 
-		float rot = m_pAnimator->GetAngle();
 		
 
-		float cosine = (float)cos(rot);                                              // 회전이동변환 행렬에 들어갈 cos세타 값을 구함          
-		float sine = (float)sin(rot);                                              // 회전이동변환 행렬에 들어갈 sin세타 값을 구함   
+		float cosine = (float)cos(fAngle);                                              // 회전이동변환 행렬에 들어갈 cos세타 값을 구함          
+		float sine = (float)sin(fAngle);                                              // 회전이동변환 행렬에 들어갈 sin세타 값을 구함   
 
 		SetGraphicsMode(_dc, GM_ADVANCED);                                               // 윈도우 좌표계의 회전을 위하여, 그래픽모드를 확장모드로 변경합니다.(요구사항:윈98,NT이상)   
 

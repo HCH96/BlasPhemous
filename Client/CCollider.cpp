@@ -40,6 +40,7 @@ void CCollider::finaltick(float _DT)
 	// 좌표 값 수정
 	Vec2 vOwnerPos = GetOwner()->GetPos();
 	m_vFinalPos = vOwnerPos + m_vOffsetPos;
+	m_fAngle = GetOwner()->GetAngle();
 
 	// 현재 속해있는 레이어에 충돌체(본인) 를 등록
 

@@ -9,7 +9,7 @@ private:
 
 
 public:
-    void SetAngle(float _f) { m_pCollider->SetAngle(_f); }
+    //void SetAngle(float _f) { m_pCollider->SetAngle(_f); }
 
 public:
     virtual void begin() override;

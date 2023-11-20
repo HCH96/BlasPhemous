@@ -16,7 +16,7 @@ CFirebolt::CFirebolt()
 
 	m_pAnimator = AddComponent<CAnimator>(L"Firebolt");
 
-	m_pAnimator->SetAngle(90.f);
+	SetAngle(90.f);
 
 
 	// Spawn
@@ -66,7 +66,7 @@ void CFirebolt::On(Vec2 _vPos, Vec2 _vDir)
 	m_vDir = _vDir.Normalize();
 
 
-	m_pAnimator->SetAngle(_vDir.ToRadian());
+	SetAngle(RadiansToDegrees(_vDir.ToRadian()));
 
 	m_eState = FIREBOLT::ACTIVE;
 	m_pAnimator->Play(L"Active", true);

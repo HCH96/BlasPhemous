@@ -14,6 +14,7 @@ private:
 	bool				m_bPrevDir;
 	bool				m_bDir;
 	bool				m_bPlatEnd;
+	float				m_fAngle;
 
 	vector<CComponent*> m_vecComponent;		// ÄÄÆ÷³ÍÆ® º¤ÅÍ
 
@@ -21,12 +22,14 @@ public:
 	Vec2 GetPos() { return m_vPos; }
 	Vec2 GetScale() { return m_vScale; }
 	Vec2 GetRenderPos() { return CCamera::GetInst()->GetRenderPos(m_vPos); }
+	float GetAngle() { return m_fAngle; }
 
 	void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 	void SetDir(bool _bDir) { m_bDir = _bDir; }
 	void SetPrevDir(bool _bPrev) { m_bPrevDir = _bPrev; }
 	void SetLayerIdx(int _iIdx) { m_iLayerIdx = _iIdx; }
+	void SetAngle(float _fAngle) { m_fAngle = _fAngle; }
 
 	int  GetLayerIdx() { return m_iLayerIdx; }
 	bool GetDir() { return m_bDir; }

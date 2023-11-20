@@ -55,7 +55,7 @@ void LoadWString(wstring& _str, FILE* _File)
 	_str = szBuff;
 }
 
-void AlphaBlendRender(HDC _dc, CTexture* _pTex,Vec2 _vRenderPos, Vec2 _vScale)
+void AlphaBlendRender(HDC _dc, CTexture* _pTex, Vec2 _vRenderPos, Vec2 _vScale)
 {
 	BLENDFUNCTION blend = {};
 	blend.BlendOp = AC_SRC_OVER;
@@ -138,6 +138,11 @@ float VecToRadian(Vec2 _vDir)
 	float angleRadians = atan2(_vDir.y, _vDir.x);
 
 	return angleRadians;
+}
+
+float RadiansToDegrees(float radians)
+{
+	return radians * (180.0 / M_PI);
 }
 
 
