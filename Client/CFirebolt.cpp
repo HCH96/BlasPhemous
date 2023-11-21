@@ -35,7 +35,7 @@ CFirebolt::CFirebolt()
 
 	m_pAnimator->LoadAnimation(pTex, L"Active", L"animdata\\Effect\\pope_fireBall.txt");
 
-	m_pAnimator->SetAnimDuration(L"Active", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Active", 0.03f);
 
 
 	// Imapct

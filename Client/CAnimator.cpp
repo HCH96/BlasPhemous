@@ -69,6 +69,9 @@ void CAnimator::render(HDC _dc)
 
 bool CAnimator::IsFinish()
 {
+	if (m_pCurAnim == nullptr)
+		return false;
+
 	return m_pCurAnim->IsFinish();
 }
 
@@ -160,6 +163,24 @@ void CAnimator::SetAnimOffset(const wstring& _strName, Vec2 _vOffset)
 
 }
 
+void CAnimator::FixAnimOffset(const wstring& _strName, Vec2 _vOffset)
+{
+	CAnim* pAnim = FindAnimation(_strName);
+
+	if (pAnim == nullptr)
+	{
+		LOG(LOG_LEVEL::ERR, L"Anim을 찾지 못했습니다.");
+		return;
+	}
+
+	for (size_t i = 0; i < pAnim->m_vecFrm.size(); ++i)
+	{
+		pAnim->FixOffset(_vOffset, int(i));
+	}
+
+}
+
+
 void CAnimator::SetAnimDuration(const wstring& _strName, UINT _iFrame, float _fDuration)
 {
 	CAnim* pAnim = FindAnimation(_strName);
@@ -173,6 +194,8 @@ void CAnimator::SetAnimDuration(const wstring& _strName, UINT _iFrame, float _fD
 	pAnim->SetDuration(_fDuration, int(_iFrame));
 
 }
+
+
 
 void CAnimator::CreateAnimation(const wstring& _strName, CTexture* _pAtlas, Vec2 _vLeftTop, Vec2 _vCutSize, Vec2 _vOffset, float _fDuration, int _iMaxFrm)
 {

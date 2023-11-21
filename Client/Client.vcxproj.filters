@@ -503,6 +503,24 @@
     <Filter Include="Game\04. Object\MapObject\AshPlatform">
       <UniqueIdentifier>{595315f1-27df-4976-b5ee-944db5af91c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\Monster\Boss\Pontiff">
+      <UniqueIdentifier>{7d927f6d-1945-4db2-b26e-b459ac75f287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\GaintSword">
+      <UniqueIdentifier>{010f393d-cf17-467a-8f4b-21f60b5a3591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\GaintSword\Appear">
+      <UniqueIdentifier>{1093769e-c97b-4e56-9069-3bcb168e5e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\GaintSword\Vanish">
+      <UniqueIdentifier>{b14eddca-91ab-4c89-ba1f-76892d05af77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\GaintSword\Idle">
+      <UniqueIdentifier>{17c5885e-87cd-462e-9803-37cbcec3162b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\GaintSword\SpinAttack">
+      <UniqueIdentifier>{f784da9e-c3bf-421a-97b4-b987496865e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1004,6 +1022,21 @@
     <ClInclude Include="CAshPlatform.h">
       <Filter>Game\04. Object\MapObject\AshPlatform</Filter>
     </ClInclude>
+    <ClInclude Include="CGiantSword.h">
+      <Filter>Game\04. Object\Monster\Boss\Pontiff</Filter>
+    </ClInclude>
+    <ClInclude Include="CGiantSwordAppear.h">
+      <Filter>Game\08. State\GaintSword\Appear</Filter>
+    </ClInclude>
+    <ClInclude Include="CGiantSwordIdle.h">
+      <Filter>Game\08. State\GaintSword\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CGiantSwordSpinAttack.h">
+      <Filter>Game\08. State\GaintSword\SpinAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="CGiantSwordVanish.h">
+      <Filter>Game\08. State\GaintSword\Vanish</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1499,6 +1532,21 @@
     </ClCompile>
     <ClCompile Include="CAshPlatform.cpp">
       <Filter>Game\04. Object\MapObject\AshPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="CGiantSword.cpp">
+      <Filter>Game\04. Object\Monster\Boss\Pontiff</Filter>
+    </ClCompile>
+    <ClCompile Include="CGiantSwordAppear.cpp">
+      <Filter>Game\08. State\GaintSword\Appear</Filter>
+    </ClCompile>
+    <ClCompile Include="CGiantSwordIdle.cpp">
+      <Filter>Game\08. State\GaintSword\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CGiantSwordSpinAttack.cpp">
+      <Filter>Game\08. State\GaintSword\SpinAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="CGiantSwordVanish.cpp">
+      <Filter>Game\08. State\GaintSword\Vanish</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

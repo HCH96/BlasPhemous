@@ -39,7 +39,6 @@ void CCollider::finaltick(float _DT)
 {
 	// ÁÂÇ¥ °ª ¼öÁ¤
 	Vec2 vOwnerPos = GetOwner()->GetPos();
-	m_vFinalPos = vOwnerPos + m_vOffsetPos;
 
 	if (m_fAngle != GetOwner()->GetAngle())
 	{
@@ -47,6 +46,7 @@ void CCollider::finaltick(float _DT)
 		m_vOffsetPos = m_vOffsetPos.Rotate(m_fAngle);
 	}
 
+	m_vFinalPos = vOwnerPos + m_vOffsetPos;
 
 
 

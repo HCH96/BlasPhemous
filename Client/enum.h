@@ -243,6 +243,12 @@ enum class POPE
 	SPELL,
 	VANISH,
 	DEATH,
+};
 
-
+enum class GIANTSWORD
+{
+	APPEAR,
+	IDLE,
+	SPINATTACK,
+	VANISH,
 };

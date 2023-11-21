@@ -80,12 +80,12 @@ void CPopeSpell::Enter()
 	CAnimator* pSymbol = pOwner->GetComponent<CAnimator>(L"Pope_Symbol");
 
 
-	// 0 firebolt / 1 Toxic / 2 magicmissile
+	// 0 firebolt / 1 Toxic / 2 magicmissile / 3 lightning
 
 	m_iSpellIdx = (rand() % 4);
 
 
-	m_iSpellIdx = 3;
+	//m_iSpellIdx = 3;
 
 	GetOwnerSM()->EditDataToBlackboard(L"Spell", m_iSpellIdx);
 

@@ -43,6 +43,7 @@ public:
 
     void SetAnimDuration(const wstring& _strName, float _fDuration);
     void SetAnimDuration(const wstring& _strName, UINT _iFrame, float _fDuration);
+    void FixAnimOffset(const wstring& _strName, Vec2 _vOffset);
     void SetAnimOffset(const wstring& _strName, Vec2 _vOffset);
 
 

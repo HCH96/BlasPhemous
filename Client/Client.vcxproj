@@ -179,6 +179,11 @@
     <ClInclude Include="CFoolKnifeTurn.h" />
     <ClInclude Include="CFoolKnifeWalk.h" />
     <ClInclude Include="CGCMgr.h" />
+    <ClInclude Include="CGiantSword.h" />
+    <ClInclude Include="CGiantSwordAppear.h" />
+    <ClInclude Include="CGiantSwordIdle.h" />
+    <ClInclude Include="CGiantSwordSpinAttack.h" />
+    <ClInclude Include="CGiantSwordVanish.h" />
     <ClInclude Include="CImage.h" />
     <ClInclude Include="CKeyMgr.h" />
     <ClInclude Include="CLadder.h" />
@@ -348,6 +353,11 @@
     <ClCompile Include="CFoolKnifeTurn.cpp" />
     <ClCompile Include="CFoolKnifeWalk.cpp" />
     <ClCompile Include="CGCMgr.cpp" />
+    <ClCompile Include="CGiantSword.cpp" />
+    <ClCompile Include="CGiantSwordAppear.cpp" />
+    <ClCompile Include="CGiantSwordIdle.cpp" />
+    <ClCompile Include="CGiantSwordSpinAttack.cpp" />
+    <ClCompile Include="CGiantSwordVanish.cpp" />
     <ClCompile Include="CImage.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
     <ClCompile Include="CLadder.cpp" />

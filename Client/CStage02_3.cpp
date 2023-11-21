@@ -16,6 +16,8 @@
 #include "CTwisterBackground.h"
 #include "CAshPlatform.h"
 
+#include "CGiantSword.h"
+
 
 void CStage02_3::init()
 {
@@ -160,6 +162,13 @@ void CStage02_3::init()
 	pAshPlatform->SetAcc(0.f);
 	AddObject(LAYER::PLATFORM, pAshPlatform);
 
+
+	// Boss 
+	
+	CGiantSword* pSword = new CGiantSword;
+	pSword->SetPos(Vec2(1480.f, 775.f));
+
+	AddObject(LAYER::MONSTER, pSword);
 
 }
 
