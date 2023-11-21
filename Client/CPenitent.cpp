@@ -7,6 +7,7 @@
 #include "CAssetMgr.h"
 #include "CTexture.h"
 
+#include "CAshPlatform.h"
 #include "CPlatform.h"
 #include "CLedge.h"
 
@@ -287,7 +288,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 
 
 	// Platform
-	if (dynamic_cast<CPlatform*>(_pOtherObj))
+	if (dynamic_cast<CPlatform*>(_pOtherObj) || dynamic_cast<CAshPlatform*>(_pOtherObj))
 	{
 		++m_iOverlapGround;
 	}
@@ -296,7 +297,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 
 void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
-	if (dynamic_cast<CPlatform*>(_OtherObj))
+	if (dynamic_cast<CPlatform*>(_OtherObj) || dynamic_cast<CAshPlatform*>(_OtherObj))
 	{
 		--m_iOverlapGround;
 		SetDownPlatform(false);

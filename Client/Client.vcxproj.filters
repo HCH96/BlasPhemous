@@ -497,6 +497,12 @@
     <Filter Include="Game\04. Object\skill\Lightning">
       <UniqueIdentifier>{39eb50a7-ebef-46e5-ac5b-9d20dd6f84c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\MapObject\TwisterBackground">
+      <UniqueIdentifier>{5d544947-4d3b-45fd-a2b2-b63e991657a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\AshPlatform">
+      <UniqueIdentifier>{595315f1-27df-4976-b5ee-944db5af91c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -992,6 +998,12 @@
     <ClInclude Include="CLightningSpawner.h">
       <Filter>Game\04. Object\skill\Lightning</Filter>
     </ClInclude>
+    <ClInclude Include="CTwisterBackground.h">
+      <Filter>Game\04. Object\MapObject\TwisterBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="CAshPlatform.h">
+      <Filter>Game\04. Object\MapObject\AshPlatform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1481,6 +1493,12 @@
     </ClCompile>
     <ClCompile Include="CLightningSpawner.cpp">
       <Filter>Game\04. Object\skill\Lightning</Filter>
+    </ClCompile>
+    <ClCompile Include="CTwisterBackground.cpp">
+      <Filter>Game\04. Object\MapObject\TwisterBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="CAshPlatform.cpp">
+      <Filter>Game\04. Object\MapObject\AshPlatform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

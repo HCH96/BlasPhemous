@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="CAnim.h" />
     <ClInclude Include="CAnimator.h" />
+    <ClInclude Include="CAshPlatform.h" />
     <ClInclude Include="CAssetMgr.h" />
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CBackground.h" />
@@ -296,6 +297,7 @@
     <ClInclude Include="CTitleLevel.h" />
     <ClInclude Include="CToxic.h" />
     <ClInclude Include="CToxicSpawner.h" />
+    <ClInclude Include="CTwisterBackground.h" />
     <ClInclude Include="CUI.h" />
     <ClInclude Include="CWall.h" />
     <ClInclude Include="define.h" />
@@ -312,6 +314,7 @@
   <ItemGroup>
     <ClCompile Include="CAnim.cpp" />
     <ClCompile Include="CAnimator.cpp" />
+    <ClCompile Include="CAshPlatform.cpp" />
     <ClCompile Include="CAssetMgr.cpp" />
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CBackground.cpp" />
@@ -461,6 +464,7 @@
     <ClCompile Include="CTitleLevel.cpp" />
     <ClCompile Include="CToxic.cpp" />
     <ClCompile Include="CToxicSpawner.cpp" />
+    <ClCompile Include="CTwisterBackground.cpp" />
     <ClCompile Include="CUI.cpp" />
     <ClCompile Include="CWall.cpp" />
     <ClCompile Include="func.cpp" />
