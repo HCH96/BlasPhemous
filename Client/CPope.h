@@ -4,6 +4,7 @@
 class CFireboltSpawner;
 class CMagicMissileSpawner;
 class CToxicSpawner;
+class CLightningSpawner;
 
 class CPope :
 	public CObj
@@ -23,6 +24,7 @@ private:
 	CFireboltSpawner* m_pFireSpawner;
 	CMagicMissileSpawner* m_pMagicMissileSpawner;
 	CToxicSpawner* m_pToxicSpawner;
+	CLightningSpawner* m_pLightningSpawner;
 
 	float       m_fHP;
 
@@ -31,10 +33,12 @@ public:
 	CFireboltSpawner* GetFireSpawner() { return m_pFireSpawner; }
 	CMagicMissileSpawner* GetMagicSpawner() { return m_pMagicMissileSpawner; }
 	CToxicSpawner* GetToxicSpawner() { return m_pToxicSpawner; }
+	CLightningSpawner* GetLightningSpawner() { return m_pLightningSpawner; }
 
 	void RegisterFireSpawner(CFireboltSpawner* _pSpawner) { m_pFireSpawner = _pSpawner; }
 	void RegisterMagicSpawner(CMagicMissileSpawner* _pSpawner) { m_pMagicMissileSpawner = _pSpawner; }
 	void RegisterToxicSpawner(CToxicSpawner* _pSpawner) { m_pToxicSpawner = _pSpawner; }
+	void RegisterLightningSpawner(CLightningSpawner* _pSpawner) { m_pLightningSpawner = _pSpawner; }
 
 public:
 	virtual void tick(float _DT) override;

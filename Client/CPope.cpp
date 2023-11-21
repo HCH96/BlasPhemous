@@ -110,6 +110,17 @@ CPope::CPope()
 	m_pEffector->SetAnimDuration(L"MagicMissile", 0.065f);
 	m_pEffector->SetAnimDuration(L"MagicMissile_L", 0.065f);
 
+	// Blue -> Lightning
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"pope_spellCast_FXS_Lightning", L"texture\\Monster\\Boss\\Pope\\pope_spellCast_FXS_Blue.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"pope_spellCast_FXS_Lightning_L", L"texture\\Monster\\Boss\\Pope\\pope_spellCast_FXS_Blue.png");
+
+	m_pEffector->LoadAnimation(pTex, L"Lightning", L"animdata\\Monster\\Boss\\Pope\\pope_spellCast_FXS.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"Lightning_L", L"animdata\\Monster\\Boss\\Pope\\pope_spellCast_FXS.txt", true);
+
+	m_pEffector->SetAnimDuration(L"Lightning", 0.065f);
+	m_pEffector->SetAnimDuration(L"Lightning_L", 0.065f);
+
+
 
 	// Effector
 	m_pSymbol = AddComponent<CAnimator>(L"Pope_Symbol");
@@ -153,6 +164,19 @@ CPope::CPope()
 
 	m_pSymbol->SetAnimOffset(L"MagicMissile", Vec2(40.f, -50.f));
 	m_pSymbol->SetAnimOffset(L"MagicMissile_L", Vec2(-40.f, -50.f));
+
+	// Purple -> MagicMissile
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"pope_twistedOne_symbol_Blue", L"texture\\Monster\\Boss\\Pope\\pope_twistedOne_symbol_Blue.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"pope_twistedOne_symbol_Blue_L", L"texture\\Monster\\Boss\\Pope\\pope_twistedOne_symbol_Blue.png");
+
+	m_pSymbol->LoadAnimation(pTex, L"Lightning", L"animdata\\Monster\\Boss\\Pope\\pope_twistedOne_symbol.txt");
+	m_pSymbol->LoadAnimation(pTexReverse, L"Lightning_L", L"animdata\\Monster\\Boss\\Pope\\pope_twistedOne_symbol.txt", true);
+
+	m_pSymbol->SetAnimDuration(L"Lightning", 0.065f);
+	m_pSymbol->SetAnimDuration(L"Lightning_L", 0.065f);
+
+	m_pSymbol->SetAnimOffset(L"Lightning", Vec2(40.f, -50.f));
+	m_pSymbol->SetAnimOffset(L"Lightning_L", Vec2(-40.f, -50.f));
 	
 
 	// shieldmaiden_blockEffect

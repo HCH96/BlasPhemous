@@ -186,6 +186,8 @@
     <ClInclude Include="CLevel.h" />
     <ClInclude Include="CLevelMgr.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="CLightning.h" />
+    <ClInclude Include="CLightningSpawner.h" />
     <ClInclude Include="CLionhead.h" />
     <ClInclude Include="CLionheadAttack.h" />
     <ClInclude Include="CLionheadDeath.h" />
@@ -350,6 +352,8 @@
     <ClCompile Include="CLedge.cpp" />
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CLevelMgr.cpp" />
+    <ClCompile Include="CLightning.cpp" />
+    <ClCompile Include="CLightningSpawner.cpp" />
     <ClCompile Include="CLionhead.cpp" />
     <ClCompile Include="CLionheadAttack.cpp" />
     <ClCompile Include="CLionheadDeath.cpp" />

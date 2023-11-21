@@ -6,6 +6,8 @@
 #include "CMagicMissileSpawner.h"
 #include "CToxicSpawner.h"
 
+#include "CLightningSpawner.h"
+
 CPopeSpell::CPopeSpell()
 	:m_iSpellIdx(0)
 	, m_iPrevFrame(0)
@@ -47,6 +49,11 @@ void CPopeSpell::finaltick(float _DT)
 			CMagicMissileSpawner* pSpawner = pPope->GetMagicSpawner();
 			pSpawner->On(pOwner->GetPos(), pOwner->GetDir());
 		}
+		else if(m_iSpellIdx == 3)
+		{
+			CLightningSpawner* pSpawner = pPope->GetLightningSpawner();
+			pSpawner->On(Vec2(2250.f, 1740.f));
+		}
 		else
 		{
 			assert(nullptr);
@@ -75,10 +82,10 @@ void CPopeSpell::Enter()
 
 	// 0 firebolt / 1 Toxic / 2 magicmissile
 
-	m_iSpellIdx = (rand() % 3);
+	m_iSpellIdx = (rand() % 4);
 
 
-	m_iSpellIdx = 1;
+	m_iSpellIdx = 3;
 
 	GetOwnerSM()->EditDataToBlackboard(L"Spell", m_iSpellIdx);
 
@@ -129,6 +136,21 @@ void CPopeSpell::Enter()
 			pAnimator->Play(L"Spell_L", false);
 			pEffector->Play(L"MagicMissile_L", false);
 			pSymbol->Play(L"MagicMissile_L", false);
+		}
+	}
+	else if (m_iSpellIdx == 3)
+	{
+		if (bDir)
+		{
+			pAnimator->Play(L"Spell", false);
+			pEffector->Play(L"Lightning", false);
+			pSymbol->Play(L"Lightning", false);
+		}
+		else
+		{
+			pAnimator->Play(L"Spell_L", false);
+			pEffector->Play(L"Lightning_L", false);
+			pSymbol->Play(L"Lightning_L", false);
 		}
 	}
 	else

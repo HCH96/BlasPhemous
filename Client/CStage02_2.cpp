@@ -25,6 +25,9 @@
 #include "CToxic.h"
 #include "CToxicSpawner.h"
 
+#include "CLightning.h"
+#include "CLightningSpawner.h"
+
 #include "CKeyMgr.h"
 
 void CStage02_2::init()
@@ -205,6 +208,35 @@ void CStage02_2::init()
 	pToxicSpawner->AddToxic(pToxic);
 	AddObject(LAYER::PROJECTILE, pToxic);
 
+	// Lightning
+	CLightningSpawner* pLightningSpawner = new CLightningSpawner;
+	AddObject(LAYER::SPAWNER, pLightningSpawner);
+	pPope->RegisterLightningSpawner(pLightningSpawner);
+
+	CLightning* pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
 
 
 	// UI »ý¼º
@@ -255,14 +287,6 @@ void CStage02_2::exit()
 void CStage02_2::tick()
 {
 	CLevel::tick();
-
-	if (KEY_TAP(KEY::K))
-	{
-		// CMagicMissile
-		CToxic* pMagicMissile = new CToxic;
-		pMagicMissile->On(Vec2(640.f, 1540.f));
-		AddObject(LAYER::PROJECTILE, pMagicMissile);
-	}
 
 
 }

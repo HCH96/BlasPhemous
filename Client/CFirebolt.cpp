@@ -14,6 +14,8 @@ CFirebolt::CFirebolt()
 	, m_vDir(Vec2(1.f,0.f))
 	, m_fAccel(20.f)
 	, m_fVelocity(0.f)
+	, m_bIsOn(false)
+	, m_eState(FIREBOLT::SPAWN)
 {
 	SetScale(Vec2(2.f, 2.f));
 

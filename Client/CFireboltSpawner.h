@@ -12,6 +12,7 @@ private:
     vector<CFirebolt*>   m_vecFirebolt;
     CObj*               m_pTarget;
 
+
     bool m_bIsOn;
 
     float m_fAcc;

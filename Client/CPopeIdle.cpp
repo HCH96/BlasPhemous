@@ -65,6 +65,10 @@ void CPopeIdle::Enter()
 	{
 		m_fDuration = 5.f;
 	}
+	else if (iSpell == 3)
+	{
+		m_fDuration = 10.f;
+	}
 
 
 	if (bDir)

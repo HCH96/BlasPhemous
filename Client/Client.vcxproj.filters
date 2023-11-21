@@ -986,6 +986,12 @@
     <ClInclude Include="CMagicMissileSpawner.h">
       <Filter>Game\04. Object\skill\MagicMissile</Filter>
     </ClInclude>
+    <ClInclude Include="CLightning.h">
+      <Filter>Game\04. Object\skill\Lightning</Filter>
+    </ClInclude>
+    <ClInclude Include="CLightningSpawner.h">
+      <Filter>Game\04. Object\skill\Lightning</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1469,6 +1475,12 @@
     </ClCompile>
     <ClCompile Include="CMagicMissileSpawner.cpp">
       <Filter>Game\04. Object\skill\MagicMissile</Filter>
+    </ClCompile>
+    <ClCompile Include="CLightning.cpp">
+      <Filter>Game\04. Object\skill\Lightning</Filter>
+    </ClCompile>
+    <ClCompile Include="CLightningSpawner.cpp">
+      <Filter>Game\04. Object\skill\Lightning</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
