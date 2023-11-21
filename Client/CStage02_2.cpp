@@ -22,6 +22,9 @@
 #include "CMagicMissile.h"
 #include "CMagicMissileSpawner.h"
 
+#include "CToxic.h"
+#include "CToxicSpawner.h"
+
 #include "CKeyMgr.h"
 
 void CStage02_2::init()
@@ -156,9 +159,51 @@ void CStage02_2::init()
 	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
 	AddObject(LAYER::PROJECTILE, pMagicMissile);
 
+	// Toxic
 
+	CToxicSpawner* pToxicSpawner = new CToxicSpawner;
+	AddObject(LAYER::SPAWNER, pToxicSpawner);
+	pPope->RegisterToxicSpawner(pToxicSpawner);
 
+	CToxic* pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
 
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
 
 
 
@@ -214,8 +259,8 @@ void CStage02_2::tick()
 	if (KEY_TAP(KEY::K))
 	{
 		// CMagicMissile
-		CMagicMissile* pMagicMissile = new CMagicMissile;
-		pMagicMissile->On(Vec2(240.f, 1740.f), true);
+		CToxic* pMagicMissile = new CToxic;
+		pMagicMissile->On(Vec2(640.f, 1540.f));
 		AddObject(LAYER::PROJECTILE, pMagicMissile);
 	}
 

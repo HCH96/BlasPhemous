@@ -80,9 +80,15 @@ void CMagicMissileSpawner::tick(float _DT)
 					m_bPrevUP = true;
 				}
 
+				if (m_bDir)
+				{
+					m_vecMagicMissile[m_iCurMagic]->On(vPos, Vec2(1.f,0.f));
+				}
+				else
+				{
+					m_vecMagicMissile[m_iCurMagic]->On(vPos, Vec2(-1.f, 0.f));
+				}
 
-
-				m_vecMagicMissile[m_iCurMagic]->On(vPos, m_bDir);
 				m_fCooltime = 0.f;
 				m_iCurMagic++;
 			}
@@ -104,12 +110,12 @@ void CMagicMissileSpawner::render(HDC _dc)
 
 	SELECT_PEN(_dc, PEN_TYPE::GREEN);
 
-	Vec2 vPos = GetPos();
+	Vec2 vRenderPos = GetRenderPos();
 	Rectangle(_dc
-		, int(vPos.x - 50.f)
-		, int(vPos.x - 50.f)
-		, int(vPos.x + 50.f)
-		, int(vPos.x + 50.f));
+		, int(vRenderPos.x - 20.f)
+		, int(vRenderPos.y - 50.f)
+		, int(vRenderPos.x + 20.f)
+		, int(vRenderPos.y + 40.f));
 
 }
 

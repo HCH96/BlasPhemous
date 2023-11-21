@@ -88,12 +88,12 @@ void CFireboltSpawner::render(HDC _dc)
 
 	SELECT_PEN(_dc, PEN_TYPE::GREEN);
 
-	Vec2 vPos = GetPos();
+	Vec2 vRenderPos = GetRenderPos();
 	Rectangle(_dc
-		, int(vPos.x - 50.f)
-		, int(vPos.x - 50.f)
-		, int(vPos.x + 50.f)
-		, int(vPos.x + 50.f));
+		, int(vRenderPos.x - 20.f)
+		, int(vRenderPos.y - 20.f)
+		, int(vRenderPos.x + 20.f)
+		, int(vRenderPos.y + 20.f));
 
 
 }

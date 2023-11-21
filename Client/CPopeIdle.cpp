@@ -59,7 +59,7 @@ void CPopeIdle::Enter()
 	}
 	else if (iSpell == 1)
 	{
-		m_fDuration = 5.f;
+		m_fDuration = 8.f;
 	}
 	else if (iSpell == 2)
 	{

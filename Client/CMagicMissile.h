@@ -21,11 +21,12 @@ private:
     float m_fVelocity;
 
     bool m_bIsOn;
-    bool m_bDir;
+
+    Vec2 m_vDir;
 
 
 public:
-    void On(Vec2 _vPos, bool _bDir);
+    void On(Vec2 _vPos, Vec2 _vDir);
     void Off();
 
     bool IsOn() { return m_bIsOn; }

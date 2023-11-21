@@ -4,6 +4,7 @@
 #include "CPope.h"
 #include "CFireboltSpawner.h"
 #include "CMagicMissileSpawner.h"
+#include "CToxicSpawner.h"
 
 CPopeSpell::CPopeSpell()
 	:m_iSpellIdx(0)
@@ -37,7 +38,8 @@ void CPopeSpell::finaltick(float _DT)
 		}
 		else if (m_iSpellIdx == 1)
 		{
-
+			CToxicSpawner* pSpawner = pPope->GetToxicSpawner();
+			pSpawner->On(Vec2(2250.f, 1750.f));
 
 		}
 		else if (m_iSpellIdx == 2)
@@ -76,7 +78,7 @@ void CPopeSpell::Enter()
 	m_iSpellIdx = (rand() % 3);
 
 
-	m_iSpellIdx = 2;
+	m_iSpellIdx = 1;
 
 	GetOwnerSM()->EditDataToBlackboard(L"Spell", m_iSpellIdx);
 

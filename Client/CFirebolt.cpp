@@ -171,7 +171,7 @@ void CFirebolt::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 		m_pAnimator->Play(L"Impact", false);
 	} 
 
-	if (_pOtherObj->GetLayerIdx() == (UINT)LAYER::PLAYER)
+	if (_pOtherObj->GetLayerIdx() == (UINT)LAYER::PLAYER && _pOtherCol->GetName() == L"Penitent_Collider")
 	{
 		Off();
 	}
