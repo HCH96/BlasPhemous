@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CGiantSwordVanish.h"
 
+#include "CGiantSword.h"
 
 CGiantSwordVanish::CGiantSwordVanish()
 	: m_fDeadTime(0.f)
@@ -37,6 +38,10 @@ void CGiantSwordVanish::Enter()
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
 	CAnimator* pEye = pOwner->GetComponent<CAnimator>(L"GiantSwordEye");
 	CCollider* pCollider = pOwner->GetComponent<CCollider>();
+
+
+	CGiantSword* pSword = dynamic_cast<CGiantSword*>(pOwner);
+	pSword->SetActive(false);
 
 
 	pCollider->SetTime(0.f);

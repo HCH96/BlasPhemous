@@ -311,6 +311,7 @@
     <ClInclude Include="global.h" />
     <ClInclude Include="CPanelUI.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Pontiff.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="CStage01_3.h" />
     <ClInclude Include="struct.h" />
@@ -487,6 +488,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="CStage01_3.cpp" />
+    <ClCompile Include="Pontiff.cpp" />
     <ClCompile Include="struct.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -37,16 +37,26 @@ CCollider::~CCollider()
 
 void CCollider::finaltick(float _DT)
 {
+	if (_DT == 0.f)
+	{
+		return;
+	}
+
 	// ÁÂÇ¥ °ª ¼öÁ¤
 	Vec2 vOwnerPos = GetOwner()->GetPos();
 
 	if (m_fAngle != GetOwner()->GetAngle())
 	{
 		m_fAngle = GetOwner()->GetAngle();
-		m_vOffsetPos = m_vOffsetPos.Rotate(m_fAngle);
+		Vec2 vTmp = m_vOffsetPos.Rotate(m_fAngle);
+		m_vFinalPos = vOwnerPos + vTmp;
+	}
+	else
+	{
+			m_vFinalPos = vOwnerPos + m_vOffsetPos;
 	}
 
-	m_vFinalPos = vOwnerPos + m_vOffsetPos;
+	
 
 
 
@@ -84,6 +94,7 @@ void CCollider::render(HDC _dc)
 		return;
 
 	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vFinalPos);
+
 
 	if (m_iCollisionCount > 0)
 	{

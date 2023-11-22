@@ -1037,6 +1037,7 @@
     <ClInclude Include="CGiantSwordVanish.h">
       <Filter>Game\08. State\GaintSword\Vanish</Filter>
     </ClInclude>
+    <ClInclude Include="Pontiff.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1548,5 +1549,6 @@
     <ClCompile Include="CGiantSwordVanish.cpp">
       <Filter>Game\08. State\GaintSword\Vanish</Filter>
     </ClCompile>
+    <ClCompile Include="Pontiff.cpp" />
   </ItemGroup>
 </Project>

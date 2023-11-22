@@ -24,15 +24,15 @@ CGiantSword::CGiantSword()
 	// Animator
 	m_pAnimator = AddComponent<CAnimator>(L"GiantSword");
 
-	// Appear
-	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"pontiff_giantSword_teleportIN", L"texture\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportIN.png");
-	m_pAnimator->LoadAnimation(pTex, L"Appear", L"animdata\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportIN.txt");
-	m_pAnimator->SetAnimDuration(L"Appear", 0.06f);
-
 	// Vanish
-	pTex = CAssetMgr::GetInst()->LoadTexture(L"pontiff_giantSword_teleportOUT", L"texture\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportOUT.png");
-	m_pAnimator->LoadAnimation(pTex, L"Vanish", L"animdata\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportOUT.txt");
+	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"pontiff_giantSword_teleportIN", L"texture\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportIN.png");
+	m_pAnimator->LoadAnimation(pTex, L"Vanish", L"animdata\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportIN.txt");
 	m_pAnimator->SetAnimDuration(L"Vanish", 0.06f);
+
+	// Appear
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"pontiff_giantSword_teleportOUT", L"texture\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportOUT.png");
+	m_pAnimator->LoadAnimation(pTex, L"Appear", L"animdata\\Monster\\Boss\\Pontiff\\pontiff_giantSword_teleportOUT.txt");
+	m_pAnimator->SetAnimDuration(L"Appear", 0.06f);
 
 	// Idle
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"pontiff_giantSword", L"texture\\Monster\\Boss\\Pontiff\\pontiff_giantSword.png");
@@ -81,9 +81,15 @@ void CGiantSword::render(HDC _dc)
 
 void CGiantSword::OnHit()
 {
+	m_fHP -= 1.f;
 }
 
 void CGiantSword::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
+	if (_pOtherCol->GetName() == L"Penitent_HitBox" && m_pAI->GetCurState() != (UINT)GIANTSWORD::SPINATTACK)
+	{
+		OnHit();
+	}
+
 }
 

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CGiantSwordAppear.h"
 
+#include "CGiantSword.h"
+
 CGiantSwordAppear::CGiantSwordAppear()
 {
 }
@@ -25,6 +27,11 @@ void CGiantSwordAppear::Enter()
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
 
+	CGiantSword* pSword = dynamic_cast<CGiantSword*>(pOwner);
+
+	pSword->SetActive(false);
+
+	pSword->SetHP(10.f);
 
 	pAnimator->Play(L"Appear", false);
 

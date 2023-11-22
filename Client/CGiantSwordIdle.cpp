@@ -3,11 +3,15 @@
 
 #include "CPenitent.h"
 #include "CLevelMgr.h"
+#include "CGiantSword.h"
+
+#include "CKeyMgr.h"
 
 
 CGiantSwordIdle::CGiantSwordIdle()
 	: m_pTarget(nullptr)
 	, m_vVelocity(Vec2(0.f,0.f))
+	, m_bSpinReady(false)
 {
 }
 
@@ -18,10 +22,64 @@ CGiantSwordIdle::~CGiantSwordIdle()
 void CGiantSwordIdle::finaltick(float _DT)
 {
 	CObj* pOwner = GetOwnerObj;
+	CGiantSword* pSword = dynamic_cast<CGiantSword*>(pOwner);
+
 
 	Vec2 vPos = pOwner->GetPos();
 	Vec2 TargetPos = m_pTarget->GetPos();
 	float fAngle = pOwner->GetAngle();
+
+	if (pSword->GetHP()<0.f)
+	{
+		if (fAngle < 1.f && fAngle > -1.f)
+		{
+			GetOwnerSM()->ChangeState((UINT)GIANTSWORD::VANISH);
+		}
+		else
+		{
+			if (fAngle > 0.f)
+			{
+				fAngle = fAngle - 70.f * _DT;
+			}
+			else
+			{
+				fAngle = fAngle + 70.f * _DT;
+			}
+
+			pOwner->SetAngle(fAngle);
+
+		}
+		return;
+
+	}
+
+
+	// SpinReady
+	if (m_bSpinReady)
+	{
+		// Player가 오른쪽에 있는 경우
+		if (m_pTarget->GetPos().x - pOwner->GetPos().x > 0)
+		{
+			fAngle += 80.f * _DT;
+		}
+		// 왼쪽에 있는 경우
+		else
+		{
+			fAngle += -80.f * _DT;
+		}
+
+		pOwner->SetAngle(fAngle);
+
+		if (fabs(fAngle) > 90.f)
+		{
+			m_bSpinReady = false;
+			GetOwnerSM()->ChangeState((UINT)GIANTSWORD::SPINATTACK);
+		}
+
+
+		return;
+	}
+
 
 	// Player가 오른쪽에 있는 경우
 	if (m_pTarget->GetPos().x - pOwner->GetPos().x > 0)
@@ -76,6 +134,16 @@ void CGiantSwordIdle::finaltick(float _DT)
 	vPos = vPos + m_vVelocity * _DT;
 	pOwner->SetPos(vPos);
 
+	if (fAngle > 180.f)
+	{
+		fAngle = fAngle - 360.f;
+	}
+
+	if (fAngle < -180.f)
+	{
+		fAngle = fAngle + 360.f;
+	}
+
 	// 각도 수정
 	if (fabs(fAngle) > 30.f)
 	{
@@ -103,6 +171,13 @@ void CGiantSwordIdle::finaltick(float _DT)
 	vEyeDir = vEyeDir * 3.f;
 
 	pEye->FixAnimOffset(L"Idle", vEyeDir);
+
+
+	if (KEY_TAP(KEY::K))
+	{
+		m_bSpinReady = true;
+	}
+
 }
 
 void CGiantSwordIdle::Enter()

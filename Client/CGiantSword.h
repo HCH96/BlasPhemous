@@ -23,6 +23,7 @@ public:
     float GetHP() { return m_fHP; }
 	float GetActive() { return m_bActive; }
 
+	void SetHP(float _f) { m_fHP = _f; }
 	void SetActive(bool _b) { m_bActive = _b; }
 
 public:

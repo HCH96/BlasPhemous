@@ -9,6 +9,11 @@ private:
     CObj* m_pTarget;
     Vec2 m_vVelocity;
 
+    bool m_bSpinReady;
+
+
+public:
+    void Spin() { m_bSpinReady = true; }
 
 
 public:

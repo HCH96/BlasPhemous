@@ -170,6 +170,15 @@ void CStage02_3::init()
 
 	AddObject(LAYER::MONSTER, pSword);
 
+
+
+	// UI 
+	CPenitentUI* pPenitentUI = new CPenitentUI;
+	AddObject(LAYER::UI, pPenitentUI);
+
+	CTearsUI* pTearsUI = new CTearsUI;
+	AddObject(LAYER::UI, pTearsUI);
+
 }
 
 void CStage02_3::enter()
