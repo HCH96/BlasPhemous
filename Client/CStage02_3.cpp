@@ -17,6 +17,7 @@
 #include "CAshPlatform.h"
 
 #include "CGiantSword.h"
+#include "Pontiff.h"
 
 
 void CStage02_3::init()
@@ -163,13 +164,17 @@ void CStage02_3::init()
 	AddObject(LAYER::PLATFORM, pAshPlatform);
 
 
-	// Boss 
-	
-	CGiantSword* pSword = new CGiantSword;
-	pSword->SetPos(Vec2(1480.f, 775.f));
+	// Boss
+	Pontiff* pPontiff = new Pontiff;
+	pPontiff->SetPos(Vec2(1340.f, 1000.f));
+	AddObject(LAYER::STATIC_MONSTER, pPontiff);
 
+
+	CGiantSword* pSword = new CGiantSword;
+	pSword->SetPos(Vec2(1480.f, 275.f));
 	AddObject(LAYER::MONSTER, pSword);
 
+	pPontiff->RegisterSword(pSword);
 
 
 	// UI 

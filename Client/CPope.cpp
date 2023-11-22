@@ -165,7 +165,7 @@ CPope::CPope()
 	m_pSymbol->SetAnimOffset(L"MagicMissile", Vec2(40.f, -50.f));
 	m_pSymbol->SetAnimOffset(L"MagicMissile_L", Vec2(-40.f, -50.f));
 
-	// Purple -> MagicMissile
+	// Blue -> Lightning
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"pope_twistedOne_symbol_Blue", L"texture\\Monster\\Boss\\Pope\\pope_twistedOne_symbol_Blue.png");
 	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"pope_twistedOne_symbol_Blue_L", L"texture\\Monster\\Boss\\Pope\\pope_twistedOne_symbol_Blue.png");
 
