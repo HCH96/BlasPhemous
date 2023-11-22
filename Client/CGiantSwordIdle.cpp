@@ -29,6 +29,13 @@ void CGiantSwordIdle::finaltick(float _DT)
 	Vec2 TargetPos = m_pTarget->GetPos();
 	float fAngle = pOwner->GetAngle();
 
+	if (pSword->GetSpin())
+	{
+		m_bSpinReady = true;
+		pSword->SetSpin(false);
+	}
+
+
 	if (pSword->GetHP()<0.f)
 	{
 		if (fAngle < 1.f && fAngle > -1.f)

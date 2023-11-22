@@ -21,6 +21,8 @@ private:
 
 	bool m_bActive;
     float m_fHP;
+	
+	bool m_bIsSpin;
 
 public:
     float GetHP() { return m_fHP; }
@@ -28,6 +30,10 @@ public:
 	Pontiff* GetPontiff() { return m_pPontiff; }
 	void SetHP(float _f) { m_fHP = _f; }
 	void SetActive(bool _b) { m_bActive = _b; }
+	void Spin() { m_bIsSpin = true; }
+
+	bool GetSpin() { return m_bIsSpin; }
+	void SetSpin(bool _b) { m_bIsSpin = _b; }
 
 	void registerPontiff(Pontiff* _pPontiff) { m_pPontiff = _pPontiff; }
 

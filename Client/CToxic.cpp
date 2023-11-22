@@ -13,6 +13,7 @@ CToxic::CToxic()
 	, m_vDir(Vec2(1.f, 0.f))
 	, m_fAccel(3.f)
 	, m_fVelocity(10.f)
+	, m_fAcc(0.f)
 {
 	SetScale(Vec2(2.f, 2.f));
 
@@ -61,7 +62,7 @@ void CToxic::On(Vec2 _vPos)
 	SetDir(Vec2(1.f,0.f));
 
 	m_bIsOn = true;
-
+	m_fAcc = 0.f;
 
 
 	m_eState = TOXIC::SPAWN;
@@ -145,10 +146,15 @@ void CToxic::tick(float _DT)
 
 	}
 
+	if (m_fAcc > 5.f)
+		Off();
 }
 
 void CToxic::render(HDC _dc)
 {
+	if (!m_bIsOn)
+		return;
+
 	Super::render(_dc);
 }
 

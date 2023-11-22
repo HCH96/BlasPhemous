@@ -30,7 +30,7 @@ void CGiantSwordVanish::finaltick(float _DT)
 		pAnimator->Stop();
 	}
 
-	if (m_fDeadTime > 15.f && pPontiff->GetHP() > 0)
+	if (m_fDeadTime > 11.f && pPontiff->GetHP() > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)GIANTSWORD::APPEAR);
 	}

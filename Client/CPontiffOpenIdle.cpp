@@ -27,7 +27,7 @@ void CPontiffOpenIdle::finaltick(float _DT)
 	}
 
 	// Closing
-	if (m_fAcc > 15.f)
+	if (m_fAcc > 11.f)
 	{
 
 		GetOwnerSM()->ChangeState((UINT)PONTIFF::CLOSING);

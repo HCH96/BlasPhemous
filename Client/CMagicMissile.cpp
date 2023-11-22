@@ -10,6 +10,7 @@ CMagicMissile::CMagicMissile()
 	, m_fAccel(15.f)
 	, m_fVelocity(0.f)
 	, m_vDir(Vec2(1.f,0.f))
+	, m_fAcc(0.f)
 {
 	SetScale(Vec2(2.f, 2.f));
 
@@ -55,13 +56,14 @@ void CMagicMissile::On(Vec2 _vPos, Vec2 _vDir)
 
 	m_pAnimator->Play(L"Spawn", true);
 
-	m_pCollider->SetOffsetPos(Vec2(80.f, 0.f));
+	m_pCollider->SetOffsetPos(Vec2(80.f, 0.f).Rotate(GetAngle()));
 
 
 	m_pCollider->SetTime(7.f);
 	m_pCollider->On();
 
 	m_fVelocity = 0.f;
+	m_fAcc = 0.f;
 
 }
 
@@ -118,11 +120,18 @@ void CMagicMissile::tick(float _DT)
 
 	}
 
+	if (m_fAcc > 5.f)
+	{
+		Off();
+	}
 
 }
 
 void CMagicMissile::render(HDC _dc)
 {
+	if (!m_bIsOn)
+		return;
+
 	Super::render(_dc);
 }
 
@@ -133,7 +142,7 @@ void CMagicMissile::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollide
 	{
 		m_eState = MAGICMISSILE::IMPACT;
 
-		SetAngle(0.f);
+		//SetAngle(0.f);
 		m_pAnimator->Play(L"Impact", false);
 
 		// Collider Off

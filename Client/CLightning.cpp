@@ -95,6 +95,11 @@ void CLightning::tick(float _DT)
 
 void CLightning::render(HDC _dc)
 {
+	if (!m_bIsOn)
+	{
+		return;
+	}
+
 	Super::render(_dc);
 }
 

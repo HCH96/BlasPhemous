@@ -536,6 +536,27 @@
     <Filter Include="Game\08. State\Pontiff\Death">
       <UniqueIdentifier>{c1d59413-733e-4cb7-aa58-6fef896207fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Pattern">
+      <UniqueIdentifier>{71e7c90e-0e2d-4d85-a779-8bc22b4c2d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pattern\Toxic">
+      <UniqueIdentifier>{fd1db9e8-6db4-4b3e-8de2-bfec79f70043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pattern\MagicMissile">
+      <UniqueIdentifier>{ddf03461-33c2-4901-b2a7-82e1085bfaa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pattern\Firebolt">
+      <UniqueIdentifier>{26baec3d-6347-408a-8dad-4a07c29ca465}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pattern\Lightning">
+      <UniqueIdentifier>{3427feb1-879a-497d-b3d1-3598afa7cb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pattern\SpinAttack">
+      <UniqueIdentifier>{61b39da0-efe5-41c8-9eb1-e277d9916057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pattern\Idle">
+      <UniqueIdentifier>{4bf10b1e-bb43-4105-8e28-8704c21bc932}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1067,6 +1088,30 @@
     <ClInclude Include="CPontiffDeath.h">
       <Filter>Game\08. State\Pontiff\Death</Filter>
     </ClInclude>
+    <ClInclude Include="CPatternFirebolt.h">
+      <Filter>Game\08. State\Pattern\Firebolt</Filter>
+    </ClInclude>
+    <ClInclude Include="CPatternIdle.h">
+      <Filter>Game\08. State\Pattern\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CPatternLightning.h">
+      <Filter>Game\08. State\Pattern\Lightning</Filter>
+    </ClInclude>
+    <ClInclude Include="CPatternMagicMissile.h">
+      <Filter>Game\08. State\Pattern\MagicMissile</Filter>
+    </ClInclude>
+    <ClInclude Include="CPatternSpinAttack.h">
+      <Filter>Game\08. State\Pattern\SpinAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="CPatternToxic.h">
+      <Filter>Game\08. State\Pattern\Toxic</Filter>
+    </ClInclude>
+    <ClInclude Include="CMagicMissileSpawner2.h">
+      <Filter>Game\04. Object\skill\MagicMissile</Filter>
+    </ClInclude>
+    <ClInclude Include="CLightningSpawner2.h">
+      <Filter>Game\04. Object\skill\Lightning</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1592,6 +1637,30 @@
     </ClCompile>
     <ClCompile Include="CPontiffDeath.cpp">
       <Filter>Game\08. State\Pontiff\Death</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatternFirebolt.cpp">
+      <Filter>Game\08. State\Pattern\Firebolt</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatternIdle.cpp">
+      <Filter>Game\08. State\Pattern\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatternLightning.cpp">
+      <Filter>Game\08. State\Pattern\Lightning</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatternMagicMissile.cpp">
+      <Filter>Game\08. State\Pattern\MagicMissile</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatternSpinAttack.cpp">
+      <Filter>Game\08. State\Pattern\SpinAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="CPatternToxic.cpp">
+      <Filter>Game\08. State\Pattern\Toxic</Filter>
+    </ClCompile>
+    <ClCompile Include="CMagicMissileSpawner2.cpp">
+      <Filter>Game\04. Object\skill\MagicMissile</Filter>
+    </ClCompile>
+    <ClCompile Include="CLightningSpawner2.cpp">
+      <Filter>Game\04. Object\skill\Lightning</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

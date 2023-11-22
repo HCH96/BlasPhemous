@@ -70,6 +70,8 @@ CGiantSword::~CGiantSword()
 }
 
 
+
+
 void CGiantSword::tick(float _DT)
 {
 	Super::tick(_DT);

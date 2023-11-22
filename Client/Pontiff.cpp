@@ -9,6 +9,13 @@
 #include "CPontiffOpenIdle.h"
 #include "CPontiffOpening.h"
 
+#include "CPatternFirebolt.h"
+#include "CPatternIdle.h"
+#include "CPatternLightning.h"
+#include "CPatternMagicMissile.h"
+#include "CPatternSpinAttack.h"
+#include "CPatternToxic.h"
+
 
 Pontiff::Pontiff()
 	: m_pSword(nullptr)
@@ -159,7 +166,7 @@ Pontiff::Pontiff()
 
 
 	// AI
-	m_pAI = AddComponent<CStateMachine>(L"Pope");
+	m_pAI = AddComponent<CStateMachine>(L"Pontiff");
 
 	m_pAI->AddState((UINT)PONTIFF::OPENING, new CPontiffOpening);
 	m_pAI->AddState((UINT)PONTIFF::OPENIDLE, new CPontiffOpenIdle);
@@ -167,6 +174,23 @@ Pontiff::Pontiff()
 	m_pAI->AddState((UINT)PONTIFF::DEATH, new CPontiffDeath);
 
 	m_pAI->ChangeState((UINT)PONTIFF::CLOSING);
+
+
+	// Pattern
+	m_pPatternAI = AddComponent<CStateMachine>(L"Pattern");
+
+	m_pPatternAI->AddState((UINT)MAPPATTERN::IDLE, new CPatternIdle);
+	m_pPatternAI->AddState((UINT)MAPPATTERN::FIREBOLT, new CPatternFirebolt);
+	m_pPatternAI->AddState((UINT)MAPPATTERN::LIGHTNING, new CPatternLightning);
+	m_pPatternAI->AddState((UINT)MAPPATTERN::MAGICMISSILE, new CPatternMagicMissile);
+	m_pPatternAI->AddState((UINT)MAPPATTERN::SPINATTACK, new CPatternSpinAttack);
+	m_pPatternAI->AddState((UINT)MAPPATTERN::TOXIC, new CPatternToxic);
+
+
+
+	m_pAI->ChangeState((UINT)PONTIFF::CLOSING);
+	m_pPatternAI->ChangeState((UINT)MAPPATTERN::IDLE);
+
 
 	//m_pHelmet->Play(L"Idle", true);
 	//m_pBody->Play(L"Closing", true);
@@ -192,8 +216,6 @@ void Pontiff::tick(float _DT)
 
 void Pontiff::render(HDC _dc)
 {
-
-
 	Super::render(_dc);
 }
 
@@ -208,5 +230,4 @@ void Pontiff::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pO
 	{
 		OnHit();
 	}
-
 }

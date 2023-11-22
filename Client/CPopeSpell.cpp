@@ -32,7 +32,6 @@ void CPopeSpell::finaltick(float _DT)
 		CPope* pPope = dynamic_cast<CPope*>(pOwner);
 		
 
-
 		if (m_iSpellIdx == 0)
 		{
 			CFireboltSpawner* pSpawner = pPope->GetFireSpawner();
@@ -52,7 +51,7 @@ void CPopeSpell::finaltick(float _DT)
 		else if(m_iSpellIdx == 3)
 		{
 			CLightningSpawner* pSpawner = pPope->GetLightningSpawner();
-			pSpawner->On(Vec2(2250.f, 1740.f));
+			pSpawner->On(Vec2(2250.f, 1240.f));
 		}
 		else
 		{

@@ -194,6 +194,7 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="CLightning.h" />
     <ClInclude Include="CLightningSpawner.h" />
+    <ClInclude Include="CLightningSpawner2.h" />
     <ClInclude Include="CLionhead.h" />
     <ClInclude Include="CLionheadAttack.h" />
     <ClInclude Include="CLionheadDeath.h" />
@@ -203,6 +204,7 @@
     <ClInclude Include="CLogMgr.h" />
     <ClInclude Include="CMagicMissile.h" />
     <ClInclude Include="CMagicMissileSpawner.h" />
+    <ClInclude Include="CMagicMissileSpawner2.h" />
     <ClInclude Include="CMainMenuLevel.h" />
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CMovement.h" />
@@ -211,6 +213,12 @@
     <ClInclude Include="CObj.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="CPathMgr.h" />
+    <ClInclude Include="CPatternFirebolt.h" />
+    <ClInclude Include="CPatternIdle.h" />
+    <ClInclude Include="CPatternLightning.h" />
+    <ClInclude Include="CPatternMagicMissile.h" />
+    <ClInclude Include="CPatternSpinAttack.h" />
+    <ClInclude Include="CPatternToxic.h" />
     <ClInclude Include="CPenitent.h" />
     <ClInclude Include="CPenitentAttack.h" />
     <ClInclude Include="CPenitentCharging.h" />
@@ -372,6 +380,7 @@
     <ClCompile Include="CLevelMgr.cpp" />
     <ClCompile Include="CLightning.cpp" />
     <ClCompile Include="CLightningSpawner.cpp" />
+    <ClCompile Include="CLightningSpawner2.cpp" />
     <ClCompile Include="CLionhead.cpp" />
     <ClCompile Include="CLionheadAttack.cpp" />
     <ClCompile Include="CLionheadDeath.cpp" />
@@ -381,6 +390,7 @@
     <ClCompile Include="CLogMgr.cpp" />
     <ClCompile Include="CMagicMissile.cpp" />
     <ClCompile Include="CMagicMissileSpawner.cpp" />
+    <ClCompile Include="CMagicMissileSpawner2.cpp" />
     <ClCompile Include="CMainMenuLevel.cpp" />
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CMovement.cpp" />
@@ -388,6 +398,12 @@
     <ClCompile Include="CNormalMonTrace.cpp" />
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
+    <ClCompile Include="CPatternFirebolt.cpp" />
+    <ClCompile Include="CPatternIdle.cpp" />
+    <ClCompile Include="CPatternLightning.cpp" />
+    <ClCompile Include="CPatternMagicMissile.cpp" />
+    <ClCompile Include="CPatternSpinAttack.cpp" />
+    <ClCompile Include="CPatternToxic.cpp" />
     <ClCompile Include="CPenitent.cpp" />
     <ClCompile Include="CPenitentAttack.cpp" />
     <ClCompile Include="CPenitentCharging.cpp" />

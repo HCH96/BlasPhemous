@@ -16,6 +16,7 @@ CFirebolt::CFirebolt()
 	, m_fVelocity(0.f)
 	, m_bIsOn(false)
 	, m_eState(FIREBOLT::SPAWN)
+	, m_fAcc(0.f)
 {
 	SetScale(Vec2(2.f, 2.f));
 
@@ -78,6 +79,7 @@ void CFirebolt::On(Vec2 _vPos, Vec2 _vDir)
 	m_pCollider->On();
 
 	m_fVelocity = 0.f;
+	m_fAcc = 0.f;
 }
 
 void CFirebolt::Off()
@@ -154,20 +156,26 @@ void CFirebolt::tick(float _DT)
 		default:
 			break;
 		}
-
-
 	}
 
+	if (m_fAcc > 5.f)
+		Off();
 }
 
 void CFirebolt::render(HDC _dc)
 {
+	if (!m_bIsOn)
+		return;
+
 	Super::render(_dc);
 }
 
 void CFirebolt::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
-	if (_pOtherObj->GetLayerIdx() == (UINT)LAYER::PLATFORM)
+	if (_pOtherCol->GetName() == L"AshPlatform")
+		return;
+
+	if (_pOtherObj->GetLayerIdx() == (UINT)LAYER::PLATFORM )
 	{
 		m_eState = FIREBOLT::IMPACT;
 		m_pAnimator->Play(L"Impact", false);

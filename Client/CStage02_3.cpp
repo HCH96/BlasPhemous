@@ -19,6 +19,18 @@
 #include "CGiantSword.h"
 #include "Pontiff.h"
 
+#include "CToxic.h"
+#include "CToxicSpawner.h"
+
+#include "CFirebolt.h"
+#include "CFireboltSpawner.h"
+
+#include "CMagicMissile.h"
+#include "CMagicMissileSpawner2.h"
+
+#include "CLightning.h"
+#include "CLightningSpawner2.h"
+
 
 void CStage02_3::init()
 {
@@ -164,6 +176,28 @@ void CStage02_3::init()
 	AddObject(LAYER::PLATFORM, pAshPlatform);
 
 
+	pAshPlatform = new CAshPlatform;
+	pAshPlatform->SetPos(Vec2(1200.f, 575.f));
+	pAshPlatform->SetAcc(6.f);
+	AddObject(LAYER::PLATFORM, pAshPlatform);
+
+	pAshPlatform = new CAshPlatform;
+	pAshPlatform->SetPos(Vec2(1480.f, 575.f));
+	pAshPlatform->SetAcc(6.f);
+	AddObject(LAYER::PLATFORM, pAshPlatform);
+
+
+	pAshPlatform = new CAshPlatform;
+	pAshPlatform->SetPos(Vec2(1620.f, 500.f));
+	pAshPlatform->SetAcc(6.f);
+	AddObject(LAYER::PLATFORM, pAshPlatform);
+
+	pAshPlatform = new CAshPlatform;
+	pAshPlatform->SetPos(Vec2(1060.f, 500.f));
+	pAshPlatform->SetAcc(6.f);
+	AddObject(LAYER::PLATFORM, pAshPlatform);
+
+
 	// Boss
 	Pontiff* pPontiff = new Pontiff;
 	pPontiff->SetPos(Vec2(1340.f, 1000.f));
@@ -171,8 +205,241 @@ void CStage02_3::init()
 
 
 	CGiantSword* pSword = new CGiantSword;
-	pSword->SetPos(Vec2(1480.f, 275.f));
+	pSword->SetPos(Vec2(1480.f, 850.f));
 	AddObject(LAYER::MONSTER, pSword);
+
+	// Pattern
+
+	// Toxic
+	CToxicSpawner* pToxicSpawner = new CToxicSpawner;
+	AddObject(LAYER::SPAWNER, pToxicSpawner);
+	pPontiff->RegisterToxicSpawner(pToxicSpawner);
+
+	CToxic* pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	pToxic = new CToxic;
+	pToxicSpawner->AddToxic(pToxic);
+	AddObject(LAYER::PROJECTILE, pToxic);
+
+	// Firebolt 1
+	CFireboltSpawner* pFireSpawner = new CFireboltSpawner;
+	AddObject(LAYER::SPAWNER, pFireSpawner);
+	pPontiff->RegisterFireSpawner(pFireSpawner);
+
+
+	CFirebolt* pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+
+	// Firebolt 2
+	pFireSpawner = new CFireboltSpawner;
+	AddObject(LAYER::SPAWNER, pFireSpawner);
+	pPontiff->RegisterFireSpawner(pFireSpawner);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+
+	// Firebolt 3
+	pFireSpawner = new CFireboltSpawner;
+	AddObject(LAYER::SPAWNER, pFireSpawner);
+	pPontiff->RegisterFireSpawner(pFireSpawner);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+
+	// Firebolt 4
+	pFireSpawner = new CFireboltSpawner;
+	AddObject(LAYER::SPAWNER, pFireSpawner);
+	pPontiff->RegisterFireSpawner(pFireSpawner);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+
+	// Firebolt 5
+	pFireSpawner = new CFireboltSpawner;
+	AddObject(LAYER::SPAWNER, pFireSpawner);
+	pPontiff->RegisterFireSpawner(pFireSpawner);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+
+	// Firebolt 6
+	pFireSpawner = new CFireboltSpawner;
+	AddObject(LAYER::SPAWNER, pFireSpawner);
+	pPontiff->RegisterFireSpawner(pFireSpawner);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	// MagicMissile 1
+	CMagicMissileSpawner2* pMagicMissileSpawner = new CMagicMissileSpawner2;
+	AddObject(LAYER::SPAWNER, pMagicMissileSpawner);
+	pPontiff->RegisterMagicSpawner(pMagicMissileSpawner);
+
+	CMagicMissile* pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	// MagicMissile 1
+	pMagicMissileSpawner = new CMagicMissileSpawner2;
+	AddObject(LAYER::SPAWNER, pMagicMissileSpawner);
+	pPontiff->RegisterMagicSpawner(pMagicMissileSpawner);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	pMagicMissile = new CMagicMissile;
+	pMagicMissileSpawner->AddMagicMissile(pMagicMissile);
+	AddObject(LAYER::PROJECTILE, pMagicMissile);
+
+	// Lightning
+	CLightningSpawner2* pLightningSpawner = new CLightningSpawner2;
+	AddObject(LAYER::SPAWNER, pLightningSpawner);
+	pPontiff->RegisterLightningSpawner(pLightningSpawner);
+
+	CLightning* pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+
+
 
 
 	// Register 

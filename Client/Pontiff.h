@@ -3,9 +3,9 @@
 
 class CGiantSword;
 class CFireboltSpawner;
-class CMagicMissileSpawner;
+class CMagicMissileSpawner2;
 class CToxicSpawner;
-class CLightningSpawner;
+class CLightningSpawner2;
 
 
 class Pontiff :
@@ -31,9 +31,9 @@ public:
     CCollider* m_pCollider;
 
     CToxicSpawner* m_pToxicSpawner;
-    CLightningSpawner* m_pLightningSpawner;
+    CLightningSpawner2* m_pLightningSpawner;
     vector<CFireboltSpawner*> m_vecFireboltSpawner;
-    vector<CMagicMissileSpawner*> m_vecMagicMissileSpawner;
+    vector<CMagicMissileSpawner2*> m_vecMagicMissileSpawner;
 
 
 
@@ -42,9 +42,9 @@ public:
 
     void RegisterSword(CGiantSword* _pSword) { m_pSword = _pSword; }
 	void RegisterFireSpawner(CFireboltSpawner* _pSpawner) { m_vecFireboltSpawner.push_back(_pSpawner); }
-	void RegisterMagicSpawner(CMagicMissileSpawner* _pSpawner) { m_vecMagicMissileSpawner.push_back(_pSpawner); }
+	void RegisterMagicSpawner(CMagicMissileSpawner2* _pSpawner) { m_vecMagicMissileSpawner.push_back(_pSpawner); }
 	void RegisterToxicSpawner(CToxicSpawner* _pSpawner) { m_pToxicSpawner = _pSpawner; }
-	void RegisterLightningSpawner(CLightningSpawner* _pSpawner) { m_pLightningSpawner = _pSpawner; }
+	void RegisterLightningSpawner(CLightningSpawner2* _pSpawner) { m_pLightningSpawner = _pSpawner; }
 
 public:
 	virtual void tick(float _DT) override;

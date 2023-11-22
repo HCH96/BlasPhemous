@@ -24,6 +24,8 @@ private:
     bool m_bIsOn;
     Vec2 m_vDir;
 
+    float m_fAcc;
+
 
 public:
     void On(Vec2 _vPos);

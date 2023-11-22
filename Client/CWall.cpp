@@ -34,6 +34,11 @@ void CWall::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 	if (_OtherObj->GetName() == L"GiantSword")
 		return;
 
+	if (_OtherObj->GetLayerIdx() == (UINT)LAYER::PROJECTILE)
+		return;
+
+
+
 	
 	Vec2 vPos = _OwnCol->GetPos();
 	Vec2 vObjPos = _OtherObj->GetPos();
