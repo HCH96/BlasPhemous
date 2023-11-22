@@ -64,7 +64,7 @@ Pontiff::Pontiff()
 	// Idle
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"pontiff_idle_torso", L"texture\\Monster\\Boss\\Pontiff\\pontiff_idle_torso.png");
 	m_pBody->LoadAnimation(pTex, L"Idle", L"animdata\\Monster\\Boss\\Pontiff\\pontiff_idle_torso.txt");
-	m_pBody->SetAnimDuration(L"Idle", 0.1);
+	m_pBody->SetAnimDuration(L"Idle", 0.1f);
 
 	// Closing
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"pontiff_closing_torso", L"texture\\Monster\\Boss\\Pontiff\\pontiff_closing_torso.png");

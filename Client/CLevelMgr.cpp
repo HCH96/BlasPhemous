@@ -87,14 +87,19 @@ void CLevelMgr::init()
 	//penitences-altar-off
 
 	// 레벨 초기화
-	for (UINT i = 0; i < (UINT)LEVEL_TYPE::END; ++i)
-	{
-		m_arrLevels[i]->init();
-	}
+	//for (UINT i = 0; i < (UINT)LEVEL_TYPE::END; ++i)
+	//{
+	//	m_arrLevels[i]->init();
+	//}
+	
+
+	m_arrLevels[(UINT)LEVEL_TYPE::TITLE_LEVEL]->init();
+	m_arrLevels[(UINT)LEVEL_TYPE::MAINMENU_LEVEL]->init();
+	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_1]->init();
 
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::STAGE02_3);
+	ChangeLevel(LEVEL_TYPE::TITLE_LEVEL);
 }
 
 void CLevelMgr::tick()

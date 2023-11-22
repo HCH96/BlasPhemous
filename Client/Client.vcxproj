@@ -206,7 +206,6 @@
     <ClInclude Include="CMagicMissileSpawner.h" />
     <ClInclude Include="CMagicMissileSpawner2.h" />
     <ClInclude Include="CMainMenuLevel.h" />
-    <ClInclude Include="CMonster.h" />
     <ClInclude Include="CMovement.h" />
     <ClInclude Include="CNormalMonIdle.h" />
     <ClInclude Include="CNormalMonTrace.h" />
@@ -274,10 +273,6 @@
     <ClInclude Include="CPopeSpell.h" />
     <ClInclude Include="CPopeVanish.h" />
     <ClInclude Include="CPriedieu.h" />
-    <ClInclude Include="CProjectile.h" />
-    <ClInclude Include="CProjectile1.h" />
-    <ClInclude Include="CProjectile2.h" />
-    <ClInclude Include="CProjectile3.h" />
     <ClInclude Include="CRayBeam.h" />
     <ClInclude Include="CSelectBtn.h" />
     <ClInclude Include="CShieldMaiden.h" />
@@ -392,7 +387,6 @@
     <ClCompile Include="CMagicMissileSpawner.cpp" />
     <ClCompile Include="CMagicMissileSpawner2.cpp" />
     <ClCompile Include="CMainMenuLevel.cpp" />
-    <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CMovement.cpp" />
     <ClCompile Include="CNormalMonIdle.cpp" />
     <ClCompile Include="CNormalMonTrace.cpp" />
@@ -459,10 +453,6 @@
     <ClCompile Include="CPopeSpell.cpp" />
     <ClCompile Include="CPopeVanish.cpp" />
     <ClCompile Include="CPriedieu.cpp" />
-    <ClCompile Include="CProjectile.cpp" />
-    <ClCompile Include="CProjectile1.cpp" />
-    <ClCompile Include="CProjectile2.cpp" />
-    <ClCompile Include="CProjectile3.cpp" />
     <ClCompile Include="CRayBeam.cpp" />
     <ClCompile Include="CSelectBtn.cpp" />
     <ClCompile Include="CShieldMaiden.cpp" />

@@ -46,9 +46,7 @@ enum class LAYER
 	MONSTER,
 	PLAYER,
 
-	PLAYER_PJ,
 	FOREGROUND,
-
 	LADDER,
 
 	SPAWNER,

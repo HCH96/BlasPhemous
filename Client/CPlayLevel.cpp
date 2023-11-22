@@ -12,7 +12,6 @@
 #include "CPlatform.h"
 #include "CWall.h"
 #include "CLedge.h"
-#include "CMonster.h"
 #include "CPenitent.h"
 #include "CLadder.h"
 

@@ -6,7 +6,7 @@
 CSound::CSound()
 	: m_pSoundBuffer(nullptr)
 	, m_tBuffInfo{}
-	, m_iVolume(0)
+	, m_iVolume(50)
 {
 }
 
@@ -106,6 +106,15 @@ bool CSound::LoadWaveSound(const wstring& _strPath)
 
 void CSound::Play(bool _bLoop)
 {
+	//DWORD dwPlay, dwWrite;
+	//HRESULT hr = m_pSoundBuffer->GetCurrentPosition(&dwPlay, &dwWrite);
+
+	//if (dwPlay != 0)
+	//{
+	//	return;
+	//}
+
+
 	m_pSoundBuffer->SetCurrentPosition(0);
 
 	if (_bLoop)

@@ -108,6 +108,9 @@ void CStage01_1::init()
 	AddObject(LAYER::UI, pTearsUI);
 
 
+	// Sound Load
+	CAssetMgr::GetInst()->LoadSound(L"Brotherhood_Ambient", L"sound\\BGM\\Brotherhood_Ambient.wav");
+
 }
 
 void CStage01_1::enter()
@@ -138,6 +141,11 @@ void CStage01_1::enter()
 	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
 	CCamera::GetInst()->SetCameraLimitLT(Vec2(0.f * 2.f, 0.f * 2.f));
 	CCamera::GetInst()->SetCameraLimit(Vec2(1920.f * 2.f, 1027.f * 2.f));
+
+	// Sound 
+	CSound* pBGM = CAssetMgr::GetInst()->LoadSound(L"Brotherhood_Ambient", L"sound\\BGM\\Brotherhood_Ambient.wav");
+	pBGM->PlayToBGM(true);
+
 }
 
 void CStage01_1::exit()

@@ -31,6 +31,8 @@ void CPenitentAttack::finaltick(float _DT)
 	// Attack 1 ( 0 Frame ~ 7 Frame )
 	if (iCurFrame >= 0 && iCurFrame <= 8)
 	{
+		
+
 		if (iCurFrame >= 3 && iCurFrame < 8)
 		{
 			if (KEY_TAP(KEY::S))

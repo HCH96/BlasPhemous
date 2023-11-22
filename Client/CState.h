@@ -10,7 +10,6 @@
 #include "CLevelMgr.h"
 #include "CLevel.h"
 
-#include "CMonster.h"
 
 #include "CPenitent.h"
 

@@ -575,8 +575,8 @@ void CAnim::render(HDC _dc)
 		blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
 		AlphaBlend(_dc
-			, -int(vSize.x / 2.f) + vOffset.x
-			, -int(vSize.y / 2.f) + vOffset.y
+			, -int(vSize.x / 2.f) + (int)vOffset.x
+			, -int(vSize.y / 2.f) + (int)vOffset.y
 			, int(vSize.x)
 			, int(vSize.y)
 			, m_pAtlas->GetDC()

@@ -126,6 +126,11 @@ void CMainMenuLevel::init()
 	m_arrBtn[m_iCur]->SetSelect(true);
 	ChangeCursorImg();
 
+
+	// Sound
+	CAssetMgr::GetInst()->LoadSound(L"", L"sound\\Effect\\EQUIP_BEAD.wav");
+	CAssetMgr::GetInst()->LoadSound(L"", L"sound\\Effect\\EQUIP_ITEM.wav");
+
 }
 
 void CMainMenuLevel::enter()
@@ -148,8 +153,12 @@ void CMainMenuLevel::exit()
 
 void CMainMenuLevel::tick()
 {
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"", L"sound\\Effect\\EQUIP_BEAD.wav");
+	CSound* pEnter = CAssetMgr::GetInst()->LoadSound(L"", L"sound\\Effect\\EQUIP_ITEM.wav");
 	if (KEY_TAP(KEY::DOWN))
 	{
+		pSound->Play();
+
 		m_arrBtn[m_iCur]->SetSelect(false);
 		++m_iCur;
 		if (m_iCur >= (UINT)MAIN_MENU::END)
@@ -162,6 +171,7 @@ void CMainMenuLevel::tick()
 
 	if (KEY_TAP(KEY::UP))
 	{
+		pSound->Play();
 		m_arrBtn[m_iCur]->SetSelect(false);
 		--m_iCur;
 		if (m_iCur < 0)
@@ -174,6 +184,7 @@ void CMainMenuLevel::tick()
 
 	if (KEY_TAP(KEY::ENTER))
 	{
+		pEnter->Play();
 		CSelectBtn* pBtn = m_arrBtn[m_iCur];
 		pBtn->Select();
 	}

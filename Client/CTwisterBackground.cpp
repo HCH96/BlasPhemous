@@ -72,14 +72,14 @@ void CTwisterBackground::render(HDC _dc)
 	blend.BlendOp = AC_SRC_OVER;
 	blend.BlendFlags = 0;
 
-	blend.SourceConstantAlpha = m_fAlpha; // 0 ~ 255
+	blend.SourceConstantAlpha = (int)m_fAlpha; // 0 ~ 255
 	blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
 	AlphaBlend(_dc 
 		, 0 , 0
 		, 1280, 720
 		, m_pTex->GetDC()
-		, vPos.x, 0
+		, (int)vPos.x, 0
 		, 160, 640
 		, blend);
 

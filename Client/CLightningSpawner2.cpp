@@ -62,11 +62,11 @@ void CLightningSpawner2::tick(float _DT)
 			Vec2 vPos = GetPos();
 			if (m_bDir)
 			{
-				vPos += Vec2(120.f, 0.f) * m_iCurLightning;
+				vPos += Vec2(120.f, 0.f) * (float)m_iCurLightning;
 			}
 			else
 			{
-				vPos += Vec2(-120.f, 0.f) * m_iCurLightning;
+				vPos += Vec2(-120.f, 0.f) * (float)m_iCurLightning;
 			}
 
 			m_vecLightning[m_iCurLightning]->On(vPos);

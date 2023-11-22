@@ -57,12 +57,16 @@ void CTitleLevel::init()
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::PROJECTILE, LAYER::PLATFORM);
 
 
-	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER_PJ, LAYER::MONSTER);
-
 }
 
 void CTitleLevel::enter()
 {
+	// Sound ¼³Á¤ 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Relic", L"sound\\KeyEvents\\Relic.wav");
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"Bridge", L"sound\\BGM\\Bridge.wav");
+	pSound->PlayToBGM(true);
+
 }
 
 void CTitleLevel::exit()
@@ -73,6 +77,9 @@ void CTitleLevel::tick()
 {
 	if (KEY_TAP(KEY::ENTER))
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Relic", L"sound\\KeyEvents\\Relic.wav");
+		pSound->Play();
+
 		CCamera::GetInst()->FadeOut(1.f, LEVEL_TYPE::MAINMENU_LEVEL);
 	}
 

@@ -142,7 +142,7 @@ float VecToRadian(Vec2 _vDir)
 
 float RadiansToDegrees(float radians)
 {
-	return radians * (180.0 / M_PI);
+	return float(radians * (180.0f / M_PI));
 }
 
 

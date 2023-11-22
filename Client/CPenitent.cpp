@@ -267,7 +267,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 		OnHit();
 	}
 
-	if (_pOtherCol->GetName() == L"Pontiff")
+	if (_pOtherCol->GetName() == L"Pontiff" && _pOwnCol->GetName() == L"Penitent_HitBox")
 	{
 		OnHit();
 	}

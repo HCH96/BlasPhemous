@@ -31,6 +31,8 @@
 #include "CLightning.h"
 #include "CLightningSpawner2.h"
 
+#include "CBossPanel.h"
+
 
 void CStage02_3::init()
 {
@@ -445,6 +447,11 @@ void CStage02_3::init()
 	// Register 
 	pPontiff->RegisterSword(pSword);
 	pSword->registerPontiff(pPontiff);
+
+	RegisterBoss(pPontiff);
+
+	CBossPanel* pBossPanel = new CBossPanel;
+	AddObject(LAYER::UI, pBossPanel);
 
 
 	// UI 
