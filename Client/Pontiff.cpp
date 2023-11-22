@@ -4,6 +4,11 @@
 #include "CAssetMgr.h"
 #include "CTexture.h"
 
+#include "CPontiffClosing.h"
+#include "CPontiffDeath.h"
+#include "CPontiffOpenIdle.h"
+#include "CPontiffOpening.h"
+
 
 Pontiff::Pontiff()
 	: m_pSword(nullptr)
@@ -12,7 +17,7 @@ Pontiff::Pontiff()
 	, m_pBody(nullptr)
 	, m_pSymbolLeft(nullptr)
 	, m_pSymbolRight(nullptr)
-	, m_pColldier(nullptr)
+	, m_pCollider(nullptr)
 	, m_pPatternAI(nullptr)
 	, m_pAI(nullptr)
 	, m_fHP(10.f)
@@ -147,14 +152,28 @@ Pontiff::Pontiff()
 
 
 
+	// Colldier
+	m_pCollider = AddComponent<CCollider>(L"Pontiff");
+	m_pCollider->SetScale(Vec2(130.f, 120.f));
+	m_pCollider->SetOffsetPos(Vec2(-20.f, -570.f));
 
 
-	m_pHelmet->Play(L"Closing", true);
-	m_pBody->Play(L"Closing", true);
-	//m_pFace->Stop();
+	// AI
+	m_pAI = AddComponent<CStateMachine>(L"Pope");
 
-	m_pSymbolLeft->Play(L"Firebolt", false);
-	m_pSymbolRight->Play(L"Firebolt", false);
+	m_pAI->AddState((UINT)PONTIFF::OPENING, new CPontiffOpening);
+	m_pAI->AddState((UINT)PONTIFF::OPENIDLE, new CPontiffOpenIdle);
+	m_pAI->AddState((UINT)PONTIFF::CLOSING, new CPontiffClosing);
+	m_pAI->AddState((UINT)PONTIFF::DEATH, new CPontiffDeath);
+
+	m_pAI->ChangeState((UINT)PONTIFF::CLOSING);
+
+	//m_pHelmet->Play(L"Idle", true);
+	//m_pBody->Play(L"Closing", true);
+	////m_pFace->Stop();
+
+	//m_pSymbolLeft->Play(L"Firebolt", false);
+	//m_pSymbolRight->Play(L"Firebolt", false);
 
 
 
@@ -180,8 +199,14 @@ void Pontiff::render(HDC _dc)
 
 void Pontiff::OnHit()
 {
+	m_fHP -= 1.f;
 }
 
 void Pontiff::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
+	if (_pOtherCol->GetName() == L"Penitent_HitBox")
+	{
+		OnHit();
+	}
+
 }

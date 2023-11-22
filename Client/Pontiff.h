@@ -14,23 +14,22 @@ class Pontiff :
     GENERATED_OBJECT(CObj);
 
 private:
-    CGiantSword* m_pSword;
-
-    CAnimator* m_pHelmet;
-    CAnimator* m_pFace;
-    CAnimator* m_pBody;
-    CAnimator* m_pSymbolLeft;
-    CAnimator* m_pSymbolRight;
-
-
-    CCollider* m_pColldier;
     
+
     CStateMachine* m_pPatternAI;
     CStateMachine* m_pAI;
     float       m_fHP;
 
 
 public:
+    CGiantSword* m_pSword;
+    CAnimator* m_pHelmet;
+    CAnimator* m_pFace;
+    CAnimator* m_pBody;
+    CAnimator* m_pSymbolLeft;
+    CAnimator* m_pSymbolRight;
+    CCollider* m_pCollider;
+
     CToxicSpawner* m_pToxicSpawner;
     CLightningSpawner* m_pLightningSpawner;
     vector<CFireboltSpawner*> m_vecFireboltSpawner;

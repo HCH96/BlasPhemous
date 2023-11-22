@@ -174,7 +174,10 @@ void CStage02_3::init()
 	pSword->SetPos(Vec2(1480.f, 275.f));
 	AddObject(LAYER::MONSTER, pSword);
 
+
+	// Register 
 	pPontiff->RegisterSword(pSword);
+	pSword->registerPontiff(pPontiff);
 
 
 	// UI 

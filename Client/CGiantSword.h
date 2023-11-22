@@ -3,6 +3,7 @@
 
 class CAnimator;
 class CStatemachine;
+class Pontiff;
 
 class CGiantSword :
     public CObj
@@ -16,15 +17,19 @@ private:
 
     CStateMachine* m_pAI;
 
+	Pontiff* m_pPontiff;
+
 	bool m_bActive;
     float m_fHP;
 
 public:
     float GetHP() { return m_fHP; }
 	float GetActive() { return m_bActive; }
-
+	Pontiff* GetPontiff() { return m_pPontiff; }
 	void SetHP(float _f) { m_fHP = _f; }
 	void SetActive(bool _b) { m_bActive = _b; }
+
+	void registerPontiff(Pontiff* _pPontiff) { m_pPontiff = _pPontiff; }
 
 public:
 	virtual void tick(float _DT) override;

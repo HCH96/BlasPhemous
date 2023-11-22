@@ -1,0 +1,37 @@
+#include "pch.h"
+#include "CPontiffDeath.h"
+
+#include "Pontiff.h"
+#include "CGiantSword.h"
+
+
+CPontiffDeath::CPontiffDeath()
+{
+}
+
+CPontiffDeath::~CPontiffDeath()
+{
+}
+
+void CPontiffDeath::finaltick(float _DT)
+{
+
+
+}
+
+void CPontiffDeath::Enter()
+{
+	CObj* pOwner = GetOwnerObj;
+	Pontiff* pPontiff = dynamic_cast<Pontiff*>(pOwner);
+
+	pPontiff->m_pBody->Play(L"Closing", false);
+	pPontiff->m_pHelmet->Play(L"Closing", false);
+	pPontiff->m_pFace->Play(L"Death", false);
+
+	pPontiff->m_pCollider->SetTime(0.f);
+}
+
+void CPontiffDeath::Exit()
+{
+}
+

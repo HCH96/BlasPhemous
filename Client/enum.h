@@ -254,3 +254,11 @@ enum class GIANTSWORD
 	SPINATTACK,
 	VANISH,
 };
+
+enum class PONTIFF
+{
+	OPENING,
+	OPENIDLE,
+	CLOSING,
+	DEATH,
+};

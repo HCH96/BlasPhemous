@@ -16,6 +16,7 @@ CGiantSword::CGiantSword()
 	, m_pEye(nullptr)
 	, m_fHP(10.f)
 	, m_pCollider(nullptr)
+	, m_bActive(true)
 {
 	SetName(L"GiantSword");
 

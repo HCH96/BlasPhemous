@@ -521,6 +521,21 @@
     <Filter Include="Game\08. State\GaintSword\SpinAttack">
       <UniqueIdentifier>{f784da9e-c3bf-421a-97b4-b987496865e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Pontiff">
+      <UniqueIdentifier>{0ae4999a-f3e1-48b7-83de-5abc37512508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pontiff\Opening">
+      <UniqueIdentifier>{9f1ad87b-a82f-4d06-a1e1-e8e4c1a86063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pontiff\OpenIdle">
+      <UniqueIdentifier>{393d12a0-6cb9-46ea-9bd7-5b2e8bd0fe8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pontiff\Closing">
+      <UniqueIdentifier>{01cffbb4-1e79-42ec-84ec-40eac508cf96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pontiff\Death">
+      <UniqueIdentifier>{c1d59413-733e-4cb7-aa58-6fef896207fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1040,6 +1055,18 @@
     <ClInclude Include="Pontiff.h">
       <Filter>Game\04. Object\Monster\Boss\Pontiff</Filter>
     </ClInclude>
+    <ClInclude Include="CPontiffOpening.h">
+      <Filter>Game\08. State\Pontiff\Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="CPontiffClosing.h">
+      <Filter>Game\08. State\Pontiff\Closing</Filter>
+    </ClInclude>
+    <ClInclude Include="CPontiffOpenIdle.h">
+      <Filter>Game\08. State\Pontiff\OpenIdle</Filter>
+    </ClInclude>
+    <ClInclude Include="CPontiffDeath.h">
+      <Filter>Game\08. State\Pontiff\Death</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1553,6 +1580,18 @@
     </ClCompile>
     <ClCompile Include="Pontiff.cpp">
       <Filter>Game\04. Object\Monster\Boss\Pontiff</Filter>
+    </ClCompile>
+    <ClCompile Include="CPontiffOpening.cpp">
+      <Filter>Game\08. State\Pontiff\Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="CPontiffClosing.cpp">
+      <Filter>Game\08. State\Pontiff\Closing</Filter>
+    </ClCompile>
+    <ClCompile Include="CPontiffOpenIdle.cpp">
+      <Filter>Game\08. State\Pontiff\OpenIdle</Filter>
+    </ClCompile>
+    <ClCompile Include="CPontiffDeath.cpp">
+      <Filter>Game\08. State\Pontiff\Death</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

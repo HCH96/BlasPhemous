@@ -267,6 +267,11 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 		OnHit();
 	}
 
+	if (_pOtherCol->GetName() == L"Pontiff")
+	{
+		OnHit();
+	}
+
 	// ÇÇ°Ý
 	if (_pOwnCol->GetName() == L"Penitent_Collider" && (_pOtherObj->GetLayerIdx() == (UINT)LAYER::PROJECTILE || _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER || _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER_PJ) && !m_bIsHit)
 	{

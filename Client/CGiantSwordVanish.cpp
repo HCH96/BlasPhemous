@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "CGiantSwordVanish.h"
 
+#include "Pontiff.h"
 #include "CGiantSword.h"
+#include "Pontiff.h"
+
 
 CGiantSwordVanish::CGiantSwordVanish()
 	: m_fDeadTime(0.f)
@@ -17,6 +20,9 @@ void CGiantSwordVanish::finaltick(float _DT)
 {
 	m_fDeadTime += _DT;
 	CObj* pOwner = GetOwnerObj;
+	CGiantSword* pSword = dynamic_cast<CGiantSword*>(pOwner);
+	Pontiff* pPontiff = pSword->GetPontiff();
+
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
 
 	if (pAnimator->IsFinish())
@@ -24,7 +30,7 @@ void CGiantSwordVanish::finaltick(float _DT)
 		pAnimator->Stop();
 	}
 
-	if (m_fDeadTime > 20.f)
+	if (m_fDeadTime > 15.f && pPontiff->GetHP() > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)GIANTSWORD::APPEAR);
 	}

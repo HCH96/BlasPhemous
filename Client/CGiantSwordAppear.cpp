@@ -29,7 +29,7 @@ void CGiantSwordAppear::Enter()
 
 	CGiantSword* pSword = dynamic_cast<CGiantSword*>(pOwner);
 
-	pSword->SetActive(false);
+	pSword->SetActive(true);
 
 	pSword->SetHP(10.f);
 
