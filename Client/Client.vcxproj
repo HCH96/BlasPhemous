@@ -252,6 +252,7 @@
     <ClInclude Include="CPenitentPraying.h" />
     <ClInclude Include="CPenitentPrayStart.h" />
     <ClInclude Include="CPenitentPushBack.h" />
+    <ClInclude Include="CPenitentRespawn.h" />
     <ClInclude Include="CPenitentRising.h" />
     <ClInclude Include="CPenitentStanding.h" />
     <ClInclude Include="CPenitentStopRun.h" />
@@ -432,6 +433,7 @@
     <ClCompile Include="CPenitentPraying.cpp" />
     <ClCompile Include="CPenitentPrayStart.cpp" />
     <ClCompile Include="CPenitentPushBack.cpp" />
+    <ClCompile Include="CPenitentRespawn.cpp" />
     <ClCompile Include="CPenitentRising.cpp" />
     <ClCompile Include="CPenitentStanding.cpp" />
     <ClCompile Include="CPenitentStopRun.cpp" />

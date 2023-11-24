@@ -124,7 +124,7 @@ void CStage01_3::enter()
 
 	if (pPenitent->GetState() == (UINT)PENITENT_STATE::NONE)
 	{
-		pPenitent->SetState(PENITENT_STATE::IDLE);
+		pPenitent->SetState(PENITENT_STATE::RESPAWN);
 		pPenitent->SetPos(Vec2(1816.f, 1160.f));
 	}
 	else if ((UINT)LEVEL_TYPE::STAGE01_2 == CLevelMgr::GetInst()->GetPrevLevel())

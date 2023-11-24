@@ -51,6 +51,7 @@
 #include "CPenitentParry.h"
 #include "CPenitentParryCounter.h"
 #include "CPenitentGuardSlide.h"
+#include "CPenitentRespawn.h"
 
 
 CPenitent::CPenitent()
@@ -223,6 +224,11 @@ void CPenitent::tick(float _DT)
 		++m_iMP;
 	}
 
+
+	if (KEY_TAP(KEY::K))
+	{
+		m_pSM->ChangeState((UINT)PENITENT_STATE::RESPAWN);
+	}
 
 
 
@@ -485,6 +491,19 @@ void CPenitent::AnimationInit()
 	// FallingAhead
 	pTex = CAssetMgr::GetInst()->LoadTexture(L"FallingAhead", L"texture\\Penitent\\penitent_falling_ahead_anim 1.png");
 	m_pAnimator->LoadAnimation(L"animdata\\Penitent\\penitent_falling_ahead_anim.txt");
+
+	// penitent_respawning_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"penitent_respawning_anim", L"texture\\Penitent\\penitent_respawning_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"penitent_respawning_anim_L", L"texture\\Penitent\\penitent_respawning_anim.png");
+
+
+	m_pAnimator->LoadAnimation(pTex, L"Respawn", L"animdata\\Penitent\\penitent_respawning_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"Respawn_L", L"animdata\\Penitent\\penitent_respawning_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"Respawn", 0.05f);
+	m_pAnimator->SetAnimDuration(L"Respawn_L", 0.05f);
+
+
 
 	// ======================
 	//     이동 관련 State 
@@ -888,6 +907,16 @@ void CPenitent::EffectInit()
 	m_pEffector->SetAnimDuration(L"HealthPotion", 0.05f);
 	m_pEffector->SetAnimDuration(L"HealthPotion_L", 0.05f);
 
+	// Respawn
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"penitent_respawning_anim_querubs", L"texture\\Penitent\\penitent_respawning_anim_querubs.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"penitent_respawning_anim_querubs_L", L"texture\\Penitent\\penitent_respawning_anim_querubs.png");
+
+	m_pEffector->LoadAnimation(pTex, L"Respawn", L"animdata\\Penitent\\penitent_respawning_anim_querubs.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"Respawn_L", L"animdata\\Penitent\\penitent_respawning_anim_querubs.txt", true);
+
+	m_pEffector->SetAnimDuration(L"Respawn", 0.05f);
+	m_pEffector->SetAnimDuration(L"Respawn_L", 0.05f);
+
 
 
 		
@@ -1019,6 +1048,7 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::PARRY, new CPenitentParry);
 	m_pSM->AddState((UINT)PENITENT_STATE::PARRYCOUNTER, new CPenitentParryCounter);
 	m_pSM->AddState((UINT)PENITENT_STATE::GUARDSLIDE, new CPenitentGuardSlide);
+	m_pSM->AddState((UINT)PENITENT_STATE::RESPAWN, new CPenitentRespawn);
 
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);

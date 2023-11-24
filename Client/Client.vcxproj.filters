@@ -554,6 +554,9 @@
     <Filter Include="Game\08. State\Pattern\Idle">
       <UniqueIdentifier>{4bf10b1e-bb43-4105-8e28-8704c21bc932}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\Respawn">
+      <UniqueIdentifier>{f2072efb-539e-4d80-af7f-d47b8622e0a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1094,6 +1097,9 @@
     <ClInclude Include="CLightningSpawner2.h">
       <Filter>Game\04. Object\skill\Lightning</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentRespawn.h">
+      <Filter>Game\08. State\Penitent\Respawn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1628,6 +1634,9 @@
     </ClCompile>
     <ClCompile Include="CLightningSpawner2.cpp">
       <Filter>Game\04. Object\skill\Lightning</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentRespawn.cpp">
+      <Filter>Game\08. State\Penitent\Respawn</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
