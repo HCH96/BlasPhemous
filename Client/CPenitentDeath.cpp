@@ -3,6 +3,8 @@
 
 #include "CPenitent.h"
 
+#include "CCamera.h"
+
 CPenitentDeath::CPenitentDeath()
 	: SoundPlay(false)
 {
@@ -55,7 +57,12 @@ void CPenitentDeath::finaltick(float _DT)
 		{
 			// 레벨 종료 후 부활
 			pPenitent->SetHP(100.f);
-			GetOwnerSM()->RevertToPrevState();
+
+			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::NONE);
+
+			CCamera::GetInst()->PenitentDeath(1.5f);
+
+
 		}
 	}
 

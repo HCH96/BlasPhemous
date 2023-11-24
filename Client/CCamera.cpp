@@ -11,6 +11,7 @@
 
 #include "CObj.h"
 #include "CPenitent.h"
+#include "CLevelMgr.h"
 
 CCamera::CCamera()
 	: m_pVeil(nullptr)
@@ -20,9 +21,12 @@ CCamera::CCamera()
 	, m_vCameraLimit(12800.f,7200.f)
 	, m_vTarget(Vec2(0.f,0.f))
 	, m_fShakeIntensity(0.f)
+	, m_pDeathScreen(nullptr)
 {
 	Vec2 vResol = CEngine::GetInst()->GetResolution();
 	m_pVeil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", (int)vResol.x, (int)vResol.y);
+
+	m_pDeathScreen = CAssetMgr::GetInst()->LoadTexture(L"DeathScreen", L"texture\\UI\\Death_Screen.png");
 }
 
 CCamera::~CCamera()
@@ -215,6 +219,40 @@ void CCamera::tick()
 
 		}
 	}
+	else if (evnt.Type == CAM_EFFECT::DEATH)
+	{
+		evnt.AccTime += DT;
+
+		if (m_Alpha < 255.f)
+		{
+			float fRatio = evnt.AccTime / evnt.Duration;
+			if (fRatio > 1.f)
+			{
+				fRatio = 1.f;
+			}
+
+			float alpha = fRatio;
+			m_Alpha = (UINT)(alpha * 255);
+		}
+		else
+		{
+			m_Alpha = 255;
+
+			if (KEY_TAP(KEY::ENTER))
+			{
+				CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+				UINT iCheckPoint = pPenitent->GetCheckPont();
+
+				::ChangeLevel((LEVEL_TYPE)iCheckPoint);
+
+				m_EventList.pop_front();
+			}
+
+
+		}
+
+
+	}
 
 
 	// Diff °è»ê
@@ -242,5 +280,35 @@ void CCamera::render(HDC _dc)
 		, 0, 0
 		, m_pVeil->GetWidth(), m_pVeil->GetHeight()
 		, blend);
+
+	if (m_EventList.empty())
+		return;
+
+	FCamEvent& evnt = m_EventList.front();
+
+	if (evnt.Type == CAM_EFFECT::DEATH)
+	{
+		BLENDFUNCTION blend = {};
+		blend.BlendOp = AC_SRC_OVER;
+		blend.BlendFlags = 0;
+
+		blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
+		blend.AlphaFormat = 0; // 0
+
+		AlphaBlend(_dc
+			, 0, 0
+			, 1280, 720
+			, m_pDeathScreen->GetDC()
+			, 0, 0
+			, m_pDeathScreen->GetWidth(), m_pDeathScreen->GetHeight()
+			, blend);
+
+		return;
+	}
+
+		
+
+
+
 
 }

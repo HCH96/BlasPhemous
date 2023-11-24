@@ -99,14 +99,14 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_2]->init();
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_3]->init();
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_4]->init();
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_5]->init();
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_1]->init();
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_2]->init();
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_3]->init();
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_5]->init();
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_1]->init();
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_2]->init();
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_3]->init();
 
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::STAGE02_3);
+	ChangeLevel(LEVEL_TYPE::STAGE01_3);
 }
 
 void CLevelMgr::tick()

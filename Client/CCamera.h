@@ -10,6 +10,7 @@ enum class CAM_EFFECT
 	FADE_IN,
 	FADE_OUT,
 	SHAKE,
+	DEATH,
 };
 
 struct FCamEvent
@@ -45,6 +46,7 @@ private:
 
 
 	CTexture* m_pVeil;
+	CTexture* m_pDeathScreen;
 	CObj* m_pTarget;
 
 
@@ -70,8 +72,10 @@ public:
 	void SetLookAtOffsetX(float _f) { m_vLookAtOffset.x = _f; }
 	void SetLookAtOffsetY(float _f) { m_vLookAtOffset.y = _f; }
 	void FixLookAt() { m_pTarget = nullptr;	m_vLookAt = m_vCurLookAt; }
-
 	void SetTarget(CObj* _pTarget);
+
+
+
 public:
 	void tick();
 	void render(HDC _dc);
@@ -106,6 +110,15 @@ public:
 		evnt.Type = CAM_EFFECT::SHAKE;
 		evnt.AccTime = 0.f;
 		evnt.Duration = _fTime;
+		m_EventList.push_back(evnt);
+	}
+
+	void PenitentDeath(float _time)
+	{
+		FCamEvent evnt = {};
+		evnt.Type = CAM_EFFECT::DEATH;
+		evnt.AccTime = 0.f;
+		evnt.Duration = _time;
 		m_EventList.push_back(evnt);
 	}
 };

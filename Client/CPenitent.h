@@ -23,7 +23,7 @@ private:
     bool                    m_bIsHit;
     float                   m_fHitTimer;
 
-    int                    m_iParrySucces;
+    int                     m_iParrySucces;
 
     UINT                    m_iCheckPoint;
 
@@ -68,6 +68,8 @@ public:
 
     void SetState(PENITENT_STATE _eSTATE) { m_pSM->ChangeState((UINT)_eSTATE); }
     void SetCheckPoint(UINT _iCheckPoint) { m_iCheckPoint = _iCheckPoint; }
+
+    UINT GetCheckPont() { return m_iCheckPoint; }
 
 public:
     virtual void begin() override;

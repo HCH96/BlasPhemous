@@ -117,18 +117,28 @@ void CStage01_3::enter()
 {
 	//Penitent 생성
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
-	pPenitent->SetState(PENITENT_STATE::IDLE);
+	
 	pPenitent->SetPos(Vec2(150.f, 1178.f));
 	pPenitent->SetLeft(false);
-	if ((UINT)LEVEL_TYPE::STAGE01_2 == CLevelMgr::GetInst()->GetPrevLevel())
+	
+
+	if (pPenitent->GetState() == (UINT)PENITENT_STATE::NONE)
 	{
+		pPenitent->SetState(PENITENT_STATE::IDLE);
+		pPenitent->SetPos(Vec2(1816.f, 1160.f));
+	}
+	else if ((UINT)LEVEL_TYPE::STAGE01_2 == CLevelMgr::GetInst()->GetPrevLevel())
+	{
+		pPenitent->SetState(PENITENT_STATE::IDLE);
 		pPenitent->SetPos(Vec2(150.f, 1178.f));
 	}
-
-	if ((UINT)LEVEL_TYPE::STAGE01_4 == CLevelMgr::GetInst()->GetPrevLevel())
+	else if ((UINT)LEVEL_TYPE::STAGE01_4 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
+		pPenitent->SetState(PENITENT_STATE::IDLE);
 		pPenitent->SetPos(Vec2(3180.f, 1178.f));
 	}
+
+
 	AddObject(LAYER::PLAYER, pPenitent);
 
 	// 카메라 설정
