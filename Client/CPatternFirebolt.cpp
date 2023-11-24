@@ -17,6 +17,14 @@ void CPatternFirebolt::finaltick(float _DT)
 {
 	m_fAcc += _DT;
 
+
+	if (m_fAcc > 3.f)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_HUSK_RANGED_ATTACK_2.0", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_HUSK_RANGED_ATTACK_2.0.wav");
+		pSound->Play();
+	}
+
+
 	CObj* pOwner = GetOwnerObj;
 	Pontiff* pPontiff = dynamic_cast<Pontiff*>(pOwner);
 
@@ -76,7 +84,6 @@ void CPatternFirebolt::Enter()
 
 	pPontiff->m_pSymbolLeft->Play(L"Firebolt", false);
 	pPontiff->m_pSymbolRight->Play(L"Firebolt", false);
-
 
 
 	m_iCurSpawner = 0;

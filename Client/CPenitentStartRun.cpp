@@ -83,6 +83,11 @@ void CPenitentStartRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
 
+	if ((KEY_TAP(KEY::S) || KEY_PRESSED(KEY::S)) && KEY_PRESSED(KEY::UP) && !(KEY_TAP(KEY::F)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACK);
+	}
+
 	if (pAnimator->IsFinish())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::RUN);

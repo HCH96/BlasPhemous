@@ -35,6 +35,9 @@ void CPenitentPrayEnd::Enter()
 	{
 		pAnimator->Play(L"PrayEnd_L", false);
 	}
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"CHECKPOINT_KNEEL_DOWN_FINISH", L"sound\\Effect\\CHECKPOINT_KNEEL_DOWN_FINISH.wav");
+	pSound->Play();
+
 }
 
 void CPenitentPrayEnd::Exit()

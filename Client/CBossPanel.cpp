@@ -6,6 +6,14 @@
 
 #include "CBossHP.h"
 
+#include "CLevelMgr.h"
+#include "CLevel.h"
+#include "CObj.h"
+
+#include "CPope.h"
+#include "Pontiff.h"
+#include "CElderBrother.h"
+
 CBossPanel::CBossPanel()
 	: m_pTexture(nullptr)
 {
@@ -34,6 +42,41 @@ void CBossPanel::tick(float _DT)
 
 void CBossPanel::render(HDC _dc)
 {
+	UINT iCurLv = CLevelMgr::GetInst()->GetCurLeveli();
+	CLevel* pCurLv = CLevelMgr::GetInst()->GetCurLevel();
+
+
+	if (iCurLv == (UINT)LEVEL_TYPE::STAGE01_4)
+	{
+		CObj* pBoss = pCurLv->GetBoss();
+		CElderBrother* pElder = dynamic_cast<CElderBrother*>(pBoss);
+
+		if (pElder->GetHP() <= 0.f)
+		{
+			return;
+		}
+	}
+	else if (iCurLv == (UINT)LEVEL_TYPE::STAGE02_2)
+	{
+		CObj* pBoss = pCurLv->GetBoss();
+		CPope* pPope = dynamic_cast<CPope*>(pBoss);
+
+		if (pPope->GetHP() <= 0.f)
+		{
+			return;
+		}
+	}
+	else if (iCurLv == (UINT)LEVEL_TYPE::STAGE02_3)
+	{
+		CObj* pBoss = pCurLv->GetBoss();
+		Pontiff* pPontiff = dynamic_cast<Pontiff*>(pBoss);
+
+		if (pPontiff->GetHP() <= 0.f)
+		{
+			return;
+		}
+	}
+
 	Super::render(_dc);
 
 	Vec2 vPos = GetFinalPos();

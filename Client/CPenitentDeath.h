@@ -3,6 +3,9 @@
 class CPenitentDeath :
     public CState
 {
+private:
+    bool SoundPlay;
+
 public:
     virtual void finaltick(float _DT);
     virtual void Enter();

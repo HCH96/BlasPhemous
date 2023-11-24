@@ -84,6 +84,9 @@ void CCrosscrawlerWalk::Enter()
 		pAnimator->Play(L"Walk_L", true);
 	}
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"CROSSCRAWLER_WALK_1", L"sound\\Object\\Monster\\Normal\\Crosscrawler\\CROSSCRAWLER_WALK_1.wav");
+	pSound->Play(true);
+
 }
 
 void CCrosscrawlerWalk::Exit()
@@ -91,5 +94,8 @@ void CCrosscrawlerWalk::Exit()
 	CObj* pOwner = GetOwnerObj;
 	CMovement* pMovement = pOwner->GetComponent<CMovement>();
 	pMovement->SetVelocity(Vec2(0.f, 0.f));
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"CROSSCRAWLER_WALK_1", L"sound\\Object\\Monster\\Normal\\Crosscrawler\\CROSSCRAWLER_WALK_1.wav");
+	pSound->Stop();
 }
 

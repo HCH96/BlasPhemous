@@ -19,18 +19,20 @@ void CPontiffOpenIdle::finaltick(float _DT)
 	CObj* pOwner = GetOwnerObj;
 	Pontiff* pPontiff = dynamic_cast<Pontiff*>(pOwner);
 
-	// Death
-	if (pPontiff->GetHP() < 0.f)
-	{
-		
-		GetOwnerSM()->ChangeState((UINT)PONTIFF::DEATH);
-	}
+
 
 	// Closing
 	if (m_fAcc > 11.f)
 	{
 
 		GetOwnerSM()->ChangeState((UINT)PONTIFF::CLOSING);
+	}
+
+	// Death
+	if (pPontiff->GetHP() <= 0.f)
+	{
+
+		GetOwnerSM()->ChangeState((UINT)PONTIFF::DEATH);
 	}
 
 }

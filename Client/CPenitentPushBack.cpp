@@ -15,6 +15,15 @@ void CPenitentPushBack::finaltick(float _DT)
 	CObj* pOwner = GetOwnerObj;
 
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
+	int iCurFrame = pAnimator->GetCurFrame();
+
+
+
+	if (m_iPrevFrame == 7 && iCurFrame == 8)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_PUSHBACK", L"sound\\Object\\Player\\PENITENT_PUSHBACK.wav");
+		pSound->Play();
+	}
 
 
 	if (pAnimator->IsFinish())
@@ -22,6 +31,8 @@ void CPenitentPushBack::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
+
+	m_iPrevFrame = iCurFrame;
 }
 
 void CPenitentPushBack::Enter()
@@ -36,6 +47,7 @@ void CPenitentPushBack::Enter()
 
 	pMovement->SetMaxSpeed(800.f);
 
+	m_iPrevFrame = 0;
 
 	if (m_bDir)
 	{

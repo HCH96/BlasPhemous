@@ -35,6 +35,9 @@ void CShieldMaidenDeath::Enter()
 	{
 		pAnimator->Play(L"Death_L", false);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SHIELD_ENEMY_DEATH", L"sound\\Object\\Monster\\Normal\\Shieldmaiden\\SHIELD_ENEMY_DEATH.wav");
+	pSound->Play();
 }
 
 void CShieldMaidenDeath::Exit()

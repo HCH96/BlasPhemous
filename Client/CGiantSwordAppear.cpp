@@ -35,6 +35,9 @@ void CGiantSwordAppear::Enter()
 
 	pAnimator->Play(L"Appear", false);
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SWORD_APPEAR", L"sound\\Object\\Monster\\Boss\\Pontiff\\SWORD_APPEAR.wav");
+	pSound->Play();
+
 
 }
 

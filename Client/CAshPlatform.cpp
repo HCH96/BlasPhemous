@@ -36,7 +36,7 @@ CAshPlatform::CAshPlatform()
 
 	// Collider
 	m_pCollider = AddComponent<CCollider>(L"AshPlatform");
-	m_pCollider->SetScale(Vec2(120.f, 30.f));
+	m_pCollider->SetScale(Vec2(120.f, 50.f));
 	m_pCollider->SetOffsetPos(Vec2(0.f, 20.f));
 	m_pCollider->SetTime(0.f);
 

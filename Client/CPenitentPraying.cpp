@@ -33,6 +33,9 @@ void CPenitentPraying::Enter()
 	{
 		pAnimator->Play(L"Praying_L", true);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"CHECKPOINT_KNEEL_DOWN", L"sound\\Effect\\CHECKPOINT_KNEEL_DOWN.wav");
+	pSound->Play();
 }
 
 void CPenitentPraying::Exit()

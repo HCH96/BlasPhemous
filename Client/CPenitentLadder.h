@@ -3,6 +3,9 @@
 class CPenitentLadder :
     public CState
 {
+private:
+    int m_iCount;
+
 public:
     virtual void finaltick(float _DT);
     virtual void Enter();

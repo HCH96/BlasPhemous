@@ -73,6 +73,10 @@ void CPenitentJump::finaltick(float _DT)
 
 	if (pMovement->IsGround())
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_JUMP_FALL_STONE", L"sound\\Object\\Player\\PENITENT_JUMP_FALL_STONE.wav");
+		pSound->SetVolume(100.f);
+		pSound->Play();
+
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
@@ -99,6 +103,15 @@ void CPenitentJump::Enter()
 		pAnimator->Play(L"Jump_L", true);
 		pDustAnimator->Play(L"Jumping_dust_L", false);
 	}
+
+	if (GetOwnerSM()->GetPrevState() != (UINT)PENITENT_STATE::JUMPFORWARD)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_JUMP", L"sound\\Object\\Player\\PENITENT_JUMP.wav");
+		pSound->SetVolume(100.f);
+		pSound->Play();
+	}
+
+
 }
 
 void CPenitentJump::Exit()

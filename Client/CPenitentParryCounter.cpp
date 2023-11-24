@@ -19,6 +19,12 @@ void CPenitentParryCounter::finaltick(float _DT)
 
 	if (pAnimator->GetCurFrame() == 10)
 	{
+		if (m_iPrevFrame == 9)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_PARRY_HIT", L"sound\\Object\\Player\\PENITENT_PARRY_HIT.wav");
+			pSound->Play();
+		}
+
 		pHitBox->On();
 	}
 
@@ -27,6 +33,8 @@ void CPenitentParryCounter::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
+
+	m_iPrevFrame = pAnimator->GetCurFrame();
 
 }
 
@@ -39,6 +47,7 @@ void CPenitentParryCounter::Enter()
 	pHitBox->SetTime(0.2f);
 
 	m_bDir = pObj->GetDir();
+	m_iPrevFrame = 0;
 
 	if (m_bDir)
 	{

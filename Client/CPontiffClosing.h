@@ -3,6 +3,9 @@
 class CPontiffClosing :
     public CState
 {
+private:
+    bool m_bSound;
+
 public:
     virtual void finaltick(float _DT);
     virtual void Enter();

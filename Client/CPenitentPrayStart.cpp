@@ -34,6 +34,9 @@ void CPenitentPrayStart::Enter()
 		pAnimator->Play(L"PrayStart_L", false);
 	}
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"CHECKPOINT", L"sound\\Effect\\CHECKPOINT.wav");
+	pSound->Play();
+
 }
 
 void CPenitentPrayStart::Exit()

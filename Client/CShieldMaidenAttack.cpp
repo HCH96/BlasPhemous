@@ -24,7 +24,14 @@ void CShieldMaidenAttack::finaltick(float _DT)
 
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
 
-	if (pAnimator->GetCurFrame() == 5)
+	if (pAnimator->GetCurFrame() == 2 && m_iPrevFrame == 1)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SHIELD_ENEMY_ATTACK", L"sound\\Object\\Monster\\Normal\\Shieldmaiden\\SHIELD_ENEMY_ATTACK.wav");
+		pSound->SetVolume(100.f);
+		pSound->Play();
+	}
+
+	if (pAnimator->GetCurFrame() == 5 && m_iPrevFrame == 4)
 	{
 		pHitBox->On();
 	}
@@ -43,6 +50,7 @@ void CShieldMaidenAttack::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)SHIELDMAIDEN::IDLE);
 	}
 
+	m_iPrevFrame = pAnimator->GetCurFrame();
 }
 
 void CShieldMaidenAttack::Enter()
@@ -66,6 +74,10 @@ void CShieldMaidenAttack::Enter()
 		pAnimator->Play(L"Attack_L", false);
 		pHitBox->SetOffsetPos(Vec2(-70.f, -50.f));
 	}
+
+	m_iPrevFrame = 0;
+
+	
 
 }
 

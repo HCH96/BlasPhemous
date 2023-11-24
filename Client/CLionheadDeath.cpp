@@ -38,6 +38,9 @@ void CLionheadDeath::Enter()
 		pAnimator->Play(L"Death_L", false);
 	}
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"LEON_DEATH", L"sound\\Object\\Monster\\Normal\\LionHead\\LEON_DEATH.wav");
+	pSound->Play();
+
 }
 
 void CLionheadDeath::Exit()

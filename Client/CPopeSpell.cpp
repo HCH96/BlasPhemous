@@ -27,8 +27,15 @@ void CPopeSpell::finaltick(float _DT)
 	int iCurFrame = pAnimator->GetCurFrame();
 
 
+
+
+
 	if (m_iPrevFrame == 27 && iCurFrame == 28)
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_HUSK_RANGED_GROUNT_#1_2.0", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_HUSK_RANGED_GROUNT_#1_2.0.wav");
+		pSound->Play();
+
+
 		CPope* pPope = dynamic_cast<CPope*>(pOwner);
 		
 
@@ -66,6 +73,9 @@ void CPopeSpell::finaltick(float _DT)
 
 	if (pAnimator->IsFinish())
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SPELL_LOOP_END", L"sound\\Object\\Monster\\Boss\\Pontiff\\SPELL_LOOP_END.wav");
+		pSound->Play();
+
 		GetOwnerSM()->ChangeState((UINT)POPE::IDLE);
 	}
 
@@ -157,9 +167,15 @@ void CPopeSpell::Enter()
 		assert(nullptr);
 	}
 
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_CAST_SPELL", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_CAST_SPELL.wav");
+	pSound->Play();
 }
 
 void CPopeSpell::Exit()
 {
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SPELL_LOOP_END", L"sound\\Object\\Monster\\Boss\\Pontiff\\SPELL_LOOP_END.wav");
+	pSound->Play();
 }
 

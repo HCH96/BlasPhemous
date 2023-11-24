@@ -87,10 +87,16 @@ void CPenitentRun::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
 
+	if ((KEY_TAP(KEY::S) || KEY_PRESSED(KEY::S)) && KEY_PRESSED(KEY::UP) && !(KEY_TAP(KEY::F)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACK);
+	}
+
 	if (!pMovement->IsGround() && pMovement->GetVelocity().y > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALLFORWARD);
 	}
+
 }
 
 void CPenitentRun::Enter()
@@ -114,12 +120,20 @@ void CPenitentRun::Enter()
 		pAnimator->Play(L"Run_L", true);
 		pDustAnimator->Play(L"RunDust_L", true);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_RUN", L"sound\\Object\\Player\\PENITENT_RUN.wav");
+	pSound->SetVolume(100.f);
+	pSound->Play(true);
+
 }
 
 void CPenitentRun::Exit()
 {
 	CAnimator* pDustAnimator = GetOwnerObj->GetComponent<CAnimator>(L"Dust_Animator");
 	pDustAnimator->Stop();
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_RUN", L"sound\\Object\\Player\\PENITENT_RUN.wav");
+	pSound->Stop();
 }
 
 

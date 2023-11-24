@@ -54,6 +54,11 @@ void CPopeAppear::Enter()
 		pAnimator->Play(L"Appear_L", false);
 	}
 
+
+	//sound 
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_HUSK_VANISH_IN_2.0", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_HUSK_VANISH_IN_2.0.wav");
+	pSound->Play();
 }
 
 void CPopeAppear::Exit()

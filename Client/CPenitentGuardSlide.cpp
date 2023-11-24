@@ -45,6 +45,9 @@ void CPenitentGuardSlide::Enter()
 		pEffector->Play(L"GuardSlideSpark_L", false);
 		pAnimator->Play(L"GuardSlide", true);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_GUARD", L"sound\\Object\\Player\\PENITENT_GUARD.wav");
+	pSound->Play();
 }
 
 void CPenitentGuardSlide::Exit()

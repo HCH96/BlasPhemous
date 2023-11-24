@@ -22,14 +22,26 @@ void CPenitentLadder::finaltick(float _DT)
 	float fCurAcc = pCurAnim->GetAcc() - _DT;
 	float fDuration = pCurAnim->GetDuration();
 
+
 	if (KEY_PRESSED(KEY::DOWN))
 	{
 		fCurAcc += _DT;
 
-		if (fCurAcc > fDuration)
+		if (fCurAcc > 0.02)
 		{
 			++iCurFrm;
 			fCurAcc -= fDuration;
+
+			++m_iCount;
+
+			if (m_iCount > 2)
+			{
+				CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_CLIMB_LADDER_2", L"sound\\Object\\Player\\PENITENT_CLIMB_LADDER_2.wav");
+				pSound->Play();
+				m_iCount = 0;
+			}
+
+
 		}
 		pObj->SetPos(Vec2(pObj->GetPos().x, pObj->GetPos().y + 200.f * _DT));
 	}
@@ -38,10 +50,19 @@ void CPenitentLadder::finaltick(float _DT)
 	{
 		fCurAcc += _DT;
 
-		if (fCurAcc > fDuration)
+		if (fCurAcc > 0.02)
 		{
-			++iCurFrm;
+			--iCurFrm;
 			fCurAcc -= fDuration;
+
+			++m_iCount;
+
+			if (m_iCount > 2)
+			{
+				CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_CLIMB_LADDER_2", L"sound\\Object\\Player\\PENITENT_CLIMB_LADDER_2.wav");
+				pSound->Play();
+				m_iCount = 0;
+			}
 		}
 
 		pObj->SetPos(Vec2(pObj->GetPos().x, pObj->GetPos().y - 200.f * _DT));
@@ -71,6 +92,10 @@ void CPenitentLadder::finaltick(float _DT)
 		}
 	}
 
+
+
+
+
 }
 
 void CPenitentLadder::Enter()
@@ -89,6 +114,8 @@ void CPenitentLadder::Enter()
 		Vec2 vPos = pObj->GetPos();
 		pObj->SetPos(Vec2(vPos.x, vPos.y+100.f));
 	}
+
+	m_iCount = 0;
 
 	pAnimator->Play(L"Ladder", true);
 

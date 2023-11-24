@@ -57,6 +57,14 @@ void CPenitentFall::finaltick(float _DT)
 
 	if (pMovement->IsGround())
 	{
+		if (GetOwnerSM()->GetPrevState() != (UINT)PENITENT_STATE::IDLE)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_JUMP_FALL_STONE", L"sound\\Object\\Player\\PENITENT_JUMP_FALL_STONE.wav");
+			pSound->SetVolume(100.f);
+			pSound->Play();
+		}
+
+
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::STANDING);
 	}
 

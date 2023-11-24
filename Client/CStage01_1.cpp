@@ -77,7 +77,7 @@ void CStage01_1::init()
 	AddObject(LAYER::PLATFORM, pPlatform);
 
 	pPlatform = new CPlatform;
-	pPlatform->SetPos(Vec2(1220.f, 1060.f));
+	pPlatform->SetPos(Vec2(1220.f, 1065.f));
 	pPlatform->SetScale(Vec2(300.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
@@ -121,6 +121,9 @@ void CStage01_1::enter()
 	{
 		pPenitent->SetPos(Vec2(1845.f*2, 895.f*2));
 		pPenitent->SetState(PENITENT_STATE::IDLE);
+		CMovement* pMovement = pPenitent->GetComponent<CMovement>();
+		pMovement->SetGround(true);
+		pMovement->SetVelocity(Vec2(0.f, 0.f));
 	}
 	else
 	{
@@ -144,8 +147,12 @@ void CStage01_1::enter()
 
 	// Sound 
 	CSound* pBGM = CAssetMgr::GetInst()->LoadSound(L"Brotherhood_Ambient", L"sound\\BGM\\Brotherhood_Ambient.wav");
+	pBGM->SetVolume(30.f);
 	pBGM->PlayToBGM(true);
 
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ZONE_INFO", L"sound\\KeyEvents\\ZONE_INFO.wav");
+	pSound->Play();
 }
 
 void CStage01_1::exit()

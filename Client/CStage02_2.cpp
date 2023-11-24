@@ -77,53 +77,92 @@ void CStage02_2::init()
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
 
-	pFirebolt = new CFirebolt;
-	pFireSpawner->AddFirebolt(pFirebolt);
-	AddObject(LAYER::PROJECTILE, pFirebolt);
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
 
 	pFirebolt = new CFirebolt;
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
 
-	pFirebolt = new CFirebolt;
-	pFireSpawner->AddFirebolt(pFirebolt);
-	AddObject(LAYER::PROJECTILE, pFirebolt);
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE2", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
 
 	pFirebolt = new CFirebolt;
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
 
-	pFirebolt = new CFirebolt;
-	pFireSpawner->AddFirebolt(pFirebolt);
-	AddObject(LAYER::PROJECTILE, pFirebolt);
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE3", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
 
 	pFirebolt = new CFirebolt;
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
 
-	pFirebolt = new CFirebolt;
-	pFireSpawner->AddFirebolt(pFirebolt);
-	AddObject(LAYER::PROJECTILE, pFirebolt);
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE4", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
 
 	pFirebolt = new CFirebolt;
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
 
-	pFirebolt = new CFirebolt;
-	pFireSpawner->AddFirebolt(pFirebolt);
-	AddObject(LAYER::PROJECTILE, pFirebolt);
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE5", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
 
 	pFirebolt = new CFirebolt;
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
 
-	pFirebolt = new CFirebolt;
-	pFireSpawner->AddFirebolt(pFirebolt);
-	AddObject(LAYER::PROJECTILE, pFirebolt);
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE6", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
 
 	pFirebolt = new CFirebolt;
 	pFireSpawner->AddFirebolt(pFirebolt);
 	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE7", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE8", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE9", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE10", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE11", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE12", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
+
+	pFirebolt = new CFirebolt;
+	pFireSpawner->AddFirebolt(pFirebolt);
+	AddObject(LAYER::PROJECTILE, pFirebolt);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SPELL_FIRE13", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SPELL_FIRE.wav");
+	pFirebolt->SetSound(pSound);
 
 	// MagicMissile 
 	CMagicMissileSpawner* pMagicMissileSpawner = new CMagicMissileSpawner;
@@ -217,25 +256,43 @@ void CStage02_2::init()
 	pLightningSpawner->AddLightning(pLightning);
 	AddObject(LAYER::PROJECTILE, pLightning);
 
-	pLightning = new CLightning;
-	pLightningSpawner->AddLightning(pLightning);
-	AddObject(LAYER::PROJECTILE, pLightning);
+	pSound = CAssetMgr::GetInst()->LoadSound(L"THUNDER_SPELL1", L"sound\\Object\\Monster\\Boss\\Pontiff\\THUNDER_SPELL.wav");
+	pLightning->SetSound(pSound);
 
 	pLightning = new CLightning;
 	pLightningSpawner->AddLightning(pLightning);
 	AddObject(LAYER::PROJECTILE, pLightning);
 
-	pLightning = new CLightning;
-	pLightningSpawner->AddLightning(pLightning);
-	AddObject(LAYER::PROJECTILE, pLightning);
+	pSound = CAssetMgr::GetInst()->LoadSound(L"THUNDER_SPELL2", L"sound\\Object\\Monster\\Boss\\Pontiff\\THUNDER_SPELL.wav");
+	pLightning->SetSound(pSound);
 
 	pLightning = new CLightning;
 	pLightningSpawner->AddLightning(pLightning);
 	AddObject(LAYER::PROJECTILE, pLightning);
 
+	pSound = CAssetMgr::GetInst()->LoadSound(L"THUNDER_SPELL3", L"sound\\Object\\Monster\\Boss\\Pontiff\\THUNDER_SPELL.wav");
+	pLightning->SetSound(pSound);
+
 	pLightning = new CLightning;
 	pLightningSpawner->AddLightning(pLightning);
 	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"THUNDER_SPELL4", L"sound\\Object\\Monster\\Boss\\Pontiff\\THUNDER_SPELL.wav");
+	pLightning->SetSound(pSound);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"THUNDER_SPELL5", L"sound\\Object\\Monster\\Boss\\Pontiff\\THUNDER_SPELL.wav");
+	pLightning->SetSound(pSound);
+
+	pLightning = new CLightning;
+	pLightningSpawner->AddLightning(pLightning);
+	AddObject(LAYER::PROJECTILE, pLightning);
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"THUNDER_SPELL6", L"sound\\Object\\Monster\\Boss\\Pontiff\\THUNDER_SPELL.wav");
+	pLightning->SetSound(pSound);
 
 
 
@@ -278,6 +335,11 @@ void CStage02_2::enter()
 	CCamera::GetInst()->SetTarget(pPenitent);
 	CCamera::GetInst()->SetCameraLimitLT(Vec2(90.f * 2.f, 580.f * 2.f));
 	CCamera::GetInst()->SetCameraLimit(Vec2(2030.f * 2.f, 940.f * 2.f));
+
+	// Sound
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Safe Zone", L"sound\\BGM\\Safe Zone.wav");
+	pSound->PlayToBGM();
 }
 
 void CStage02_2::exit()

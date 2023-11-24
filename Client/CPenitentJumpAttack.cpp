@@ -29,6 +29,13 @@ void CPenitentJumpAttack::finaltick(float _DT)
 	// JumpATTSlash1 재생
 	if (pAnimator->GetCurFrame() == 3)
 	{
+		if (m_iPrevFrame == 2)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_SLASH_AIR_1", L"sound\\Object\\Player\\PENITENT_SLASH_AIR_1.wav");
+			pSound->Play();
+		}
+
+
 		if (bDir)
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash1", false);
@@ -46,6 +53,7 @@ void CPenitentJumpAttack::finaltick(float _DT)
 	// JumpATTSlash2 재생
 	if (pAnimator->GetCurFrame() == 7)
 	{
+
 		if (bDir)
 		{
 			pEffector->PlayNoReset(L"JumpATTSlash2", false);
@@ -59,6 +67,12 @@ void CPenitentJumpAttack::finaltick(float _DT)
 
 	if (pAnimator->GetCurFrame() == 8)
 	{
+		if (m_iPrevFrame == 7)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_SLASH_AIR_1", L"sound\\Object\\Player\\PENITENT_SLASH_AIR_1.wav");
+			pSound->Play();
+		}
+
 		if (bDir)
 		{
 			pHitBox->SetOffsetPos(Vec2(80.f, -80.f));
@@ -133,9 +147,15 @@ void CPenitentJumpAttack::finaltick(float _DT)
 
 	if (pMovement->IsGround())
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_JUMP_FALL_STONE", L"sound\\Object\\Player\\PENITENT_JUMP_FALL_STONE.wav");
+		pSound->SetVolume(100.f);
+		pSound->Play();
+
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}
 
+
+	m_iPrevFrame = iCurFrame;
 }
 
 void CPenitentJumpAttack::Enter()
@@ -148,6 +168,8 @@ void CPenitentJumpAttack::Enter()
 	pHitBox->SetTime(0.15f);
 	bool bDir = GetOwnerObj->GetDir();
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);
+
+	m_iPrevFrame = 0;
 
 	if (bDir)
 	{

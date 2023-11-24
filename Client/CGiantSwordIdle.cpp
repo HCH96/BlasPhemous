@@ -7,6 +7,10 @@
 
 #include "CKeyMgr.h"
 
+#include "Pontiff.h"
+#include "CLevelMgr.h"
+#include "CLevel.h"
+
 
 CGiantSwordIdle::CGiantSwordIdle()
 	: m_pTarget(nullptr)
@@ -23,6 +27,12 @@ void CGiantSwordIdle::finaltick(float _DT)
 {
 	CObj* pOwner = GetOwnerObj;
 	CGiantSword* pSword = dynamic_cast<CGiantSword*>(pOwner);
+	Pontiff* pPontiff = pSword->GetPontiff();
+
+	if (pPontiff->GetHP() <= 0.f)
+	{
+		GetOwnerSM()->ChangeState((UINT)GIANTSWORD::VANISH);
+	}
 
 
 	Vec2 vPos = pOwner->GetPos();
@@ -34,7 +44,6 @@ void CGiantSwordIdle::finaltick(float _DT)
 		m_bSpinReady = true;
 		pSword->SetSpin(false);
 	}
-
 
 	if (pSword->GetHP()<0.f)
 	{
@@ -198,8 +207,7 @@ void CGiantSwordIdle::Enter()
 
 	pCollider->SetTime(-1.f);
 	pCollider->On();
-
-
+	 
 
 	pAnimator->Play(L"Idle", true);
 	pEye->Play(L"Idle", true);

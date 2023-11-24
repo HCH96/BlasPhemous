@@ -16,6 +16,13 @@ void CPontiffOpening::finaltick(float _DT)
 	CObj* pOwner = GetOwnerObj;
 	Pontiff* pPontiff = dynamic_cast<Pontiff*>(pOwner);
 
+	// Death
+	if (pPontiff->GetHP() < 0.f)
+	{
+
+		GetOwnerSM()->ChangeState((UINT)PONTIFF::DEATH);
+	}
+
 	if (pPontiff->m_pFace->IsFinish())
 	{
 		GetOwnerSM()->ChangeState((UINT)PONTIFF::OPENIDLE);
@@ -33,6 +40,9 @@ void CPontiffOpening::Enter()
 	pPontiff->m_pBody->Play(L"Opening", false);
 	pPontiff->m_pHelmet->Play(L"Opening", false);
 	pPontiff->m_pFace->Play(L"Opening", false);
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_MASK_OPEN", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_MASK_OPEN.wav");
+	pSound->Play();
 }
 
 void CPontiffOpening::Exit()

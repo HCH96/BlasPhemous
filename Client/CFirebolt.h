@@ -26,6 +26,8 @@ private:
     Vec2 m_vDir;
     float m_fAcc;
 
+    CSound* m_pSound;
+
 
 public:
     void On(Vec2 _vPos, Vec2 _vDir);
@@ -33,6 +35,7 @@ public:
 
     bool IsOn() { return m_bIsOn; }
 
+    void SetSound(CSound * _pSound) { m_pSound = _pSound; }
     void SetDir(Vec2 _vDir) { m_vDir = _vDir; }
 
 public:

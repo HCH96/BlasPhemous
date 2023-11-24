@@ -5,6 +5,7 @@ class CPenitentParryCounter :
 {
 private:
     bool m_bDir;
+    int m_iPrevFrame;
 
 public:
     virtual void finaltick(float _DT);

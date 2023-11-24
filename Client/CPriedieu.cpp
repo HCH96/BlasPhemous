@@ -76,7 +76,7 @@ void CPriedieu::Overlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOthe
 	CStateMachine* pSM = pPenitent->GetComponent<CStateMachine>();
 
 	if (pSM->GetCurState() != (UINT)PENITENT_STATE::PRAYSTART && pSM->GetCurState() != (UINT)PENITENT_STATE::PRAYING
-		&& pSM->GetCurState() != (UINT)PENITENT_STATE::PRAYING && pSM->GetCurState() != (UINT)PENITENT_STATE::PRAYEND)
+		&& pSM->GetCurState() != (UINT)PENITENT_STATE::PRAYAURAOFF && pSM->GetCurState() != (UINT)PENITENT_STATE::PRAYEND)
 	{
 		isPopup = true;
 	}

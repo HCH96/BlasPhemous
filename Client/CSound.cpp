@@ -6,7 +6,7 @@
 CSound::CSound()
 	: m_pSoundBuffer(nullptr)
 	, m_tBuffInfo{}
-	, m_iVolume(50)
+	, m_iVolume(100)
 {
 }
 

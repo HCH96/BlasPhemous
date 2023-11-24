@@ -46,6 +46,9 @@ void CSwitch::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Othe
 
 	m_pCollider->Off();
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"GLASS_PLATFORM_COLLAPSE_C", L"sound\\Effect\\GLASS_PLATFORM_COLLAPSE_C.wav");
+	pSound->Play();
+
 }
 
 

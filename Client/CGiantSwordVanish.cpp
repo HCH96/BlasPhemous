@@ -30,7 +30,7 @@ void CGiantSwordVanish::finaltick(float _DT)
 		pAnimator->Stop();
 	}
 
-	if (m_fDeadTime > 11.f && pPontiff->GetHP() > 0)
+	if (m_fDeadTime > 13.f && pPontiff->GetHP() > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)GIANTSWORD::APPEAR);
 	}
@@ -58,6 +58,10 @@ void CGiantSwordVanish::Enter()
 	pAnimator->Play(L"Vanish", false);
 	pCollider->SetTime(0.f);
 	pEye->Stop();
+
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SWORD_DISAPPEAR", L"sound\\Object\\Monster\\Boss\\Pontiff\\SWORD_DISAPPEAR.wav");
+	pSound->Play();
 }
 
 void CGiantSwordVanish::Exit()

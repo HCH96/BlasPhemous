@@ -35,6 +35,9 @@ void CPenitentClimb::Enter()
 	{
 		pAnimator->Play(L"Climb_L", false);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Penitent_EdgeClimb", L"sound\\Object\\Player\\Penitent_EdgeClimb.wav");
+	pSound->Play();
 }
 
 void CPenitentClimb::Exit()

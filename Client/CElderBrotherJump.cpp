@@ -92,6 +92,14 @@ void CElderBrotherJump::finaltick(float _DT)
 	if (m_PrevFrame == 8 && iCurFrame == 9)
 	{
 		pMovement->SetGround(false);
+
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_JUMP_VOICE", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_JUMP_VOICE.wav");
+		pSound->Play();
+
+
+		pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_JUMP", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_JUMP.wav");
+		pSound->Play();
+
 		//pMovement->SetVelocity(Vec2(pMovement->GetVelocity().x, pMovement->GetJumpVel()));
 	}
 
@@ -119,6 +127,9 @@ void CElderBrotherJump::finaltick(float _DT)
 
 	if (m_PrevFrame == 18 && pMovement->IsGround())
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_LANDING", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_LANDING.wav");
+		pSound->Play();
+
 		pAnimator->SetFrame(19);
 	}
 
@@ -176,7 +187,6 @@ void CElderBrotherJump::Enter()
 	{
 		pAnimator->Play(L"Jump_L", false);
 	}
-
 }
 
 void CElderBrotherJump::Exit()

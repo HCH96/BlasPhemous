@@ -31,12 +31,14 @@ CShieldMaiden::CShieldMaiden()
 {
 	SetDir(false);
 
+	SetName(L"ShieldMaiden");
+
 	// Animator
 	m_pAnimator = AddComponent<CAnimator>(L"ShieldMaiden");
 
 	// Idle
 	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"Shieldandsword_idle", L"texture\\Monster\\Normal\\ShieldMaiden\\shieldandsword_idle.png");
-	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Lionhead_Idle_L", L"texture\\Monster\\Normal\\ShieldMaiden\\shieldandsword_idle.png");
+	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"Shieldandsword_idle_L", L"texture\\Monster\\Normal\\ShieldMaiden\\shieldandsword_idle.png");
 
 	m_pAnimator->LoadAnimation(pTex, L"Idle", L"animdata\\Monster\\Normal\\ShieldMaiden\\shieldandsword_idle.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Idle_L", L"animdata\\Monster\\Normal\\ShieldMaiden\\shieldandsword_idle.txt", true);
@@ -222,6 +224,8 @@ void CShieldMaiden::OnHit()
 	// 앞에서 때린 경우
 	else
 	{
+
+
 		CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
 		CStateMachine* pSM = pPenitent->GetComponent<CStateMachine>();
 		
@@ -235,6 +239,9 @@ void CShieldMaiden::OnHit()
 		// 막기가 가능한 State
 		if (m_bStateBlock)
 		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SHIELD_ENEMY_HIT_SHIELD", L"sound\\Object\\Monster\\Normal\\Shieldmaiden\\SHIELD_ENEMY_HIT_SHIELD.wav");
+			pSound->Play();
+
 			// 막힘
 			if (GetDir())
 			{

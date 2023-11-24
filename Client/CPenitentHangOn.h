@@ -4,7 +4,7 @@ class CPenitentHangOn :
     public CState
 {
 private:
-
+    bool m_bDir;
 
 public:
     virtual void finaltick(float _DT);

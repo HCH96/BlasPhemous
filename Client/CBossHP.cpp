@@ -11,6 +11,7 @@
 
 #include "CElderBrother.h"
 #include "CPope.h"
+#include "Pontiff.h"
 
 
 
@@ -53,6 +54,12 @@ void CBossHP::begin()
 		m_fCurHP = 10.f;
 		m_fPrevHP = 10.f;
 	}
+	else if (iCurLv == (UINT)LEVEL_TYPE::STAGE02_3)
+	{
+		m_fMaxHP = 10.f;
+		m_fCurHP = 10.f;
+		m_fPrevHP = 10.f;
+	}
 	
 
 }
@@ -76,9 +83,16 @@ void CBossHP::tick(float _DT)
 	else if (iCurLv == (UINT)LEVEL_TYPE::STAGE02_2)
 	{
 		CObj* pBoss = pCurLv->GetBoss();
-		CPope* pElder = dynamic_cast<CPope*>(pBoss);
+		CPope* pPope = dynamic_cast<CPope*>(pBoss);
 
-		m_fCurHP = pElder->GetHP();
+		m_fCurHP = pPope->GetHP();
+	}
+	else if (iCurLv == (UINT)LEVEL_TYPE::STAGE02_3)
+	{
+		CObj* pBoss = pCurLv->GetBoss();
+		Pontiff* pPontiff = dynamic_cast<Pontiff*>(pBoss);
+
+		m_fCurHP = pPontiff->GetHP();
 	}
 
 

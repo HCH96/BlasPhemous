@@ -73,6 +73,9 @@ void CToxic::On(Vec2 _vPos)
 
 	m_fVelocity = 0.f;
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PURPLE_SPELL", L"sound\\Object\\Monster\\Boss\\Pontiff\\PURPLE_SPELL.wav");
+	pSound->Play();
+
 }
 
 void CToxic::Off()

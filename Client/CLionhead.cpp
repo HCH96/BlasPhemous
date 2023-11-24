@@ -16,13 +16,13 @@ CLionhead::CLionhead()
 	, m_pAnimator(nullptr)
 	, m_pMovement(nullptr)
 	, m_pCollider(nullptr)
-	, m_fHP(8.f)
+	, m_fHP(5.f)
 	, m_pHitBox(nullptr)
 {
 	SetDir(false);
 
 	// Animator
-	m_pAnimator = AddComponent<CAnimator>(L"Crosscrawler");
+	m_pAnimator = AddComponent<CAnimator>(L"Lionhead");
 
 	// Idle
 	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"Lionhead_Idle", L"texture\\Monster\\Normal\\LionHead\\Lionhead_idle_anim.png");
@@ -84,7 +84,7 @@ CLionhead::CLionhead()
 	
 
 	// AI
-	m_pAI = AddComponent<CStateMachine>(L"FoolKnife");
+	m_pAI = AddComponent<CStateMachine>(L"Lionhead");
 
 	m_pAI->AddState((UINT)LIONHEAD::IDLE, new CLionheadIdle);
 	m_pAI->AddState((UINT)LIONHEAD::WALK, new CLionheadWalk);

@@ -97,6 +97,11 @@ void CPenitentDodge::Enter()
 		pAnimator->Play(L"Dodge_L", false);
 		pMovement->SetVelocity(Vec2(-2.f, 0.f) * pMovement->GetInitSpeed());
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_DASH", L"sound\\Object\\Player\\PENITENT_DASH.wav");
+	pSound->SetVolume(100.f);
+	pSound->Play();
+
 }
 
 void CPenitentDodge::Exit()
@@ -114,7 +119,7 @@ void CPenitentDodge::Exit()
 	pMovement->SetMaxSpeed(400.f);
 
 	CCollider* pCol = pPenitent->GetComponent<CCollider>();
-	pCol->SetScale(Vec2(40.f, 120.f));
+	pCol->SetScale(Vec2(40.f, 110.f));
 	pCol->SetOffsetPos(Vec2(0.f, -60.f));
 
 	CAnimator* pDustAnimator = pPenitent->GetComponent<CAnimator>(L"Dust_Animator");

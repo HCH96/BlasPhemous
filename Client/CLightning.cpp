@@ -78,6 +78,8 @@ void CLightning::tick(float _DT)
 	{
 		if (m_iPrevFrame == 51 && iCurFrame == 52)
 		{
+			m_pSound->Play();
+
 			m_pCollider->SetTime(0.2f);
 			m_pCollider->On();
 		}

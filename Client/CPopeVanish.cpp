@@ -43,6 +43,9 @@ void CPopeVanish::Enter()
 
 	m_fAcc = 0.f;
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_HUSK_VANISH_OUT_2.0", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_HUSK_VANISH_OUT_2.0.wav");
+	pSound->Play();
+
 
 }
 

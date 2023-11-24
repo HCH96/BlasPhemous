@@ -228,6 +228,9 @@ void CPope::OnHit()
 {
 	if (m_pAI->GetCurState() == (UINT)POPE::SPELL)
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_SHIELD_HIT", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_SHIELD_HIT.wav");
+		pSound->Play();
+
 		// Block
 		if (GetDir())
 		{

@@ -29,6 +29,9 @@ void CPopeDeath::Enter()
 		pAnimator->Play(L"Death_L", false);
 	}
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_DEATH", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_DEATH.wav");
+	pSound->Play();
+
 }
 
 void CPopeDeath::Exit()

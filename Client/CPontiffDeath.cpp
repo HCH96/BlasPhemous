@@ -29,6 +29,10 @@ void CPontiffDeath::Enter()
 	pPontiff->m_pFace->Play(L"Death", false);
 
 	pPontiff->m_pCollider->SetTime(0.f);
+
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_DEATH", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_DEATH.wav");
+	pSound->Play();
 }
 
 void CPontiffDeath::Exit()

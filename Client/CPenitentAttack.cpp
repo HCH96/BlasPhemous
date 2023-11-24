@@ -18,7 +18,7 @@ void CPenitentAttack::finaltick(float _DT)
 	CStateMachine* pOwnerSM = GetOwnerSM();
 
 	
-	
+	GetOwnerObj->SetDir(m_bDir);
 
 	bool isFinsh = false;
 	UINT iCurFrame = (UINT)pAnimator->GetCurFrame();
@@ -88,8 +88,28 @@ void CPenitentAttack::finaltick(float _DT)
 
 	if (iCurFrame == 4 ||iCurFrame == 11 || iCurFrame == 18)
 	{
+		if (m_iPrevFrame == 3)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_SLASH_AIR_1", L"sound\\Object\\Player\\PENITENT_SLASH_AIR_1.wav");
+			pSound->Play();
+		}
+
+
+		if (m_iPrevFrame == 10)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_SLASH_AIR_2", L"sound\\Object\\Player\\PENITENT_SLASH_AIR_2.wav");
+			pSound->Play();
+		}
+
+		if (m_iPrevFrame == 17)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_SLASH_AIR_3", L"sound\\Object\\Player\\PENITENT_SLASH_AIR_3.wav");
+			pSound->Play();
+		}
+
 		pHitBox->On();
 	}
+
 
 
 	if (isFinsh)
@@ -101,12 +121,19 @@ void CPenitentAttack::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DODGE);
 	}
+	if (KEY_TAP(KEY::A))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::PARRY);
+	}
+
 
 	if (!pMovement->IsGround())
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);
 	}
 
+
+	m_iPrevFrame = iCurFrame;
 
 }
 
@@ -121,7 +148,7 @@ void CPenitentAttack::Enter()
 	
 	pHitBox->SetTime(0.15f);
 
-
+	m_iPrevFrame = 0;
 	
 	m_bDir = GetOwnerObj->GetDir();
 	GetOwnerSM()->EditDataToBlackboard(L"IsTapS", false);

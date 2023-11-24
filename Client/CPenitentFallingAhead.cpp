@@ -15,6 +15,10 @@ void CPenitentFallingAhead::finaltick(float _DT)
 
 	if (pMovement->IsGround())
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_JUMP_FALL_STONE", L"sound\\Object\\Player\\PENITENT_JUMP_FALL_STONE.wav");
+		pSound->SetVolume(100.f);
+		pSound->Play();
+
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::RISING);
 	}
 

@@ -26,18 +26,55 @@ void CElderBrotherAttack::finaltick(float _DT)
 	int iCurFrame = pAnimator->GetCurFrame();
 
 
+	if (m_PrevFrame == 11 && iCurFrame == 12)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_PRE_ATTACK", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_PRE_ATTACK.wav");
+		pSound->Play();
+	}
+
 	if (m_PrevFrame == 13 && iCurFrame == 14)
 	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_ATTACK", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_ATTACK.wav");
+		pSound->Play();
+
+
 		if (pOwner->GetDir())
 		{
 			m_pSpawner->On(pOwner->GetPos()+10.f, pOwner->GetDir());
-
 		}
 		else
 		{
 			m_pSpawner->On(pOwner->GetPos() - 10.f, pOwner->GetDir());
 		}
+	}
 
+
+
+	if (m_PrevFrame == 14 && iCurFrame == 15)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_CORPSE_WAVE", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_CORPSE_WAVE.wav");
+		pSound->SetVolume(50.f);
+		pSound->Play();
+		
+		pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_ATTACK_VOICE", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_ATTACK_VOICE.wav");
+		pSound->Play();
+
+		pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_ATTACK_HIT", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_ATTACK_HIT.wav");
+		pSound->Play();
+	}
+
+	if (m_PrevFrame == 17 && iCurFrame == 18)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_CORPSE_WAVE_2", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_CORPSE_WAVE_2.wav");
+		pSound->SetVolume(50.f);
+		pSound->Play();
+	}
+
+	if (m_PrevFrame == 19 && iCurFrame == 20)
+	{
+		CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_CORPSE_WAVE_3", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_CORPSE_WAVE_3.wav");
+		pSound->SetVolume(50.f);
+		pSound->Play();
 	}
 
 	m_PrevFrame = iCurFrame;
@@ -52,6 +89,7 @@ void CElderBrotherAttack::finaltick(float _DT)
 
 void CElderBrotherAttack::Enter()
 {
+
 	// Spawner 가져오기
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 

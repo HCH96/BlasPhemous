@@ -66,6 +66,11 @@ void CPenitentStopRun::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::ATTACK);
 	}
+	if ((KEY_TAP(KEY::S) || KEY_PRESSED(KEY::S)) && KEY_PRESSED(KEY::UP) && !(KEY_TAP(KEY::F)))
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::UPWARDATTACK);
+	}
+
 
 	if (pAnimator->IsFinish())
 	{
@@ -99,6 +104,10 @@ void CPenitentStopRun::Enter()
 		pAnimator->Play(L"Stop_Run_L", true);
 		pDustAnimator->Play(L"StopRun_L", false);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_RUNSTOP_STONE", L"sound\\Object\\Player\\PENITENT_RUNSTOP_STONE.wav");
+	pSound->SetVolume(100.f);
+	pSound->Play();
 }
 
 void CPenitentStopRun::Exit()

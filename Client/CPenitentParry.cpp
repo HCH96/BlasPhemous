@@ -28,6 +28,13 @@ void CPenitentParry::finaltick(float _DT)
 
 	if (pAnimator->GetCurFrame() == 5 && iParry == 2)
 	{
+		if (m_iPrevFrame == 4)
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_PARRY_SLOW", L"sound\\Object\\Player\\PENITENT_PARRY_SLOW.wav");
+			pSound->Play();
+		}
+
+
 		if (m_bDir)
 		{
 			pAnimator->PlayNoReset(L"ParrySuccess",false);
@@ -54,7 +61,7 @@ void CPenitentParry::finaltick(float _DT)
 		}
 	}
 
-
+	m_iPrevFrame = pAnimator->GetCurFrame();
 }
 
 void CPenitentParry::Enter()
@@ -63,7 +70,7 @@ void CPenitentParry::Enter()
 	CAnimator* pAnimator = pObj->GetComponent<CAnimator>();
 	m_bDir = pObj->GetDir();
 
-
+	m_iPrevFrame = 0;
 
 	// µÇ°¨±â
 	pAnimator->Play(L"ParrySuccess", false);
@@ -79,6 +86,8 @@ void CPenitentParry::Enter()
 		pAnimator->Play(L"Parry_L", true);
 	}
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_START_PARRY", L"sound\\Object\\Player\\PENITENT_START_PARRY.wav");
+	pSound->Play();
 
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "CState.h"
 
+class Pontiff;
 
 class CGiantSwordIdle :
     public CState
@@ -8,6 +9,7 @@ class CGiantSwordIdle :
 private:
     CObj* m_pTarget;
     Vec2 m_vVelocity;
+
 
     bool m_bSpinReady;
 

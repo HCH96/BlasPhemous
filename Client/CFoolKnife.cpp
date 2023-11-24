@@ -58,8 +58,8 @@ CFoolKnife::CFoolKnife()
 	m_pAnimator->LoadAnimation(pTex, L"Walk", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_walk_knife.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Walk_L", L"animdata\\Monster\\Normal\\Fool_knife\\Fool_walk_knife.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Walk", 0.06f);
-	m_pAnimator->SetAnimDuration(L"Walk_L", 0.06f);
+	m_pAnimator->SetAnimDuration(L"Walk", 0.1f);
+	m_pAnimator->SetAnimDuration(L"Walk_L", 0.1f);
 
 
 	// Movement

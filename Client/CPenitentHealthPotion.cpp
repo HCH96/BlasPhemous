@@ -23,11 +23,8 @@ void CPenitentHealthPotion::finaltick(float _DT)
 void CPenitentHealthPotion::Enter()
 {
 	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
+	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 
-	if (pPenitent == nullptr)
-	{
-		LOG(LOG_LEVEL::ERR, L"!!State가 잘못 들어있습니다.");
-	}
 
 	pPenitent->SetPotionCount(pPenitent->GetPotionCount() - 1);
 	pPenitent->SetHP(pPenitent->GetHP() + 20.f);
@@ -44,12 +41,18 @@ void CPenitentHealthPotion::Enter()
 	if (iDir)
 	{
 		pAnimator->Play(L"Healthpotion", true);
+		pEffector->Play(L"HealthPotion", false);
 	}
 	else
 	{
 		pAnimator->Play(L"Healthpotion_L", true);
+		pEffector->Play(L"HealthPotion_L", false);
 	}
 
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"USE_FLASK", L"sound\\Effect\\USE_FLASK.wav");
+	pSound->SetVolume(80.f);
+	pSound->Play();
 }
 
 void CPenitentHealthPotion::Exit()

@@ -3,6 +3,9 @@
 class CCrosscrawlerAttack :
     public CState
 {
+private:
+    int m_iPrevFrame;
+
 public:
     virtual void finaltick(float _DT);
     virtual void Enter();

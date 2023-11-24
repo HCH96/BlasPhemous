@@ -63,8 +63,8 @@ void CGiantSwordSpinAttack::Enter()
 	m_vTarget.y = m_vTarget.y - 200.f;
 
 	CCollider* pCollider = pOwner->GetComponent<CCollider>();
-	pCollider->SetScale(Vec2(40.f, 200.f));
-	pCollider->SetOffsetPos(Vec2(0.f, 60.f));
+	pCollider->SetScale(Vec2(40.f, 230.f));
+	pCollider->SetOffsetPos(Vec2(0.f, 90.f));
 
 
 	if ((m_vTarget - m_vInitPos).Length() > 600.f)
@@ -74,7 +74,12 @@ void CGiantSwordSpinAttack::Enter()
 	}
 
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SWORD_AIR_ATTACK", L"sound\\Object\\Monster\\Boss\\Pontiff\\SWORD_AIR_ATTACK.wav");
+	pSound->Play();
+
 	m_fAcc = 0.f;
+
+	m_bSound = false;
 
 }
 

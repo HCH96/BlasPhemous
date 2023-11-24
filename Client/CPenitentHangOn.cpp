@@ -2,6 +2,7 @@
 #include "CPenitentHangOn.h"
 
 CPenitentHangOn::CPenitentHangOn()
+	:m_bDir(true)
 {
 }
 
@@ -33,6 +34,8 @@ void CPenitentHangOn::Enter()
 	
 	int iDir = pOwner->GetDir();
 
+	m_bDir = iDir;
+
 	if (iDir)
 	{
 		pAnimator->Play(L"HangOn", false);
@@ -42,6 +45,9 @@ void CPenitentHangOn::Enter()
 		pAnimator->Play(L"HangOn_L", false);
 	}
 
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Penitent_EdgeGrab", L"sound\\Object\\Player\\Penitent_EdgeGrab.wav");
+	pSound->Play();
 }
 
 void CPenitentHangOn::Exit()
@@ -50,5 +56,7 @@ void CPenitentHangOn::Exit()
 	CMovement* pMovement = pOwner->GetComponent<CMovement>();
 	pMovement->UseGravity(true);
 	pMovement->SetGround(true);
+
+	pOwner->SetDir(m_bDir);
 }
 

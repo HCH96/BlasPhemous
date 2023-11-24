@@ -213,6 +213,15 @@ void CStage02_1::enter()
 	CCamera::GetInst()->SetTarget(pPenitent);
 	CCamera::GetInst()->SetCameraLimitLT(Vec2(90.f * 2.f, 60.f * 2.f));
 	CCamera::GetInst()->SetCameraLimit(Vec2(2050.f * 2.f, 800.f * 2.f));
+
+	// Sound
+	CSound* pBGM = CAssetMgr::GetInst()->LoadSound(L"Churches Field_MASTER", L"sound\\BGM\\Churches Field_MASTER.wav");
+	pBGM->SetVolume(20.f);
+	pBGM->PlayToBGM();
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ZONE_INFO", L"sound\\KeyEvents\\ZONE_INFO.wav");
+	pSound->Play();
+
 }
 
 void CStage02_1::exit()
@@ -243,4 +252,6 @@ void CStage02_1::tick()
 
 		CCamera::GetInst()->FadeOut(0.5f, LEVEL_TYPE::STAGE02_2);
 	}
+
+
 }

@@ -36,6 +36,8 @@ void CCrosscrawlerDeath::Enter()
 	{
 		pAnimator->Play(L"Death_L", false);
 	}
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"CROSSCRAWLER_DEATH", L"sound\\Object\\Monster\\Normal\\Crosscrawler\\CROSSCRAWLER_DEATH.wav");
+	pSound->Play();
 
 }
 

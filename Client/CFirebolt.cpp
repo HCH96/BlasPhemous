@@ -80,6 +80,8 @@ void CFirebolt::On(Vec2 _vPos, Vec2 _vDir)
 
 	m_fVelocity = 0.f;
 	m_fAcc = 0.f;
+
+	m_pSound->Play();
 }
 
 void CFirebolt::Off()
@@ -183,7 +185,8 @@ void CFirebolt::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 
 	if (_pOtherObj->GetLayerIdx() == (UINT)LAYER::PLAYER && _pOtherCol->GetName() == L"Penitent_Collider")
 	{
-		Off();
+		m_eState = FIREBOLT::IMPACT;
+		m_pAnimator->Play(L"Impact", false);
 	}
 }
 

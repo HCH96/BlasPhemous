@@ -3,6 +3,8 @@
 
 #include "Pontiff.h"
 
+#include "CGiantSword.h"
+
 CPatternIdle::CPatternIdle()
 	:m_fAcc(0.f)
 {
@@ -18,13 +20,21 @@ void CPatternIdle::finaltick(float _DT)
 
 	CObj* pOwner = GetOwnerObj;
 	Pontiff* pPontiff = dynamic_cast<Pontiff*>(pOwner);
+	
 
-	if (m_fAcc > 3.f && pPontiff->GetHP() > 0.f)
+	if (m_fAcc > 0.5f && pPontiff->GetHP() > 0.f)
 	{
-		UINT iNextPatter = rand() & 5;
+		UINT iNextPatter = rand() % 5;
 
-		
-		//iNextPatter = (UINT)MAPPATTERN::SPINATTACK;
+
+		CGiantSword* pSword = pPontiff->m_pSword;
+		while (pSword->GetHP() <= 0.f && iNextPatter == (UINT)MAPPATTERN::SPINATTACK)
+		{
+			iNextPatter = rand() % 5;
+		}
+
+
+		iNextPatter = (UINT)MAPPATTERN::SPINATTACK;
 
 		GetOwnerSM()->ChangeState(iNextPatter);
 	}

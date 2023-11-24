@@ -94,13 +94,15 @@ CPenitent::CPenitent()
 	DustAnimInit();
 
 	m_pSparkAnimator = AddComponent<CAnimator>(L"Spark_Animator");
+	m_pSparkAnimator->SetLock(true);
+
 
 	// penitent_attack_spark_1_anim
-	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"AttackSpark", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
-	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"AttackSpark_L", L"texture\\Penitent\\penitent_attack_spark_1_anim.png");
+	CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"AttackSpark", L"texture\\Penitent\\penitent_attack_spark_1_revision_anim.png");
+	CTexture* pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"AttackSpark_L", L"texture\\Penitent\\penitent_attack_spark_1_revision_anim.png");
 
-	m_pSparkAnimator->LoadAnimation(pTex, L"AttackSpark", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt");
-	m_pSparkAnimator->LoadAnimation(pTexReverse, L"AttackSpark_L", L"animdata\\Penitent\\penitent_attack_spark_1_anim.txt", true);
+	m_pSparkAnimator->LoadAnimation(pTex, L"AttackSpark", L"animdata\\Penitent\\penitent_attack_spark_1_revision_anim.txt");
+	m_pSparkAnimator->LoadAnimation(pTexReverse, L"AttackSpark_L", L"animdata\\Penitent\\penitent_attack_spark_1_revision_anim.txt", true);
 
 	m_pSparkAnimator->SetAnimDuration(L"AttackSpark", 0.06f);
 	m_pSparkAnimator->SetAnimDuration(L"AttackSpark_L", 0.06f);
@@ -128,8 +130,8 @@ CPenitent::CPenitent()
 	
 	// collider
 	m_pCollider = AddComponent<CCollider>(L"Penitent_Collider");
-	m_pCollider->SetScale(Vec2(40.f, 120.f));
-	m_pCollider->SetOffsetPos(Vec2(0.f, -60.f));
+	m_pCollider->SetScale(Vec2(40.f, 110.f));
+	m_pCollider->SetOffsetPos(Vec2(0.f, -55.f));
 
 	// HitBox
 	m_pHitBox = AddComponent<CCollider>(L"Penitent_HitBox");
@@ -192,7 +194,7 @@ void CPenitent::tick(float _DT)
 	if (m_bIsHit)
 	{
 		m_fHitTimer += _DT;
-		if (m_fHitTimer >= 1.2f)
+		if (m_fHitTimer >= 1.5f)
 		{
 			m_bIsHit = false;
 			m_fHitTimer = 0.f;
@@ -242,6 +244,9 @@ void CPenitent::OnDamaged()
 	{
 		m_pSM->ChangeState((UINT)PENITENT_STATE::PUSHBACK);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_HEAVY_DAMAGE", L"sound\\Object\\Player\\PENITENT_HEAVY_DAMAGE.wav");
+	pSound->Play();
 }
 
 void CPenitent::OnHit()
@@ -249,8 +254,30 @@ void CPenitent::OnHit()
 	CTimeMgr::GetInst()->Delay();
 	CCamera::GetInst()->Shake(0.1f, 0.3f);
 
-	if (GetDir())
+	Vec2 vPos = GetPos();
+
+	// 위 공격
+	if (m_pSM->GetCurState() == (UINT)PENITENT_STATE::UPWARDATTACK || m_pSM->GetCurState() == (UINT)PENITENT_STATE::UPWARDATTACKJUMP)
 	{
+		vPos += Vec2(0.f, -180.f);
+	}
+	// 옆 공격
+	else
+	{
+		if (GetDir())
+		{
+			vPos += Vec2(150.f, -60.f);
+		}
+		else
+		{
+			vPos += Vec2(-150.f, -60.f);
+		}
+	}
+
+	m_pSparkAnimator->SetTmpPos(vPos);
+
+	if (GetDir())
+	{ 
 		m_pSparkAnimator->Play(L"AttackSpark",false);
 	}
 	else
@@ -262,9 +289,31 @@ void CPenitent::OnHit()
 void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _pOtherCol)
 {
 	// 몬스터 Hit
-	if (_pOwnCol->GetName() == L"Penitent_HitBox" && _pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER && _pOtherCol->GetName() != L"Mon_HitBox")
+	if (_pOwnCol->GetName() == L"Penitent_HitBox" && (_pOtherObj->GetLayerIdx() == (UINT)LAYER::MONSTER || _pOtherObj->GetLayerIdx() == (UINT)LAYER::STATIC_MONSTER)
+		&& _pOtherCol->GetName() != L"Mon_HitBox")
 	{
-		OnHit();
+		if (_pOtherObj->GetName() != L"ShieldMaiden")
+		{
+			CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_ENEMY_HIT_4", L"sound\\Object\\Player\\PENITENT_ENEMY_HIT_4.wav");
+			pSound->SetVolume(30.f);
+			pSound->Play();
+
+			OnHit();
+		}
+		else
+		{
+			CStateMachine* pAI = _pOtherObj->GetComponent<CStateMachine>();
+			if (pAI->GetCurState() == (UINT)SHIELDMAIDEN::STUN)
+			{
+				CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_ENEMY_HIT_4", L"sound\\Object\\Player\\PENITENT_ENEMY_HIT_4.wav");
+				pSound->SetVolume(30.f);
+				pSound->Play();
+
+				OnHit();
+			}
+		}
+
+		
 	}
 
 	if (_pOtherCol->GetName() == L"Pontiff" && _pOwnCol->GetName() == L"Penitent_HitBox")
@@ -302,6 +351,9 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 
 void CPenitent::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+	if (_OwnCol->GetName() == L"Penitent_HitBox")
+		return;
+
 	if (dynamic_cast<CPlatform*>(_OtherObj) || dynamic_cast<CAshPlatform*>(_OtherObj))
 	{
 		--m_iOverlapGround;
@@ -630,8 +682,8 @@ void CPenitent::AnimationInit()
 	m_pAnimator->LoadAnimation(pTex, L"Ladder", L"animdata\\Penitent\\penintent_ladder_climb_loop_anim.txt");
 	m_pAnimator->LoadAnimation(pTexReverse, L"Ladder_L", L"animdata\\Penitent\\penintent_ladder_climb_loop_anim.txt", true);
 
-	m_pAnimator->SetAnimDuration(L"Ladder", 0.04f);
-	m_pAnimator->SetAnimDuration(L"Ladder_L", 0.04f);
+	m_pAnimator->SetAnimDuration(L"Ladder", 0.1f);
+	m_pAnimator->SetAnimDuration(L"Ladder_L", 0.1f);
 
 
 
@@ -825,6 +877,16 @@ void CPenitent::EffectInit()
 
 	m_pEffector->SetAnimDuration(L"PushBackSpark", 0.06f);
 	m_pEffector->SetAnimDuration(L"PushBackSpark_L", 0.06f);
+
+	// penitent_healthpotion_consuming_aura_anim
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"penitent_healthpotion_consuming_aura_anim", L"texture\\Penitent\\penitent_healthpotion_consuming_aura_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"penitent_healthpotion_consuming_aura_anim_L", L"texture\\Penitent\\penitent_healthpotion_consuming_aura_anim.png");
+
+	m_pEffector->LoadAnimation(pTex, L"HealthPotion", L"animdata\\Penitent\\penitent_healthpotion_consuming_aura_anim.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"HealthPotion_L", L"animdata\\Penitent\\penitent_healthpotion_consuming_aura_anim.txt", true);
+
+	m_pEffector->SetAnimDuration(L"HealthPotion", 0.05f);
+	m_pEffector->SetAnimDuration(L"HealthPotion_L", 0.05f);
 
 
 

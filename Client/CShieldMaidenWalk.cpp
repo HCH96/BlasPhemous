@@ -79,6 +79,9 @@ void CShieldMaidenWalk::Enter()
 	{
 		pAnimator->Play(L"Walk_L", true);
 	}
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SHIELD_ENEMY_WALK", L"sound\\Object\\Monster\\Normal\\Shieldmaiden\\SHIELD_ENEMY_WALK.wav");
+	pSound->Play(true);
 }
 
 void CShieldMaidenWalk::Exit()
@@ -89,5 +92,8 @@ void CShieldMaidenWalk::Exit()
 
 	CShieldMaiden* m_pMon = dynamic_cast<CShieldMaiden*>(pOwner);
 	m_pMon->SetStateBlock(false);
+
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"SHIELD_ENEMY_WALK", L"sound\\Object\\Monster\\Normal\\Shieldmaiden\\SHIELD_ENEMY_WALK.wav");
+	pSound->Stop();
 }
 

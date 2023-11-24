@@ -35,6 +35,15 @@ void CElderBrotherDeath::Enter()
 		pAnimator->Play(L"Death_L", false);
 	}
 
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_DEATH", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_DEATH.wav");
+	pSound->Play();
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_DEATH_VOICE_2", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_DEATH_VOICE_2.wav");
+	pSound->Play();
+
+	pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_BOSS_DEATH_HIT", L"sound\\Object\\Monster\\Boss\\ElderBrother\\PENITENT_BOSS_DEATH_HIT.wav");
+	pSound->Play();
+	
 }
 
 void CElderBrotherDeath::Exit()

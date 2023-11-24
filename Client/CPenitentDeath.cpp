@@ -4,6 +4,7 @@
 #include "CPenitent.h"
 
 CPenitentDeath::CPenitentDeath()
+	: SoundPlay(false)
 {
 }
 
@@ -32,6 +33,13 @@ void CPenitentDeath::finaltick(float _DT)
 		bool bDir = GetOwnerObj->GetDir();
 		if (pMovement->IsGround())
 		{
+			if (!SoundPlay)
+			{
+				CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_DEATH_DEFAULT", L"sound\\Object\\Player\\PENITENT_DEATH_DEFAULT.wav");
+				pSound->Play();
+				SoundPlay = true;
+			}
+
 			if (bDir)
 			{
 				pAnimator->PlayNoReset(L"Death", false);
@@ -65,6 +73,8 @@ void CPenitentDeath::Enter()
 	pAnimator->FindAnimation(L"Death")->Reset();
 	pAnimator->FindAnimation(L"Death_L")->Reset();
 	pMovement->SetVelocity(Vec2(0.f, 0.f));
+
+	SoundPlay = false;
 }
 
 void CPenitentDeath::Exit()

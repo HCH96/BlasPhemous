@@ -66,7 +66,7 @@ void CLadder::EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherC
 	UINT iCurState = pSM->GetCurState();
 
 
-	if (vPos.y - _OwnCol->GetScale().y / 2.f >= _OtherObj->GetPos().y && iCurState == (UINT)PENITENT_STATE::LADDER)
+	if (vPos.y - _OwnCol->GetScale().y / 2.f +10.f >= _OtherObj->GetPos().y && iCurState == (UINT)PENITENT_STATE::LADDER)
 	{
 		pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
 	}

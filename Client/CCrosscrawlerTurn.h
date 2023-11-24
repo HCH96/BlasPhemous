@@ -4,6 +4,8 @@
 class CCrosscrawlerTurn :
     public CState
 {
+private:
+    int m_iPrevFrame;
 
 public:
     virtual void finaltick(float _DT);

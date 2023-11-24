@@ -75,7 +75,7 @@ void CPenitentCrouching::Exit()
 {
 	CPenitent* pPenitent = dynamic_cast<CPenitent*>(GetOwnerObj);
 	CCollider* pCol = pPenitent->GetComponent<CCollider>();
-	pCol->SetScale(Vec2(40.f, 120.f));
+	pCol->SetScale(Vec2(40.f, 110.f));
 	pCol->SetOffsetPos(Vec2(0.f, -60.f));
 }
 
