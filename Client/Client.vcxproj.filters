@@ -575,6 +575,12 @@
     <Filter Include="Game\08. State\ElderBrother\ShadowNone">
       <UniqueIdentifier>{1a16822f-860c-44dc-b2f4-d695e97421e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\ElderBrother\IntroJump">
+      <UniqueIdentifier>{93599a94-9859-406c-a44a-6203f83e660a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Penitent\Intro">
+      <UniqueIdentifier>{9240decf-35c9-4716-9c9d-831c0685f989}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1139,6 +1145,12 @@
     <ClInclude Include="CElderShdowNone.h">
       <Filter>Game\08. State\ElderBrother\ShadowNone</Filter>
     </ClInclude>
+    <ClInclude Include="CElderBrotherIntroJump.h">
+      <Filter>Game\08. State\ElderBrother\IntroJump</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenitentIntro.h">
+      <Filter>Game\08. State\Penitent\Intro</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1697,6 +1709,12 @@
     </ClCompile>
     <ClCompile Include="CElderShdowNone.cpp">
       <Filter>Game\08. State\ElderBrother\ShadowNone</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderBrotherIntroJump.cpp">
+      <Filter>Game\08. State\ElderBrother\IntroJump</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentIntro.cpp">
+      <Filter>Game\08. State\Penitent\Intro</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

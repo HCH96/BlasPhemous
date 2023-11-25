@@ -9,6 +9,7 @@
 #include "CElderBrotherIdle.h"
 #include "CElderBrotherJump.h"
 #include "CElderIntro.h"
+#include "CElderBrotherIntroJump.h"
 
 
 CElderBrother::CElderBrother()
@@ -18,6 +19,8 @@ CElderBrother::CElderBrother()
     , m_pAI(nullptr)
     , m_fHP(12.f)
 {
+    SetDir(false);
+
     // Animator
     m_pAnimator = AddComponent<CAnimator>(L"ElderBrother");
 
@@ -77,6 +80,7 @@ CElderBrother::CElderBrother()
     m_pAI->AddState((UINT)ELDERBROTHER::DEATH, new CElderBrotherDeath);
     m_pAI->AddState((UINT)ELDERBROTHER::ATTACK, new CElderBrotherAttack);
     m_pAI->AddState((UINT)ELDERBROTHER::INTRO, new CElderIntro);
+    m_pAI->AddState((UINT)ELDERBROTHER::INTROJUMP, new CElderBrotherIntroJump);
 
     // Collider
     m_pCollider = AddComponent<CCollider>(L"ElderBrother");

@@ -88,6 +88,12 @@ void CStage01_5::enter()
 	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
 	CCamera::GetInst()->SetCameraLimitLT(Vec2(180.f * 2.f, 80.f * 2.f));
 	CCamera::GetInst()->SetCameraLimit(Vec2(792.f * 2.f, 420.f * 2.f));
+
+	// BGM
+	CSound* pBGM = CAssetMgr::GetInst()->LoadSound(L"Brotherhood_Ambient", L"sound\\BGM\\Brotherhood_Ambient.wav");
+	pBGM->SetVolume(30.f);
+	pBGM->PlayToBGM(true);
+
 }
 
 void CStage01_5::exit()

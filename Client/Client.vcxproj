@@ -169,6 +169,7 @@
     <ClInclude Include="CElderBrotherAttack.h" />
     <ClInclude Include="CElderBrotherDeath.h" />
     <ClInclude Include="CElderBrotherIdle.h" />
+    <ClInclude Include="CElderBrotherIntroJump.h" />
     <ClInclude Include="CElderBrotherJump.h" />
     <ClInclude Include="CElderIntro.h" />
     <ClInclude Include="CElderShadow.h" />
@@ -243,6 +244,7 @@
     <ClInclude Include="CPenitentHangOn.h" />
     <ClInclude Include="CPenitentHealthPotion.h" />
     <ClInclude Include="CPenitentHP.h" />
+    <ClInclude Include="CPenitentIntro.h" />
     <ClInclude Include="CPenitentJump.h" />
     <ClInclude Include="CPenitentJumpAttack.h" />
     <ClInclude Include="CPenitentJumpForward.h" />
@@ -359,6 +361,7 @@
     <ClCompile Include="CElderBrotherAttack.cpp" />
     <ClCompile Include="CElderBrotherDeath.cpp" />
     <ClCompile Include="CElderBrotherIdle.cpp" />
+    <ClCompile Include="CElderBrotherIntroJump.cpp" />
     <ClCompile Include="CElderBrotherJump.cpp" />
     <ClCompile Include="CElderIntro.cpp" />
     <ClCompile Include="CElderShadow.cpp" />
@@ -431,6 +434,7 @@
     <ClCompile Include="CPenitentHangOn.cpp" />
     <ClCompile Include="CPenitentHealthPotion.cpp" />
     <ClCompile Include="CPenitentHP.cpp" />
+    <ClCompile Include="CPenitentIntro.cpp" />
     <ClCompile Include="CPenitentJump.cpp" />
     <ClCompile Include="CPenitentJumpAttack.cpp" />
     <ClCompile Include="CPenitentJumpForward.cpp" />

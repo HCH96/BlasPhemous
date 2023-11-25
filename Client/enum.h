@@ -192,6 +192,8 @@ enum class PENITENT_STATE
 	PARRYCOUNTER,
 	GUARDSLIDE,
 	RESPAWN,
+	INTRO,
+	DEATH_END,
 };
 
 enum class FOOL_KNIFE
@@ -238,6 +240,7 @@ enum class ELDERBROTHER
 	JUMP,
 	ATTACK,
 	DEATH,
+	INTROJUMP,
 };
 
 enum class POPE

@@ -1,12 +1,10 @@
 #pragma once
 #include "CState.h"
-class CElderBrotherDeath :
+class CElderBrotherIntroJump :
     public CState
 {
 private:
-    Vec2 m_vDeathPos;
-
-    bool m_bEnd;
+    int m_PrevFrame;
 
 public:
     virtual void finaltick(float _DT);
@@ -14,9 +12,9 @@ public:
     virtual void Exit();
 
 public:
-    CLONE(CElderBrotherDeath);
-    CElderBrotherDeath();
-    ~CElderBrotherDeath();
+    CLONE(CElderBrotherIntroJump);
+    CElderBrotherIntroJump();
+    ~CElderBrotherIntroJump();
 
 };
 

@@ -29,6 +29,7 @@ public:
 public:
 	virtual void BossIntro() {}
 	virtual void IntroEnd() {}
+	virtual void BossDeath() {}
 
 
 	template<typename T>

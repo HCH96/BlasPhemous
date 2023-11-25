@@ -122,7 +122,7 @@ void CStage01_3::enter()
 	pPenitent->SetLeft(false);
 	
 
-	if (pPenitent->GetState() == (UINT)PENITENT_STATE::NONE)
+	if (pPenitent->GetState() == (UINT)PENITENT_STATE::DEATH_END)
 	{
 		pPenitent->SetState(PENITENT_STATE::RESPAWN);
 		pPenitent->SetPos(Vec2(1816.f, 1160.f));

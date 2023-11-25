@@ -52,7 +52,7 @@
 #include "CPenitentParryCounter.h"
 #include "CPenitentGuardSlide.h"
 #include "CPenitentRespawn.h"
-
+#include "CPenitentIntro.h"
 
 CPenitent::CPenitent()
 	: m_pAnimator(nullptr)
@@ -1010,6 +1010,7 @@ void CPenitent::DustAnimInit()
 
 void CPenitent::StateInit()
 {
+	m_pSM->AddState((UINT)PENITENT_STATE::DEATH_END, new CPenitentNone);
 	m_pSM->AddState((UINT)PENITENT_STATE::FALLINGAHEAD, new CPenitentFallingAhead);
 	m_pSM->AddState((UINT)PENITENT_STATE::RISING, new CPenitentRising);
 	m_pSM->AddState((UINT)PENITENT_STATE::IDLE, new CPenitentIdle);
@@ -1049,6 +1050,7 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::PARRYCOUNTER, new CPenitentParryCounter);
 	m_pSM->AddState((UINT)PENITENT_STATE::GUARDSLIDE, new CPenitentGuardSlide);
 	m_pSM->AddState((UINT)PENITENT_STATE::RESPAWN, new CPenitentRespawn);
+	m_pSM->AddState((UINT)PENITENT_STATE::INTRO, new CPenitentIntro);
 
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);

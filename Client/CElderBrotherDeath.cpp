@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CElderBrotherDeath.h"
 
+#include "CLevelMgr.h"
+#include "CLevel.h"
+
 
 CElderBrotherDeath::CElderBrotherDeath()
 {
@@ -14,7 +17,15 @@ CElderBrotherDeath::~CElderBrotherDeath()
 void CElderBrotherDeath::finaltick(float _DT)
 {
 	CObj* pOwner = GetOwnerObj;
+	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
 	pOwner->SetPos(m_vDeathPos);
+
+	if (pAnimator->IsFinish()&& !m_bEnd)
+	{
+		CLevelMgr::GetInst()->GetCurLevel()->BossDeath();
+		m_bEnd = true;
+	}
+
 
 }
 
@@ -44,9 +55,12 @@ void CElderBrotherDeath::Enter()
 	pSound = CAssetMgr::GetInst()->LoadSound(L"PENITENT_BOSS_DEATH_HIT", L"sound\\Object\\Player\\PENITENT_BOSS_DEATH_HIT.wav");
 	pSound->Play();
 	
+	m_bEnd = false;
+
 }
 
 void CElderBrotherDeath::Exit()
 {
+	
 }
 

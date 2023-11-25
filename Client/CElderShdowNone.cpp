@@ -18,6 +18,7 @@ void CElderShdowNone::Enter()
 {
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
+	pOwner->SetDir(false);
 	bool bDir = pOwner->GetDir();
 
 	if (bDir)

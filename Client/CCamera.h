@@ -11,6 +11,7 @@ enum class CAM_EFFECT
 	FADE_OUT,
 	SHAKE,
 	DEATH,
+	BOSS_CLEAR,
 };
 
 struct FCamEvent
@@ -42,11 +43,13 @@ private:
 	Vec2		m_vTarget;	   // Ä«¸Þ¶ó°¡ Èçµé¸± ¶§ µµÂø ÁÂÇ¥
 
 
-
+	bool		m_bInEvent;
+	bool		m_bInClear;
 
 
 	CTexture* m_pVeil;
 	CTexture* m_pDeathScreen;
+	CTexture* m_pBossClear;
 	CObj* m_pTarget;
 
 
@@ -123,5 +126,20 @@ public:
 		evnt.Duration = _time;
 		m_EventList.push_back(evnt);
 	}
+
+	void BossClear(float _time)
+	{
+		m_bInEvent = true;
+		m_bInClear = true;
+
+
+		FCamEvent evnt = {};
+		evnt.Type = CAM_EFFECT::BOSS_CLEAR;
+		evnt.AccTime = 0.f;
+		evnt.Duration = _time;
+
+		m_EventList.push_back(evnt);
+	}
+
 };
 

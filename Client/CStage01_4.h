@@ -16,6 +16,7 @@ private:
 public:
     virtual void BossIntro() override;
     virtual void IntroEnd() override;
+    virtual void BossDeath() override;
 
 
     virtual void init() override;

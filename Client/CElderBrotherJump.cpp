@@ -42,6 +42,16 @@ void CElderBrotherJump::finaltick(float _DT)
 
 		m_fStart = pOwner->GetPos().x;
 		m_fEnd = m_pTarget->GetPos().x + vTargetVel.x * 1.2f;
+
+		if (m_fEnd < 400.f)
+		{
+			m_fEnd = 400.f;
+		}
+		
+		if (m_fEnd > 2360.f)
+		{
+			m_fEnd = 2360.f;
+		}
 	}
 
 	// x축 값 이동

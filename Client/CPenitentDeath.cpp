@@ -58,7 +58,7 @@ void CPenitentDeath::finaltick(float _DT)
 			// 레벨 종료 후 부활
 			pPenitent->SetHP(100.f);
 
-			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::NONE);
+			GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DEATH_END);
 
 			CCamera::GetInst()->PenitentDeath(1.5f);
 

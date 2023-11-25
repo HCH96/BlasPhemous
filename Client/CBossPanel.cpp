@@ -16,7 +16,10 @@
 
 CBossPanel::CBossPanel()
 	: m_pTexture(nullptr)
+	, m_bOn(false)
 {
+	SetName(L"BossPanel");
+
 	m_pTexture = CAssetMgr::GetInst()->LoadTexture(L"BossPanel", L"texture\\UI\\Boss_HpBarFrame.png");
 	SetPos(Vec2(294.f, 650.f));
 	SetScale(Vec2(m_pTexture->GetWidth(), m_pTexture->GetHeight()));
@@ -42,6 +45,12 @@ void CBossPanel::tick(float _DT)
 
 void CBossPanel::render(HDC _dc)
 {
+	if (m_bOn == false)
+	{
+		return;
+	}
+
+
 	UINT iCurLv = CLevelMgr::GetInst()->GetCurLeveli();
 	CLevel* pCurLv = CLevelMgr::GetInst()->GetCurLevel();
 

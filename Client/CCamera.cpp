@@ -27,6 +27,7 @@ CCamera::CCamera()
 	m_pVeil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", (int)vResol.x, (int)vResol.y);
 
 	m_pDeathScreen = CAssetMgr::GetInst()->LoadTexture(L"DeathScreen", L"texture\\UI\\Death_Screen.png");
+	m_pBossClear = CAssetMgr::GetInst()->LoadTexture(L"BossClear", L"texture\\UI\\boss-defeated-screen-title.png");
 }
 
 CCamera::~CCamera()
@@ -259,6 +260,51 @@ void CCamera::tick()
 
 
 	}
+	else if (evnt.Type == CAM_EFFECT::BOSS_CLEAR)
+	{
+		evnt.AccTime += DT;
+
+		// 종료 조건
+		if (m_bInEvent == false && m_Alpha <= 0.f)
+		{
+			m_bInClear = false;
+			m_EventList.pop_front();
+		}
+		// excute
+		else
+		{
+			if (m_bInEvent)
+			{
+				float fRatio = evnt.AccTime / evnt.Duration;
+				float alpha = fRatio;
+
+				if (alpha >= 1.f)
+					alpha = 1.f;
+
+				m_Alpha = (UINT)(alpha * 255);
+				
+			}
+			else
+			{
+				float fRatio = evnt.AccTime / evnt.Duration;
+				float alpha = 1.f - fRatio;
+
+				if (alpha <= 0.f)
+					alpha = 0.f;
+
+				m_Alpha = (UINT)(alpha * 255);
+			}
+
+			if (m_Alpha == 255 && KEY_TAP(KEY::ENTER))
+			{
+				m_bInEvent = false;
+				evnt.AccTime = 0.f;
+			}
+
+			
+		}
+
+	}
 
 
 	// Diff 계산
@@ -273,19 +319,24 @@ void CCamera::render(HDC _dc)
 	if (0 == m_Alpha)
 		return;
 
-	BLENDFUNCTION blend = {};
-	blend.BlendOp = AC_SRC_OVER;
-	blend.BlendFlags = 0;
+	if (!m_bInClear)
+	{
+		BLENDFUNCTION blend = {};
+		blend.BlendOp = AC_SRC_OVER;
+		blend.BlendFlags = 0;
 
-	blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
-	blend.AlphaFormat = 0; // 0
+		blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
+		blend.AlphaFormat = 0; // 0
 
-	AlphaBlend(_dc
-		, 0, 0, m_pVeil->GetWidth(), m_pVeil->GetHeight()
-		, m_pVeil->GetDC()
-		, 0, 0
-		, m_pVeil->GetWidth(), m_pVeil->GetHeight()
-		, blend);
+		AlphaBlend(_dc
+			, 0, 0, m_pVeil->GetWidth(), m_pVeil->GetHeight()
+			, m_pVeil->GetDC()
+			, 0, 0
+			, m_pVeil->GetWidth(), m_pVeil->GetHeight()
+			, blend);
+	}
+
+	
 
 	if (m_EventList.empty())
 		return;
@@ -307,6 +358,26 @@ void CCamera::render(HDC _dc)
 			, m_pDeathScreen->GetDC()
 			, 0, 0
 			, m_pDeathScreen->GetWidth(), m_pDeathScreen->GetHeight()
+			, blend);
+
+		return;
+	}
+
+	if (evnt.Type == CAM_EFFECT::BOSS_CLEAR)
+	{
+		BLENDFUNCTION blend = {};
+		blend.BlendOp = AC_SRC_OVER;
+		blend.BlendFlags = 0;
+
+		blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
+		blend.AlphaFormat = AC_SRC_ALPHA; // 0
+
+		AlphaBlend(_dc
+			, 308, 158
+			, m_pBossClear->GetWidth() * 2, m_pBossClear->GetHeight() * 2
+			, m_pBossClear->GetDC()
+			, 0, 0
+			, m_pBossClear->GetWidth(), m_pBossClear->GetHeight()
 			, blend);
 
 		return;
