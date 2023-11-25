@@ -61,6 +61,8 @@ void CElderBrotherAttack::finaltick(float _DT)
 
 		pSound = CAssetMgr::GetInst()->LoadSound(L"ELDER_BROTHER_ATTACK_HIT", L"sound\\Object\\Monster\\Boss\\ElderBrother\\ELDER_BROTHER_ATTACK_HIT.wav");
 		pSound->Play();
+
+		CCamera::GetInst()->Shake(0.3f, 0.8f);
 	}
 
 	if (m_PrevFrame == 17 && iCurFrame == 18)

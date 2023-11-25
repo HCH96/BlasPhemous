@@ -11,6 +11,8 @@ CPenitentIntro::~CPenitentIntro()
 
 void CPenitentIntro::finaltick(float _DT)
 {
+	GetOwnerObj->SetDir(m_bDir);
+
 }
 
 void CPenitentIntro::Enter()
@@ -28,6 +30,8 @@ void CPenitentIntro::Enter()
 	{
 		pAnimator->Play(L"Idle_L", true);
 	}
+
+	m_bDir = iDir;
 
 }
 

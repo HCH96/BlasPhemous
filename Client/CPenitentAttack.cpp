@@ -119,6 +119,7 @@ void CPenitentAttack::finaltick(float _DT)
 
 	if (KEY_TAP(KEY::D))
 	{
+
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::DODGE);
 	}
 	if (KEY_TAP(KEY::A))
@@ -172,6 +173,17 @@ void CPenitentAttack::Enter()
 
 void CPenitentAttack::Exit()
 {
+	if (KEY_TAP(KEY::LEFT) || KEY_PRESSED(KEY::LEFT))
+	{
+		GetOwnerObj->SetDir(false);
+	}
+
+	if (KEY_TAP(KEY::RIGHT) || KEY_PRESSED(KEY::RIGHT))
+	{
+		GetOwnerObj->SetDir(true);
+	}
+
+
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	
 	pEffector->Play(L"None", false);
