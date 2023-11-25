@@ -127,6 +127,8 @@ void CElderBrotherAttack::Enter()
 		pAnimator->Play(L"Attack_L", false);
 	}
 
+	m_PrevFrame = 0;
+
 }
 
 void CElderBrotherAttack::Exit()

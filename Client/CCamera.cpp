@@ -36,6 +36,12 @@ CCamera::~CCamera()
 
 void CCamera::SetTarget(CObj* _pTarget)
 {
+	if (_pTarget == nullptr)
+	{
+		m_pTarget = nullptr;
+		return;
+	}
+
 	 m_pTarget = _pTarget; 
 	 InitLookAt(_pTarget->GetPos()); 
 }

@@ -16,12 +16,61 @@
 
 #include "CRayBeam.h"
 #include "CSpawner.h"
+#include "CWall.h"
 
 #include "CKeyMgr.h"
 
 #include "CBossPanel.h"
 #include "CBossHP.h"
 
+#include "CLevelMgr.h"
+#include "CPenitent.h"
+
+#include "CBossIntro.h"
+
+#include "CElderShadow.h"
+
+void CStage01_4::BossIntro()
+{
+	// Penitent State 변경
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	CStateMachine* pSM = pPenitent->GetComponent<CStateMachine>();
+	pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
+	
+	// Camera 설정
+	//CCamera::GetInst()->SetTarget(nullptr);
+	//CCamera::GetInst()->SetSpeed(200.f);
+	//CCamera::GetInst()->SetLookAt(Vec2(1430.f,820.f));
+	//CCamera::GetInst()->SetLookAtOffsetY(0.f);
+
+	// 벽 설정
+	m_pLeftWall->SetPos(Vec2(355.f, 870.f));
+	m_pRightWall->SetPos(Vec2(2405.f, 870.f));
+
+
+	// ElderBrother shadow Animation 재생
+	CStateMachine* p_AI = m_pShadow->GetComponent<CStateMachine>();
+	p_AI->ChangeState((UINT)ELDERBROTHER::ATTACK);
+
+}
+
+void CStage01_4::IntroEnd()
+{
+	// Camera Limit 
+	CCamera::GetInst()->SetCameraLimitLT(Vec2(190.f * 2.f, 255.f * 2.f));
+	CCamera::GetInst()->SetCameraLimit(Vec2(1190.f * 2.f, 615.f * 2.f));
+	
+	// BGM 변경
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Final Boss_MASTER", L"sound\\BGM\\Final Boss_MASTER.wav");
+	pSound->PlayToBGM();
+
+	// Penitent State 변경
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	CStateMachine* pSM = pPenitent->GetComponent<CStateMachine>();
+	pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
+
+
+}
 
 void CStage01_4::init()
 {
@@ -57,13 +106,24 @@ void CStage01_4::init()
 	pBackGround->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::BACKGROUND, pBackGround);
 
+
+	CElderShadow* pShadow = new CElderShadow;
+	pShadow->SetPos(Vec2(1770.f, 1000.f));
+	pShadow->SetScale(Vec2(1.5f, 1.5f));
+	pShadow->SetDir(false);
+	AddObject(LAYER::BACKGROUND, pShadow);
+
+	m_pShadow = pShadow;
+
+
+
 	// Background 4
-	//pBackGround = new CBackground;
-	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_BeforeParallax_4", L"texture\\Map\\Brotherhood\\1-4\\1_4_BeforeParallax_4.png"));
-	//pBackGround->SetParallaxSpeed(Vec2(0.8f, 0.3f));
-	//pBackGround->SetPos(Vec2(-100.f, 100.f));
-	//pBackGround->SetScale(Vec2(2.f, 2.f));
-	//AddObject(LAYER::BACKGROUND, pBackGround);
+	pBackGround = new CBackground;
+	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_BeforeParallax_4", L"texture\\Map\\Brotherhood\\1-4\\1_4_BeforeParallax_4.png"));
+	pBackGround->SetParallaxSpeed(Vec2(0.8f, 0.3f));
+	pBackGround->SetPos(Vec2(-100.f, 100.f));
+	pBackGround->SetScale(Vec2(2.f, 2.f));
+	AddObject(LAYER::BACKGROUND, pBackGround);
 
 
 	// Tile 
@@ -79,10 +139,10 @@ void CStage01_4::init()
 	AddObject(LAYER::FOREGROUND, pBackGround);
 
 	// Foreground 2
-	pBackGround = new CBackground;
-	pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-4\\1_4_AfterLayer_0.png"));
-	pBackGround->SetScale(Vec2(2.f, 2.f));
-	AddObject(LAYER::FOREGROUND, pBackGround);
+	//pBackGround = new CBackground;
+	//pBackGround->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"1_4_AfterLayer_0", L"texture\\Map\\Brotherhood\\1-4\\1_4_AfterLayer_0.png"));
+	//pBackGround->SetScale(Vec2(2.f, 2.f));
+	//AddObject(LAYER::FOREGROUND, pBackGround);
 
 	CPlatform* pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(524.f, 1126.f));
@@ -99,6 +159,7 @@ void CStage01_4::init()
 	pPlatform->SetPos(Vec2(1470.f, 1068.f));
 	pPlatform->SetScale(Vec2(500.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
 
 	CElderBrother* pElder = new CElderBrother;
 	pElder->SetPos(Vec2(1470.f, 1060.f));
@@ -173,6 +234,25 @@ void CStage01_4::init()
 	AddObject(LAYER::UI, pBossPanel);
 
 
+	// wall 
+	m_pLeftWall = new CWall;
+	
+	m_pLeftWall->SetPos(Vec2(0.f, 0.f));
+	m_pLeftWall->SetScale(Vec2(50.f, 500.f));
+	AddObject(LAYER::PLATFORM, m_pLeftWall);
+
+	m_pRightWall = new CWall;
+
+	m_pRightWall->SetPos(Vec2(0.f, 0.f));
+	m_pRightWall->SetScale(Vec2(50.f, 500.f));
+	AddObject(LAYER::PLATFORM, m_pRightWall);
+
+
+	// Boss Intro 
+	CBossIntro* pBossIntro = new CBossIntro;
+	pBossIntro->SetPos(Vec2(1070.f, 968.f));
+	AddObject(LAYER::BOSSINTRO, pBossIntro);
+
 
 }
 
@@ -201,10 +281,6 @@ void CStage01_4::enter()
 	CCamera::GetInst()->SetLookAtOffsetY(-230.f);
 	CCamera::GetInst()->SetCameraLimitLT(Vec2(100.f * 2.f, 255.f * 2.f));
 	CCamera::GetInst()->SetCameraLimit(Vec2(1380.f * 2.f, 615.f * 2.f));
-
-	// Sound
-	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Final Boss_MASTER", L"sound\\BGM\\Final Boss_MASTER.wav");
-	pSound->PlayToBGM();
 }
 
 void CStage01_4::exit()

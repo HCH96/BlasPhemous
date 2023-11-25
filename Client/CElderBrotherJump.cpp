@@ -187,6 +187,10 @@ void CElderBrotherJump::Enter()
 	{
 		pAnimator->Play(L"Jump_L", false);
 	}
+
+	m_PrevFrame = 0;
+
+
 }
 
 void CElderBrotherJump::Exit()

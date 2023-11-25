@@ -8,6 +8,7 @@
 #include "CElderBrotherDeath.h"
 #include "CElderBrotherIdle.h"
 #include "CElderBrotherJump.h"
+#include "CElderIntro.h"
 
 
 CElderBrother::CElderBrother()
@@ -75,6 +76,7 @@ CElderBrother::CElderBrother()
     m_pAI->AddState((UINT)ELDERBROTHER::JUMP, new CElderBrotherJump);
     m_pAI->AddState((UINT)ELDERBROTHER::DEATH, new CElderBrotherDeath);
     m_pAI->AddState((UINT)ELDERBROTHER::ATTACK, new CElderBrotherAttack);
+    m_pAI->AddState((UINT)ELDERBROTHER::INTRO, new CElderIntro);
 
     // Collider
     m_pCollider = AddComponent<CCollider>(L"ElderBrother");
@@ -82,7 +84,7 @@ CElderBrother::CElderBrother()
     m_pCollider->SetOffsetPos(Vec2(0.f, -100.f));
 
 
-    m_pAI->ChangeState((UINT)FOOL_KNIFE::IDLE);
+    m_pAI->ChangeState((UINT)ELDERBROTHER::INTRO);
 
 }
 

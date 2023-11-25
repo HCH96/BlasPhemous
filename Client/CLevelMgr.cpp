@@ -106,7 +106,7 @@ void CLevelMgr::init()
 
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::STAGE01_3);
+	ChangeLevel(LEVEL_TYPE::STAGE01_4);
 }
 
 void CLevelMgr::tick()

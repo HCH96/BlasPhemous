@@ -150,6 +150,7 @@
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CBackground.h" />
     <ClInclude Include="CBossHP.h" />
+    <ClInclude Include="CBossIntro.h" />
     <ClInclude Include="CBossPanel.h" />
     <ClInclude Include="CCage.h" />
     <ClInclude Include="CCamera.h" />
@@ -169,6 +170,12 @@
     <ClInclude Include="CElderBrotherDeath.h" />
     <ClInclude Include="CElderBrotherIdle.h" />
     <ClInclude Include="CElderBrotherJump.h" />
+    <ClInclude Include="CElderIntro.h" />
+    <ClInclude Include="CElderShadow.h" />
+    <ClInclude Include="CElderShadowAttack.h" />
+    <ClInclude Include="CElderShadowIdle.h" />
+    <ClInclude Include="CElderShadowJump.h" />
+    <ClInclude Include="CElderShdowNone.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
     <ClInclude Include="CFirebolt.h" />
@@ -333,6 +340,7 @@
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CBackground.cpp" />
     <ClCompile Include="CBossHP.cpp" />
+    <ClCompile Include="CBossIntro.cpp" />
     <ClCompile Include="CBossPanel.cpp" />
     <ClCompile Include="CCage.cpp" />
     <ClCompile Include="CCamera.cpp" />
@@ -352,6 +360,12 @@
     <ClCompile Include="CElderBrotherDeath.cpp" />
     <ClCompile Include="CElderBrotherIdle.cpp" />
     <ClCompile Include="CElderBrotherJump.cpp" />
+    <ClCompile Include="CElderIntro.cpp" />
+    <ClCompile Include="CElderShadow.cpp" />
+    <ClCompile Include="CElderShadowAttack.cpp" />
+    <ClCompile Include="CElderShadowIdle.cpp" />
+    <ClCompile Include="CElderShadowJump.cpp" />
+    <ClCompile Include="CElderShdowNone.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="CFirebolt.cpp" />

@@ -557,6 +557,24 @@
     <Filter Include="Game\08. State\Penitent\Respawn">
       <UniqueIdentifier>{f2072efb-539e-4d80-af7f-d47b8622e0a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\MapObject\BossIntro">
+      <UniqueIdentifier>{123a88b3-ad64-447d-a6ad-1dbab7b9344a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\Intro">
+      <UniqueIdentifier>{2d2ad5ea-cf13-4c56-8f2c-d0010dcc2880}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\ShadowAttack">
+      <UniqueIdentifier>{0b547b4b-4241-4e38-a625-8d7f71bb173e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\ShadowJump">
+      <UniqueIdentifier>{48d853b6-7f38-43da-a4da-65786fec355b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\ShadowIdle">
+      <UniqueIdentifier>{3f78a4c7-cb85-4325-ab27-83711bb44a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\ElderBrother\ShadowNone">
+      <UniqueIdentifier>{1a16822f-860c-44dc-b2f4-d695e97421e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1100,6 +1118,27 @@
     <ClInclude Include="CPenitentRespawn.h">
       <Filter>Game\08. State\Penitent\Respawn</Filter>
     </ClInclude>
+    <ClInclude Include="CBossIntro.h">
+      <Filter>Game\04. Object\MapObject\BossIntro</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderIntro.h">
+      <Filter>Game\08. State\ElderBrother\Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderShadow.h">
+      <Filter>Game\04. Object\Monster\Boss\ElderBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderShadowAttack.h">
+      <Filter>Game\08. State\ElderBrother\ShadowAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderShadowJump.h">
+      <Filter>Game\08. State\ElderBrother\ShadowJump</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderShadowIdle.h">
+      <Filter>Game\08. State\ElderBrother\ShadowIdle</Filter>
+    </ClInclude>
+    <ClInclude Include="CElderShdowNone.h">
+      <Filter>Game\08. State\ElderBrother\ShadowNone</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1637,6 +1676,27 @@
     </ClCompile>
     <ClCompile Include="CPenitentRespawn.cpp">
       <Filter>Game\08. State\Penitent\Respawn</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossIntro.cpp">
+      <Filter>Game\04. Object\MapObject\BossIntro</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderIntro.cpp">
+      <Filter>Game\08. State\ElderBrother\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderShadow.cpp">
+      <Filter>Game\04. Object\Monster\Boss\ElderBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderShadowAttack.cpp">
+      <Filter>Game\08. State\ElderBrother\ShadowAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderShadowJump.cpp">
+      <Filter>Game\08. State\ElderBrother\ShadowJump</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderShadowIdle.cpp">
+      <Filter>Game\08. State\ElderBrother\ShadowIdle</Filter>
+    </ClCompile>
+    <ClCompile Include="CElderShdowNone.cpp">
+      <Filter>Game\08. State\ElderBrother\ShadowNone</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

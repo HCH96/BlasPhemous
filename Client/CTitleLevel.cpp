@@ -51,6 +51,7 @@ void CTitleLevel::init()
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::MONSTER_PJ);
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::PROJECTILE);
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::STATIC_MONSTER);
+	CCollisionMgr::GetInst()->CheckCollision(LAYER::PLAYER, LAYER::BOSSINTRO);
 
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::MONSTER, LAYER::PLATFORM);
 	CCollisionMgr::GetInst()->CheckCollision(LAYER::SPAWNER, LAYER::PLATFORM);

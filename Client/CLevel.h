@@ -27,6 +27,10 @@ public:
 
 
 public:
+	virtual void BossIntro() {}
+	virtual void IntroEnd() {}
+
+
 	template<typename T>
 	void GetObjects(vector<T*>& _Out);
 

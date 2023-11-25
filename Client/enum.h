@@ -49,6 +49,8 @@ enum class LAYER
 	PLATFORM,
 	LADDER,
 
+	BOSSINTRO,
+
 	SPAWNER,
 	PORTAL,
 	WORLD_STATIC,
@@ -231,6 +233,7 @@ enum class SHIELDMAIDEN
 
 enum class ELDERBROTHER
 {
+	INTRO,
 	IDLE,
 	JUMP,
 	ATTACK,

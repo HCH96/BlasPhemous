@@ -59,6 +59,8 @@ public:
 	Vec2 GetCurLookAt() { return m_vCurLookAt; }
 	int GetEventCount() { return (int)m_EventList.size(); }
 
+	void SetSpeed(float _f) { m_fSpeed = _f; }
+
 	void SetLookAt(Vec2 _vLookAt) { m_vLookAt = _vLookAt; }
 	void InitLookAt(Vec2 _vLookAt)
 	{
