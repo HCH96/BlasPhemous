@@ -78,6 +78,13 @@ void CPenitentIdle::finaltick(float _DT)
 	}
 
 	
+
+	if (KEY_TAP(KEY::X) && pPenitent->GetMP()>0)
+	{
+		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::SPELLATTACK);
+	}
+
+	
 	if (!pMovement->IsGround() && pMovement->GetVelocity().y > 0)
 	{
 		GetOwnerSM()->ChangeState((UINT)PENITENT_STATE::FALL);

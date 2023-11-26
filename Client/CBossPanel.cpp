@@ -109,7 +109,7 @@ void CBossPanel::render(HDC _dc)
 	if (m_pName == nullptr)
 		return;
 
-	int ixStart = vPos.x + vScale.x / 2.f - m_pName->GetWidth()/2.f;
+	int ixStart = int(vPos.x + vScale.x / 2.f - m_pName->GetWidth()/2.f);
 
 	AlphaBlend(_dc
 		, ixStart, (int)vPos.y - 30

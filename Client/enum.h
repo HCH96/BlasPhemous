@@ -194,6 +194,7 @@ enum class PENITENT_STATE
 	RESPAWN,
 	INTRO,
 	DEATH_END,
+	SPELLATTACK,
 };
 
 enum class FOOL_KNIFE

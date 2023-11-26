@@ -590,6 +590,9 @@
     <Filter Include="Game\04. Object\MapObject\AshCloud">
       <UniqueIdentifier>{435c79e4-a58a-4e44-85fb-3d264a406e3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Penitent\SpellAttack">
+      <UniqueIdentifier>{0c138f4d-ced7-4e7a-8740-4b3749a45207}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1169,6 +1172,9 @@
     <ClInclude Include="CAshCloud.h">
       <Filter>Game\04. Object\MapObject\AshCloud</Filter>
     </ClInclude>
+    <ClInclude Include="CPenitentSpellAttack.h">
+      <Filter>Game\08. State\Penitent\SpellAttack</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1742,6 +1748,9 @@
     </ClCompile>
     <ClCompile Include="CAshCloud.cpp">
       <Filter>Game\04. Object\MapObject\AshCloud</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenitentSpellAttack.cpp">
+      <Filter>Game\08. State\Penitent\SpellAttack</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

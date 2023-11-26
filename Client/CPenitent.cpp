@@ -53,6 +53,7 @@
 #include "CPenitentGuardSlide.h"
 #include "CPenitentRespawn.h"
 #include "CPenitentIntro.h"
+#include "CPenitentSpellAttack.h"
 
 CPenitent::CPenitent()
 	: m_pAnimator(nullptr)
@@ -814,6 +815,17 @@ void CPenitent::AnimationInit()
 	m_pAnimator->SetAnimDuration(L"GuardSlide", 0.04f);
 	m_pAnimator->SetAnimDuration(L"GuardSlide_L", 0.04f);
 
+	// SpellAttack
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"penitent_aura_anim", L"texture\\Penitent\\penitent_aura_anim.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"penitent_aura_anim_L", L"texture\\Penitent\\penitent_aura_anim.png");
+
+	m_pAnimator->LoadAnimation(pTex, L"SpellAttack", L"animdata\\Penitent\\penitent_aura_anim.txt");
+	m_pAnimator->LoadAnimation(pTexReverse, L"SpellAttack_L", L"animdata\\Penitent\\penitent_aura_anim.txt", true);
+
+	m_pAnimator->SetAnimDuration(L"SpellAttack", 0.04f);
+	m_pAnimator->SetAnimDuration(L"SpellAttack_L", 0.04f);
+
+
 }
 
 void CPenitent::EffectInit()
@@ -916,6 +928,16 @@ void CPenitent::EffectInit()
 
 	m_pEffector->SetAnimDuration(L"Respawn", 0.05f);
 	m_pEffector->SetAnimDuration(L"Respawn_L", 0.05f);
+
+	// SpellAttack
+	pTex = CAssetMgr::GetInst()->LoadTexture(L"threeAnguishBigBeamBlue", L"texture\\Penitent\\threeAnguishBigBeamBlue.png");
+	pTexReverse = CAssetMgr::GetInst()->LoadTextureReverse(L"threeAnguishBigBeamBlue_L", L"texture\\Penitent\\threeAnguishBigBeamBlue.png");
+
+	m_pEffector->LoadAnimation(pTex, L"SpellAttack", L"animdata\\Penitent\\threeAnguishBigBeamBlue.txt");
+	m_pEffector->LoadAnimation(pTexReverse, L"SpellAttack_L", L"animdata\\Penitent\\threeAnguishBigBeamBlue.txt", true);
+
+	m_pEffector->SetAnimDuration(L"SpellAttack", 0.02f);
+	m_pEffector->SetAnimDuration(L"SpellAttack_L", 0.02f);
 
 
 
@@ -1051,6 +1073,7 @@ void CPenitent::StateInit()
 	m_pSM->AddState((UINT)PENITENT_STATE::GUARDSLIDE, new CPenitentGuardSlide);
 	m_pSM->AddState((UINT)PENITENT_STATE::RESPAWN, new CPenitentRespawn);
 	m_pSM->AddState((UINT)PENITENT_STATE::INTRO, new CPenitentIntro);
+	m_pSM->AddState((UINT)PENITENT_STATE::SPELLATTACK, new CPenitentSpellAttack);
 
 
 	m_pSM->SetGlobalState((UINT)PENITENT_STATE::DEATH);

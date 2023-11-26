@@ -145,8 +145,10 @@ void CPenitentAttack::Enter()
 	CAnimator* pEffector = GetOwnerObj->GetComponent<CAnimator>(L"Penitent_Effector");
 	CMovement* pMovement = GetOwnerObj->GetComponent<CMovement>();
 	CCollider* pHitBox = GetOwnerObj->GetComponent<CCollider>(L"Penitent_HitBox");
+
+
 	pHitBox->SetScale(Vec2(150.f, 110.f));
-	
+	pHitBox->SetOffsetPos(Vec2(100.f, -70.f));
 	pHitBox->SetTime(0.15f);
 
 	m_iPrevFrame = 0;
