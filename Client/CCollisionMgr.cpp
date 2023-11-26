@@ -16,6 +16,18 @@ CCollisionMgr::~CCollisionMgr()
 }
 
 
+void CCollisionMgr::ClearIDMap()
+{
+	map<COLLIDER_ID, bool>::iterator iter = m_mapID.begin();
+
+	for (; iter != m_mapID.end(); ++iter)
+	{
+		iter->second = false;
+	}
+
+
+}
+
 void CCollisionMgr::tick()
 {
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();

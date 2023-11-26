@@ -9,7 +9,7 @@
 #include "CLightningSpawner.h"
 
 CPopeSpell::CPopeSpell()
-	:m_iSpellIdx(0)
+	: m_iSpellIdx(0)
 	, m_iPrevFrame(0)
 {
 }
@@ -91,8 +91,13 @@ void CPopeSpell::Enter()
 
 	// 0 firebolt / 1 Toxic / 2 magicmissile / 3 lightning
 
-	m_iSpellIdx = (rand() % 4);
+	//m_iSpellIdx = (rand() % 4);
 
+	++m_iSpellIdx;
+	if (m_iSpellIdx > 3)
+	{
+		m_iSpellIdx = 0;
+	}
 
 	//m_iSpellIdx = 3;
 

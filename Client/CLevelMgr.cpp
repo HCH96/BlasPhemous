@@ -5,6 +5,7 @@
 
 #include "CTitleLevel.h"
 #include "CMainMenuLevel.h"
+#include "CCollisionMgr.h"
 
 #include "CStage01_1.h"
 #include "CStage01_2.h"
@@ -54,6 +55,8 @@ void CLevelMgr::ChangeLevel(LEVEL_TYPE _eType)
 	// 이전 레벨 저장
 	m_iPrevLevel = m_iCurLevel;
 
+	CCollisionMgr::GetInst()->ClearIDMap();
+
 	m_pCurLevel = m_arrLevels[(UINT)_eType];
 	m_iCurLevel = (UINT)_eType;
 
@@ -77,12 +80,12 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_3] = new CStage01_3;
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_4] = new CStage01_4;
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE01_5] = new CStage01_5;
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_1] = new CStage02_1;
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_2] = new CStage02_2;
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_3] = new CStage02_3;
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_1] = new CStage03_1;
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_2] = new CStage03_2;
-	m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_3] = new CStage03_3;
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_1] = new CStage02_1;
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_2] = new CStage02_2;
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE02_3] = new CStage02_3;
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_1] = new CStage03_1;
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_2] = new CStage03_2;
+	//m_arrLevels[(UINT)LEVEL_TYPE::STAGE03_3] = new CStage03_3;
 
 	//penitences-altar-off
 
@@ -94,7 +97,7 @@ void CLevelMgr::init()
 	
 
 	// Level 
-	ChangeLevel(LEVEL_TYPE::TITLE_LEVEL);
+	ChangeLevel(LEVEL_TYPE::STAGE01_5);
 }
 
 void CLevelMgr::tick()

@@ -92,8 +92,6 @@ void CLevel::AddObject(LAYER _eLayer, CObj* _Object)
 void CLevel::PullOutObject(LAYER _eLayer)
 {
 	m_arrLayer[(UINT)_eLayer]->PullAllObject();
-
-
 }
 
 	

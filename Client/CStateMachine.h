@@ -56,7 +56,6 @@ inline void CStateMachine::AddDataToBlackboard(const wstring& _strKey, const T& 
     map<wstring, void*>::iterator iter = m_mapBlackboard.find(_strKey);
     if (iter != m_mapBlackboard.end())
     {
-        LOG(LOG_LEVEL::ERR, L"!!블랙보드에 해당 데이터 키 이미 있음!!");
         return;
     }
 

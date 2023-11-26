@@ -423,6 +423,7 @@ void CStage02_2::enter()
 	// Sound
 
 	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Final Boss Wind", L"sound\\BossMusic\\Final Boss Wind.wav");
+	pSound->SetVolume(20.f);
 	pSound->PlayToBGM();
 }
 

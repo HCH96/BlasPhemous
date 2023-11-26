@@ -27,6 +27,13 @@ void CDeathObj::begin()
 
 void CDeathObj::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+	if (_OtherObj->GetLayerIdx() != (UINT)LAYER::PLAYER)
+		return;
+
+	CStateMachine* pSM = _OtherObj->GetComponent<CStateMachine>();
+	if (pSM->GetCurState() == (UINT)PENITENT_STATE::DEATH_END)
+		return;
+
 	Vec2 vPos = _OwnCol->GetPos();
 	Vec2 vScale = _OwnCol->GetScale();
 	Vec2 vObjPos = _OtherObj->GetPos();

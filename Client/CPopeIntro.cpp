@@ -19,7 +19,7 @@ void CPopeIntro::finaltick(float _DT)
 	CObj* pOwner = GetOwnerObj;
 	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
 
-	if (pAnimator->IsFinish() && m_fAcc>5.f)
+	if (pAnimator->IsFinish() && m_fAcc>2.f)
 	{
 		CLevelMgr::GetInst()->GetCurLevel()->IntroEnd();
 		GetOwnerSM()->ChangeState((UINT)POPE::VANISH);

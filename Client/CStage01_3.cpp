@@ -124,6 +124,8 @@ void CStage01_3::enter()
 
 	if (pPenitent->GetState() == (UINT)PENITENT_STATE::DEATH_END)
 	{
+		pPenitent->GetComponent<CMovement>()->SetVelocity(Vec2(0.f, 0.f));
+
 		pPenitent->SetState(PENITENT_STATE::RESPAWN);
 		pPenitent->SetPos(Vec2(1816.f, 1160.f));
 	}
