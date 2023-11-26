@@ -15,7 +15,14 @@ CPontiffDeath::~CPontiffDeath()
 
 void CPontiffDeath::finaltick(float _DT)
 {
+	CObj* pOwner = GetOwnerObj;
+	Pontiff* pPontiff = dynamic_cast<Pontiff*>(pOwner);
 
+	if (pPontiff->m_pFace->IsFinish() && !m_bEnd)
+	{
+		CLevelMgr::GetInst()->GetCurLevel()->BossDeath();
+		m_bEnd = true;
+	}
 
 }
 
@@ -33,6 +40,8 @@ void CPontiffDeath::Enter()
 
 	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_DEATH", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_DEATH.wav");
 	pSound->Play();
+
+	m_bEnd = false;
 }
 
 void CPontiffDeath::Exit()

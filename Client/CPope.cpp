@@ -9,6 +9,8 @@
 #include "CPopeIdle.h"
 #include "CPopeSpell.h"
 #include "CPopeVanish.h"
+#include "CPopeIntro.h"
+#include "CPopeNone.h"
 
 CPope::CPope()
 	: m_pAnimator(nullptr)
@@ -199,6 +201,8 @@ CPope::CPope()
 	m_pAI->AddState((UINT)POPE::SPELL, new CPopeSpell);
 	m_pAI->AddState((UINT)POPE::VANISH, new CPopeVanish);
 	m_pAI->AddState((UINT)POPE::DEATH, new CPopeDeath);
+	m_pAI->AddState((UINT)POPE::INTRO, new CPopeIntro);
+	m_pAI->AddState((UINT)POPE::NONE, new CPopeNone);
 
 	m_pAI->AddDataToBlackboard(L"Spell", 0);
 
@@ -207,7 +211,7 @@ CPope::CPope()
 	m_pCollider->SetScale(Vec2(70.f, 180.f));
 	m_pCollider->SetOffsetPos(Vec2(0.f, -90.f));
 
-	m_pAI->ChangeState((UINT)POPE::IDLE);
+	m_pAI->ChangeState((UINT)POPE::NONE);
 }
 
 CPope::~CPope()

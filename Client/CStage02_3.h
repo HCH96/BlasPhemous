@@ -3,7 +3,11 @@
 class CStage02_3 :
     public CLevel
 {
+
+
 public:
+    virtual void BossDeath() override;
+
     virtual void init() override;
     virtual void enter() override;
     virtual void exit() override;

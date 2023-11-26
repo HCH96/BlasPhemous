@@ -279,6 +279,8 @@ void CStage01_4::init()
 	CBossPanel* pBossPanel = new CBossPanel;
 	AddObject(LAYER::UI, pBossPanel);
 
+	pBossPanel->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"ElderBrotherName", L"texture\\UI\\ElderBrotherName.png"));
+
 
 	// wall 
 	m_pLeftWall = new CWall;
@@ -307,16 +309,18 @@ void CStage01_4::enter()
 	//Penitent »ý¼º
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
 	pPenitent->SetState(PENITENT_STATE::IDLE);
-	pPenitent->SetPos(Vec2(232.f, 1100.f));
+	pPenitent->SetPos(Vec2(232.f, 1126.f));
 	pPenitent->SetLeft(false);
 	if ((UINT)LEVEL_TYPE::STAGE01_3 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
-		pPenitent->SetPos(Vec2(232.f, 1100.f));
+		pPenitent->SetState(PENITENT_STATE::IDLE);
+		pPenitent->SetPos(Vec2(232.f, 1126.f));
 	}
 
 	if ((UINT)LEVEL_TYPE::STAGE01_5 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
-		pPenitent->SetPos(Vec2(2740.f, 1100.f));
+		pPenitent->SetState(PENITENT_STATE::IDLE);
+		pPenitent->SetPos(Vec2(2740.f, 1126.f));
 	}
 	AddObject(LAYER::PLAYER, pPenitent);
 

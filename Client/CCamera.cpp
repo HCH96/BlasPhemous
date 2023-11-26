@@ -22,6 +22,7 @@ CCamera::CCamera()
 	, m_vTarget(Vec2(0.f,0.f))
 	, m_fShakeIntensity(0.f)
 	, m_pDeathScreen(nullptr)
+	, m_fSpeed(-1.f)
 {
 	Vec2 vResol = CEngine::GetInst()->GetResolution();
 	m_pVeil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", (int)vResol.x, (int)vResol.y);
@@ -113,7 +114,16 @@ void CCamera::tick()
 	// 이전 프레임 카메라의 위치에서 이동해야하는 방향으로 카메라의 CurLookAt을 등록
 	if (!vLookDir.IsZero())
 	{
-		m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * fSpeed * 1.5f * DT;
+		if (m_fSpeed == -1.f)
+		{
+			m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * fSpeed * 1.5f * DT;
+
+		}
+		else
+		{
+			m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * m_fSpeed * DT;
+		}
+
 	}
 
 	if ((m_vCurLookAt - m_vLookAt).Length() < 0.1f)

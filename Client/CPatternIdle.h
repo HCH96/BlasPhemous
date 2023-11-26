@@ -5,6 +5,7 @@ class CPatternIdle :
 {
 private:
     float m_fAcc;
+    int m_iPrevPattern;
 
 public:
     virtual void finaltick(float _DT);

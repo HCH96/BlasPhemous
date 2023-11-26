@@ -34,6 +34,7 @@ private:
 	map<COLLIDER_ID, bool>		m_mapID;
 
 public:
+
 	void tick();
 	void CheckCollision(LAYER _eLeft, LAYER _eRight);
 	void UnCheck(LAYER _eLeft, LAYER _eRight);

@@ -348,7 +348,7 @@ void CPenitent::BeginOverlap(CCollider* _pOwnCol, CObj* _pOtherObj, CCollider* _
 
 
 	// Platform
-	if (dynamic_cast<CPlatform*>(_pOtherObj) || dynamic_cast<CAshPlatform*>(_pOtherObj))
+	if ((dynamic_cast<CPlatform*>(_pOtherObj) || dynamic_cast<CAshPlatform*>(_pOtherObj)) && _pOwnCol->GetName() != L"Penitent_HitBox")
 	{
 		++m_iOverlapGround;
 	}

@@ -7,6 +7,7 @@
 
 CPatternIdle::CPatternIdle()
 	:m_fAcc(0.f)
+	, m_iPrevPattern(-1)
 {
 }
 
@@ -25,7 +26,17 @@ void CPatternIdle::finaltick(float _DT)
 	if (m_fAcc > 0.5f && pPontiff->GetHP() > 0.f)
 	{
 		UINT iNextPatter = rand() % 5;
+		++m_iPrevPattern;
 
+		// Pattern ¼öÁ¤
+		iNextPatter = m_iPrevPattern;
+
+		
+
+		if (iNextPatter > 4)
+		{
+			iNextPatter = 0;
+		}
 
 		CGiantSword* pSword = pPontiff->m_pSword;
 		while (pSword->GetHP() <= 0.f && iNextPatter == (UINT)MAPPATTERN::SPINATTACK)
@@ -34,7 +45,8 @@ void CPatternIdle::finaltick(float _DT)
 		}
 
 
-		iNextPatter = (UINT)MAPPATTERN::SPINATTACK;
+
+		//iNextPatter = (UINT)MAPPATTERN::SPINATTACK;
 
 		GetOwnerSM()->ChangeState(iNextPatter);
 	}

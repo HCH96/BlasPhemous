@@ -1,10 +1,10 @@
 #pragma once
 #include "CState.h"
-class CPopeDeath :
+class CPopeIntro :
     public CState
 {
 private:
-    bool m_bEnd;
+    float m_fAcc;
 
 public:
     virtual void finaltick(float _DT);
@@ -12,9 +12,9 @@ public:
     virtual void Exit();
 
 public:
-    CLONE(CPopeDeath);
-    CPopeDeath();
-    ~CPopeDeath();
+    CLONE(CPopeIntro);
+    CPopeIntro();
+    ~CPopeIntro();
 
 };
 

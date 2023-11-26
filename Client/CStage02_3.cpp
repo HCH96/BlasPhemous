@@ -33,6 +33,30 @@
 
 #include "CBossPanel.h"
 
+#include "CAshCloud.h"
+
+
+void CStage02_3::BossDeath()
+{
+	// Boss UI Off
+	const vector<CObj*> vecUI = CLevelMgr::GetInst()->GetCurLevel()->GetObjects(LAYER::UI);
+	for (int i = 0; i < vecUI.size(); ++i)
+	{
+		if (vecUI[i]->GetName() == L"BossPanel")
+		{
+			CBossPanel* pPanel = dynamic_cast<CBossPanel*>(vecUI[i]);
+			pPanel->Off();
+		}
+	}
+
+	// BGM º¯°æ
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Boss_Fight_Ending", L"sound\\KeyEvents\\Boss_Fight_Ending.wav");
+	pSound->PlayToBGM();
+
+	// Boss Clear Screen
+	CCamera::GetInst()->BossClear(1.f);
+
+}
 
 void CStage02_3::init()
 {
@@ -518,6 +542,19 @@ void CStage02_3::init()
 
 
 
+	CAshCloud* pCloud = new CAshCloud;
+	pCloud->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"ash-clouds_0", L"texture\\Effect\\ash-clouds_0.png"));
+	pCloud->SetPos(Vec2(940.f, 1020.f));
+	pCloud->SetDir(true);
+	AddObject(LAYER::WORLD_STATIC, pCloud);
+
+
+	pCloud = new CAshCloud;
+	pCloud->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"ash-clouds_1", L"texture\\Effect\\ash-clouds_1.png"));
+	pCloud->SetPos(Vec2(1740.f, 1020.f));
+	pCloud->SetDir(false);
+
+	AddObject(LAYER::WORLD_STATIC, pCloud);
 
 
 	// Register 
@@ -528,7 +565,8 @@ void CStage02_3::init()
 
 	CBossPanel* pBossPanel = new CBossPanel;
 	AddObject(LAYER::UI, pBossPanel);
-
+	pBossPanel->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"PontiffName", L"texture\\UI\\Pontiff.png"));
+	pBossPanel->On();
 
 	// UI 
 	CPenitentUI* pPenitentUI = new CPenitentUI;
@@ -536,7 +574,6 @@ void CStage02_3::init()
 
 	CTearsUI* pTearsUI = new CTearsUI;
 	AddObject(LAYER::UI, pTearsUI);
-
 
 
 

@@ -30,6 +30,69 @@
 
 #include "CKeyMgr.h"
 
+#include "CBossIntro.h"
+#include "CWall.h"
+
+void CStage02_2::BossIntro()
+{
+	// Penitent State 변경
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	CStateMachine* pSM = pPenitent->GetComponent<CStateMachine>();
+	pSM->ChangeState((UINT)PENITENT_STATE::INTRO);
+
+	// Camera 설정
+	CCamera::GetInst()->SetTarget(nullptr);
+	CCamera::GetInst()->SetSpeed(400.f);
+	CCamera::GetInst()->SetLookAt(Vec2(2280.f,1520.f));
+	//CCamera::GetInst()->SetLookAtOffsetY(0.f);
+
+
+	// ElderBrother shadow Animation 재생
+	CObj* pBoss = GetBoss();
+
+	CStateMachine* p_AI = pBoss->GetComponent<CStateMachine>();
+	p_AI->ChangeState((UINT)POPE::INTRO);
+
+}
+
+void CStage02_2::IntroEnd()
+{
+	// 벽 설정
+	m_pLeftWall->SetPos(Vec2(1600.f, 1520.f));
+	m_pRightWall->SetPos(Vec2(2960.f, 1520.f));
+
+	// Camera Limit 
+	CCamera::GetInst()->SetCameraLimitLT(Vec2(1640.f, 580.f * 2.f));
+	CCamera::GetInst()->SetCameraLimit(Vec2(2920.f, 940.f * 2.f));
+
+
+	// Sound
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Pontiff", L"sound\\BossMusic\\Pontiff.wav");
+	pSound->PlayToBGM();
+
+	// Penitent State 변경
+	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
+	CStateMachine* pSM = pPenitent->GetComponent<CStateMachine>();
+	pSM->ChangeState((UINT)PENITENT_STATE::IDLE);
+
+
+	// Boss HP UI 표시
+	const vector<CObj*> vecUI = CLevelMgr::GetInst()->GetCurLevel()->GetObjects(LAYER::UI);
+	for (int i = 0; i < vecUI.size(); ++i)
+	{
+		if (vecUI[i]->GetName() == L"BossPanel")
+		{
+			CBossPanel* pPanel = dynamic_cast<CBossPanel*>(vecUI[i]);
+			pPanel->On();
+		}
+	}
+}
+
+void CStage02_2::BossDeath()
+{
+	::ChangeLevel(LEVEL_TYPE::STAGE02_3);
+}
+
 void CStage02_2::init()
 {
 	//Background 0
@@ -62,7 +125,7 @@ void CStage02_2::init()
 
 	// Boss
 	CPope* pPope = new CPope;
-	pPope->SetPos(Vec2(2250.f, 1740.f));
+	pPope->SetPos(Vec2(0.f, 0.f));
 	pPope->SetScale(Vec2(2.f, 2.f));
 	AddObject(LAYER::MONSTER, pPope);
 
@@ -295,6 +358,20 @@ void CStage02_2::init()
 	pLightning->SetSound(pSound);
 
 
+	// Wall
+	m_pLeftWall = new CWall;
+
+	m_pLeftWall->SetPos(Vec2(0.f, 0.f));
+	m_pLeftWall->SetScale(Vec2(50.f, 500.f));
+	AddObject(LAYER::PLATFORM, m_pLeftWall);
+
+	m_pRightWall = new CWall;
+
+	m_pRightWall->SetPos(Vec2(0.f, 0.f));
+	m_pRightWall->SetScale(Vec2(50.f, 500.f));
+	AddObject(LAYER::PLATFORM, m_pRightWall);
+
+
 
 	// UI 생성
 	CPenitentUI* pPenitentUI = new CPenitentUI;
@@ -307,6 +384,13 @@ void CStage02_2::init()
 
 	CBossPanel* pBossPanel = new CBossPanel;
 	AddObject(LAYER::UI, pBossPanel);
+	pBossPanel->SetTexture(CAssetMgr::GetInst()->LoadTexture(L"PopeName", L"texture\\UI\\PopeName.png"));
+
+	// Boss Intro 
+	CBossIntro* pBossIntro = new CBossIntro;
+	pBossIntro->SetPos(Vec2(2050.f, 1640.f));
+	AddObject(LAYER::BOSSINTRO, pBossIntro);
+
 
 }
 
@@ -338,17 +422,18 @@ void CStage02_2::enter()
 
 	// Sound
 
-	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Safe Zone", L"sound\\BGM\\Safe Zone.wav");
+	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"Final Boss Wind", L"sound\\BossMusic\\Final Boss Wind.wav");
 	pSound->PlayToBGM();
 }
 
 void CStage02_2::exit()
 {
+	PullOutObject(LAYER::PLAYER);
+
 }
 
 void CStage02_2::tick()
 {
 	CLevel::tick();
-
 
 }

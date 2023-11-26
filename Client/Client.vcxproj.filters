@@ -581,6 +581,15 @@
     <Filter Include="Game\08. State\Penitent\Intro">
       <UniqueIdentifier>{9240decf-35c9-4716-9c9d-831c0685f989}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\08. State\Pope\Intro">
+      <UniqueIdentifier>{73bceab1-d94f-4f7d-b1b1-8269c1ef1d8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\08. State\Pope\None">
+      <UniqueIdentifier>{fbff6aea-593c-433f-b241-aad86c9594bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\MapObject\AshCloud">
+      <UniqueIdentifier>{435c79e4-a58a-4e44-85fb-3d264a406e3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -1151,6 +1160,15 @@
     <ClInclude Include="CPenitentIntro.h">
       <Filter>Game\08. State\Penitent\Intro</Filter>
     </ClInclude>
+    <ClInclude Include="CPopeIntro.h">
+      <Filter>Game\08. State\Pope\Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="CPopeNone.h">
+      <Filter>Game\08. State\Pope\None</Filter>
+    </ClInclude>
+    <ClInclude Include="CAshCloud.h">
+      <Filter>Game\04. Object\MapObject\AshCloud</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1715,6 +1733,15 @@
     </ClCompile>
     <ClCompile Include="CPenitentIntro.cpp">
       <Filter>Game\08. State\Penitent\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopeIntro.cpp">
+      <Filter>Game\08. State\Pope\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopeNone.cpp">
+      <Filter>Game\08. State\Pope\None</Filter>
+    </ClCompile>
+    <ClCompile Include="CAshCloud.cpp">
+      <Filter>Game\04. Object\MapObject\AshCloud</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

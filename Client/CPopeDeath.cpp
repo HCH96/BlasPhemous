@@ -11,6 +11,15 @@ CPopeDeath::~CPopeDeath()
 
 void CPopeDeath::finaltick(float _DT)
 {
+	CObj* pOwner = GetOwnerObj;
+	CAnimator* pAnimator = pOwner->GetComponent<CAnimator>();
+
+	if (pAnimator->IsFinish() && !m_bEnd)
+	{
+		CLevelMgr::GetInst()->GetCurLevel()->BossDeath();
+		m_bEnd = true;
+	}
+
 }
 
 void CPopeDeath::Enter()
@@ -32,6 +41,8 @@ void CPopeDeath::Enter()
 	CSound* pSound = CAssetMgr::GetInst()->LoadSound(L"PONTIFF_DEATH", L"sound\\Object\\Monster\\Boss\\Pontiff\\PONTIFF_DEATH.wav");
 	pSound->Play();
 
+
+	m_bEnd = false;
 }
 
 void CPopeDeath::Exit()

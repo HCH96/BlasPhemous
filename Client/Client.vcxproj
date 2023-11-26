@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="CAnim.h" />
     <ClInclude Include="CAnimator.h" />
+    <ClInclude Include="CAshCloud.h" />
     <ClInclude Include="CAshPlatform.h" />
     <ClInclude Include="CAssetMgr.h" />
     <ClInclude Include="CAsset.h" />
@@ -280,6 +281,8 @@
     <ClInclude Include="CPopeAppear.h" />
     <ClInclude Include="CPopeDeath.h" />
     <ClInclude Include="CPopeIdle.h" />
+    <ClInclude Include="CPopeIntro.h" />
+    <ClInclude Include="CPopeNone.h" />
     <ClInclude Include="CPopeSpell.h" />
     <ClInclude Include="CPopeVanish.h" />
     <ClInclude Include="CPriedieu.h" />
@@ -337,6 +340,7 @@
   <ItemGroup>
     <ClCompile Include="CAnim.cpp" />
     <ClCompile Include="CAnimator.cpp" />
+    <ClCompile Include="CAshCloud.cpp" />
     <ClCompile Include="CAshPlatform.cpp" />
     <ClCompile Include="CAssetMgr.cpp" />
     <ClCompile Include="CAsset.cpp" />
@@ -470,6 +474,8 @@
     <ClCompile Include="CPopeAppear.cpp" />
     <ClCompile Include="CPopeDeath.cpp" />
     <ClCompile Include="CPopeIdle.cpp" />
+    <ClCompile Include="CPopeIntro.cpp" />
+    <ClCompile Include="CPopeNone.cpp" />
     <ClCompile Include="CPopeSpell.cpp" />
     <ClCompile Include="CPopeVanish.cpp" />
     <ClCompile Include="CPriedieu.cpp" />

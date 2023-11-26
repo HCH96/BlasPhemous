@@ -48,6 +48,7 @@ public:
     void OnDamaged();
     void OnHit();
     void SetHit(bool _b) { m_bIsHit = _b; }
+    void SetOverlapGround(int _i) { m_iOverlapGround = _i; }
 
 public:
     float GetHP() { return m_fHP; }

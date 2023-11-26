@@ -53,8 +53,8 @@ enum class LAYER
 
 	SPAWNER,
 	PORTAL,
+	UI = 30,
 	WORLD_STATIC,
-	UI = 31,
 	END = 32,
 };
 
@@ -245,6 +245,8 @@ enum class ELDERBROTHER
 
 enum class POPE
 {
+	NONE,
+	INTRO,
 	IDLE,
 	APPEAR,
 	SPELL,

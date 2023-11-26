@@ -18,6 +18,8 @@
 #include "CLionhead.h"
 #include "CShieldMaiden.h"
 
+#include "CLedge.h"
+
 
 void CStage02_1::init()
 {
@@ -65,14 +67,15 @@ void CStage02_1::init()
 	pPlatform->SetScale(Vec2(960.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
 
-	
-
-
-
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(896.f, 910.f));
 	pPlatform->SetScale(Vec2(130.f, 50.f));
 	AddObject(LAYER::PLATFORM, pPlatform);
+
+	CLedge* pLedge = new CLedge;
+	pLedge->SetPos(Vec2(949.f, 910.f));
+	pLedge->SetScale(Vec2(24.f, 50.f));
+	AddObject(LAYER::PLATFORM, pLedge);
 
 	pPlatform = new CPlatform;
 	pPlatform->SetPos(Vec2(1100.f, 1174.f));
