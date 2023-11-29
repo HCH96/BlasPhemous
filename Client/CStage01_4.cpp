@@ -309,18 +309,21 @@ void CStage01_4::enter()
 	//Penitent »ý¼º
 	CPenitent* pPenitent = CLevelMgr::GetInst()->GetPenitent();
 	pPenitent->SetState(PENITENT_STATE::IDLE);
-	pPenitent->SetPos(Vec2(232.f, 1126.f));
+	pPenitent->SetPos(Vec2(232.f, 1120.f));
 	pPenitent->SetLeft(false);
+
+	CMovement* pMovement = pPenitent->GetComponent<CMovement>();
+	pMovement->SetGround(true);
 	if ((UINT)LEVEL_TYPE::STAGE01_3 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
 		pPenitent->SetState(PENITENT_STATE::IDLE);
-		pPenitent->SetPos(Vec2(232.f, 1126.f));
+		pPenitent->SetPos(Vec2(232.f, 1120.f));
 	}
 
 	if ((UINT)LEVEL_TYPE::STAGE01_5 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
 		pPenitent->SetState(PENITENT_STATE::IDLE);
-		pPenitent->SetPos(Vec2(2740.f, 1126.f));
+		pPenitent->SetPos(Vec2(2740.f, 1120.f));
 	}
 	AddObject(LAYER::PLAYER, pPenitent);
 

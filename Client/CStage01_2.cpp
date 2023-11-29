@@ -259,6 +259,8 @@ void CStage01_2::enter()
 	pPenitent->SetState(PENITENT_STATE::IDLE);
 	pPenitent->SetPos(Vec2(170.f, 1500.f));
 	pPenitent->SetLeft(false);
+	CMovement* pMovement = pPenitent->GetComponent<CMovement>();
+	pMovement->SetGround(true);
 	if ((UINT)LEVEL_TYPE::STAGE01_1 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
 		pPenitent->SetPos(Vec2(170.f, 1500.f));

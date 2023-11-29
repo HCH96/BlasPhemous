@@ -120,7 +120,8 @@ void CStage01_3::enter()
 	
 	pPenitent->SetPos(Vec2(150.f, 1178.f));
 	pPenitent->SetLeft(false);
-	
+	CMovement* pMovement = pPenitent->GetComponent<CMovement>();
+	pMovement->SetGround(true);
 
 	if (pPenitent->GetState() == (UINT)PENITENT_STATE::DEATH_END)
 	{
@@ -132,12 +133,12 @@ void CStage01_3::enter()
 	else if ((UINT)LEVEL_TYPE::STAGE01_2 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
 		pPenitent->SetState(PENITENT_STATE::IDLE);
-		pPenitent->SetPos(Vec2(150.f, 1178.f));
+		pPenitent->SetPos(Vec2(150.f, 1160.f));
 	}
 	else if ((UINT)LEVEL_TYPE::STAGE01_4 == CLevelMgr::GetInst()->GetPrevLevel())
 	{
 		pPenitent->SetState(PENITENT_STATE::IDLE);
-		pPenitent->SetPos(Vec2(3180.f, 1178.f));
+		pPenitent->SetPos(Vec2(3180.f, 1160.f));
 	}
 
 
