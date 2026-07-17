@@ -21,5 +21,5 @@ C++과 WinAPI 기반 자체 엔진으로 제작한 2D 액션 플랫포머 모작
 ## More Details
 
 - [Project Page](https://truth-smile-a3c.notion.site/BlasPhemous-cf3fead700d44515ac3f9c5b2c3039eb?source=copy_link)
-- [개발 일지](https://truth-smile-a3c.notion.site/f15692b4950c45a8b56adcff1fdfcd6e?v=0d1ce3745ac4482586f52e0126925a1c&source=copy_link)
+- [Development Log](https://truth-smile-a3c.notion.site/f15692b4950c45a8b56adcff1fdfcd6e?v=0d1ce3745ac4482586f52e0126925a1c&source=copy_link)
 
